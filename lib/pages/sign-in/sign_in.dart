@@ -4,6 +4,8 @@ import 'package:fitgenie/pages/sign-in/sign_up/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../core/widgets/custom_button.dart';
+
 
 
 class SignInPage extends StatefulWidget {
@@ -24,31 +26,24 @@ class _SignInPageState extends State<SignInPage> {
 
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: CustomTextField(controller: _emailController, label: 'Email',keyBoardType: TextInputType.emailAddress,),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: CustomTextField(controller: _passwordController, label: 'Password',isPassword: true,),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Implement sign in functionality here
-                  Get.to(() =>const HomeLayout(),transition: Transition.fadeIn);
-                },
-                child: const Text('Sign In'),
-              ),
-              TextButton(
-                onPressed: () {
-                  Get.to(() => const SignUpPage(), transition: Transition.rightToLeft);
-                },
-                child: const Text('Create a new account'),
-              ),
-            ],
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                CustomTextField(controller: _emailController, label: 'Email',keyBoardType: TextInputType.emailAddress,),
+                CustomTextField(controller: _passwordController, label: 'Password',isPassword: true,),
+                CustomButton(label: 'Sign In', onTap: () {
+                  Get.to(() => const HomeLayout(),transition: Transition.fadeIn,);
+                }),
+                TextButton(
+                  onPressed: () {
+                    Get.to(() => const SignUpPage(), transition: Transition.rightToLeft);
+                  },
+                  child: const Text('Create a new account'),
+                ),
+              ],
+            ),
           ),
         ),
       ),

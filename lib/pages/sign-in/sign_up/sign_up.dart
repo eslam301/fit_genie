@@ -1,6 +1,7 @@
 import 'package:fitgenie/pages/sign-in/sign_up/required_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/custom_text_field.dart';
 import '../sign_in.dart';
 
@@ -23,40 +24,26 @@ class _SignUpPageState extends State<SignUpPage> {
 
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: CustomTextField(controller: _nameController, label: 'Name',),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: CustomTextField(controller: _emailController, label: 'Email',keyBoardType: TextInputType.emailAddress),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: CustomTextField(controller: _passwordController, label: 'Password',isPassword: true,),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: CustomTextField(controller: _passwordConfirmController, label: 'Confirm Password',isPassword: true,),
-              ),
-
-              ElevatedButton(
-                onPressed: () {
-                  // Implement sign up functionality here
-                  Get.to(() => RequiredForm(),transition: Transition.upToDown);
-                },
-                child: const Text('Sign Up'),
-              ),
-              TextButton(
-                onPressed: () {
-                  Get.to(() => const SignInPage(),transition: Transition.leftToRight,);
-                },
-                child: const Text('Have an account? Sign in'),
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                CustomTextField(controller: _nameController, label: 'Name',),
+                CustomTextField(controller: _emailController, label: 'Email',keyBoardType: TextInputType.emailAddress),
+                CustomTextField(controller: _passwordController, label: 'Password',isPassword: true,),
+                CustomTextField(controller: _passwordConfirmController, label: 'Confirm Password',isPassword: true,),
+                CustomButton(label: 'Sign Up', onTap: () {
+                  Get.to(() =>  RequiredForm(),transition: Transition.leftToRight,);
+                }),
+                TextButton(
+                  onPressed: () {
+                    Get.to(() => const SignInPage(),transition: Transition.leftToRight,);
+                  },
+                  child: const Text('Have an account? Sign in'),
+                ),
+              ],
+            ),
           ),
         ),
       ),

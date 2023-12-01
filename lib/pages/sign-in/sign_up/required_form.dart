@@ -1,3 +1,4 @@
+import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:fitgenie/core/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -18,15 +19,18 @@ class RequiredForm extends StatelessWidget {
         body: SingleChildScrollView(
             child: Form(
           key: null,
-          child: Column(children: [
-            CustomTextField(controller: firstNameController, label: 'Name'),
-            CustomTextField(controller: firstNameController, label: 'Name'),
-            CustomTextField(controller: firstNameController, label: 'Name'),
-            CustomTextField(controller: firstNameController, label: 'Name'),
-            CustomTextField(controller: firstNameController, label: 'Name'),
-            CustomTextField(controller: firstNameController, label: 'Name'),
-            ElevatedButton(onPressed: () {}, child: const Text("Submit"))
-          ]),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(children: [
+              CustomTextField(controller: firstNameController, label: 'Name'),
+              CustomTextField(controller: firstNameController, label: 'Name'),
+              CustomTextField(controller: firstNameController, label: 'Name'),
+              CustomTextField(controller: firstNameController, label: 'Name'),
+              CustomTextField(controller: firstNameController, label: 'Name'),
+              CustomTextField(controller: firstNameController, label: 'Name'),
+              CustomButton(label:'submit' , onTap: (){})
+            ]),
+          ),
         )));
   }
 }

@@ -14,7 +14,6 @@ class CustomTextField extends StatefulWidget {
       this.isPassword = false,
       this.suffixIcon,
       this.keyBoardType});
-
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
@@ -25,7 +24,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: TextField(
         keyboardType: widget.keyBoardType,
         obscureText: widget.isPassword ? obscureText : false,
