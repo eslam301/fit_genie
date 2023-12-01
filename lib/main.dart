@@ -8,13 +8,10 @@ import 'core/application_theme.dart';
 import 'layout/home_layout.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp( const MyApp());
 }
-
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
-
-
+   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -29,7 +26,7 @@ class MyApp extends StatelessWidget {
         SignUpPage.routeName: (context) =>  SignUpPage(),
         HomeLayout.routeName: (context) =>  HomeLayout(),
       },
-
+      transitionDuration: const Duration(milliseconds: 1500),
     );
   }
 
