@@ -3,14 +3,11 @@ import 'package:fitgenie/pages/home/home_view.dart';
 import 'package:fitgenie/pages/sign-in/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../pages/settings/setting_view.dart';
-
 class HomeLayout extends StatefulWidget {
   static const String routeName = '/home';
 
-  HomeLayout({super.key});
+  const HomeLayout({super.key});
 
   @override
   State<HomeLayout> createState() => _HomeLayoutState();
@@ -18,10 +15,10 @@ class HomeLayout extends StatefulWidget {
 
 class _HomeLayoutState extends State<HomeLayout> {
   List<Widget> screens = [
-    HomeView(),
-    SettingsView(),
-    SettingsView(),
-    SettingsView(),
+    const HomeView(),
+    const SettingsView(),
+    const SettingsView(),
+    const SettingsView(),
   ];
 
   int index = 0;

@@ -2,7 +2,6 @@
 import 'package:fitgenie/pages/sign-in/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 
 
@@ -13,7 +12,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
        Get.to(() => const SignInPage(),transition: Transition.fadeIn);
     });
     return Scaffold(

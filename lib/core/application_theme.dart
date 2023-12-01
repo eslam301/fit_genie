@@ -15,12 +15,12 @@ class ApplicationTheme{
       backgroundColor: backgroundColor,
       elevation: 0,
       centerTitle: true,
-      iconTheme: IconThemeData(
+      iconTheme: const IconThemeData(
         color: Colors.white,
         size: 30,
       ),
 
-      titleTextStyle: TextStyle(
+      titleTextStyle: const TextStyle(
         color: Colors.white,
         fontSize: 30,
         fontWeight: FontWeight.bold,

@@ -23,10 +23,10 @@ class MyApp extends StatelessWidget {
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
         SignInPage.routeName: (context) => const SignInPage(),
-        SignUpPage.routeName: (context) =>  SignUpPage(),
-        HomeLayout.routeName: (context) =>  HomeLayout(),
+        SignUpPage.routeName: (context) =>  const SignUpPage(),
+        HomeLayout.routeName: (context) =>  const HomeLayout(),
       },
-      transitionDuration: const Duration(milliseconds: 1500),
+      transitionDuration: const Duration(milliseconds: 450),
     );
   }
 
