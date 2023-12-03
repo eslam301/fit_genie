@@ -34,7 +34,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 CustomTextField(controller: _passwordController, label: 'Password',isPassword: true,),
                 CustomTextField(controller: _passwordConfirmController, label: 'Confirm Password',isPassword: true,),
                 CustomButton(label: 'Sign Up', onTap: () {
-                  Get.to(() =>  RequiredForm(),transition: Transition.leftToRight,);
+                  Get.to(() =>  RequiredForm(),transition: Transition.downToUp,);
                 }),
                 TextButton(
                   onPressed: () {

@@ -3,6 +3,7 @@ import 'package:fitgenie/pages/sign-in/sign_up/sign_up.dart';
 import 'package:fitgenie/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
 import 'core/application_theme.dart';
 import 'layout/home_layout.dart';
@@ -27,6 +28,8 @@ class MyApp extends StatelessWidget {
         HomeLayout.routeName: (context) =>  const HomeLayout(),
       },
       transitionDuration: const Duration(milliseconds: 450),
+      defaultTransition: Transition.rightToLeft,
+
     );
   }
 
