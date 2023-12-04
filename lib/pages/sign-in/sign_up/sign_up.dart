@@ -27,18 +27,19 @@ class _SignUpPageState extends State<SignUpPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 CustomTextField(controller: _nameController, label: 'Name',),
                 CustomTextField(controller: _emailController, label: 'Email',keyBoardType: TextInputType.emailAddress),
                 CustomTextField(controller: _passwordController, label: 'Password',isPassword: true,),
                 CustomTextField(controller: _passwordConfirmController, label: 'Confirm Password',isPassword: true,),
-                CustomButton(label: 'Sign Up', onTap: () {
+                LongButton(label: 'Sign Up', onTap: () {
                   Get.to(() =>  RequiredForm(),transition: Transition.downToUp,);
                 }),
                 TextButton(
                   onPressed: () {
-                    Get.to(() => const SignInPage(),transition: Transition.leftToRight,);
+                    Get.off(() => const SignInPage(),transition: Transition.leftToRight,);
                   },
                   child: const Text('Have an account? Sign in'),
                 ),

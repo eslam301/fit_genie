@@ -33,12 +33,12 @@ class _SignInPageState extends State<SignInPage> {
               children: <Widget>[
                 CustomTextField(controller: _emailController, label: 'Email',keyBoardType: TextInputType.emailAddress,),
                 CustomTextField(controller: _passwordController, label: 'Password',isPassword: true,),
-                CustomButton(label: 'Sign In', onTap: () {
-                  Get.to(() => const HomeLayout(),transition: Transition.fadeIn,);
+                LongButton(label: 'Sign In', onTap: () {
+                  Get.off(() => const HomeLayout(),transition: Transition.fadeIn,);
                 }),
                 TextButton(
                   onPressed: () {
-                    Get.to(() => const SignUpPage(), transition: Transition.rightToLeft);
+                    Get.off(() => const SignUpPage(), transition: Transition.rightToLeft);
                   },
                   child: const Text('Create a new account'),
                 ),

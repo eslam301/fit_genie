@@ -1,8 +1,7 @@
-
 import 'package:fitgenie/pages/home/home_view.dart';
-import 'package:fitgenie/pages/sign-in/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../pages/profile/profile_view.dart';
 import '../pages/settings/setting_view.dart';
 class HomeLayout extends StatefulWidget {
   static const String routeName = '/home';
@@ -30,7 +29,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       appBar: AppBar(
         leading: IconButton(
             onPressed: (){
-              Get.to(() => const SignInPage(),transition: Transition.fadeIn,);
+              Get.to(() =>  const ProfilePage(),transition: Transition.leftToRightWithFade,);
             },
             icon: const Icon(Icons.person),
           ),

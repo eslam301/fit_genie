@@ -28,7 +28,7 @@ class RequiredForm extends StatelessWidget {
               CustomTextField(controller: firstNameController, label: 'Name'),
               CustomTextField(controller: firstNameController, label: 'Name'),
               CustomTextField(controller: firstNameController, label: 'Name'),
-              CustomButton(label:'submit' , onTap: (){})
+              LongButton(label:'submit' , onTap: (){})
             ]),
           ),
         )));

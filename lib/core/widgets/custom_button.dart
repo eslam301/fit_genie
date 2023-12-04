@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 
-class CustomButton extends StatelessWidget {
+class LongButton extends StatelessWidget {
   final String label ;
-  Function onTap;
-  CustomButton({super.key, required this.label, required this.onTap});
+
+  final Function onTap;
+  const LongButton({super.key, required this.label, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
+    var theme  = Theme.of(context);
     return GestureDetector(
       onTap: () {
         onTap();
       },
       child: Container(
         width: double.infinity,
-        height: 50,
+
         // margin: const EdgeInsets.symmetric(horizontal: 30),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        decoration: const BoxDecoration(
-          color: Colors.blue,
-          borderRadius: BorderRadius.all(
+        decoration:  BoxDecoration(
+          color: theme.primaryColor,
+          borderRadius: const BorderRadius.all(
             Radius.circular(20.0),
           ),
         ),
