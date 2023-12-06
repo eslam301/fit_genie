@@ -14,12 +14,10 @@ class _SplashScreenState extends State<SplashScreen> {
   double height = 10;
   @override
   Widget build(BuildContext context) {
-
     var theme = Theme.of(context);
     Future.delayed(const Duration(seconds: 3), () {
         Get.offAll(() => const SignInPage(),transition: Transition.fadeIn);
     });
-
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -33,7 +31,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 Radius.circular(20.0),
               ),
             ),
-
             child: Text(
               'FitGenie',
               style: TextStyle(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../pages/profile/profile_view.dart';
 import '../pages/settings/setting_view.dart';
+
 class HomeLayout extends StatefulWidget {
   static const String routeName = '/home';
 
@@ -24,55 +25,110 @@ class _HomeLayoutState extends State<HomeLayout> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Scaffold(
-
       appBar: AppBar(
         leading: IconButton(
-            onPressed: (){
-              Get.to(() =>  const ProfilePage(),transition: Transition.leftToRightWithFade,);
-            },
-            icon: const Icon(Icons.person),
-          ),
+          onPressed: () {
+            Get.to(
+              () => const ProfilePage(),
+              transition: Transition.leftToRightWithFade,
+            );
+          },
+          icon: const Icon(Icons.person),
+        ),
         title: const Text('fitGenie'),
         actions: [
           IconButton(
-            onPressed: (){
-
-            },
+            onPressed: () {},
             icon: const Icon(Icons.search),
           )
         ],
-
       ),
-      body: screens[index],
+      body: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(
+              color: theme.primaryColor.withOpacity(0.4),
+              width: .2,
+            ),
+          ),
+        ),
+        child: Column(
+          children: [
+            screens[index],
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
+
         currentIndex: index,
-        onTap: (value){
+
+        onTap: (value) {
           index = value;
           setState(() {});
         },
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: const Icon(Icons.home),
             label: 'Home',
+            backgroundColor: theme.colorScheme.background,
+            activeIcon: Container(
+                padding: const EdgeInsets.all(8.0),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.home,
+                )),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.fastfood_rounded),
+
+            icon: const Icon(Icons.fastfood_rounded),
             label: 'Food',
+            backgroundColor: theme.colorScheme.onPrimary,
+            activeIcon: Container(
+                padding: const EdgeInsets.all(8.0),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.fastfood_rounded,
+                )),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.newspaper_outlined),
+            icon: const Icon(Icons.newspaper_outlined),
             label: 'planes',
+
+            backgroundColor: theme.colorScheme.onSecondary,
+            activeIcon: Container(
+                padding: const EdgeInsets.all(8.0),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.newspaper_outlined,
+                )),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             label: 'settings',
+            backgroundColor: theme.colorScheme.secondary,
+            activeIcon: Container(
+                padding: const EdgeInsets.all(8.0),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.settings,
+                )),
           ),
         ],
-
-
       ),
-
     );
   }
 }

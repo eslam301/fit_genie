@@ -5,8 +5,7 @@ class CustomTextField extends StatefulWidget {
   final String label;
   final bool isPassword;
   final Icon? suffixIcon;
-  final keyBoardType;
-
+  final TextInputType? keyBoardType;
   const CustomTextField(
       {required this.controller,
       required this.label,

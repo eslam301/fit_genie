@@ -1,4 +1,9 @@
+import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+
+import '../model_viewer/model_test.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
@@ -16,15 +21,16 @@ class _SettingsViewState extends State<SettingsView> {
         child: Text(
           "English",
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.black),
+              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
         )),
     const DropdownMenuItem(
         value: "Arabic",
         child: Text(
           "Arabic",
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.black),
-        )),
+              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
+        )
+    ),
   ];
   List<DropdownMenuItem> themeItems = [
     const DropdownMenuItem(
@@ -32,14 +38,14 @@ class _SettingsViewState extends State<SettingsView> {
         child: Text(
           "Dark",
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.black),
+              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
         )),
     const DropdownMenuItem(
         value: "Light",
         child: Text(
           "Light",
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.black),
+              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
         )),
   ];
 
@@ -49,7 +55,7 @@ class _SettingsViewState extends State<SettingsView> {
       const Text(
         "Settings",
         style: TextStyle(
-            fontWeight: FontWeight.bold, fontSize: 30, color: Colors.black),
+            fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
       ),
       DropdownButton(
           items: languagesItems,
@@ -67,6 +73,9 @@ class _SettingsViewState extends State<SettingsView> {
               selectedTheme = value;
             });
           }),
+      LongButton(label: 'model', onTap: (){
+        Get.to(() => const ModelTestView(),transition: Transition.fadeIn);
+      })
     ]);
   }
 }
