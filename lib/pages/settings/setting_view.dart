@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 
+import '../../core/widgets/drop_down_bar.dart';
 import '../model_viewer/model_test.dart';
 
 class SettingsView extends StatefulWidget {
@@ -13,69 +14,33 @@ class SettingsView extends StatefulWidget {
 }
 
 class _SettingsViewState extends State<SettingsView> {
-  String selectedLanguage = "English";
-  String selectedTheme = "Dark";
-  List<DropdownMenuItem> languagesItems = [
-    const DropdownMenuItem(
-        value: "English",
-        child: Text(
-          "English",
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
-        )),
-    const DropdownMenuItem(
-        value: "Arabic",
-        child: Text(
-          "Arabic",
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
-        )
-    ),
+  List <String> languages = [
+    'English',
+    'Arabic',
   ];
-  List<DropdownMenuItem> themeItems = [
-    const DropdownMenuItem(
-        value: "Dark",
-        child: Text(
-          "Dark",
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
-        )),
-    const DropdownMenuItem(
-        value: "Light",
-        child: Text(
-          "Light",
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
-        )),
+  List <String> themes = [
+    'Light',
+    'Dark',
   ];
-
   @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-      const Text(
-        "Settings",
-        style: TextStyle(
-            fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
-      ),
-      DropdownButton(
-          items: languagesItems,
-          value: selectedLanguage,
-          onChanged: (value) {
-            setState(() {
-              selectedLanguage = value;
-            });
-          }),
-      DropdownButton(
-          items: themeItems,
-          value: selectedTheme,
-          onChanged: (value) {
-            setState(() {
-              selectedTheme = value;
-            });
-          }),
-      LongButton(label: 'model', onTap: (){
-        Get.to(() => const ModelTestView(),transition: Transition.fadeIn);
-      })
-    ]);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        const Text(
+          "Settings",
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        DropDownBar(listOfSheet: languages,title: "languages",),
+        DropDownBar(listOfSheet: themes,title: "themes",),
+        LongButton(label: 'Model', onTap: (){
+          Get.to(() => const ModelTestView(),transition: Transition.fadeIn);
+        })
+      ]),
+    );
   }
 }
