@@ -21,9 +21,10 @@ class DropDownBar extends StatelessWidget {
             children: [
               Text(
                 title!,
-                style: TextStyle(color: theme.primaryColor, fontSize: 24),
+                style: TextStyle(color: theme.colorScheme.onPrimary, fontSize: 24),
               ),
-              Icon(Icons.arrow_drop_down, color: theme.primaryColor),
+              Icon(Icons.arrow_drop_down,
+                  color: theme.colorScheme.onPrimary),
             ],
           ),
           Container(
@@ -38,12 +39,12 @@ class DropDownBar extends StatelessWidget {
               child: Row(children: [
                 Text(
                   selectedValue,
-                  style: TextStyle(color: theme.primaryColor, fontSize: 20),
+                  style: TextStyle(color: theme.colorScheme.onPrimary, fontSize: 20),
                 ),
                 const Spacer(),
                 Icon(
                   Icons.arrow_drop_down,
-                  color: theme.primaryColor,
+                  color: theme.colorScheme.onPrimary,
                 )
               ])),
         ],

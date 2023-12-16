@@ -32,7 +32,7 @@ class ProfilePage extends StatelessWidget {
                    alignment: Alignment.center,
                    children: [
                      CircleAvatar(
-                       backgroundColor: theme.primaryColor,
+                       backgroundColor: theme.colorScheme.secondary,
                        radius: 60,
                        backgroundImage: const AssetImage('assets/profile_picture.jpg'),
 
@@ -68,7 +68,7 @@ class ProfilePage extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(16.0),
                     decoration:  BoxDecoration(
-                      color: theme.primaryColor.withOpacity(0.7),
+                      color: theme.colorScheme.secondary.withOpacity(0.7),
                       borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                     ),
                     child:  ListView.builder(itemBuilder: (context, index) {

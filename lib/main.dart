@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
         SignUpPage.routeName: (context) => const SignUpPage(),
         HomeLayout.routeName: (context) => const HomeLayout(),
         ProfilePage.routeName: (context) =>  const ProfilePage(),
-
       },
       transitionDuration: const Duration(milliseconds: 450),
       defaultTransition: Transition.rightToLeft,
