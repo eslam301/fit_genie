@@ -12,7 +12,7 @@ class ApplicationTheme {
     primaryColor: gothic,
     secondaryHeaderColor: openGothic,
     scaffoldBackgroundColor: openGothic,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: openGothic,
       elevation: 0,
       centerTitle: true,
@@ -27,7 +27,7 @@ class ApplicationTheme {
       ),
     ),
     textTheme: const TextTheme(),
-    colorScheme: ColorScheme(
+    colorScheme: const ColorScheme(
         primary: gothic,
         onPrimary: openGothic,
         secondary: whiteGothic,
@@ -40,7 +40,7 @@ class ApplicationTheme {
         onSurface: Colors.pinkAccent,
         brightness: Brightness.dark
     ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: openGothic,
       type: BottomNavigationBarType.fixed,
       elevation: 0,
@@ -48,15 +48,16 @@ class ApplicationTheme {
       showUnselectedLabels: false,
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.white,
-      selectedIconTheme: const IconThemeData(
+      selectedIconTheme: IconThemeData(
         color: Colors.black,
       ),
     ),
+    bottomSheetTheme: const BottomSheetThemeData(),
   );
   static ThemeData darkTheme = ThemeData(
     primaryColor: gothic,
     secondaryHeaderColor: openGothic,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: Colors.grey,
     )
   );

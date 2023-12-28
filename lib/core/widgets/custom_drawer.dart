@@ -11,7 +11,7 @@ class CustomDrawer extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
 
     return Container(
-      width:  width*0.65,
+      width:  width*0.8,
       decoration: BoxDecoration(
         color: theme.colorScheme.background.withOpacity(0.9),
         borderRadius: const BorderRadius.only(
@@ -24,7 +24,7 @@ class CustomDrawer extends StatelessWidget {
           Column(
             children: [
               Container(
-                width: width*0.65,
+                width: double.infinity,
                 height: height*0.17,
                 padding: EdgeInsets.only(top: height*0.05),
                 decoration: BoxDecoration(

@@ -36,7 +36,8 @@ class SignInPageState extends State<SignInPage> {
                 const SizedBox(height: 20),
                 CustomTextField(controller: _emailController, label: 'Email',keyBoardType: TextInputType.emailAddress,),
                 CustomTextField(controller: _passwordController, label: 'Password',isPassword: true,),
-                LongButton(label: 'Sign In', onTap: () {
+                LongButton(label: 'Sign In',
+                    onTap: () {
                   Get.off(() => const HomeLayout(),transition: Transition.fadeIn,);
                 }),
                 TextButton(

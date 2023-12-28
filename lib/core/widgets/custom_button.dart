@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 
 class LongButton extends StatelessWidget {
   final String label ;
-
-  final Function onTap;
+  final VoidCallback onTap;
   const LongButton({super.key, required this.label, required this.onTap});
-
   @override
   Widget build(BuildContext context) {
     var theme  = Theme.of(context);
@@ -15,31 +13,14 @@ class LongButton extends StatelessWidget {
       },
       child: Container(
         width: double.infinity,
-
         // margin: const EdgeInsets.symmetric(horizontal: 30),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration:  BoxDecoration(
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 10,
-              offset: Offset(0, 5),
-              spreadRadius: 5,
-            ),
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 10,
-              offset: Offset(0, -5),
-              spreadRadius: 5,
-
-            )
-          ],
           color: theme.primaryColor,
           borderRadius: const BorderRadius.all(
             Radius.circular(20.0),
           ),
         ),
-
         child: Row(
           children: [
             Text(label, style: TextStyle(color: theme.colorScheme.onPrimary,fontSize: 20),),

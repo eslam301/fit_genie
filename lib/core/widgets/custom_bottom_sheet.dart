@@ -11,7 +11,7 @@ class CustomBottomSheetList extends StatelessWidget {
     return Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.background.withOpacity(0.85),
+            color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.80),
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(30.0),
               topRight: Radius.circular(30.0),
