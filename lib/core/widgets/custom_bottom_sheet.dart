@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
 class CustomBottomSheetList extends StatelessWidget {
-  String? title ;
-  List<String> list ;
+  final String? title ;
+  final List<String> list ;
 
-  CustomBottomSheetList({super.key , required this.list , this.title});
+  const CustomBottomSheetList({super.key , required this.list , this.title});
   @override
   Widget build(BuildContext context) {
     String selectedValue = list[0];
     return Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.background,
+            color: Theme.of(context).colorScheme.background.withOpacity(0.85),
             borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(50.0),
-              topRight: Radius.circular(50.0),
+              topLeft: Radius.circular(30.0),
+              topRight: Radius.circular(30.0),
             )
         ),
         child: Column(

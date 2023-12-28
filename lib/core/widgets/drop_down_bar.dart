@@ -21,10 +21,10 @@ class DropDownBar extends StatelessWidget {
             children: [
               Text(
                 title!,
-                style: TextStyle(color: theme.colorScheme.onPrimary, fontSize: 24),
+                style: TextStyle(color: Colors.white, fontSize: 24),
               ),
               Icon(Icons.arrow_drop_down,
-                  color: theme.colorScheme.onPrimary),
+                  color: Colors.white),
             ],
           ),
           Container(

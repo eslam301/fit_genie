@@ -16,6 +16,7 @@ dependencies:
   get: ^4.6.6
   percent_indicator: ^4.2.3
   model_viewer_plus: ^1.7.0
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:

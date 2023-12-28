@@ -1,6 +1,7 @@
 import 'package:fitgenie/pages/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../core/widgets/custom_drawer.dart';
 import '../pages/profile/profile_view.dart';
 import '../pages/settings/setting_view.dart';
 
@@ -27,21 +28,23 @@ class _HomeLayoutState extends State<HomeLayout> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Scaffold(
+      drawer: const CustomDrawer(),
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Get.to(
-              () => const ProfilePage(),
-              transition: Transition.leftToRightWithFade,
-            );
-          },
-          icon: const Icon(Icons.person),
-        ),
-        title: const Text('fitGenie'),
+
+        title: const Text('FitGenie'),
         actions: [
           IconButton(
+            icon: const Icon(Icons.person),
+            onPressed: () {
+              Get.to(
+                    () => const ProfilePage(),
+                transition: Transition.leftToRightWithFade,
+              );
+            },
+          ),
+          IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.search),
+            icon: const Icon(Icons.notifications),
           )
         ],
       ),

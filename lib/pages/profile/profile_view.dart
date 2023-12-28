@@ -18,8 +18,9 @@ class ProfilePage extends StatelessWidget {
         title: const Text('My Profile'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: SizedBox(
             width:width,
             height:height,
@@ -28,14 +29,12 @@ class ProfilePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                  Stack(
-
                    alignment: Alignment.center,
                    children: [
                      CircleAvatar(
                        backgroundColor: theme.colorScheme.secondary,
                        radius: 60,
-                       backgroundImage: const AssetImage('assets/profile_picture.jpg'),
-
+                       // backgroundImage: const AssetImage('assets/profile_picture.jpg'),
                      ),
                       Positioned(
                        top: 0,
@@ -71,9 +70,11 @@ class ProfilePage extends StatelessWidget {
                       color: theme.colorScheme.secondary.withOpacity(0.7),
                       borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                     ),
-                    child:  ListView.builder(itemBuilder: (context, index) {
-                      return ProfileRowWidget();
-                    },
+                    child:  ListView.builder(
+                      itemBuilder: (context, index) =>ProfileRowWidget(),
+                      physics: const BouncingScrollPhysics(),
+                      shrinkWrap: true,
+
                     itemCount: 20,),
                   ),
                 ),

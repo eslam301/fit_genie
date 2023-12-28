@@ -18,7 +18,6 @@ class ProfileRowWidget extends StatelessWidget {
       ),
       child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
         children: [
           Text('name',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),),
           Text('islam',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),)],),

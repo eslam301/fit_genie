@@ -1,57 +1,63 @@
 import 'package:flutter/material.dart';
 
 class ApplicationTheme {
-  static Color primaryColor = const Color(0xcc3fe708);
-  static Color primaryColor2 = const Color(0xff042134);
-  static Color secondaryColor = const Color(0xee99c686);
-  static Color textColor1 = const Color(0xffffffff);
-  static Color textColor = const Color(0xff121312);
-  static Color backgroundColor = const Color(0xff282828);
-  static Color errorColor = const Color(0xffFF0000);
-  static Color successColor = const Color(0xff00B418);
+  static const Color gothic = Color(0xff254c51);
+  static const Color openGothic = Color(0xff6c8589);
+  static const Color whiteGothic = Color(0xffcedcdd);
+  static const Color white = Color(0xffffffff);
+  static const Color darkSlate = Color(0xff000c08);
+
+
   static ThemeData lightTheme = ThemeData(
-    primaryColor: primaryColor,
-    secondaryHeaderColor: secondaryColor,
+    primaryColor: gothic,
+    secondaryHeaderColor: openGothic,
+    scaffoldBackgroundColor: openGothic,
     appBarTheme: AppBarTheme(
-      backgroundColor: backgroundColor,
+      backgroundColor: openGothic,
       elevation: 0,
       centerTitle: true,
       iconTheme: IconThemeData(
-        color: textColor1,
+        color: white,
         size: 30,
       ),
       titleTextStyle: TextStyle(
-        color: textColor1,
+        color: white,
         fontSize: 34,
         fontWeight: FontWeight.bold,
       ),
     ),
     textTheme: const TextTheme(),
     colorScheme: ColorScheme(
-        primary: primaryColor,
-        onPrimary: textColor,
-        secondary: secondaryColor,
-        onSecondary: primaryColor2,
-        error: errorColor,
+        primary: gothic,
+        onPrimary: openGothic,
+        secondary: whiteGothic,
+        onSecondary: white,
+        error: Colors.red,
         onError: Colors.red,
-        background: backgroundColor,
+        background: Colors.white,
         onBackground: Colors.pink,
         surface: Colors.blue,
         onSurface: Colors.pinkAccent,
-        brightness: Brightness.dark),
-    scaffoldBackgroundColor: backgroundColor,
+        brightness: Brightness.dark
+    ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: backgroundColor,
-      type: BottomNavigationBarType.shifting,
+      backgroundColor: openGothic,
+      type: BottomNavigationBarType.fixed,
       elevation: 0,
       showSelectedLabels: true,
       showUnselectedLabels: false,
-      selectedItemColor: primaryColor,
+      selectedItemColor: Colors.white,
       unselectedItemColor: Colors.white,
       selectedIconTheme: const IconThemeData(
         color: Colors.black,
       ),
     ),
   );
-  static ThemeData darkTheme = ThemeData();
+  static ThemeData darkTheme = ThemeData(
+    primaryColor: gothic,
+    secondaryHeaderColor: openGothic,
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.grey,
+    )
+  );
 }
