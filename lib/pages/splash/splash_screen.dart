@@ -16,11 +16,13 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 3), () {
         Get.offAll(() => const SignInPage(),transition: Transition.fadeIn);
     });
-    return const Scaffold(
+    return  const Scaffold(
       body: Column(
         children: [
           Spacer(),
           LogoSplashWidget(),
+          Spacer(),
+          CircularProgressIndicator(),
           Spacer(),
           Text('Version 4.1.0',style: TextStyle(color: Colors.white,fontSize: 10),),
         ],

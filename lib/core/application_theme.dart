@@ -66,7 +66,7 @@ class ApplicationTheme {
     secondaryHeaderColor: openGothicShade,
     scaffoldBackgroundColor: darkDarkSlate,
     appBarTheme: const AppBarTheme(
-      backgroundColor: openGothicShade,
+      backgroundColor: darkDarkSlate,
       elevation: 0,
       centerTitle: true,
       iconTheme: IconThemeData(
@@ -94,7 +94,7 @@ class ApplicationTheme {
         brightness: Brightness.dark
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: openGothicShade,
+      backgroundColor: darkDarkSlate,
       type: BottomNavigationBarType.fixed,
       elevation: 0,
       showSelectedLabels: true,
