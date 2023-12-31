@@ -6,6 +6,13 @@ class ApplicationTheme {
   static const Color whiteGothic = Color(0xffcedcdd);
   static const Color white = Color(0xffffffff);
   static const Color darkSlate = Color(0xff000c08);
+  //dark theme colors
+  static const Color gothicShade = Color(0xff1a383d);
+  static const Color openGothicShade = Color(0xff4d6467);
+  static const Color whiteGothicShade = Color(0xffaebdbd);
+  static const Color darkDarkSlate = Color(0xff191919);
+  static const Color darkSlateAccent = Color(0xff001a11);
+
 
 
   static ThemeData lightTheme = ThemeData(
@@ -55,10 +62,50 @@ class ApplicationTheme {
     bottomSheetTheme: const BottomSheetThemeData(),
   );
   static ThemeData darkTheme = ThemeData(
-    primaryColor: gothic,
-    secondaryHeaderColor: openGothic,
+    primaryColor: gothicShade,
+    secondaryHeaderColor: openGothicShade,
+    scaffoldBackgroundColor: darkDarkSlate,
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.grey,
-    )
+      backgroundColor: openGothicShade,
+      elevation: 0,
+      centerTitle: true,
+      iconTheme: IconThemeData(
+        color: white,
+        size: 30,
+      ),
+      titleTextStyle: TextStyle(
+        color: white,
+        fontSize: 34,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    textTheme: const TextTheme(),
+    colorScheme: const ColorScheme(
+        primary: gothicShade,
+        onPrimary: openGothicShade,
+        secondary: whiteGothicShade,
+        onSecondary: white,
+        error: Colors.red,
+        onError: Colors.red,
+        background:whiteGothicShade ,
+        onBackground: Colors.pink,
+        surface: Colors.blue,
+        onSurface: Colors.pinkAccent,
+        brightness: Brightness.dark
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: openGothicShade,
+      type: BottomNavigationBarType.fixed,
+      elevation: 0,
+      showSelectedLabels: true,
+      showUnselectedLabels: false,
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.white,
+      selectedIconTheme: IconThemeData(
+        color: Colors.black,
+      ),
+    ),
+    bottomSheetTheme: const BottomSheetThemeData(),
   );
+
 }

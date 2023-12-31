@@ -17,7 +17,14 @@ class _SplashScreenState extends State<SplashScreen> {
         Get.offAll(() => const SignInPage(),transition: Transition.fadeIn);
     });
     return const Scaffold(
-      body: LogoSplashWidget(),
+      body: Column(
+        children: [
+          Spacer(),
+          LogoSplashWidget(),
+          Spacer(),
+          Text('Version 4.1.0',style: TextStyle(color: Colors.white,fontSize: 10),),
+        ],
+      ),
     );
   }
 }

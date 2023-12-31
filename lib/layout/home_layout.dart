@@ -30,7 +30,6 @@ class _HomeLayoutState extends State<HomeLayout> {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: AppBar(
-
         title: const Text('FitGenie'),
         actions: [
           IconButton(

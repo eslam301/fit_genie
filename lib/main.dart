@@ -3,8 +3,8 @@ import 'package:fitgenie/pages/sign-in/sign_in.dart';
 import 'package:fitgenie/pages/sign-in/sign_up/sign_up.dart';
 import 'package:fitgenie/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import 'package:get/get.dart';
+
 
 import 'core/application_theme.dart';
 import 'layout/home_layout.dart';
@@ -21,6 +21,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ApplicationTheme.lightTheme,
       darkTheme: ApplicationTheme.darkTheme,
+      themeMode: Get.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      initialBinding: BindingsBuilder(() {
+        Get.put(ThemeController());
+      }),
       initialRoute: SplashScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
@@ -32,5 +36,15 @@ class MyApp extends StatelessWidget {
       transitionDuration: const Duration(milliseconds: 450),
       defaultTransition: Transition.rightToLeft,
     );
+  }
+}
+class ThemeController extends GetxController {
+  RxBool isDarkMode = false.obs;
+
+  ThemeData get themeData => isDarkMode.value ? ThemeData.dark() : ThemeData.light();
+
+  void toggleTheme() {
+    isDarkMode.toggle();
+    Get.changeThemeMode(isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
   }
 }

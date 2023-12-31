@@ -23,9 +23,9 @@ class LongButton extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Text(label, style: TextStyle(color: theme.colorScheme.onPrimary,fontSize: 20),),
+            Text(label, style: const TextStyle(color: Colors.white,fontSize: 20),),
             const Spacer(),
-            Icon(Icons.arrow_forward,color: theme.colorScheme.onPrimary,)
+            const Icon(Icons.arrow_forward,color: Colors.white,)
           ],
         ),
       ),

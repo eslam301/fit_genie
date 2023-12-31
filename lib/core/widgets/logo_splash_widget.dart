@@ -31,8 +31,9 @@ class LogoSplashWidget extends StatelessWidget {
                     fontStyle: FontStyle.italic,
                     shadows: const [
                       Shadow(
-                        color: Colors.black,
-                        offset: Offset(2.0, 2.0),
+                        color: Colors.white,
+                        blurRadius: 10.0,
+                        offset: Offset(1.0, 1.0),
                       )
                     ]
                 )
