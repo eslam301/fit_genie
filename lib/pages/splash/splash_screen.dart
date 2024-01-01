@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Spacer(),
           CircularProgressIndicator(),
           Spacer(),
-          Text('Version 4.1.0',style: TextStyle(color: Colors.white,fontSize: 10),),
+          Text('Version 4.1.2',style: TextStyle(color: Colors.white,fontSize: 10),),
         ],
       ),
     );
