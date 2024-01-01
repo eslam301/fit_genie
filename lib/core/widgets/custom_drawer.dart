@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../main.dart';
+import '../../pages/profile/profile_view.dart';
 import '../../pages/sign-in/sign_in.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -17,7 +18,7 @@ class CustomDrawer extends StatelessWidget {
             color: theme.colorScheme.background.withOpacity(0.9),
             borderRadius: const BorderRadius.only(
               topRight: Radius.circular(20.0),
-              bottomRight: Radius.circular(20.0),
+              bottomRight: Radius.circular(30.0),
             )),
         child: Stack(
           children: [
@@ -38,7 +39,7 @@ class CustomDrawer extends StatelessWidget {
                     style: TextStyle(
                         color: theme.primaryColor,
                         fontSize: 36,
-                        fontWeight: FontWeight.w500),
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -49,18 +50,21 @@ class CustomDrawer extends StatelessWidget {
                     ListTile(
                         iconColor: theme.primaryColor,
                         trailing: const Icon(
-                          Icons.arrow_back,
+                          Icons.account_circle,
                           size: 30,
                         ),
                         title: Text(
-                          'progress',
+                          'Profile',
                           style: TextStyle(
                               color: theme.primaryColor,
                               fontSize: 20,
                               fontWeight: FontWeight.w500),
                         ),
                         onTap: () {
-                          Get.back();
+                          Get.to(
+                                () => const ProfilePage(),
+                            transition: Transition.rightToLeftWithFade,
+                          );
                         }),
                     ListTile(
                       iconColor: theme.primaryColor,

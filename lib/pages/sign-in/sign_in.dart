@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../core/widgets/custom_button.dart';
+import '../../main.dart';
 
 
 
@@ -23,8 +24,31 @@ class SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
+    var theme = Theme.of(context);
     return Scaffold(
+      floatingActionButton: SizedBox(
+        width: 50,
+        height: 50,
+        child: FloatingActionButton(
+          onPressed: () {
+            themeController.toggleTheme();
+          },
+          backgroundColor: theme.primaryColor,
+          foregroundColor: Colors.white,
+          shape: const CircleBorder(),
+          elevation: 10,
+          highlightElevation: 0,
+          hoverElevation: 0,
+          child:Icon(
+            themeController.isDarkMode.value ? Icons.dark_mode : Icons.light_mode,
+            size: 24,
+          ),
 
+        ),
+
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Center(
         child: SingleChildScrollView(
           child: Container(
@@ -38,14 +62,15 @@ class SignInPageState extends State<SignInPage> {
                 CustomTextField(controller: _passwordController, label: 'Password',isPassword: true,),
                 LongButton(label: 'Sign In',
                     onTap: () {
-                  Get.off(() => const HomeLayout(),transition: Transition.fadeIn,);
+                  Get.offAll(() => const HomeLayout(),transition: Transition.fadeIn,);
                 }),
                 TextButton(
                   onPressed: () {
-                    Get.off(() => const SignUpPage(), transition: Transition.rightToLeft);
+                    Get.offAll(() => const SignUpPage(), transition: Transition.rightToLeft);
                   },
-                  child: const Text('Create a new account'),
+                  child: const Text('Create a new account',style: TextStyle(color: Colors.white),),
                 ),
+
               ],
             ),
           ),

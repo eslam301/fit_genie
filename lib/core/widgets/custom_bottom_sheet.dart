@@ -56,7 +56,7 @@ class CustomBottomSheetList extends StatelessWidget {
                                   )
                                 ),
                                 child: Text(list[index],
-                                  style: TextStyle(color: Theme.of(context).primaryColor,fontSize: 30,),
+                                  style: const TextStyle(color: Colors.white,fontSize: 30,),
                                   textAlign: TextAlign.center,
                                   ),
                               )

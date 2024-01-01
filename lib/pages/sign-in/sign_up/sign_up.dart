@@ -7,6 +7,7 @@ import '../sign_in.dart';
 
 
 class SignUpPage extends StatefulWidget {
+
   static const String routeName = '/sign-up';
 
   const SignUpPage({super.key});
@@ -20,6 +21,7 @@ class SignUpPageState extends State<SignUpPage> {
   final TextEditingController _passwordConfirmController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Scaffold(
 
       body: Center(
@@ -39,9 +41,41 @@ class SignUpPageState extends State<SignUpPage> {
                 }),
                 TextButton(
                   onPressed: () {
-                    Get.off(() => const SignInPage(),transition: Transition.leftToRight,);
+                    Get.offAll(() => const SignInPage(),transition: Transition.leftToRight,);
                   },
-                  child: const Text('Have an account? Sign in'),
+                  child: const Text('Have an account? \t Sign in',style: TextStyle(color: Colors.white),),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          color: theme.primaryColor,
+                          borderRadius: BorderRadius.circular(10),
+
+                        ),
+                        child: const Text(
+                          'Sign up as a \ncouch',
+                          style: TextStyle(color: Colors.white,fontSize: 24),
+                          textAlign: TextAlign.center,
+                        )
+                    ),
+                    Container(
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          color: theme.primaryColor,
+                          borderRadius: BorderRadius.circular(10),
+
+                        ),
+                        child: const Text(
+                          'Sign up as a \n trainer',
+                          style: TextStyle(color: Colors.white,fontSize: 24),
+                          textAlign: TextAlign.center,
+
+                        )
+                    ),
+                  ],
                 ),
               ],
             ),

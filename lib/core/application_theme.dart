@@ -7,13 +7,12 @@ class ApplicationTheme {
   static const Color white = Color(0xffffffff);
   static const Color darkSlate = Color(0xff000c08);
   //dark theme colors
-  static const Color gothicShade = Color(0xff1a383d);
+  static const Color gothicShade = Color(0xff254c51);
   static const Color openGothicShade = Color(0xff4d6467);
   static const Color whiteGothicShade = Color(0xffaebdbd);
   static const Color darkDarkSlate = Color(0xff191919);
   static const Color darkSlateAccent = Color(0xff001a11);
-
-
+  static const Color darkBackGround = Color(0xff203e41);
 
   static ThemeData lightTheme = ThemeData(
     primaryColor: gothic,
@@ -64,9 +63,9 @@ class ApplicationTheme {
   static ThemeData darkTheme = ThemeData(
     primaryColor: gothicShade,
     secondaryHeaderColor: openGothicShade,
-    scaffoldBackgroundColor: darkDarkSlate,
+    scaffoldBackgroundColor: darkBackGround.withOpacity(0.8),
     appBarTheme: const AppBarTheme(
-      backgroundColor: darkDarkSlate,
+      backgroundColor: darkBackGround,
       elevation: 0,
       centerTitle: true,
       iconTheme: IconThemeData(
@@ -107,5 +106,4 @@ class ApplicationTheme {
     ),
     bottomSheetTheme: const BottomSheetThemeData(),
   );
-
 }

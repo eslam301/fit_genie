@@ -20,8 +20,6 @@ class HomeView extends StatelessWidget {
             child: CarouselSlider(items: [
               Container(
                   // margin: const EdgeInsets.all(20),
-                  width: widthScreen * 0.95,
-
                   decoration: const BoxDecoration(
                     color: Colors.black26,
                     borderRadius: BorderRadius.all(Radius.circular(20)
@@ -53,7 +51,7 @@ class HomeView extends StatelessWidget {
                                 lineWidth: 10,
                                 circularStrokeCap: CircularStrokeCap.round,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               const Column(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,7 +114,7 @@ class HomeView extends StatelessWidget {
                                 lineWidth: 10,
                                 circularStrokeCap: CircularStrokeCap.round,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               const Column(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -157,11 +155,29 @@ class HomeView extends StatelessWidget {
               autoPlayCurve: Curves.fastOutSlowIn,
               scrollPhysics: const BouncingScrollPhysics(),
               pauseAutoPlayOnTouch: true,
-              viewportFraction: 0.8,
+              viewportFraction: 0.85,
               height: height * 0.31,
             )),
           ),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            margin: const EdgeInsets.symmetric(horizontal: 15),
+            decoration: BoxDecoration(
+                color: Colors.amber.withOpacity(0.60),
+                borderRadius: BorderRadius.circular(10.0),
+            ),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(Icons.workspace_premium_rounded,color: Colors.black,size: 30,),
 
+                Text('Get the premium plans',style: TextStyle(color: Colors.black,fontSize: 24,fontWeight: FontWeight.w500),),
+
+                Icon(Icons.arrow_forward_rounded,color: Colors.black,size: 30,),
+              ],
+            ),
+          ),
         ]
       ),
     );
