@@ -34,8 +34,8 @@ class SignUpPageState extends State<SignUpPage> {
               children: <Widget>[
                 CustomTextField(controller: _nameController, label: 'Name',),
                 CustomTextField(controller: _emailController, label: 'Email',keyBoardType: TextInputType.emailAddress),
-                CustomTextField(controller: _passwordController, label: 'Password',isPassword: true,),
-                CustomTextField(controller: _passwordConfirmController, label: 'Confirm Password',isPassword: true,),
+                CustomTextField(controller: _passwordController, label: 'Password',isPassword: true),
+                CustomTextField(controller: _passwordConfirmController, label: 'Confirm Password',isPassword: true),
                 LongButton(label: 'Sign Up', onTap: () {
                   Get.to(() =>  RequiredForm(),transition: Transition.downToUp,);
                 }),

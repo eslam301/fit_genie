@@ -25,22 +25,26 @@ class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height:double.infinity,
+      width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        const Text(
-          "Settings",
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        DropDownBar(listOfSheet: languages,title: "languages",),
-        // DropDownBar(listOfSheet: themes,title: "themes",),
-        LongButton(label: 'Model', onTap: (){
-          Get.to(() => const ModelTestView(),transition: Transition.fadeIn);
-        })
-      ]),
+      child: Expanded(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          const Text(
+            "Settings",
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          DropDownBar(listOfSheet: languages,title: "languages",),
+          // DropDownBar(listOfSheet: themes,title: "themes",),
+          LongButton(label: 'Model', onTap: (){
+            Get.to(() => const ModelTestView(),transition: Transition.fadeIn);
+          })
+        ]),
+      ),
     );
   }
 }

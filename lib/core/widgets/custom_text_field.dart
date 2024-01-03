@@ -24,7 +24,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: TextField(
-        keyboardType: widget.keyBoardType,
+        keyboardType: widget.isPassword ? TextInputType.visiblePassword : widget.keyBoardType,
         obscureText: widget.isPassword ? obscureText : false,
         controller: widget.controller,
         style: const TextStyle(

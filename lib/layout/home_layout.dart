@@ -29,36 +29,50 @@ class _HomeLayoutState extends State<HomeLayout> {
     var theme = Theme.of(context);
     return Scaffold(
       drawer: const CustomDrawer(),
-      appBar: AppBar(
-        title: const Text('FitGenie'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.person),
-            onPressed: () {
-              Get.to(
-                    () => const ProfilePage(),
-                transition: Transition.leftToRightWithFade,
-              );
-            },
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(60.0),
+        child: Container(
+          clipBehavior: Clip.antiAlias,
+          decoration:  BoxDecoration(
+            borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(25),bottomRight: Radius.circular(25),),
+            color: theme.primaryColor,
           ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.notifications),
-          )
-        ],
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(
-              color: theme.primaryColor.withOpacity(0.4),
-              width: .2,
-            ),
+          child: AppBar(
+
+            title: const Text('FitGenie'),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.person),
+                onPressed: () {
+                  Get.to(
+                        () => const ProfilePage(),
+                    transition: Transition.leftToRightWithFade,
+                  );
+                },
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.notifications),
+              )
+            ],
           ),
         ),
+      ),
+      body: GestureDetector(
+        onHorizontalDragEnd: (DragEndDetails details) {
+          if (details.primaryVelocity! < 0) {
+            setState(() {
+              index = index < screens.length - 1 ? index + 1 : index;
+            });
+          } else if (details.primaryVelocity! > 0) {
+            setState(() {
+              index = index > 0 ? index - 1 : index;
+            });
+          }
+        },
         child: Column(
           children: [
-            screens[index],
+            Expanded(child: screens[index]),
           ],
         ),
       ),

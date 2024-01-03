@@ -19,8 +19,8 @@ class ApplicationTheme {
     secondaryHeaderColor: openGothic,
     scaffoldBackgroundColor: openGothic,
     appBarTheme: const AppBarTheme(
-      backgroundColor: openGothic,
-      elevation: 0,
+      backgroundColor: gothic,
+      elevation: 5,
       centerTitle: true,
       iconTheme: IconThemeData(
         color: white,

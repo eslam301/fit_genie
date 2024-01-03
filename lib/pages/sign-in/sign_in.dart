@@ -59,7 +59,7 @@ class SignInPageState extends State<SignInPage> {
                 const LogoSplashWidget(),
                 const SizedBox(height: 20),
                 CustomTextField(controller: _emailController, label: 'Email',keyBoardType: TextInputType.emailAddress,),
-                CustomTextField(controller: _passwordController, label: 'Password',isPassword: true,),
+                CustomTextField(controller: _passwordController, label: 'Password',isPassword: true,keyBoardType: TextInputType.visiblePassword,),
                 LongButton(label: 'Sign In',
                     onTap: () {
                   Get.offAll(() => const HomeLayout(),transition: Transition.fadeIn,);
