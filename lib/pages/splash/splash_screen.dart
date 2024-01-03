@@ -18,6 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     });
     return  const Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Spacer(),
           LogoSplashWidget(),

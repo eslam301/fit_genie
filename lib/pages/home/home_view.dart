@@ -164,7 +164,7 @@ class HomeView extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             margin: const EdgeInsets.symmetric(horizontal: 15),
             decoration: BoxDecoration(
-                color: Colors.amber.withOpacity(0.60),
+                color: Colors.amber.withOpacity(0.80),
                 borderRadius: BorderRadius.circular(10.0),
             ),
             child: const Row(
