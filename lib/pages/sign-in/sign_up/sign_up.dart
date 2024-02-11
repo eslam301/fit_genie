@@ -49,7 +49,7 @@ class SignUpPageState extends State<SignUpPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
                           color: theme.primaryColor,
                           borderRadius: BorderRadius.circular(10),
@@ -62,7 +62,7 @@ class SignUpPageState extends State<SignUpPage> {
                         )
                     ),
                     Container(
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
                           color: theme.primaryColor,
                           borderRadius: BorderRadius.circular(10),

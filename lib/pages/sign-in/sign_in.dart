@@ -70,7 +70,6 @@ class SignInPageState extends State<SignInPage> {
                   },
                   child: const Text('Create a new account',style: TextStyle(color: Colors.white),),
                 ),
-
               ],
             ),
           ),

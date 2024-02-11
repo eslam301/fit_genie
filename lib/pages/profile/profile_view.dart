@@ -14,8 +14,18 @@ class ProfilePage extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('My Profile'),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(60.0),
+        child: Container(
+          clipBehavior: Clip.antiAlias,
+          decoration:  BoxDecoration(
+            borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(25),bottomRight: Radius.circular(25),),
+            color: theme.primaryColor,
+          ),
+          child: AppBar(
+            title: const Text('Profile'),
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),

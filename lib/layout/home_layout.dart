@@ -1,7 +1,9 @@
+import 'package:fitgenie/pages/food/food_view.dart';
 import 'package:fitgenie/pages/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../core/widgets/custom_drawer.dart';
+import '../pages/notification/notification_view.dart';
 import '../pages/profile/profile_view.dart';
 import '../pages/settings/setting_view.dart';
 
@@ -17,13 +19,11 @@ class HomeLayout extends StatefulWidget {
 class _HomeLayoutState extends State<HomeLayout> {
   List<Widget> screens = [
     const HomeView(),
-    const SettingsView(),
+    const FoodPlanView(),
     const SettingsView(),
     const SettingsView(),
   ];
-
   int index = 0;
-
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -51,7 +51,11 @@ class _HomeLayoutState extends State<HomeLayout> {
                 },
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(
+                    () => NotificationView(),
+                  );
+                },
                 icon: const Icon(Icons.notifications),
               )
             ],
@@ -78,9 +82,9 @@ class _HomeLayoutState extends State<HomeLayout> {
       ),
       bottomNavigationBar: Container(
         clipBehavior: Clip.antiAlias,
-        height: 80,
+        height: 70,
         decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(25), topRight: Radius.circular(25),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35),
         ),),
         child: BottomNavigationBar(
           currentIndex: index,
