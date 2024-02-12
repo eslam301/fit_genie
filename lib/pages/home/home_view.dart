@@ -35,7 +35,7 @@ class HomeView extends StatelessWidget {
                 autoPlayCurve: Curves.fastOutSlowIn,
                 scrollPhysics: const BouncingScrollPhysics(),
                 pauseAutoPlayOnTouch: true,
-                viewportFraction: 0.85,
+                viewportFraction: .9,
                 height: heightScreen * 0.335,
               )),
         ),

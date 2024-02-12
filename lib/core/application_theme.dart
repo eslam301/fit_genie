@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ApplicationTheme {
+  //light theme colors
   static const Color gothic = Color(0xff254c51);
   static const Color openGothic = Color(0xff6c8589);
   static const Color whiteGothic = Color(0xffcedcdd);
