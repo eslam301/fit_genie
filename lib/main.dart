@@ -11,8 +11,7 @@ import 'core/application_theme.dart';
 import 'layout/home_layout.dart';
 
 void main() {
-  runApp(const MyApp(
-  ));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
