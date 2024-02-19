@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'notification_widget/list_of_notification_widget.dart';
-import 'notification_widget/notification_widget.dart';
 
 
 class NotificationView extends StatelessWidget {
@@ -29,12 +27,16 @@ class NotificationView extends StatelessWidget {
           child: Container(
             clipBehavior: Clip.antiAlias,
             decoration:  BoxDecoration(
-              borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(25),bottomRight: Radius.circular(25),),
+              borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(35),bottomRight: Radius.circular(35),),
               color: theme.primaryColor,
             ),
             child: AppBar(
               title: const Text('Notifications'),
               bottom: const TabBar(
+                indicatorColor: Colors.white,
+                unselectedLabelColor: Colors.white,
+                labelColor: Colors.white,
+                dividerHeight: 0,
                 tabs: [
                   Tab(
                     text: 'Notifications',

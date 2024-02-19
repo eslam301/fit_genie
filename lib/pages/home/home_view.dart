@@ -14,9 +14,10 @@ class HomeView extends StatelessWidget {
     // var widthScreen = MediaQuery.of(context).size.width;
     var heightScreen = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(vertical :10),
       child: Column(children: [
         Container(
-          margin: const EdgeInsets.symmetric(vertical: 20),
+          margin: const EdgeInsets.only(bottom: 20),
           child: CarouselSlider(
               items: const [
                 CaloriesContainer(),
@@ -36,10 +37,17 @@ class HomeView extends StatelessWidget {
                 scrollPhysics: const BouncingScrollPhysics(),
                 pauseAutoPlayOnTouch: true,
                 viewportFraction: .9,
-                height: heightScreen * 0.335,
+                height: heightScreen * 0.345,
               )),
         ),
         const AdsContainer(),
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            StepsContainerView(),
+            StepsContainerView(),
+          ],
+        ),
         const Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

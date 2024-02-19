@@ -5,8 +5,6 @@ class WorkOutPlanView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Text('work out plan'),
-    );
+    return const Text('work out plan');
   }
 }

@@ -1,3 +1,4 @@
+import 'package:fitgenie/pages/premium/premium_plans_view.dart';
 import 'package:fitgenie/pages/profile/profile_view.dart';
 import 'package:fitgenie/pages/sign-in/sign_in.dart';
 import 'package:fitgenie/pages/sign-in/sign_up/sign_up.dart';
@@ -10,7 +11,8 @@ import 'core/application_theme.dart';
 import 'layout/home_layout.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MyApp(
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -33,6 +35,7 @@ class MyApp extends StatelessWidget {
         SignUpPage.routeName: (context) => const SignUpPage(),
         HomeLayout.routeName: (context) => const HomeLayout(),
         ProfilePage.routeName: (context) =>  const ProfilePage(),
+        PremiumPlansView.routeName: (context) => const PremiumPlansView(),
       },
       transitionDuration: const Duration(milliseconds: 450),
       defaultTransition: Transition.rightToLeft,

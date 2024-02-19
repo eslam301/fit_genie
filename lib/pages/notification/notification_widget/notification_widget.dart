@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/widgets/custom_button.dart';
@@ -95,7 +94,6 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                           label: 'Delete',
                           icon: Icons.delete,
                           onTap: () {
-                            print('deleted');
                             setState(() {});
                           },
                           color: Colors.red,

@@ -42,9 +42,9 @@ class ApplicationTheme {
         error: Colors.red,
         onError: Colors.red,
         background: Colors.white,
-        onBackground: Colors.pink,
+        onBackground: Colors.white,
         surface: Colors.blue,
-        onSurface: Colors.pinkAccent,
+        onSurface: Colors.white,
         brightness: Brightness.dark
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -88,9 +88,9 @@ class ApplicationTheme {
         error: Colors.red,
         onError: Colors.red,
         background:whiteGothicShade ,
-        onBackground: Colors.pink,
+        onBackground: Colors.white,
         surface: Colors.blue,
-        onSurface: Colors.pinkAccent,
+        onSurface: Colors.white,
         brightness: Brightness.dark
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
