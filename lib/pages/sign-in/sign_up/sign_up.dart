@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitgenie/pages/sign-in/sign_up/required_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/custom_text_field.dart';
+import '../../../fire_base/firebase.dart';
 import '../sign_in.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -146,7 +148,8 @@ class SignUpPageState extends State<SignUpPage> {
       print('Email: ${_emailController.text}');
       print('Password: ${_passwordController.text}');
       print('Name: ${_nameController.text}');
-      Get.to(() => RequiredForm(),transition: Transition.leftToRight);
+      //Get.to(() => RequiredForm(),transition: Transition.leftToRight);
+      saveToFireBase(_emailController.text, _passwordController.text);
     } else {
       Get.snackbar(
         'Error',
@@ -159,4 +162,6 @@ class SignUpPageState extends State<SignUpPage> {
         borderRadius: 15,);
     }
   }
+
+
 }

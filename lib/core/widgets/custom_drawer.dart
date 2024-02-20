@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../fire_base/firebase.dart';
 import '../../main.dart';
 import '../../pages/profile/profile_view.dart';
 import '../../pages/sign-in/sign_in.dart';
@@ -87,7 +88,7 @@ class CustomDrawer extends StatelessWidget {
                         title: Row(
                           children: [
                             Text(
-                              'Logout',
+                              'Sign Out',
                               style: TextStyle(
                                   color: theme.colorScheme.error,
                                   fontSize: 20,
@@ -101,8 +102,10 @@ class CustomDrawer extends StatelessWidget {
                           ],
                         ),
                         onTap: () {
+                          signOutFireBase();
                           Get.off(
                             () => const SignInPage(),
+                            duration: const Duration(milliseconds: 500),
                             transition: Transition.fadeIn,
                           );
                         }),

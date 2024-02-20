@@ -1,4 +1,4 @@
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitgenie/core/widgets/custom_text_field.dart';
 import 'package:fitgenie/core/widgets/logo_splash_widget.dart';
 import 'package:fitgenie/layout/home_layout.dart';
@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../core/widgets/custom_button.dart';
+import '../../fire_base/firebase.dart';
 import '../../main.dart';
 
 class SignInPage extends StatefulWidget {
@@ -24,8 +25,6 @@ class SignInPageState extends State<SignInPage> {
   final ThemeController themeController = Get.find();
   @override
   Widget build(BuildContext context) {
-
-
     var theme = Theme.of(context);
     return Scaffold(
       floatingActionButton: SizedBox(
@@ -83,15 +82,14 @@ class SignInPageState extends State<SignInPage> {
                         label: 'Password',
                         isPassword: true,
                         keyBoardType: TextInputType.visiblePassword,
-                         validator: (String? value) {
-                           if (value == null || value.isEmpty) {
-                             return 'Please enter your password';
-                           } else {
-                             return null;
-                           }
-                         },
+                        validator: (String? value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your password';
+                          } else {
+                            return null;
+                          }
+                        },
                       ),
-
                       LongButton(
                         label: 'Sign In',
                         onTap: () {
@@ -119,14 +117,14 @@ class SignInPageState extends State<SignInPage> {
     );
   }
 
-  void signIn( signInFormKey ) {
+  void signIn(signInFormKey) {
     if (signInFormKey.currentState!.validate()) {
-      Get.to(() => const HomeLayout(),transition: Transition.rightToLeft);
+      signInFireBase( _emailController, _passwordController);
+      //Get.to(() => const HomeLayout(),transition: Transition.rightToLeft);
     } else {
       Get.snackbar(
         'Error',
         'Please enter valid email and password',
-        snackPosition: SnackPosition.BOTTOM,
         colorText: Colors.white,
         duration: const Duration(milliseconds: 1500),
         icon: const Icon(Icons.error, color: Colors.white),
@@ -135,4 +133,6 @@ class SignInPageState extends State<SignInPage> {
       );
     }
   }
+
+
 }
