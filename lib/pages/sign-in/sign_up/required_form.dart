@@ -22,12 +22,12 @@ class RequiredForm extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(children: [
-              CustomTextField(controller: firstNameController, label: 'Name'),
-              CustomTextField(controller: firstNameController, label: 'Name'),
-              CustomTextField(controller: firstNameController, label: 'Name'),
-              CustomTextField(controller: firstNameController, label: 'Name'),
-              CustomTextField(controller: firstNameController, label: 'Name'),
-              CustomTextField(controller: firstNameController, label: 'Name'),
+              CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  }, ),
+              CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
+              CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
+              CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
+              CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
+              CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
               LongButton(label:'submit' , onTap: (){})
             ]),
           ),

@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:fitgenie/core/application_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'home_widget/ads_container.dart';
@@ -11,6 +12,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // var theme = Theme.of(context);
+    var appTheme = ApplicationTheme();
     // var widthScreen = MediaQuery.of(context).size.width;
     var heightScreen = MediaQuery.of(context).size.height;
     return SingleChildScrollView(

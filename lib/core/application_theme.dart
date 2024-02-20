@@ -17,7 +17,7 @@ class ApplicationTheme {
 
   static ThemeData lightTheme = ThemeData(
     primaryColor: gothic,
-    secondaryHeaderColor: openGothic,
+    secondaryHeaderColor: gothic,
     scaffoldBackgroundColor: openGothic,
     appBarTheme: const AppBarTheme(
       backgroundColor: gothic,
@@ -48,7 +48,7 @@ class ApplicationTheme {
         brightness: Brightness.dark
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: openGothic,
+      backgroundColor: gothic,
       type: BottomNavigationBarType.fixed,
       elevation: 0,
       showSelectedLabels: true,

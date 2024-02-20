@@ -17,8 +17,8 @@ class LongButton extends StatelessWidget {
         width: double.infinity,
         // margin: const EdgeInsets.symmetric(horizontal: 30),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        decoration:  BoxDecoration(
-          color: color ?? theme.primaryColor,
+        decoration: BoxDecoration(
+          color: color ?? theme.secondaryHeaderColor,
           borderRadius: const BorderRadius.all(
             Radius.circular(20.0),
           ),

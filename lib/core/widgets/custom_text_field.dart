@@ -6,13 +6,18 @@ class CustomTextField extends StatefulWidget {
   final bool isPassword;
   final Icon? suffixIcon;
   final TextInputType? keyBoardType;
+  final FormFieldValidator<String>? validator;
+
+
   const CustomTextField({
       required this.controller,
       required this.label,
       super.key,
       this.isPassword = false,
       this.suffixIcon,
-      this.keyBoardType});
+      this.keyBoardType,
+      this.validator
+  });
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
@@ -23,8 +28,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
     //var theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
-      child: TextField(
-        keyboardType: widget.isPassword ? TextInputType.visiblePassword : widget.keyBoardType,
+      child: TextFormField(
+        keyboardType: widget.keyBoardType,
+        validator: widget.validator,
         obscureText: widget.isPassword ? obscureText : false,
         controller: widget.controller,
         style: const TextStyle(
