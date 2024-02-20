@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import '../../core/widgets/logo_splash_widget.dart';
 import '../../layout/home_layout.dart';
 import '../sign-in/sign_in.dart';
-import '../sign-in/sign_up/sign_up.dart';
 class SplashScreen extends StatefulWidget {
   static const String routeName = '/splash';
   const SplashScreen({super.key});

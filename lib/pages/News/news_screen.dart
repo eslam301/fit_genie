@@ -17,7 +17,7 @@ class NewsScreen extends StatelessWidget {
               indicatorColor: Colors.transparent,
               tabs: [
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+                  padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
                     border: Border.all(
@@ -27,7 +27,7 @@ class NewsScreen extends StatelessWidget {
                   child: const Text('Text'),
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+                  padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
                     border: Border.all(
