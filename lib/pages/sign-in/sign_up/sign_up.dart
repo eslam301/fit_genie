@@ -147,7 +147,7 @@ class SignUpPageState extends State<SignUpPage> {
       print('Validated');
       print('Email: ${_emailController.text}');
       print('Password: ${_passwordController.text}');
-      print('Name: ${_nameController.text}');
+      print('Name: ${_nameController.text}\n --------------------------------');
       //Get.to(() => RequiredForm(),transition: Transition.leftToRight);
       saveToFireBase(_emailController.text, _passwordController.text);
     } else {
@@ -159,7 +159,8 @@ class SignUpPageState extends State<SignUpPage> {
         duration: const Duration(milliseconds: 1500),
         icon: const Icon(Icons.error, color: Colors.white),
         margin: const EdgeInsets.only(bottom: 5, left: 0, right: 0),
-        borderRadius: 15,);
+        borderRadius: 15,
+      );
     }
   }
 

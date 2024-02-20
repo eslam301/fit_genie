@@ -52,12 +52,23 @@ void signInFireBase(emailController, passwordController) async {
         'Error',
         'Wrong password provided for that user.',
       );
-    }else {
+    }else if (e.code == 'invalid-email'){
       Get.snackbar(
         'Error',
-        'Something went wrong',
+        'Invalid email',
       );
-      print (e.code);
+    }else if (e.code == 'user-disabled'){
+      Get.snackbar(
+        'Error',
+        'User disabled',
+      );
+    }else if (e.code =='too-many-requests'){
+      Get.snackbar(
+        'Error',
+        'Too many requests',
+      );
+    }else {
+      Get.snackbar('Error', e.code);
     }
   }
 }
@@ -72,6 +83,7 @@ void saveToFireBase(emailController, passwordController) async {
       password: passwordController.text,
     );
     print(credential.user?.uid);
+    print(credential.user?.email);
     Get.snackbar(
       'Success',
       'Account created successfully',
@@ -92,18 +104,18 @@ void saveToFireBase(emailController, passwordController) async {
   }
 }
 
-void get userData async {
-  final user = FirebaseAuth.instance.currentUser;
-  if (user != null) {
-    // Name, email address, and profile photo URL
-    final name = user.displayName;
-    final email = user.email;
-    final photoUrl = user.photoURL;
-    // Check if user's email is verified
-    final emailVerified = user.emailVerified;
-    // The user's ID, unique to the Firebase project. Do NOT use this value to
-    // authenticate with your backend server, if you have one. Use
-    // User.getIdToken() instead.
-    final uid = user.uid;
-  }
-}
+// void get userData async {
+//   final user = FirebaseAuth.instance.currentUser;
+//   if (user != null) {
+//     // Name, email address, and profile photo URL
+//     final name = user.displayName;
+//     final email = user.email;
+//     final photoUrl = user.photoURL;
+//     // Check if user's email is verified
+//     final emailVerified = user.emailVerified;
+//     // The user's ID, unique to the Firebase project. Do NOT use this value to
+//     // authenticate with your backend server, if you have one. Use
+//     // User.getIdToken() instead.
+//     final uid = user.uid;
+//   }
+// }
