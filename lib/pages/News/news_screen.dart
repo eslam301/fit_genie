@@ -1,44 +1,62 @@
+import 'package:fitgenie/pages/News/news_api_config/news_api_config.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'news_api_config/source_model.dart';
+import 'news_details_view_screen.dart';
+import 'news_widget/artical_widget_view.dart';
 
 class NewsScreen extends StatelessWidget {
   const NewsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-    return  Column(
-      children: [
-        const SizedBox(height: 10),
-        DefaultTabController(
-            length: 2,
-            child: TabBar(
-              dividerHeight: 0,
-              labelColor: Colors.white,
-              indicatorColor: Colors.transparent,
-              tabs: [
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 15),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    border: Border.all(
-                      color: Colors.white
-                    )
-                  ),
-                  child: const Text('Text'),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 15),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    border: Border.all(
-                      color: Colors.white
-                    )
-                  ),
-                  child: const Text('Text'),
-                ),
+    // var theme = Theme.of(context);
+    return FutureBuilder(
+        future: NewsApiManger.fetchSource(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Column(
+              children: [
+                Center(child: Text('error \n ${snapshot.error}')),
+                const SizedBox(height: 10),
+                IconButton(
+                  onPressed: () {
+                    NewsApiManger.fetchSource();
+                  },
+                  icon: const Icon(Icons.refresh),
+                )
               ],
-            ))
-      ],
-    );
+            );
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }else {
+            ArticleModel articlesModel = snapshot.data as ArticleModel;
+            return ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              controller: ScrollController(),
+              itemCount: articlesModel.articles!.length > 30 ? 30 : articlesModel.articles!.length,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: ArticalWidget(
+                  onTap: () {
+                    Get.to (
+                      () => AtricelDetails(
+                        articlesModel: articlesModel,
+                        index: index,
+                      ),
+                      transition: Transition.leftToRightWithFade,
+                    );
+                  },
+                  articlesModel: articlesModel,
+                  index: index,
+                ),
+              ),
+            );
+          }
+        });
   }
 }

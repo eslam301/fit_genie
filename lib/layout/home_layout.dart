@@ -177,21 +177,6 @@ class _HomeLayoutState extends State<HomeLayout> {
                 ],
               );
             })),
-        floatingActionButton: SizedBox(
-          width: 60,
-          height: 60,
-          child: FloatingActionButton(
-            onPressed: () {},
-            backgroundColor: theme.primaryColor,
-            foregroundColor: Colors.white,
-            shape: const CircleBorder(),
-            elevation: 10,
-            highlightElevation: 0,
-            hoverElevation: 0,
-            child: const Icon(Icons.device_hub_rounded),
-          ),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       ),
     );
   }

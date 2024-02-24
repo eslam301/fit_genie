@@ -40,7 +40,9 @@ void signInFireBase(emailController, passwordController) async {
         email: emailController.text,
         password: passwordController.text
     );
+
     Get.offAll(() => const HomeLayout(),transition: Transition.rightToLeft);
+    Get.snackbar('Welcome', '${credential.user?.displayName}');
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
       Get.snackbar(

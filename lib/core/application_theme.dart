@@ -32,8 +32,37 @@ class ApplicationTheme {
         fontSize: 34,
         fontWeight: FontWeight.bold,
       ),
+
     ),
-    textTheme: const TextTheme(),
+
+    textTheme: const TextTheme(
+      titleLarge: TextStyle(
+        color: white,
+        fontSize: 28,
+        fontWeight: FontWeight.bold,
+      ),
+      bodyLarge: TextStyle(
+        color: white,
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+
+      ),
+      titleMedium: TextStyle(
+        color: white,
+        fontSize: 21,
+        fontWeight: FontWeight.bold,
+      ),
+      bodyMedium: TextStyle(
+        color: white,
+        fontSize: 18,
+        fontWeight: FontWeight.normal,
+      ),
+      bodySmall: TextStyle(
+        color: white,
+        fontSize: 14,
+        fontWeight: FontWeight.normal,
+      )
+    ),
     colorScheme: const ColorScheme(
         primary: gothic,
         onPrimary: openGothic,
@@ -79,7 +108,34 @@ class ApplicationTheme {
         fontWeight: FontWeight.bold,
       ),
     ),
-    textTheme: const TextTheme(),
+    textTheme: const TextTheme(
+        titleLarge: TextStyle(
+          color: white,
+          fontSize: 28,
+          fontWeight: FontWeight.bold,
+        ),
+        bodyLarge: TextStyle(
+          color: white,
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+
+        ),
+        titleMedium: TextStyle(
+          color: white,
+          fontSize: 21,
+          fontWeight: FontWeight.bold,
+        ),
+        bodyMedium: TextStyle(
+          color: white,
+          fontSize: 18,
+          fontWeight: FontWeight.normal,
+        ),
+        bodySmall: TextStyle(
+          color: white,
+          fontSize: 14,
+          fontWeight: FontWeight.normal,
+        )
+    ),
     colorScheme: const ColorScheme(
         primary: gothicShade,
         onPrimary: openGothicShade,

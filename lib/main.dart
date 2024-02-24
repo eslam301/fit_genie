@@ -6,7 +6,6 @@ import 'package:fitgenie/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 import 'core/application_theme.dart';
 import 'firebase_options.dart';
 import 'layout/home_layout.dart';
