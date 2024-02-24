@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "895482306354",
+    "project_id": "grad-project-68a3f",
+    "storage_bucket": "grad-project-68a3f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895482306354:android:01d060c5c077d24b62c12b",
+        "android_client_info": {
+          "package_name": "com.example.fitgenie"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJlY5lPv5ePCXVWm3h9ZPTF_Y7yUYtx4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
