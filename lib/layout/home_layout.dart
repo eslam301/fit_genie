@@ -46,8 +46,8 @@ class _HomeLayoutState extends State<HomeLayout> {
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(25),
-                bottomRight: Radius.circular(25),
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
               ),
               color: theme.primaryColor,
             ),
@@ -87,8 +87,9 @@ class _HomeLayoutState extends State<HomeLayout> {
             height: 80,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(35),
-                topRight: Radius.circular(35),
+                topLeft: Radius.circular(40),
+                topRight: Radius.circular(40),
+
               ),
             ),
             child: Consumer<HomeLayOutProvider>(

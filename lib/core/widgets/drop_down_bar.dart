@@ -2,9 +2,9 @@ import 'package:fitgenie/core/widgets/custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
 class DropDownBar extends StatelessWidget {
-  List<String> listOfSheet = [];
-  String? title;
-  DropDownBar({super.key, required this.listOfSheet, this.title});
+  final List<String> listOfSheet ;
+  final String? title;
+  const DropDownBar({super.key, required this.listOfSheet, this.title});
 
   @override
   Widget build(BuildContext context) {

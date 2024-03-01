@@ -9,19 +9,20 @@ class NewsApiManger {
   static Future<ArticleModel> fetchSource() async {
 
     var queryParameters = {
-      'apiKey': Constants.apiKey,
+      'apiKey': Constants._apiKey,
       'category': 'health',
       'language': 'en',
+      'sortBy': 'popularity',
     };
     Uri uri = Uri.https(
-        Constants.baseUrl,
+        Constants._baseUrl,
         'v2/top-headlines',
         queryParameters
     );
 
     final response = await http.get(uri);
 
-    if (response.statusCode == 200&&jsonDecode(response.body)['status'] == 'ok') {
+    if (response.statusCode == 200 && jsonDecode(response.body)['status'] == 'ok') {
       return ArticleModel.fromJson(jsonDecode(response.body));
 
     } else {
@@ -29,16 +30,16 @@ class NewsApiManger {
     }
 
   }
-  static Future<ArticleModel> fetchSourceAboutEgypt() async {
+  static Future<ArticleModel> fetchSourceGeneral() async {
 
     var queryParameters = {
-      'apiKey': Constants.apiKey,
+      'apiKey': Constants._apiKey,
       'sortBy': 'popularity',
       'q': 'fitness classes',
       'language': 'en',
     };
     Uri uri = Uri.https(
-        Constants.baseUrl,
+        Constants._baseUrl,
         'v2/everything',
         queryParameters
     );
@@ -57,6 +58,6 @@ class NewsApiManger {
 }
 
 class Constants {
-  static const String apiKey = '86eed46064e9407aa56f8168e620b5ce';
-  static const String baseUrl = 'newsapi.org';
+  static const String _apiKey = '86eed46064e9407aa56f8168e620b5ce';
+  static const String _baseUrl = 'newsapi.org';
 }

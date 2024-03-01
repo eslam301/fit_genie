@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 import 'news_api_config/source_model.dart';
 
-class AtricelDetails extends StatelessWidget {
+class ArticleDetails extends StatelessWidget {
   final ArticleModel articlesModel;
   final int index;
-  const AtricelDetails({super.key, required this.articlesModel, required this.index});
+  const ArticleDetails({super.key, required this.articlesModel, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +16,10 @@ class AtricelDetails extends StatelessWidget {
     String content = articlesModel.articles![index].content ?? '';
     String publishedAt = articlesModel.articles![index].publishedAt ?? '';
     String urlToImage = articlesModel.articles![index].urlToImage ?? '';
-    String url = articlesModel.articles![index].url ?? '';
+    //String url = articlesModel.articles![index].url ?? '';
     String source = articlesModel.articles![index].source!.name ?? '';
     String date = publishedAt.split('T')[0];
-    String time = publishedAt.split('T')[1].split('Z')[0];
+    //String time = publishedAt.split('T')[1].split('Z')[0];
 
     var theme = Theme.of(context);
     return Scaffold(

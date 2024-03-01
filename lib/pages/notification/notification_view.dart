@@ -4,7 +4,7 @@ import 'notification_widget/list_of_notification_widget.dart';
 
 
 class NotificationView extends StatelessWidget {
-   List notifications = [
+   final List notifications = [
     'Notification 1',
     'Notification 2',
     'Notification 3',

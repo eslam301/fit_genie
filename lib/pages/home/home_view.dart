@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:fitgenie/core/application_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'home_widget/ads_container.dart';

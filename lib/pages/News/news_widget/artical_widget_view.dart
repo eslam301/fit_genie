@@ -1,22 +1,23 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../news_api_config/source_model.dart';
 
-class ArticalWidget extends StatelessWidget {
-  ArticleModel articlesModel;
-  int index;
-  Function onTap;
-  ArticalWidget({super.key , required this.articlesModel,required this.index, required this.onTap});
+class ArticleWidget extends StatelessWidget {
+  final ArticleModel articlesModel;
+  final int index;
+  final Function onTap;
+
+  const ArticleWidget({super.key , required this.articlesModel,required this.index, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     String title = articlesModel.articles![index].title ?? '';
-    String? date = articlesModel.articles![index].publishedAt?.split('T')[0];
-    String? time = articlesModel.articles![index].publishedAt?.split('T')[1].split('Z')[0];
+    bool isHaveImage = articlesModel.articles![index].urlToImage == null ? false : true;
+    // String? date = articlesModel.articles![index].publishedAt?.split('T')[0];
+    // String? time = articlesModel.articles![index].publishedAt?.split('T')[1].split('Z')[0];
 
     var theme = Theme.of(context );
-    return GestureDetector(
+    return isHaveImage?  GestureDetector(
       onTap: () {
         onTap();
       },
@@ -53,9 +54,9 @@ class ArticalWidget extends StatelessWidget {
                   )),),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             Text(
-              articlesModel.articles![index].author ?? '',
+              articlesModel.articles![index].source!.name ?? 'no author',
               style: theme.textTheme.titleMedium?.copyWith(color: Colors.grey),
 
             ),
@@ -67,6 +68,6 @@ class ArticalWidget extends StatelessWidget {
           ]
         ),
       ),
-    );
+    ) : const SizedBox.shrink() ;
   }
 }

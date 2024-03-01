@@ -35,6 +35,7 @@ class _SettingsViewState extends State<SettingsView> {
           height: 20,
         ),
         DropDownBar(listOfSheet: languages,title: "languages",),
+        DropDownBar(listOfSheet: themes,title: "Theme",),
         // DropDownBar(listOfSheet: themes,title: "themes",),
         LongButton(label: 'Model', onTap: (){
           Get.to(() => const ModelTestView(),transition: Transition.fadeIn);

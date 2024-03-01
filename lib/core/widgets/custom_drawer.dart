@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../fire_base/firebase.dart';
 import '../../main.dart';
+import '../../pages/notification/notification_view.dart';
 import '../../pages/profile/profile_view.dart';
 import '../../pages/sign-in/sign_in.dart';
 
@@ -9,10 +10,10 @@ class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
   @override
   Widget build(BuildContext context) {
-    final ThemeController themeController = Get.find();
     var theme = Theme.of(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+    final ThemeController themeController = Get.find();
     return Container(
         width: width * 0.8,
         decoration: BoxDecoration(
@@ -70,19 +71,40 @@ class CustomDrawer extends StatelessWidget {
                     ListTile(
                       iconColor: theme.primaryColor,
                         title: Text(
+                          'Notifications',
+                          style: TextStyle(
+                              color: theme.primaryColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        trailing: const Icon(
+                          Icons.notifications_rounded,
+                          size: 30,
+                        ),
+                        onTap: () {
+                          Get.to(
+                                () => NotificationView(),
+                            transition: Transition.rightToLeftWithFade,
+                          );
+
+                        }),
+                    ListTile(
+                      iconColor: theme.primaryColor,
+                        title: Text(
                           'change theme',
                           style: TextStyle(
                               color: theme.primaryColor,
                               fontSize: 20,
                               fontWeight: FontWeight.w500),
                         ),
-                        trailing: Icon(
-                          themeController.isDarkMode.value ? Icons.dark_mode : Icons.light_mode,
+                        trailing:  Icon(
+                          themeController.isDarkMode.value
+                              ? Icons.dark_mode
+                              : Icons.light_mode,
                           size: 30,
                         ),
                         onTap: () {
                           themeController.toggleTheme();
-
                         }),
                     ListTile(
                         title: Row(
@@ -112,11 +134,11 @@ class CustomDrawer extends StatelessWidget {
                   ]))
             ]),
             Positioned(
-              right: 10,
-              top: height / 2.1,
+              right: 12,
+              top: height / 2 - 40,
               child: Container(
                   width: 5,
-                  height: 40,
+                  height: 80,
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   decoration: BoxDecoration(
                     color: theme.primaryColor,

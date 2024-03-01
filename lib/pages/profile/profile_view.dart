@@ -38,7 +38,7 @@ class ProfilePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(height:10),
+                const SizedBox(height:10),
                  Stack(
                    alignment: Alignment.center,
                    children: [

@@ -9,27 +9,27 @@ authStateChanges(){
       .authStateChanges()
       .listen((User? user) {
     if (user == null) {
-      print('User is currently signed out!');
+      // print('User is currently signed out!');
     } else {
-      print('User is signed in!');
+      // print('User is signed in!');
     }
   });
   FirebaseAuth.instance
       .idTokenChanges()
       .listen((User? user) {
     if (user == null) {
-      print('User is currently signed out!');
+      // print('User is currently signed out!');
     } else {
-      print('User is signed in!');
+      // print('User is signed in!');
     }
   });
   FirebaseAuth.instance
       .userChanges()
       .listen((User? user) {
     if (user == null) {
-      print('User is currently signed out!');
+      // print('User is currently signed out!');
     } else {
-      print('User is signed in!');
+      // print('User is signed in!');
     }
   });
 }
@@ -84,8 +84,8 @@ void saveToFireBase(emailController, passwordController) async {
       email: emailController.text,
       password: passwordController.text,
     );
-    print(credential.user?.uid);
-    print(credential.user?.email);
+    // print(credential.user?.uid);
+    // print(credential.user?.email);
     Get.snackbar(
       'Success',
       'Account created successfully',
@@ -93,16 +93,16 @@ void saveToFireBase(emailController, passwordController) async {
     Get.to(() => const SignInPage(),transition: Transition.leftToRight);
   } on FirebaseAuthException catch (e) {
     if (e.code == 'weak-password') {
-      print('The password provided is too weak.');
+      // print('The password provided is too weak.');
     } else if (e.code == 'email-already-in-use') {
-      print('The account already exists for that email.');
+      // print('The account already exists for that email.');
     } else if (e.code== 'invalid-email'){
-      print('The email is invalid.');
+      // print('The email is invalid.');
     } else {
-      print('\n\n ${e.code}\n\n');
+      // print('\n\n ${e.code}\n\n');
     }
   } catch (e) {
-    print(e);
+    // print(e);
   }
 }
 

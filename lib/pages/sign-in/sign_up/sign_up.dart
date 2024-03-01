@@ -1,5 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitgenie/pages/sign-in/sign_up/required_form.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/widgets/custom_button.dart';
@@ -24,7 +23,7 @@ class SignUpPageState extends State<SignUpPage> {
       TextEditingController();
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
+    // var theme = Theme.of(context);
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -85,6 +84,8 @@ class SignUpPageState extends State<SignUpPage> {
                           return 'Please confirm your password';
                         } else if (value != _passwordController.text) {
                           return 'Passwords do not match';
+                        }else {
+                          return 'error';
                         }
                       }),
                   LongButton(
@@ -144,10 +145,10 @@ class SignUpPageState extends State<SignUpPage> {
 
   signUp() {
     if (signUpFormKey.currentState!.validate()) {
-      print('Validated');
-      print('Email: ${_emailController.text}');
-      print('Password: ${_passwordController.text}');
-      print('Name: ${_nameController.text}\n --------------------------------');
+      // print('Validated');
+      // print('Email: ${_emailController.text}');
+      // print('Password: ${_passwordController.text}');
+      // print('Name: ${_nameController.text}\n --------------------------------');
       //Get.to(() => RequiredForm(),transition: Transition.leftToRight);
       saveToFireBase(_emailController.text, _passwordController.text);
     } else {

@@ -41,6 +41,7 @@ class CustomBottomSheetList extends StatelessWidget {
                           GestureDetector(
                               onTap: (){
                                 selectedValue = list[index];
+                                ChangeNotifier();
                                 Navigator.pop(context);
                               },
                               child: Container(
