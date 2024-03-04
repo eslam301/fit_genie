@@ -89,24 +89,6 @@ class CustomDrawer extends StatelessWidget {
 
                         }),
                     ListTile(
-                      iconColor: theme.primaryColor,
-                        title: Text(
-                          'change theme',
-                          style: TextStyle(
-                              color: theme.primaryColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        trailing:  Icon(
-                          themeController.isDarkMode.value
-                              ? Icons.dark_mode
-                              : Icons.light_mode,
-                          size: 30,
-                        ),
-                        onTap: () {
-                          themeController.toggleTheme();
-                        }),
-                    ListTile(
                         title: Row(
                           children: [
                             Text(

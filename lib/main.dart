@@ -48,11 +48,18 @@ class MyApp extends StatelessWidget {
 }
 class ThemeController extends GetxController {
   RxBool isDarkMode = false.obs;
-
   ThemeData get themeData => isDarkMode.value ? ThemeData.dark() : ThemeData.light();
-
   void toggleTheme() {
     isDarkMode.toggle();
     Get.changeThemeMode(isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
+  }
+  void changeTheme(String theme) {
+    bool mode = true ;
+    if (theme == "Dark") {
+      mode = true;
+    } else {
+      mode = false;
+    }
+    Get.changeThemeMode(mode ? ThemeMode.dark : ThemeMode.light);
   }
 }

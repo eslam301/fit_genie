@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
@@ -15,8 +16,8 @@ class ArticleDetails extends StatelessWidget {
     String description = articlesModel.articles![index].description ?? '';
     String content = articlesModel.articles![index].content ?? '';
     String publishedAt = articlesModel.articles![index].publishedAt ?? '';
-    String urlToImage = articlesModel.articles![index].urlToImage ?? '';
-    //String url = articlesModel.articles![index].url ?? '';
+    String urlImage = articlesModel.articles![index].urlToImage ?? '';
+    String url = articlesModel.articles![index].url ?? '';
     String source = articlesModel.articles![index].source!.name ?? '';
     String date = publishedAt.split('T')[0];
     //String time = publishedAt.split('T')[1].split('Z')[0];
@@ -54,15 +55,15 @@ class ArticleDetails extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     color: theme.primaryColor,
                   ),
-                  child: Image.network(
-                    errorBuilder: (context, error, stackTrace) => SizedBox(height: 200, child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.error),
-                        Text('no image found', style: theme.textTheme.bodySmall?.copyWith(color: Colors.grey),)
-                      ],
-                    )),
-                    urlToImage,
+                  child: CachedNetworkImage(
+                    imageUrl: urlImage,
+                    // errorBuilder: (context, error, stackTrace) => SizedBox(height: 200, child: Column(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     const Icon(Icons.error),
+                    //     Text('no image found', style: theme.textTheme.bodySmall?.copyWith(color: Colors.grey),)
+                    //   ],
+                    // )),
                     width: double.infinity,
                     fit: BoxFit.fill,
                   ),

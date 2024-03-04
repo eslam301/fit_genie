@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../news_api_config/source_model.dart';
@@ -13,6 +14,8 @@ class ArticleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     String title = articlesModel.articles![index].title ?? '';
     bool isHaveImage = articlesModel.articles![index].urlToImage == null ? false : true;
+    String author = articlesModel.articles![index].source!.name ?? 'Unknown';
+    String urlImage = articlesModel.articles![index].urlToImage ?? '';
     // String? date = articlesModel.articles![index].publishedAt?.split('T')[0];
     // String? time = articlesModel.articles![index].publishedAt?.split('T')[1].split('Z')[0];
 
@@ -37,33 +40,41 @@ class ArticleWidget extends StatelessWidget {
               child: Container(
                 clipBehavior: Clip.antiAlias,
                 width: double.infinity,
+                height: 200,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: theme.primaryColor,
                 ),
-                child: Image.network(
-                  articlesModel.articles![index].urlToImage ?? '',
+                child: CachedNetworkImage(
+                  imageUrl: urlImage,
                   width: double.infinity,
-                  fit: BoxFit.fill,
-                  errorBuilder: (context, error, stackTrace) => const SizedBox(height: 200, child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.error),
-                      Text('Error Loading image')
-                    ],
-                  )),),
-              ),
-            ),
+                  fit: BoxFit.cover,
+                  // errorBuilder: (context, error, stackTrace) => const SizedBox(height: 200, child: Column(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     Icon(Icons.error),
+                  //     Text('Error Loading image')
+                  //   ],
+                  // )),),
+              )
+            )),
             const SizedBox(height: 15),
             Text(
-              articlesModel.articles![index].source!.name ?? 'no author',
-              style: theme.textTheme.titleMedium?.copyWith(color: Colors.grey),
+              author,
+              style: TextStyle(
+                color: Colors.grey.shade300,
+                fontSize: 15,
+              ),
 
             ),
 
             Text(
               title,
-              style: theme.textTheme.titleLarge,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 21,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ]
         ),

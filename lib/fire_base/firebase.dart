@@ -42,9 +42,9 @@ void signInFireBase(emailController, passwordController) async {
     );
 
     Get.offAll(() => const HomeLayout(),transition: Transition.rightToLeft);
-    Get.snackbar('Welcome', '${credential.user?.displayName}');
+    Get.snackbar('Welcome', credential.user?.displayName ?? 'couch');
   } on FirebaseAuthException catch (e) {
-    if (e.code == 'user-not-found') {
+    if (e == 'The supplied auth credential is incorrect, malformed or has expired') {
       Get.snackbar(
         'Error',
         'No user found for that email',
@@ -54,10 +54,10 @@ void signInFireBase(emailController, passwordController) async {
         'Error',
         'Wrong password provided for that user.',
       );
-    }else if (e.code == 'invalid-email'){
+    }else if (e.message == 'The supplied auth credential is incorrect, malformed or has expired.'){
       Get.snackbar(
         'Error',
-        'Invalid email',
+        'Wrong password or email.',
       );
     }else if (e.code == 'user-disabled'){
       Get.snackbar(
@@ -70,7 +70,12 @@ void signInFireBase(emailController, passwordController) async {
         'Too many requests',
       );
     }else {
-      Get.snackbar('Error', e.code);
+      Get.snackbar('Error', e.toString());
+      print ('${e.toString()} \t = e');
+      print (' ${e.code.toString()}\t = e.credential');
+      print (' ${e.message.toString()}\t = e.message');
+      print (' ${e.stackTrace.toString()}\t = e.stackTrace');
+
     }
   }
 }

@@ -34,7 +34,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
         obscureText: widget.isPassword ? obscureText : false,
         controller: widget.controller,
         style: const TextStyle(
+          fontSize: 18,
           color: Colors.black,
+          fontWeight: FontWeight.normal,
         ),
         decoration: InputDecoration(
           suffixIcon: widget.isPassword
@@ -53,12 +55,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
           floatingLabelStyle: TextStyle(
             color: Theme.of(context).primaryColor,
             fontWeight: FontWeight.bold,
-            fontSize: 18,
+            fontSize: 21,
           ),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           labelText: widget.label,
           labelStyle: const TextStyle(
+            fontSize: 18,
             color: Colors.grey,
           ),
           border: const OutlineInputBorder(
