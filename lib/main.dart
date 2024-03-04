@@ -5,7 +5,6 @@ import 'package:fitgenie/pages/sign-in/sign_up/sign_up.dart';
 import 'package:fitgenie/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 import 'core/application_theme.dart';
 import 'firebase_options.dart';

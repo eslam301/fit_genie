@@ -17,7 +17,6 @@ class _DropDownBarState extends State<DropDownBarTheme> {
 
   @override
   Widget build(BuildContext context) {
-var theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
         showBottomSheet(context);

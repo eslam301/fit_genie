@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../core/widgets/webView/webView_screen.dart';
 import 'news_api_config/source_model.dart';
