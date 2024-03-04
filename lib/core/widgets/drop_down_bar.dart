@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../main.dart';
 
-class DropDownBar extends StatefulWidget {
-  const DropDownBar({super.key});
+class DropDownBarTheme extends StatefulWidget {
+  const DropDownBarTheme({super.key});
 
   @override
-  State<DropDownBar> createState() => _DropDownBarState();
+  State<DropDownBarTheme> createState() => _DropDownBarState();
 
 }
 
-class _DropDownBarState extends State<DropDownBar> {
-
+class _DropDownBarState extends State<DropDownBarTheme> {
   String? _selected = Get.isDarkMode ? "Dark" : "Light";
   final List<String> _items = ["Light", "Dark"];
   ThemeController themeController = Get.find();

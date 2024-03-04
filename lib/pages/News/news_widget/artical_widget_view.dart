@@ -16,8 +16,8 @@ class ArticleWidget extends StatelessWidget {
     bool isHaveImage = articlesModel.articles![index].urlToImage == null ? false : true;
     String author = articlesModel.articles![index].source!.name ?? 'Unknown';
     String urlImage = articlesModel.articles![index].urlToImage ?? '';
-    // String? date = articlesModel.articles![index].publishedAt?.split('T')[0];
-    // String? time = articlesModel.articles![index].publishedAt?.split('T')[1].split('Z')[0];
+    String? date = articlesModel.articles![index].publishedAt?.split('T')[0];
+    String? time = articlesModel.articles![index].publishedAt?.split('T')[1].split('Z')[0];
 
     var theme = Theme.of(context );
     return isHaveImage?  GestureDetector(
@@ -67,7 +67,6 @@ class ArticleWidget extends StatelessWidget {
               ),
 
             ),
-
             Text(
               title,
               style: const TextStyle(
@@ -75,6 +74,44 @@ class ArticleWidget extends StatelessWidget {
                 fontSize: 21,
                 fontWeight: FontWeight.bold,
               ),
+            ),
+            const SizedBox(height: 15),
+            Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      date!,
+                      style: TextStyle(
+                        color: Colors.grey.shade300,
+                        fontSize: 15,
+                      ),
+
+                    ),
+                    Text(
+                      time!,
+                      style: TextStyle(
+                        color: Colors.grey.shade300,
+                        fontSize: 15,
+                      ),
+
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                ElevatedButton(onPressed: () {
+                  onTap();
+                },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                  child: const Text('Read Details'),
+                )
+              ],
             ),
           ]
         ),

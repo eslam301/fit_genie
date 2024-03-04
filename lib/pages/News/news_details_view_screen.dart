@@ -1,13 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
+import '../../core/widgets/webView/webView_screen.dart';
 import 'news_api_config/source_model.dart';
-
 class ArticleDetails extends StatelessWidget {
   final ArticleModel articlesModel;
   final int index;
-  const ArticleDetails({super.key, required this.articlesModel, required this.index});
+  ArticleDetails({super.key, required this.articlesModel, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -117,14 +120,40 @@ class ArticleDetails extends StatelessWidget {
               style: theme.textTheme.bodyMedium,
               ),
               const SizedBox(height: 30),
-
               HtmlWidget(
                 content,
                 textStyle: theme.textTheme.bodyMedium,
               ),
-
-
-
+              const SizedBox(height: 30),
+              Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                    ),
+                    child: const Text('Back'),
+                  ),
+                  const SizedBox(width: 15),
+                  ElevatedButton(
+                    onPressed: ()  {
+                      Get.to(() => WebViewScreen(url: url));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                    ),
+                    child: const Row(
+                      children: [
+                        Text('Read full article'),
+                        SizedBox(width: 5),
+                        Icon(Icons.open_in_new),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ]
           )
         ),
@@ -133,3 +162,7 @@ class ArticleDetails extends StatelessWidget {
     );
   }
 }
+
+
+
+
