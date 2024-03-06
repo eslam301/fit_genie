@@ -41,13 +41,13 @@ class MyApp extends StatelessWidget {
         ProfilePage.routeName: (context) =>  const ProfilePage(),
         PremiumPlansView.routeName: (context) => const PremiumPlansView(),
       },
-      transitionDuration: const Duration(milliseconds: 450),
+      transitionDuration: const Duration(milliseconds: 1650),
       defaultTransition: Transition.rightToLeft,
     );
   }
 }
 class ThemeController extends GetxController {
-  String currentTheme = "Default";
+   late String currentTheme = 'Default';
   RxBool isDarkMode = false.obs;
   ThemeData get themeData => isDarkMode.value ? ThemeData.dark() : ThemeData.light();
   void toggleTheme() {
@@ -56,6 +56,8 @@ class ThemeController extends GetxController {
   }
   void changeTheme(String theme) {
     Get.changeThemeMode(theme == "Dark" ? ThemeMode.dark : ThemeMode.light);
+    currentTheme = theme;
+    update();
   }
 
 

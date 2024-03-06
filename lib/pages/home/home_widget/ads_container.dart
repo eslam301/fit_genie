@@ -14,7 +14,7 @@ class AdsContainer extends StatelessWidget {
         showModalBottomSheet(
             enableDrag: true,
             isScrollControlled: true,
-            backgroundColor: theme.scaffoldBackgroundColor,
+            backgroundColor: theme.scaffoldBackgroundColor.withOpacity(1.0),
             useSafeArea: true,
             showDragHandle: true,
             context: context,

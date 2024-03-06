@@ -15,7 +15,7 @@ class _DropDownBarState extends State<DropDownBarTheme> {
   final List<String> _items = ["Light", "Dark"];
   ThemeController themeController = Get.find();
 
-  String? _selected = "Default";
+  late String _selected ;
   @override
   void initState() {
     _selected = themeController.currentTheme;
