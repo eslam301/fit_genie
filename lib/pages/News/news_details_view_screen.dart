@@ -2,14 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../core/widgets/webView/webView_screen.dart';
 import 'news_api_config/source_model.dart';
 class ArticleDetails extends StatelessWidget {
   final ArticleModel articlesModel;
   final int index;
-  ArticleDetails({super.key, required this.articlesModel, required this.index});
+  const ArticleDetails({super.key, required this.articlesModel, required this.index});
 
   @override
   Widget build(BuildContext context) {

@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         ProfilePage.routeName: (context) =>  const ProfilePage(),
         PremiumPlansView.routeName: (context) => const PremiumPlansView(),
       },
-      transitionDuration: const Duration(milliseconds: 1650),
+      transitionDuration: const Duration(milliseconds: 650),
       defaultTransition: Transition.rightToLeft,
     );
   }

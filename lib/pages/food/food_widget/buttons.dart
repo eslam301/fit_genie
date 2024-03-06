@@ -5,7 +5,7 @@ class RoundButton extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
   final double fontSize;
-  final fontWeight;
+  final FontWeight fontWeight;
 
   const RoundButton({
     super.key,

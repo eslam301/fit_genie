@@ -11,7 +11,7 @@ class NotificationView extends StatelessWidget {
     'Notification 5',
   ];
 
-   List messages = [
+   final List messages = [
     'Message 1',
   ];
   NotificationView({super.key});

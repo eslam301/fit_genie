@@ -27,6 +27,7 @@ dependencies:
   cached_network_image: ^3.3.1
   webview_flutter: ^4.7.0
   flutter_3d_controller: ^1.2.1
+  animate_do: ^3.3.4
 
 #  health: ^9.0.1
 

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_3d_controller/flutter_3d_controller.dart';
-import 'package:get/get.dart';
-import 'package:model_viewer_plus/model_viewer_plus.dart';
-
 class ModelTestView extends StatelessWidget {
   const ModelTestView({super.key});
 
@@ -57,7 +54,7 @@ class ModelTestView extends StatelessWidget {
           ElevatedButton(
             onPressed: () async {
               await controller.getAvailableAnimations();
-              print(await controller.getAvailableAnimations());
+              //print(await controller.getAvailableAnimations());
               controller.setCameraTarget(0.3, 0.2, 0.4);
             },
             child: const Text("Back"),

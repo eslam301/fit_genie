@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:fitgenie/core/widgets/custom_text_field.dart';
 import 'package:fitgenie/core/widgets/logo_splash_widget.dart';
 import 'package:fitgenie/pages/sign-in/sign_up/sign_up.dart';
@@ -9,6 +10,7 @@ import '../../fire_base/firebase.dart';
 import '../../main.dart';
 
 class SignInPage extends StatefulWidget {
+
   static const String routeName = '/sign-in';
 
   const SignInPage({super.key});
@@ -20,6 +22,7 @@ class SignInPageState extends State<SignInPage> {
   final GlobalKey<FormState> signInFormKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  static const int  duration = 600;
   final ThemeController themeController = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -54,45 +57,59 @@ class SignInPageState extends State<SignInPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const LogoSplashWidget(),
+                FadeInDown(
+                    duration: const Duration(milliseconds: duration),
+                    child: const LogoSplashWidget()),
                 const SizedBox(height: 20),
                 Form(
                   key: signInFormKey,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: Column(
                     children: [
-                      CustomTextField(
-                        controller: _emailController,
-                        label: 'Email',
-                        keyBoardType: TextInputType.emailAddress,
-                        validator: (String? value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your email';
-                          } else if (!value.contains('@')) {
-                            return 'Please enter a valid email';
-                          } else {
-                            return null;
-                          }
-                        },
+                      FadeInLeft(
+                        delay: const Duration(milliseconds: 100),
+                        duration: const Duration(milliseconds: duration),
+                        child: CustomTextField(
+                          controller: _emailController,
+                          label: 'Email',
+                          keyBoardType: TextInputType.emailAddress,
+                          validator: (String? value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your email';
+                            } else if (!value.contains('@')) {
+                              return 'Please enter a valid email';
+                            } else {
+                              return null;
+                            }
+                          },
+                        ),
                       ),
-                      CustomTextField(
-                        controller: _passwordController,
-                        label: 'Password',
-                        isPassword: true,
-                        keyBoardType: TextInputType.visiblePassword,
-                        validator: (String? value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your password';
-                          } else {
-                            return null;
-                          }
-                        },
+                      FadeInRight(
+                        delay: const Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: duration),
+                        child: CustomTextField(
+                          controller: _passwordController,
+                          label: 'Password',
+                          isPassword: true,
+                          keyBoardType: TextInputType.visiblePassword,
+                          validator: (String? value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your password';
+                            } else {
+                              return null;
+                            }
+                          },
+                        ),
                       ),
-                      LongButton(
-                        label: 'Sign In',
-                        onTap: () {
-                          signIn(signInFormKey);
-                        },
+                      FadeInUp(
+                        delay: const Duration(milliseconds: 500),
+                        duration: const Duration(milliseconds: duration),
+                        child: LongButton(
+                          label: 'Sign In',
+                          onTap: () {
+                            signIn(signInFormKey);
+                          },
+                        ),
                       ),
                       TextButton(
                         onPressed: () {

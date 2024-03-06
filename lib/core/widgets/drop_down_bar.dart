@@ -12,7 +12,7 @@ class DropDownBarTheme extends StatefulWidget {
 }
 
 class _DropDownBarState extends State<DropDownBarTheme> {
-  final List<String> _items = ["Light", "Dark"];
+  //final List<String> _items = ["Light", "Dark"];
   ThemeController themeController = Get.find();
 
   late String _selected ;
@@ -49,7 +49,7 @@ class _DropDownBarState extends State<DropDownBarTheme> {
             child: Row(
               children: [
                 Text(
-                  _selected ?? _items.first,
+                  _selected == "Light" ? "Light" : "Dark",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,

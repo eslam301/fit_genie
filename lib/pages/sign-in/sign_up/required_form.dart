@@ -1,5 +1,4 @@
 import 'package:fitgenie/core/widgets/custom_button.dart';
-import 'package:fitgenie/core/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
 class RequiredForm extends StatelessWidget {
@@ -22,12 +21,12 @@ class RequiredForm extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(children: [
-              CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  }, ),
-              CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
-              CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
-              CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
-              CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
-              CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
+              // CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  }, ),
+              // CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
+              // CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
+              // CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
+              // CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
+              // CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
               LongButton(label:'submit' , onTap: (){})
             ]),
           ),

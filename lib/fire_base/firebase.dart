@@ -44,7 +44,7 @@ void signInFireBase(emailController, passwordController) async {
     Get.offAll(() => const HomeLayout(),transition: Transition.rightToLeft);
     Get.snackbar('Welcome', credential.user?.displayName ?? 'couch');
   } on FirebaseAuthException catch (e) {
-    if (e == 'The supplied auth credential is incorrect, malformed or has expired') {
+    if (e.code == 'The supplied auth credential is incorrect, malformed or has expired') {
       Get.snackbar(
         'Error',
         'No user found for that email',
@@ -71,10 +71,10 @@ void signInFireBase(emailController, passwordController) async {
       );
     }else {
       Get.snackbar('Error', e.toString());
-      print ('${e.toString()} \t = e');
-      print (' ${e.code.toString()}\t = e.credential');
-      print (' ${e.message.toString()}\t = e.message');
-      print (' ${e.stackTrace.toString()}\t = e.stackTrace');
+      // print ('${e.toString()} \t = e');
+      // print (' ${e.code.toString()}\t = e.credential');
+      // print (' ${e.message.toString()}\t = e.message');
+      // print (' ${e.stackTrace.toString()}\t = e.stackTrace');
 
     }
   }
@@ -85,6 +85,7 @@ void signOutFireBase() async {
 }
 void saveToFireBase(emailController, passwordController) async {
   try {
+    // ignore: unused_local_variable
     final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: emailController.text,
       password: passwordController.text,

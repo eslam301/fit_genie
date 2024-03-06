@@ -23,7 +23,7 @@ class PremiumPlansView extends StatelessWidget {
               Icons.workspace_premium_rounded,
               color: Colors.amber,
             ),
-            Spacer(),
+            const Spacer(),
             IconButton(
                 onPressed: () {
                   Get.back();

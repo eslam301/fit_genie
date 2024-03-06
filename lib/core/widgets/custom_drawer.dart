@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../fire_base/firebase.dart';
-import '../../main.dart';
 import '../../pages/notification/notification_view.dart';
 import '../../pages/profile/profile_view.dart';
 import '../../pages/sign-in/sign_in.dart';
@@ -13,7 +12,6 @@ class CustomDrawer extends StatelessWidget {
     var theme = Theme.of(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    final ThemeController themeController = Get.find();
     return Container(
         width: width * 0.8,
         decoration: BoxDecoration(

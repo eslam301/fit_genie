@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -51,9 +52,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
               : widget.suffixIcon,
           suffixIconColor: Colors.grey,
           filled: true,
-          fillColor: Colors.white,
+          fillColor: Colors.grey[200],
           floatingLabelStyle: TextStyle(
             color: Theme.of(context).primaryColor,
+
             fontWeight: FontWeight.bold,
             fontSize: 21,
           ),
