@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_3d_controller/flutter_3d_controller.dart';
+import 'package:get/get.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 
 class ModelTestView extends StatelessWidget {
@@ -8,48 +10,67 @@ class ModelTestView extends StatelessWidget {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
+    String src_3d = 'assets/models/male_anatomy_figure.glb';
     var theme = Theme.of(context);
+    Flutter3DController controller = Flutter3DController();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Model Viewer"),
       ),
-      body:Container(
-        margin: const EdgeInsets.all(20),
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        children: [
+          // Container(
+          //   height: height*0.45,
+          //   width: width,
+          //   decoration: BoxDecoration(
+          //     borderRadius: BorderRadius.circular(20),
+          //     color: theme.colorScheme.secondary,
+          //   ),
+          //   child: const ModelViewer(
+          //     src: "assets/models/low_poly_male_body_base.glb",
+          //     alt: "A 3D model",
+          //     ar: false,
+          //     autoRotate: false,
+          //     cameraControls: false,
+          //     cameraOrbit: "0deg 90deg 0deg",
+          //     cameraTarget: "0 0 0",
+          //     shadowIntensity: 0.5,
+          //   ),
+          // ),
+          Container(
+            height: height*0.45,
+            width: width,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: theme.colorScheme.secondary,
+            ),
+            child:Flutter3DViewer(
+              controller: controller,
+              // src: "assets/models/low_poly_male_body_base.glb",
+              src: src_3d,
+            ) ,
+          ),
 
-        height: height*0.45,
-        width: width,
+          ElevatedButton(
+            onPressed: () async {
+              await controller.getAvailableAnimations();
+              print(await controller.getAvailableAnimations());
+              controller.setCameraTarget(0.3, 0.2, 0.4);
+            },
+            child: const Text("Back"),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              controller.setCameraOrbit(0, 0, 0);
+            },
+            child: const Text("set camera orbit"),
+          )
 
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: theme.colorScheme.secondary,
 
-        ),
-        child:const ModelViewer(
-          src: 'assets/models/low_poly_male_body_base.glb',
-          iosSrc: "https://modelviewer.dev/shared-assets/models/low_poly_male_body_base.glb",
-          alt: "A 3D model",
-          ar: true,
-          autoRotate: true,
-          autoRotateDelay: 0,
-          cameraControls: true,
-          exposure: 0.2,
-          scale: '0.5',
-          cameraOrbit: "auto",
-          cameraTarget: "[30.0, 0.0, 0.0]",
-          // backgroundColor: Color(0x00000000),
-          shadowIntensity:1.0,
-          shadowSoftness: 1.0,
-          // loading: Loading.eager,
-          backgroundColor: Colors.transparent,
-
-          // touchAction: TouchAction.none,
-          // enableZoom: false,
-          // enablePan: false,
-          // enableRotate: false,
-          // enableTilt: false,
-          // enableDamping: false,
-
-        ),
+        ],
       ),
     );
   }

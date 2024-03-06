@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ApplicationTheme.lightTheme,
       darkTheme: ApplicationTheme.darkTheme,
-      themeMode: Get.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      themeMode: ThemeMode.system,
       initialBinding: BindingsBuilder(() {
         Get.put(ThemeController());
       }),
@@ -47,6 +47,7 @@ class MyApp extends StatelessWidget {
   }
 }
 class ThemeController extends GetxController {
+  String currentTheme = "Default";
   RxBool isDarkMode = false.obs;
   ThemeData get themeData => isDarkMode.value ? ThemeData.dark() : ThemeData.light();
   void toggleTheme() {
@@ -54,13 +55,7 @@ class ThemeController extends GetxController {
     Get.changeThemeMode(isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
   }
   void changeTheme(String theme) {
-    bool mode = true ;
-    if (theme == "Dark") {
-      mode = true;
-    } else {
-      mode = false;
-    }
-    Get.changeThemeMode(mode ? ThemeMode.dark : ThemeMode.light);
+    Get.changeThemeMode(theme == "Dark" ? ThemeMode.dark : ThemeMode.light);
   }
 
 

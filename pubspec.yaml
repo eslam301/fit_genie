@@ -26,6 +26,7 @@ dependencies:
   flutter_widget_from_html: ^0.14.6
   cached_network_image: ^3.3.1
   webview_flutter: ^4.7.0
+  flutter_3d_controller: ^1.2.1
 
 #  health: ^9.0.1
 
@@ -41,9 +42,12 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
     - assets/images/
     - assets/models/low_poly_male_body_base.glb
+    - assets/models/untitled.glb
+    - assets/models/untitled.obj
+    - assets/models/untitled.fbx
+    - assets/models/
     - assets/svg/running_shoe.svg
 assets/svg/running_shoe:
   svg:

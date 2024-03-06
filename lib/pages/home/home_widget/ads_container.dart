@@ -8,9 +8,17 @@ class AdsContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
-        Get.to(() =>  const PremiumPlansView(),transition: Transition.downToUp,duration: const Duration(milliseconds: 600));
+        showModalBottomSheet(
+            enableDrag: true,
+            isScrollControlled: true,
+            backgroundColor: theme.scaffoldBackgroundColor,
+            useSafeArea: true,
+            showDragHandle: true,
+            context: context,
+            builder: (context) => const PremiumPlansView());
       },
       child: Container(
         width: double.infinity,
@@ -23,9 +31,23 @@ class AdsContainer extends StatelessWidget {
         child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(Icons.workspace_premium_rounded,color: Colors.black,size: 30,),
-            Text('Get the premium plans',style: TextStyle(color: Colors.black,fontSize: 24,fontWeight: FontWeight.w500),),
-            Icon(Icons.arrow_forward_rounded,color: Colors.black,size: 30,),
+            Icon(
+              Icons.workspace_premium_rounded,
+              color: Colors.black,
+              size: 30,
+            ),
+            Text(
+              'Get the premium plans',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500),
+            ),
+            Icon(
+              Icons.arrow_forward_rounded,
+              color: Colors.black,
+              size: 30,
+            ),
           ],
         ),
       ),

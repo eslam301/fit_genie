@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../main.dart';
 
 class DropDownBarTheme extends StatefulWidget {
+
   const DropDownBarTheme({super.key});
 
   @override
@@ -11,9 +12,15 @@ class DropDownBarTheme extends StatefulWidget {
 }
 
 class _DropDownBarState extends State<DropDownBarTheme> {
-  String? _selected = Get.isDarkMode ? "Dark" : "Light";
   final List<String> _items = ["Light", "Dark"];
   ThemeController themeController = Get.find();
+
+  String? _selected = "Default";
+  @override
+  void initState() {
+    _selected = themeController.currentTheme;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

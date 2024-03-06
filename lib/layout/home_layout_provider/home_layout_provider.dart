@@ -5,7 +5,6 @@ class HomeLayOutProvider extends ChangeNotifier  {
    changePageIndex(int index) {
     pageIndex = index;
     notifyListeners();
-
   }
 
 
