@@ -1,8 +1,8 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'home_widget/ads_container.dart';
+import 'home_widget/Exercise/exercise_container.dart';
 import 'home_widget/status_container_calories.dart';
 import 'home_widget/steps_container.dart';
 
@@ -47,7 +47,7 @@ class HomeView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             StepsContainerView(),
-            StepsContainerView(),
+            ExerciseContainer(),
           ],
         ),
         const Row(

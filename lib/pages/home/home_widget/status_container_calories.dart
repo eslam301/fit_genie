@@ -1,12 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-class CaloriesContainer extends StatelessWidget {
+class CaloriesContainer extends StatefulWidget {
   const CaloriesContainer({super.key});
 
   @override
+  State<CaloriesContainer> createState() => _CaloriesContainerState();
+}
+
+class _CaloriesContainerState extends State<CaloriesContainer> {
+  @override
   Widget build(BuildContext context) {
     // double radius = 50;
+    double baseGoal = 2820;
+    double food = 800;
+    double exerciseCal = 300;
+    double netCal = food + exerciseCal;
+    double remaining = baseGoal - food + exerciseCal;
+    double percent = remaining / baseGoal >= 1 ? 0 : remaining / baseGoal - 1;
+
+
+
+
     double height = MediaQuery.of(context).size.height;
     // double width = MediaQuery.of(context).size.width;
     var theme = Theme.of(context);
@@ -30,40 +45,44 @@ class CaloriesContainer extends StatelessWidget {
               child: Row(
                   children: [
                     CircularPercentIndicator(
-                      radius: height*0.092,
+                      startAngle: 0.0,
+                      animateFromLastPercent: true,
+                      animationDuration: 1000,
+                      radius: height*0.09,
                       progressColor: theme.primaryColor,
                       backgroundColor: Colors.white,
-                      percent: 0.6,
-                      center: const Column(
+                      percent: percent.abs(),
+                      center: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('2,820',style: TextStyle(color: Colors.white,fontSize: 26,fontWeight: FontWeight.bold),),
-                          Text('Remaining',style: TextStyle(color: Colors.white,fontSize: 14),),
+                          Text('$remaining',style: const TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.bold),),
+                          const Text('Remaining',style: TextStyle(color: Colors.white,fontSize: 12),),
                         ],
                       ),
                       animation: true,
                       lineWidth: 10,
-                      circularStrokeCap: CircularStrokeCap.round,
+                      circularStrokeCap: CircularStrokeCap.square,
+
                     ),
                     const Spacer(),
-                    const Column(
+                    Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(children: [
-                            Icon(Icons.flag_rounded,size: 30,),
-                            SizedBox(width: 10,),
-                            Text('Base Goal\n2,820',style: TextStyle(color: Colors.white,fontSize: 14),),
+                            const Icon(Icons.flag_rounded,size: 30,),
+                            const SizedBox(width: 10,),
+                            Text('Base Goal\n $baseGoal',style: const TextStyle(color: Colors.white,fontSize: 14),),
                           ],),
                           Row(children: [
-                            Icon(Icons.fastfood_rounded,size: 30,),
-                            SizedBox(width: 10,),
-                            Text('Food\n0',style: TextStyle(color: Colors.white,fontSize: 14),),
+                            const Icon(Icons.fastfood_rounded,size: 30,),
+                            const SizedBox(width: 10,),
+                            Text('Food\n $food',style: const TextStyle(color: Colors.white,fontSize: 14),),
                           ],),
                           Row(children: [
-                            Icon(Icons.local_fire_department_rounded,size: 30,),
-                            SizedBox(width: 10,),
-                            Text('Exercise\n0',style: TextStyle(color: Colors.white,fontSize: 14),),
+                            const Icon(Icons.local_fire_department_rounded,size: 30,),
+                            const SizedBox(width: 10,),
+                            Text('Exercise\n $exerciseCal',style: const TextStyle(color: Colors.white,fontSize: 14),),
                           ],)
                         ]
                     )

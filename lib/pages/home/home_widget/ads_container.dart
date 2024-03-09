@@ -13,11 +13,9 @@ class _AdsContainerState extends State<AdsContainer> with TickerProviderStateMix
   @override
   void initState() {
     super.initState();
-    controller =
-        BottomSheet.createAnimationController(this);
+    controller = BottomSheet.createAnimationController(this);
     controller.duration = const Duration(milliseconds: 750);
-    controller.reverseDuration = const Duration(milliseconds: 750);
-
+    controller.reverseDuration = const Duration(milliseconds: 600);
   }
 
   @override
@@ -38,33 +36,28 @@ class _AdsContainerState extends State<AdsContainer> with TickerProviderStateMix
             showDragHandle: true,
             transitionAnimationController: controller,
             context: context,
-            builder: (context) => const PremiumPlansView());
+            builder: (context) => const PremiumPlansView()
+        );
       },
       child: Container(
-        width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         margin: const EdgeInsets.symmetric(horizontal: 15),
         decoration: BoxDecoration(
           color: Colors.amber,
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(20.0),
         ),
         child:  const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Icon(
-              Icons.workspace_premium_rounded,
-              color: Colors.black,
-              size: 30,
-            ),
             Text(
-              'Get the premium plans',
+              'Go Premium',
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
                   fontWeight: FontWeight.w500),
             ),
             Icon(
-              Icons.arrow_forward_rounded,
+              Icons.arrow_forward_ios_rounded,
               color: Colors.black,
               size: 30,
             ),
