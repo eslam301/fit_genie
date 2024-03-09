@@ -1,3 +1,4 @@
+import 'package:fitgenie/pages/notification/notification_view.dart';
 import 'package:fitgenie/pages/premium/premium_plans_view.dart';
 import 'package:fitgenie/pages/profile/profile_view.dart';
 import 'package:fitgenie/pages/sign-in/sign_in.dart';
@@ -5,7 +6,6 @@ import 'package:fitgenie/pages/sign-in/sign_up/sign_up.dart';
 import 'package:fitgenie/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'core/application_theme.dart';
 import 'firebase_options.dart';
 import 'layout/home_layout.dart';
@@ -33,23 +33,25 @@ class MyApp extends StatelessWidget {
         Get.put(ThemeController());
       }),
       initialRoute: SplashScreen.routeName,
-      routes: {
-        SplashScreen.routeName: (context) => const SplashScreen(),
-        SignInPage.routeName: (context) => const SignInPage(),
-        SignUpPage.routeName: (context) => const SignUpPage(),
-        HomeLayout.routeName: (context) => const HomeLayout(),
-        ProfilePage.routeName: (context) =>  const ProfilePage(),
-        PremiumPlansView.routeName: (context) => const PremiumPlansView(),
-      },
-      transitionDuration: const Duration(milliseconds: 650),
+      getPages: [
+        GetPage(name: SplashScreen.routeName, page: () => const SplashScreen()),
+        GetPage(name: SignInPage.routeName, page: () => const SignInPage()),
+        GetPage(name: SignUpPage.routeName, page: () => const SignUpPage()),
+        GetPage(name: HomeLayout.routeName, page: () => const HomeLayout()),
+        GetPage(name: ProfilePage.routeName, page: () => const ProfilePage()),
+        GetPage(name: PremiumPlansView.routeName, page: () => const PremiumPlansView()),
+        GetPage(name: NotificationView.routeName, page: () => NotificationView()),
+      ],
+      transitionDuration: const Duration(milliseconds: 550),
       defaultTransition: Transition.rightToLeft,
     );
   }
 }
 class ThemeController extends GetxController {
-   late String currentTheme = 'Default';
+  late String currentTheme = 'Default';
   RxBool isDarkMode = false.obs;
-  ThemeData get themeData => isDarkMode.value ? ThemeData.dark() : ThemeData.light();
+  ThemeData get themeData => Get.isDarkMode ? ThemeData.dark() : ThemeData.light();
+
   void toggleTheme() {
     isDarkMode.toggle();
     Get.changeThemeMode(isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
@@ -59,6 +61,4 @@ class ThemeController extends GetxController {
     currentTheme = theme;
     update();
   }
-
-
 }

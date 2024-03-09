@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,22 +18,24 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () {
       if (FirebaseAuth.instance.currentUser == null){
-        Get.offAll(() => const SignInPage(),transition: Transition.fadeIn);
+        Get.offNamed(SignInPage.routeName);
       }else{
-        Get.offAll(() => const HomeLayout(),transition: Transition.fadeIn);
+        Get.offNamed(HomeLayout.routeName);
       }
-
     });
-    return  const Scaffold(
+    return  Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Spacer(),
-          LogoSplashWidget(),
-          Spacer(),
-          CircularProgressIndicator(),
-          Spacer(),
-          Text('Version 5.3.1',style: TextStyle(color: Colors.white,fontSize: 10),),
+          const Spacer(),
+          FadeIn(
+              delay: const Duration(milliseconds: 400),
+              duration: const Duration(milliseconds: 1200),
+              child: const LogoSplashWidget()),
+          const Spacer(),
+          const CircularProgressIndicator(),
+          const Spacer(),
+          const Text('Version 5.4.1',style: TextStyle(color: Colors.white,fontSize: 10),),
         ],
       ),
     );

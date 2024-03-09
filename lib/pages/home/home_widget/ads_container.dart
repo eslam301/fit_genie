@@ -1,10 +1,30 @@
 import 'package:flutter/material.dart';
-
 import '../../premium/premium_plans_view.dart';
 
-class AdsContainer extends StatelessWidget {
+class AdsContainer extends StatefulWidget {
   const AdsContainer({super.key});
 
+  @override
+  State<AdsContainer> createState() => _AdsContainerState();
+}
+
+class _AdsContainerState extends State<AdsContainer> with TickerProviderStateMixin{
+  late AnimationController controller;
+  @override
+  void initState() {
+    super.initState();
+    controller =
+        BottomSheet.createAnimationController(this);
+    controller.duration = const Duration(milliseconds: 750);
+    controller.reverseDuration = const Duration(milliseconds: 750);
+
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -16,6 +36,7 @@ class AdsContainer extends StatelessWidget {
             backgroundColor: theme.scaffoldBackgroundColor.withOpacity(1.0),
             useSafeArea: true,
             showDragHandle: true,
+            transitionAnimationController: controller,
             context: context,
             builder: (context) => const PremiumPlansView());
       },
@@ -27,7 +48,7 @@ class AdsContainer extends StatelessWidget {
           color: Colors.amber,
           borderRadius: BorderRadius.circular(10.0),
         ),
-        child: const Row(
+        child:  const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Icon(

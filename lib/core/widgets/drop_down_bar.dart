@@ -15,7 +15,7 @@ class _DropDownBarState extends State<DropDownBarTheme> {
   //final List<String> _items = ["Light", "Dark"];
   ThemeController themeController = Get.find();
 
-  late String _selected ;
+  late String _selected = themeController.currentTheme;
   @override
   void initState() {
     _selected = themeController.currentTheme;
@@ -49,7 +49,7 @@ class _DropDownBarState extends State<DropDownBarTheme> {
             child: Row(
               children: [
                 Text(
-                  _selected == "Light" ? "Light" : "Dark",
+                  _selected ,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,

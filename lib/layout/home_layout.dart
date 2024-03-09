@@ -26,10 +26,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     const NewsScreen(),
     const FoodPlanView(),
     const WorkOutPlanView(),
-    const Padding(
-      padding: EdgeInsets.all(15.0),
-      child: SettingsView(),
-    ),
+    const SettingsView(),
   ];
 
   @override

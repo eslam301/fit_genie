@@ -23,14 +23,25 @@ class _NewsScreenState extends State<NewsScreen> {
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(child: Text('error \n ${snapshot.error}')),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Error Check your connection'),
+                    SizedBox(width: 10),
+                    Icon(
+                      Icons.wifi_off,
+                      size: 30,
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 10),
                 IconButton(
                   onPressed: () {
-                    NewsApiManger.fetchSource();
+                    setState(() {NewsApiManger.fetchSource();});
                   },
-                  icon: const Icon(Icons.refresh),
+                  icon: const Icon(Icons.refresh_sharp),
                 )
               ],
             );
@@ -45,7 +56,7 @@ class _NewsScreenState extends State<NewsScreen> {
               color: theme.primaryColor,
               backgroundColor: theme.colorScheme.background,
               onRefresh: () async {
-                setState(() {});
+                setState(() {NewsApiManger.fetchSource();});
               },
               child: ListView.builder(
 

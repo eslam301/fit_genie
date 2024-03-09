@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:fitgenie/pages/premium/premium_plans_widget/premium_plans_widget_container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -46,46 +47,58 @@ class PremiumPlansView extends StatelessWidget {
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: [
-              PlanContainer(
-                title: 'Weekly plan',
-                price: '3.49/week',
-                descriptionListPlan: const [
-                  'weekly workout plan',
-                  'weekly meal plan',
-                ],
-                callbackAction: () {},
+              FadeInLeft(
+                duration: const Duration(milliseconds: 700),
+                delay: const Duration(milliseconds: 200),
+                child: PlanContainer(
+                  title: 'Weekly plan',
+                  price: '5.49/week',
+                  descriptionListPlan: const [
+                    'weekly workout plan',
+                    'weekly meal plan',
+                  ],
+                  callbackAction: () {},
+                ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              PlanContainer(
-                title: 'Monthly plan',
-                price: '30.49/month',
-                descriptionListPlan: const [
-                  'month WorkOut plan',
-                  'month Meal plan',
-                ],
-                nonFeatureListPlan: const [
-                  'free plan',
-                  'free plan',
-                ],
-                callbackAction: () {},
+              FadeInLeft(
+                duration: const Duration(milliseconds: 700),
+                delay: const Duration(milliseconds: 400),
+                child: PlanContainer(
+                  title: 'Monthly plan',
+                  price: '18.49/month',
+                  descriptionListPlan: const [
+                    'month WorkOut plan',
+                    'month Meal plan',
+                  ],
+                  nonFeatureListPlan: const [
+                    'free plan',
+                    'free plan',
+                  ],
+                  callbackAction: () {},
+                ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              PlanContainer(
-                title: 'Yearly plan',
-                price: '300.49/year',
-                descriptionListPlan: const [
-                  'yearly Workout plan',
-                  'yearly Meal plan',
-                ],
-                nonFeatureListPlan: const [
-                  'free plan',
-                  'free plan',
-                ],
-                callbackAction: () {},
+              FadeInLeft(
+                duration: const Duration(milliseconds: 700),
+                delay: const Duration(milliseconds: 600),
+                child: PlanContainer(
+                  title: 'Yearly plan',
+                  price: '210.49/year',
+                  descriptionListPlan: const [
+                    'yearly Workout plan',
+                    'yearly Meal plan',
+                  ],
+                  nonFeatureListPlan: const [
+                    'free plan',
+                    'free plan',
+                  ],
+                  callbackAction: () {},
+                ),
               ),
               const SizedBox(
                 height: 20,

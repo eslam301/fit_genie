@@ -15,10 +15,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.6
   percent_indicator: ^4.2.3
-  model_viewer_plus: ^1.7.0
+#  model_viewer_plus: ^1.7.0
   carousel_slider: ^4.2.1
   provider: ^6.1.1
-  font_awesome_flutter: ^10.6.0
+#  font_awesome_flutter: ^10.6.0
   flutter_svg: ^2.0.9
   http: ^1.1.0
   firebase_core: ^2.25.4
@@ -44,13 +44,5 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/models/low_poly_male_body_base.glb
-    - assets/models/untitled.glb
-    - assets/models/untitled.obj
-    - assets/models/untitled.fbx
     - assets/models/
-    - assets/svg/running_shoe.svg
-assets/svg/running_shoe:
-  svg:
-assets/svg/Logout:
-  svg:
+    - assets/svg/
