@@ -35,6 +35,14 @@ class SignUpPageState extends State<SignUpPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
+                  const Text(
+                    'Sign Up',
+                    style: TextStyle(
+                      fontSize: 38,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
                   CustomTextField(
                       controller: _nameController,
                       label: 'Name',
@@ -150,7 +158,7 @@ class SignUpPageState extends State<SignUpPage> {
       // print('Password: ${_passwordController.text}');
       // print('Name: ${_nameController.text}\n --------------------------------');
       //Get.to(() => RequiredForm(),transition: Transition.leftToRight);
-      saveToFireBase(_emailController.text, _passwordController.text);
+      saveToFireBase(_emailController.text, _passwordController.text,);
     } else {
       Get.snackbar(
         'Error',

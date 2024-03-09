@@ -22,7 +22,7 @@ class SignInPageState extends State<SignInPage> {
   final GlobalKey<FormState> signInFormKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  static const int  duration = 600;
+  static const int  duration = 700;
   final ThemeController themeController = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -60,13 +60,13 @@ class SignInPageState extends State<SignInPage> {
                 FadeInDown(
                     duration: const Duration(milliseconds: duration),
                     child: const LogoSplashWidget()),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 Form(
                   key: signInFormKey,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: Column(
                     children: [
-                      FadeInLeft(
+                      FadeInUp(
                         delay: const Duration(milliseconds: 100),
                         duration: const Duration(milliseconds: duration),
                         child: CustomTextField(
@@ -84,7 +84,7 @@ class SignInPageState extends State<SignInPage> {
                           },
                         ),
                       ),
-                      FadeInRight(
+                      FadeInUp(
                         delay: const Duration(milliseconds: 300),
                         duration: const Duration(milliseconds: duration),
                         child: CustomTextField(
