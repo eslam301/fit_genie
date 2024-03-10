@@ -15,11 +15,11 @@ class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         const Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-
             Icon(
               Icons.settings,
               color: Colors.white,
@@ -31,7 +31,9 @@ class _SettingsViewState extends State<SettingsView> {
             Text(
               "Settings",
               style: TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: 28, color: Colors.white),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28,
+                  color: Colors.white),
             )
           ],
         ),
@@ -42,9 +44,12 @@ class _SettingsViewState extends State<SettingsView> {
         const SizedBox(
           height: 20,
         ),
-        LongButton(label: 'My Model', onTap: (){
-          Get.to(() => const ModelTestView(),transition: Transition.fadeIn);
-        })
+        LongButton(
+            label: 'My Model',
+            onTap: () {
+              Get.to(() => const ModelTestView(),
+                  transition: Transition.fadeIn);
+            })
       ]),
     );
   }

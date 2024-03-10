@@ -4,6 +4,57 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PremiumPlansView extends StatelessWidget {
+  static final List<Map<String, dynamic>> plans = [
+    {
+      "title": "Weekly",
+      "price": 9.99,
+      "features": [
+        'access to all of Fitgenie for 1 week',
+        'Unlimited access to all features.',
+      ],
+      "no_features": [
+        'access to all of Fitgenie for 1 week',
+        'Unlimited access to all features.',
+      ],
+
+    },
+    {
+      "title": "Monthly",
+      "price": 29.99,
+      "features": [
+        'Access to all of Fitgenie\'s features.',
+        'Unlimited access to all features.',
+      ],
+      "no_features": [
+        'access to all of Fitgenie for 1 week',
+        'Unlimited access to all features.',
+      ],
+    },
+    {
+      "title": "Yearly",
+      "price": 299.99,
+      "features": [
+        'Access to all of Fitgenie\'s features.',
+        'Unlimited access to all features.',
+      ],
+      "no_features": [
+        'access to all of Fitgenie for 1 week',
+        'Unlimited access to all features.',
+      ],
+    },
+    {
+      "title": "Lifetime",
+      "price": 999.99,
+      "features": [
+        'Access to all of Fitgenie\'s features.',
+        'Unlimited access to all features.',
+      ],
+      "no_features": [
+        'access to all of Fitgenie for 1 week',
+        'Unlimited access to all features.',
+      ],
+    },
+  ];
   static const String routeName = '/premium-plans';
 
   const PremiumPlansView({super.key});
@@ -44,69 +95,37 @@ class PremiumPlansView extends StatelessWidget {
           height: 20,
         ),
         Expanded(
-          child: ListView(
+          child: ListView.separated(
+            padding: const EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 120),
+            scrollDirection: Axis.vertical,
             physics: const BouncingScrollPhysics(),
-            children: [
-              FadeInLeft(
+            itemCount: plans.length,
+            separatorBuilder: (BuildContext context, int index) {
+              return const SizedBox(
+                height: 25,
+              );
+            },
+            itemBuilder: (BuildContext context, int index) {
+              return FadeInLeft(
                 duration: const Duration(milliseconds: 700),
-                delay: const Duration(milliseconds: 200),
+                delay: Duration(milliseconds: index * 300),
                 child: PlanContainer(
-                  title: 'Weekly plan',
+                  title: plans[index]['title'],
                   price: '5.49/week',
-                  descriptionListPlan: const [
-                    'weekly workout plan',
-                    'weekly meal plan',
+                  descriptionListPlan: plans[index]['features']?? [
+                    'Access to all of Fitgenie\'s features.',
+                    'Unlimited access to all features.',
+                  ],
+                  nonFeatureListPlan: plans[index]['no_features'] ?? [
+                    'access to all of Fitgenie for 1 week',
+                    'Unlimited access to all features.',
                   ],
                   callbackAction: () {},
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              FadeInLeft(
-                duration: const Duration(milliseconds: 700),
-                delay: const Duration(milliseconds: 400),
-                child: PlanContainer(
-                  title: 'Monthly plan',
-                  price: '18.49/month',
-                  descriptionListPlan: const [
-                    'month WorkOut plan',
-                    'month Meal plan',
-                  ],
-                  nonFeatureListPlan: const [
-                    'free plan',
-                    'free plan',
-                  ],
-                  callbackAction: () {},
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              FadeInLeft(
-                duration: const Duration(milliseconds: 700),
-                delay: const Duration(milliseconds: 600),
-                child: PlanContainer(
-                  title: 'Yearly plan',
-                  price: '210.49/year',
-                  descriptionListPlan: const [
-                    'yearly Workout plan',
-                    'yearly Meal plan',
-                  ],
-                  nonFeatureListPlan: const [
-                    'free plan',
-                    'free plan',
-                  ],
-                  callbackAction: () {},
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-            ],
+              );
+            },
           ),
         ),
-
       ]),
     );
   }

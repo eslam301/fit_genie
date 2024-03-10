@@ -10,47 +10,53 @@ class FoodPlanView extends StatefulWidget {
 }
 
 class _FoodPlanViewState extends State<FoodPlanView> {
-  List meal = [
+  static final List meal = [
     {
       "name": "Breakfast",
-      "Image": "assets/images/Healthy-Breakfast-1000x620.jpg",
+      "Image": "assets/images/breakfast_image.jpg",
       "title": "Meal plan",
       "subtitle": "",
     },
     {
       "name": "Snack",
-      "Image":
-          "assets/images/healthy-tuna-pasta-bake-p46-151271-2.jpg",
+      "Image": "assets/images/dinner_image.jpg",
       "title": "Meal plan",
       "subtitle": "",
     },
     {
       "name": "Dinner",
-      "Image": "assets/images/variety-of-healthy-snacks-gourmet-dips-royalty-free-image-1639694989.jpg",
+      "Image": "assets/images/snacks_image.jpg",
       "title": "Meal plan",
       "subtitle": "",
     },
+    {
+      "name": "Lunch",
+      "Image": "assets/images/launch_image.png",
+      "title": "Meal plan",
+      "subtitle": "",
+    }
   ];
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.sizeOf(context);
     return
          ListView.builder(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 130),
             itemCount: meal.length,
             itemBuilder: (context, index) {
-              var W0bg = meal[index] as Map? ?? {};
+              var mealData = meal[index] as Map? ?? {};
               return Container(
                 margin: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
                   color: Colors.grey,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 clipBehavior: Clip.antiAlias,
                 child: Stack(
                   children: [
                     Image.asset(
-                      W0bg["Image"].toString(),
+                      mealData["Image"].toString(),
                       width: media.width,
                       height: media.width * 0.5,
                       fit: BoxFit.cover,
@@ -74,7 +80,7 @@ class _FoodPlanViewState extends State<FoodPlanView> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            W0bg["title"],
+                            mealData["title"],
                             style: const TextStyle(
                               color: Colors.yellow,
                               fontSize: 14,
@@ -82,7 +88,7 @@ class _FoodPlanViewState extends State<FoodPlanView> {
                             ),
                           ),
                           Text(
-                            W0bg["name"],
+                            mealData["name"],
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 20,
@@ -90,7 +96,7 @@ class _FoodPlanViewState extends State<FoodPlanView> {
                             ),
                           ),
                           Text(
-                            W0bg["subtitle"],
+                            mealData["subtitle"],
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 14,

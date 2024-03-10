@@ -55,7 +55,7 @@ class _CaloriesContainerState extends State<CaloriesContainer> {
                       center: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('$remaining',style: const TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.bold),),
+                          Text('${remaining.toInt()}',style: const TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.bold),),
                           const Text('Remaining',style: TextStyle(color: Colors.white,fontSize: 12),),
                         ],
                       ),
@@ -72,17 +72,17 @@ class _CaloriesContainerState extends State<CaloriesContainer> {
                           Row(children: [
                             const Icon(Icons.flag_rounded,size: 30,),
                             const SizedBox(width: 10,),
-                            Text('Base Goal\n $baseGoal',style: const TextStyle(color: Colors.white,fontSize: 14),),
+                            Text('Base Goal\n ${baseGoal.toInt()}',style: const TextStyle(color: Colors.white,fontSize: 14),),
                           ],),
                           Row(children: [
                             const Icon(Icons.fastfood_rounded,size: 30,),
                             const SizedBox(width: 10,),
-                            Text('Food\n $food',style: const TextStyle(color: Colors.white,fontSize: 14),),
+                            Text('Food\n ${food.toInt()}',style: const TextStyle(color: Colors.white,fontSize: 14),),
                           ],),
                           Row(children: [
                             const Icon(Icons.local_fire_department_rounded,size: 30,),
                             const SizedBox(width: 10,),
-                            Text('Exercise\n $exerciseCal',style: const TextStyle(color: Colors.white,fontSize: 14),),
+                            Text('Exercise\n ${exerciseCal.toInt()}',style: const TextStyle(color: Colors.white,fontSize: 14),),
                           ],)
                         ]
                     )

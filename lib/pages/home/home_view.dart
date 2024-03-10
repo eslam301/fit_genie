@@ -15,49 +15,50 @@ class HomeView extends StatelessWidget {
     //var appTheme = ApplicationTheme();
     // var widthScreen = MediaQuery.of(context).size.width;
     var heightScreen = MediaQuery.of(context).size.height;
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(vertical :10),
-      child: Column(children: [
-        Container(
-          margin: const EdgeInsets.only(bottom: 20),
-          child: CarouselSlider(
-              items: const [
-                CaloriesContainer(),
-                CaloriesContainer(),
-              ],
-              options: CarouselOptions(
-                aspectRatio: 16 / 9,
-                enlargeCenterPage: true,
-                scrollDirection: Axis.horizontal,
-                initialPage: 0,
-                enableInfiniteScroll: false,
-                reverse: false,
-                autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 10),
-                autoPlayAnimationDuration: const Duration(milliseconds: 1500),
-                autoPlayCurve: Curves.fastOutSlowIn,
-                scrollPhysics: const BouncingScrollPhysics(),
-                pauseAutoPlayOnTouch: true,
-                viewportFraction: .9,
-                height: heightScreen * 0.345,
-              )),
-        ),
-        const AdsContainer(),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            StepsContainerView(),
-            ExerciseContainer(),
+    return ListView(
+      padding: const EdgeInsets.only( top: 20, bottom: 120),
+      physics: const BouncingScrollPhysics(),
+      scrollDirection: Axis.vertical,
+        children: [
+      CarouselSlider(
+
+          items: const [
+            CaloriesContainer(),
+            CaloriesContainer(),
           ],
-        ),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            StepsContainerView(),
-            StepsContainerView(),
-          ],
-        ),
-      ]),
-    );
+          options: CarouselOptions(
+            pageSnapping: true,
+            aspectRatio: 16 / 9,
+            enlargeCenterPage: true,
+            scrollDirection: Axis.horizontal,
+            initialPage: 0,
+            enableInfiniteScroll: false,
+            reverse: false,
+            autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 10),
+            autoPlayAnimationDuration: const Duration(milliseconds: 1500),
+            autoPlayCurve: Curves.fastOutSlowIn,
+            scrollPhysics: const BouncingScrollPhysics(),
+            pauseAutoPlayOnTouch: true,
+            viewportFraction: .9,
+            height: heightScreen * 0.345,
+          )),
+      const SizedBox(height: 20,),
+      const AdsContainer(),
+      const Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          StepsContainerView(),
+          ExerciseContainer(),
+        ],
+      ),
+      const Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          StepsContainerView(),
+          StepsContainerView(),
+        ],
+      ),
+    ]);
   }
 }

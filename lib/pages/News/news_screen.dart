@@ -59,8 +59,10 @@ class _NewsScreenState extends State<NewsScreen> {
                 setState(() {NewsApiManger.fetchSource();});
               },
               child: ListView.builder(
-
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 20.0),
                 controller: ScrollController(),
                 itemCount: articlesModel.articles!.length > 30 ? 30 : articlesModel.articles!.length,
                 itemBuilder: (context, index) => Padding(

@@ -4,7 +4,7 @@ class PlanContainer extends StatelessWidget {
   final String title;
   final String price;
   final List<String> descriptionListPlan;
-  final List<String>? nonFeatureListPlan;
+  final List? nonFeatureListPlan;
   final Function callbackAction;
 
   const PlanContainer({
@@ -43,7 +43,7 @@ class PlanContainer extends StatelessWidget {
               style: const TextStyle(
                   fontSize: 30,
                   color: Colors.white,
-                  fontWeight: FontWeight.bold)),
+                  fontWeight: FontWeight.normal)),
           Text(price,
               style: const TextStyle(fontSize: 21, color: Colors.amber)),
           ListView.separated(
@@ -61,7 +61,7 @@ class PlanContainer extends StatelessWidget {
                   children: [
                     Text(descriptionListPlan[index],
                         style: const TextStyle(
-                            color: Colors.white, fontSize: 18)),
+                            color: Colors.white, fontSize: 15)),
                     const Icon(
                       Icons.check,
                       color: Colors.green,
@@ -86,7 +86,7 @@ class PlanContainer extends StatelessWidget {
                       children: [
                         Text(nonFeatureListPlan![index],
                             style: const TextStyle(
-                                color: Colors.white, fontSize: 18)),
+                                color: Colors.white, fontSize: 15)),
                         const Icon(
                           Icons.cancel_outlined,
                           color: Colors.red,

@@ -36,6 +36,7 @@ class _AdsContainerState extends State<AdsContainer> with TickerProviderStateMix
             showDragHandle: true,
             transitionAnimationController: controller,
             context: context,
+
             builder: (context) => const PremiumPlansView()
         );
       },
