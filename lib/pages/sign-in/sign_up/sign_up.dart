@@ -1,4 +1,5 @@
 
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/widgets/custom_button.dart';
@@ -35,15 +36,21 @@ class SignUpPageState extends State<SignUpPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  const Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      fontSize: 38,
-                      fontWeight: FontWeight.bold,
+                  FadeInLeftBig(
+                    delay: const Duration(milliseconds: 100),
+                    child: const Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        fontSize: 38,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
                   CustomTextField(
+                      keyBoardType: TextInputType.name,
+                      suffixIcon: const Icon(Icons.person),
+                      delay: const Duration(milliseconds: 50),
                       controller: _nameController,
                       label: 'Name',
                       validator: (String? value) {
@@ -55,6 +62,9 @@ class SignUpPageState extends State<SignUpPage> {
                       }),
                   CustomTextField(
                       controller: _emailController,
+                      delay: const Duration(milliseconds: 100),
+                      suffixIcon: const Icon(Icons.email),
+
                       label: 'Email',
                       keyBoardType: TextInputType.emailAddress,
                       validator: (String? value) {
@@ -68,6 +78,7 @@ class SignUpPageState extends State<SignUpPage> {
                       }),
                   CustomTextField(
                       controller: _passwordController,
+                      delay: const Duration(milliseconds: 150),
                       label: 'Password',
                       isPassword: true,
                       validator: (String? value) {
@@ -85,6 +96,7 @@ class SignUpPageState extends State<SignUpPage> {
                       }),
                   CustomTextField(
                       controller: _passwordConfirmController,
+                      delay: const Duration(milliseconds: 200),
                       label: 'Confirm Password',
                       isPassword: true,
                       validator: (String? value) {
@@ -96,11 +108,14 @@ class SignUpPageState extends State<SignUpPage> {
                           return 'error';
                         }
                       }),
-                  LongButton(
-                      label: 'Sign Up',
-                      onTap: () {
-                        signUp();
-                      }),
+                  FadeInUp(
+                    delay: const Duration(milliseconds: 350),
+                    child: LongButton(
+                        label: 'Sign Up',
+                        onTap: () {
+                          signUp();
+                        }),
+                  ),
                   TextButton(
                     onPressed: () {
                       Get.offAll(() => const SignInPage(),transition: Transition.leftToRight);

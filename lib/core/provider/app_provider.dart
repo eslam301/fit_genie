@@ -1,4 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 
 class AppProvider extends ChangeNotifier {
 
@@ -15,4 +17,23 @@ class AppProvider extends ChangeNotifier {
     }
   }
   get getPageIndexValue => pageIndex;
+}
+
+//-----------------------------------------------------------------------
+class ThemeController extends GetxController {
+  late String currentTheme = 'Default';
+  RxBool isDarkMode = false.obs;
+  ThemeData get themeData =>
+      Get.isDarkMode ? ThemeData.dark() : ThemeData.light();
+
+  void toggleTheme() {
+    isDarkMode.toggle();
+    Get.changeThemeMode(isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
+  }
+
+  void changeTheme(String theme) {
+    Get.changeThemeMode(theme == "Dark" ? ThemeMode.dark : ThemeMode.light);
+    currentTheme = theme;
+    update();
+  }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../main.dart';
+import '../provider/app_provider.dart';
 
 class DropDownBarTheme extends StatefulWidget {
 
