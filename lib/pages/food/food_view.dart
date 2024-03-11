@@ -10,7 +10,7 @@ class FoodPlanView extends StatefulWidget {
 }
 
 class _FoodPlanViewState extends State<FoodPlanView> {
-  static final List meal = [
+  static const List<Map<String, dynamic>> meal = [
     {
       "name": "Breakfast",
       "Image": "assets/images/breakfast_image.jpg",
@@ -19,19 +19,19 @@ class _FoodPlanViewState extends State<FoodPlanView> {
     },
     {
       "name": "Snack",
-      "Image": "assets/images/dinner_image.jpg",
-      "title": "Meal plan",
-      "subtitle": "",
-    },
-    {
-      "name": "Dinner",
-      "Image": "assets/images/snacks_image.jpg",
+      "Image": "assets/images/snacks_image.png",
       "title": "Meal plan",
       "subtitle": "",
     },
     {
       "name": "Lunch",
       "Image": "assets/images/launch_image.png",
+      "title": "Meal plan",
+      "subtitle": "",
+    },
+    {
+      "name": "Dinner",
+      "Image": "assets/images/dinner_image.jpg",
       "title": "Meal plan",
       "subtitle": "",
     }
@@ -45,7 +45,7 @@ class _FoodPlanViewState extends State<FoodPlanView> {
             padding: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 130),
             itemCount: meal.length,
             itemBuilder: (context, index) {
-              var mealData = meal[index] as Map? ?? {};
+              var mealData = meal[index];
               return Container(
                 margin: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(

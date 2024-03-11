@@ -15,7 +15,7 @@ class ApplicationTheme {
   static const Color darkSlateAccent = Color(0xff001a11);
   static const Color darkBackGround = Color(0xff203e41);
 
-  static ThemeData lightTheme = ThemeData(
+  static final ThemeData lightTheme = ThemeData(
     primaryColor: gothic,
     secondaryHeaderColor: gothic,
     scaffoldBackgroundColor: openGothic,
@@ -88,9 +88,21 @@ class ApplicationTheme {
         color: Colors.black,
       ),
     ),
-    bottomSheetTheme: const BottomSheetThemeData(),
+    bottomSheetTheme:  const BottomSheetThemeData(
+
+      showDragHandle: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      elevation: 0,
+      modalElevation: 0,
+      backgroundColor: darkBackGround,
+    ),
   );
-  static ThemeData darkTheme = ThemeData(
+  static final ThemeData darkTheme = ThemeData(
     primaryColor: gothicShade,
     secondaryHeaderColor: openGothicShade,
     scaffoldBackgroundColor: darkBackGround.withOpacity(0.8),
@@ -150,17 +162,28 @@ class ApplicationTheme {
         brightness: Brightness.dark
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: darkDarkSlate,
       type: BottomNavigationBarType.fixed,
       elevation: 0,
+      backgroundColor: gothicShade,
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.white54,
       showSelectedLabels: true,
       showUnselectedLabels: false,
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.white,
       selectedIconTheme: IconThemeData(
         color: Colors.black,
       ),
     ),
-    bottomSheetTheme: const BottomSheetThemeData(),
+    bottomSheetTheme:  const BottomSheetThemeData(
+
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      elevation: 0,
+      modalElevation: 0,
+      backgroundColor: darkBackGround,
+    ),
   );
 }

@@ -15,11 +15,11 @@ class _DropDownBarState extends State<DropDownBarTheme> {
   //final List<String> _items = ["Light", "Dark"];
   ThemeController themeController = Get.find();
 
-  late String _selected = themeController.currentTheme;
+  late  String _selected = themeController.currentTheme;
   @override
   void initState() {
-    _selected = themeController.currentTheme;
     super.initState();
+    _selected = themeController.currentTheme;
   }
 
   @override
@@ -28,6 +28,13 @@ class _DropDownBarState extends State<DropDownBarTheme> {
       onTap: () {
         showBottomSheet(context);
       },
+      onDoubleTap: () {
+        setState(() {
+          _selected = _selected == "Light" ? "Dark" : "Light";
+          themeController.changeTheme(_selected);
+        });
+      },
+      behavior: HitTestBehavior.opaque,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -57,12 +64,12 @@ class _DropDownBarState extends State<DropDownBarTheme> {
                 ),
                 const Spacer(),
                 Icon(
-                  Icons.arrow_drop_down,
+                  Icons.keyboard_double_arrow_down_rounded,
                   color: Colors.grey[700],
                 )
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -72,9 +79,9 @@ class _DropDownBarState extends State<DropDownBarTheme> {
     showModalBottomSheet(
         backgroundColor: Colors.transparent,
         enableDrag: true,
+        isScrollControlled: true,
         context: context,
         builder: (context) {
-
           return Container(
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
@@ -88,13 +95,13 @@ class _DropDownBarState extends State<DropDownBarTheme> {
             child: Column(
               children: [
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20),
                   width: 50,
                   height: 5,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: Colors.white
-                  )
+                  margin: const EdgeInsets.only(top: 20, bottom: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                  ),
                 ),
                 const Text(
                   "Choose Theme",

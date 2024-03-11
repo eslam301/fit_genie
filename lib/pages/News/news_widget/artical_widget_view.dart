@@ -28,7 +28,7 @@ class ArticleWidget extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(20),
           color: theme.primaryColor,
         ),
         child: Column(

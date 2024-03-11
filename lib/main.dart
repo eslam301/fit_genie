@@ -1,12 +1,14 @@
+import 'package:fitgenie/pages/News/news_screen.dart';
 import 'package:fitgenie/pages/notification/notification_view.dart';
-import 'package:fitgenie/pages/premium/premium_plans_view.dart';
 import 'package:fitgenie/pages/profile/profile_view.dart';
 import 'package:fitgenie/pages/sign-in/sign_in.dart';
 import 'package:fitgenie/pages/sign-in/sign_up/sign_up.dart';
 import 'package:fitgenie/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'core/application_theme.dart';
+import 'core/provider/app_provider.dart';
 import 'firebase_options.dart';
 import 'layout/home_layout.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -16,7 +18,10 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (BuildContext context) {
+        return AppProvider();
+      }, child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -39,23 +44,28 @@ class MyApp extends StatelessWidget {
         GetPage(name: SignUpPage.routeName, page: () => const SignUpPage()),
         GetPage(name: HomeLayout.routeName, page: () => const HomeLayout()),
         GetPage(name: ProfilePage.routeName, page: () => const ProfilePage()),
-        GetPage(name: PremiumPlansView.routeName, page: () => const PremiumPlansView()),
-        GetPage(name: NotificationView.routeName, page: () => NotificationView()),
+        GetPage(name: NewsScreen.routeName, page: () => const NewsScreen()),
+        GetPage(
+            name: NotificationView.routeName,
+            page: () => const NotificationView()),
       ],
       transitionDuration: const Duration(milliseconds: 550),
       defaultTransition: Transition.rightToLeft,
     );
   }
 }
+
 class ThemeController extends GetxController {
   late String currentTheme = 'Default';
   RxBool isDarkMode = false.obs;
-  ThemeData get themeData => Get.isDarkMode ? ThemeData.dark() : ThemeData.light();
+  ThemeData get themeData =>
+      Get.isDarkMode ? ThemeData.dark() : ThemeData.light();
 
   void toggleTheme() {
     isDarkMode.toggle();
     Get.changeThemeMode(isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
   }
+
   void changeTheme(String theme) {
     Get.changeThemeMode(theme == "Dark" ? ThemeMode.dark : ThemeMode.light);
     currentTheme = theme;

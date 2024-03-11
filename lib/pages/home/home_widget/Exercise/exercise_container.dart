@@ -17,7 +17,7 @@ class ExerciseContainer extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(20)
           ),
         ),
-         padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+         padding: const EdgeInsets.only(left: 15,right: 15,top: 10,bottom: 20),
         child:Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,7 +52,6 @@ class ExerciseContainer extends StatelessWidget {
     showModalBottomSheet(
         enableDrag: true,
         isScrollControlled: true,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor.withOpacity(1.0),
         useSafeArea: true,
         showDragHandle: true,
         context: context,

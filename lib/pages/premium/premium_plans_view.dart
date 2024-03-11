@@ -108,10 +108,10 @@ class PremiumPlansView extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return FadeInLeft(
                 duration: const Duration(milliseconds: 700),
-                delay: Duration(milliseconds: index * 300),
+                delay: Duration(milliseconds: index+1 * 200),
                 child: PlanContainer(
                   title: plans[index]['title'],
-                  price: '5.49/week',
+                  price: '${plans[index]['price']}week',
                   descriptionListPlan: plans[index]['features']?? [
                     'Access to all of Fitgenie\'s features.',
                     'Unlimited access to all features.',

@@ -7,6 +7,7 @@ import 'news_details_view_screen.dart';
 import 'news_widget/artical_widget_view.dart';
 
 class NewsScreen extends StatefulWidget {
+  static const String routeName = '/news_screen';
   const NewsScreen({super.key});
 
   @override
@@ -62,7 +63,7 @@ class _NewsScreenState extends State<NewsScreen> {
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 20.0),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
                 controller: ScrollController(),
                 itemCount: articlesModel.articles!.length > 30 ? 30 : articlesModel.articles!.length,
                 itemBuilder: (context, index) => Padding(

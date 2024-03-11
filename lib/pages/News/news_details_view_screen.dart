@@ -137,7 +137,7 @@ class ArticleDetails extends StatelessWidget {
                   const SizedBox(width: 15),
                   ElevatedButton(
                     onPressed: ()  {
-                      Get.to(() => WebViewScreen(url: url));
+                      Get.to(() => WebViewScreen(url: url,source: source));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,

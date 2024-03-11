@@ -15,7 +15,7 @@ class _CaloriesContainerState extends State<CaloriesContainer> {
     double baseGoal = 2820;
     double food = 800;
     double exerciseCal = 300;
-    double netCal = food + exerciseCal;
+    //double netCal = food + exerciseCal;
     double remaining = baseGoal - food + exerciseCal;
     double percent = remaining / baseGoal >= 1 ? 0 : remaining / baseGoal - 1;
 

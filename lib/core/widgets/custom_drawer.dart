@@ -81,7 +81,7 @@ class CustomDrawer extends StatelessWidget {
                         ),
                         onTap: () {
                           Get.to(
-                                () => NotificationView(),
+                                () => const NotificationView(),
                             transition: Transition.rightToLeftWithFade,
                           );
 
