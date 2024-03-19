@@ -52,13 +52,13 @@ class HomeView extends StatelessWidget {
           ExerciseContainer(),
         ],
       ),
-      const Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          StepsContainerView(),
-          StepsContainerView(),
-        ],
-      ),
+      // const Row(
+      //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //   children: [
+      //     StepsContainerView(),
+      //     StepsContainerView(),
+      //   ],
+      // ),
     ]);
   }
 }

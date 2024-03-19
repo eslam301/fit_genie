@@ -6,22 +6,22 @@ import 'package:provider/provider.dart';
 import '../core/provider/app_provider.dart';
 import '../core/widgets/custom_drawer.dart';
 import '../core/widgets/my_app_bottom_navigation_bar.dart';
-import '../pages/News/news_screen.dart';
 import '../pages/notification/notification_view.dart';
 import '../pages/profile/profile_view.dart';
 import '../pages/settings/setting_view.dart';
+import '../pages/timer/timer_view.dart';
 import '../pages/work_out_planes/work_out_plan_view.dart';
 
 class HomeLayout extends StatelessWidget {
   static const String routeName = '/home';
 
   const HomeLayout({super.key});
-  static const List<Widget> screens = [
-    HomeView(),
-    NewsScreen(),
-    FoodPlanView(),
-    WorkOutPlanView(),
-    SettingsView(),
+  static List<Widget> screens = [
+    const HomeView(),
+    const TimerView(),
+    const FoodPlanView(),
+    const WorkOutPlanView(),
+    const SettingsView(),
   ];
   // int pageIndex = 0 ;
   @override

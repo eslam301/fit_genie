@@ -19,73 +19,91 @@ class _NewsScreenState extends State<NewsScreen> {
   Widget build(BuildContext context) {
 
      var theme = Theme.of(context);
-    return FutureBuilder(
-        future: NewsApiManger.fetchSource(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Error Check your connection'),
-                    SizedBox(width: 10),
-                    Icon(
-                      Icons.wifi_off,
-                      size: 30,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                IconButton(
-                  onPressed: () {
-                    setState(() {NewsApiManger.fetchSource();});
-                  },
-                  icon: const Icon(Icons.refresh_sharp),
-                )
-              ],
-            );
-          }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }else {
-            ArticleModel articlesModel = snapshot.data as ArticleModel;
-            return RefreshIndicator(
-              color: theme.primaryColor,
-              backgroundColor: theme.colorScheme.background,
-              onRefresh: () async {
-                setState(() {NewsApiManger.fetchSource();});
-              },
-              child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-                controller: ScrollController(),
-                itemCount: articlesModel.articles!.length > 30 ? 30 : articlesModel.articles!.length,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: ArticleWidget(
-                    onTap: () {
-                      Get.to (
-                        () => ArticleDetails(
-                          articlesModel: articlesModel,
-                          index: index,
-                        ),
-                        transition: Transition.leftToRightWithFade,
-                      );
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(60.0),
+        child: Container(
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(25),
+              bottomRight: Radius.circular(25),
+            ),
+            color: theme.primaryColor,
+          ),
+          child: AppBar(
+            title: const Text('News'),
+          ),
+        ),
+      ),
+      body: FutureBuilder(
+          future: NewsApiManger.fetchSource(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Error Check your connection'),
+                      SizedBox(width: 10),
+                      Icon(
+                        Icons.wifi_off,
+                        size: 30,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  IconButton(
+                    onPressed: () {
+                      setState(() {NewsApiManger.fetchSource();});
                     },
-                    articlesModel: articlesModel,
-                    index: index,
+                    icon: const Icon(Icons.refresh_sharp),
+                  )
+                ],
+              );
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }else {
+              ArticleModel articlesModel = snapshot.data as ArticleModel;
+              return RefreshIndicator(
+                color: theme.primaryColor,
+                backgroundColor: theme.colorScheme.background,
+                onRefresh: () async {
+                  setState(() {NewsApiManger.fetchSource();});
+                },
+                child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+                  controller: ScrollController(),
+                  itemCount: articlesModel.articles!.length > 30 ? 30 : articlesModel.articles!.length,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: ArticleWidget(
+                      onTap: () {
+                        Get.to (
+                              () => ArticleDetails(
+                            articlesModel: articlesModel,
+                            index: index,
+                          ),
+                          transition: Transition.leftToRightWithFade,
+                        );
+                      },
+                      articlesModel: articlesModel,
+                      index: index,
+                    ),
                   ),
                 ),
-              ),
-            );
-          }
-        });
+              );
+            }
+          }),
+    );
   }
 
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../fire_base/firebase.dart';
+import '../../pages/News/news_screen.dart';
 import '../../pages/notification/notification_view.dart';
 import '../../pages/profile/profile_view.dart';
 import '../../pages/sign-in/sign_in.dart';
@@ -82,6 +83,26 @@ class CustomDrawer extends StatelessWidget {
                         onTap: () {
                           Get.to(
                                 () => const NotificationView(),
+                            transition: Transition.rightToLeftWithFade,
+                          );
+
+                        }),
+                    ListTile(
+                      iconColor: theme.primaryColor,
+                        title: Text(
+                          'News Feed',
+                          style: TextStyle(
+                              color: theme.primaryColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        trailing: const Icon(
+                          Icons.newspaper_rounded,
+                          size: 30,
+                        ),
+                        onTap: () {
+                          Get.to(
+                                () => const NewsScreen(),
                             transition: Transition.rightToLeftWithFade,
                           );
 

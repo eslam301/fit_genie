@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDJlY5lPv5ePCXVWm3h9ZPTF_Y7yUYtx4A',
-    appId: '1:895482306354:android:01d060c5c077d24b62c12b',
-    messagingSenderId: '895482306354',
-    projectId: 'grad-project-68a3f',
-    storageBucket: 'grad-project-68a3f.appspot.com',
+    apiKey: 'AIzaSyCp-YRfxJ5DqqIOOo6ibmU117lhhOZ_GcI',
+    appId: '1:395650047750:android:368c27acddf1efb8b50887',
+    messagingSenderId: '395650047750',
+    projectId: 'fitgenie-project',
+    storageBucket: 'fitgenie-project.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyADUmlhoM3lOpFethGMGHA4wPhWa1IuCe4',
-    appId: '1:895482306354:ios:aaddcd7eb2be2d0262c12b',
-    messagingSenderId: '895482306354',
-    projectId: 'grad-project-68a3f',
-    storageBucket: 'grad-project-68a3f.appspot.com',
+    apiKey: 'AIzaSyAA4QO4B-0hT0S7mSrhqJrpxQvITIxMTJU',
+    appId: '1:395650047750:ios:509d69eefeafe90cb50887',
+    messagingSenderId: '395650047750',
+    projectId: 'fitgenie-project',
+    storageBucket: 'fitgenie-project.appspot.com',
     iosBundleId: 'com.example.fitgenie',
   );
 }
