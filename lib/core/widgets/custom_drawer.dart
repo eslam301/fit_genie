@@ -4,7 +4,6 @@ import '../../fire_base/firebase.dart';
 import '../../pages/News/news_screen.dart';
 import '../../pages/notification/notification_view.dart';
 import '../../pages/profile/profile_view.dart';
-import '../../pages/sign-in/sign_in.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -126,11 +125,11 @@ class CustomDrawer extends StatelessWidget {
                         ),
                         onTap: () {
                           signOutFireBase();
-                          Get.off(
-                            () => const SignInPage(),
-                            duration: const Duration(milliseconds: 500),
-                            transition: Transition.fadeIn,
-                          );
+                          // Get.off(
+                          //   () => const SignInPage(),
+                          //   duration: const Duration(milliseconds: 500),
+                          //   transition: Transition.fadeIn,
+                          // );
                         }),
                   ]))
             ]),

@@ -16,11 +16,10 @@ class SignUpPage extends StatefulWidget {
 
 class SignUpPageState extends State<SignUpPage> {
   final GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _passwordConfirmController =
-      TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController passwordConfirmController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     // var theme = Theme.of(context);
@@ -50,17 +49,18 @@ class SignUpPageState extends State<SignUpPage> {
                       keyBoardType: TextInputType.name,
                       suffixIcon: const Icon(Icons.person),
                       delay: const Duration(milliseconds: 50),
-                      controller: _nameController,
+                      controller: nameController,
                       label: 'Name',
                       validator: (String? value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter your name';
                         } else {
+                          //print('name is valid');
                           return null;
                         }
                       }),
                   CustomTextField(
-                      controller: _emailController,
+                      controller: emailController,
                       delay: const Duration(milliseconds: 100),
                       suffixIcon: const Icon(Icons.email),
                       label: 'Email',
@@ -71,11 +71,12 @@ class SignUpPageState extends State<SignUpPage> {
                         } else if (!value.contains('@')) {
                           return 'Please enter a valid email';
                         } else {
+                          //print('email is valid');
                           return null;
                         }
                       }),
                   CustomTextField(
-                      controller: _passwordController,
+                      controller: passwordController,
                       delay: const Duration(milliseconds: 150),
                       label: 'Password',
                       isPassword: true,
@@ -89,21 +90,25 @@ class SignUpPageState extends State<SignUpPage> {
                         } else if (!value.contains(RegExp(r'[a-z]'))) {
                           return 'Password must contain at least one lowercase letter';
                         } else {
+                          //print('password is valid');
                           return null;
+
                         }
                       }),
                   CustomTextField(
-                      controller: _passwordConfirmController,
+                      controller: passwordConfirmController,
                       delay: const Duration(milliseconds: 200),
                       label: 'Confirm Password',
                       isPassword: true,
                       validator: (String? value) {
                         if (value == null || value.isEmpty) {
                           return 'Please confirm your password';
-                        } else if (value != _passwordController.text) {
+                        } else if (value != passwordController.text) {
                           return 'Passwords do not match';
+                        } else {
+                          //print('password is valid');
+                          return null;
                         }
-                        return null;
                       }),
                   FadeInUp(
                     delay: const Duration(milliseconds: 350),
@@ -111,6 +116,7 @@ class SignUpPageState extends State<SignUpPage> {
                         label: 'Sign Up',
                         onTap: () {
                           signUp();
+                          //print('signup');
                         }),
                   ),
                   TextButton(
@@ -123,38 +129,6 @@ class SignUpPageState extends State<SignUpPage> {
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //   children: [
-                  //     Container(
-                  //         padding: const EdgeInsets.all(15),
-                  //         decoration: BoxDecoration(
-                  //           color: theme.primaryColor,
-                  //           borderRadius: BorderRadius.circular(10),
-                  //
-                  //         ),
-                  //         child: const Text(
-                  //           'Sign up as a \ncouch',
-                  //           style: TextStyle(color: Colors.white,fontSize: 24),
-                  //           textAlign: TextAlign.center,
-                  //         )
-                  //     ),
-                  //     Container(
-                  //         padding: const EdgeInsets.all(15),
-                  //         decoration: BoxDecoration(
-                  //           color: theme.primaryColor,
-                  //           borderRadius: BorderRadius.circular(10),
-                  //
-                  //         ),
-                  //         child: const Text(
-                  //           'Sign up as a \n trainer',
-                  //           style: TextStyle(color: Colors.white,fontSize: 24),
-                  //           textAlign: TextAlign.center,
-                  //
-                  //         )
-                  //     ),
-                  //   ],
-                  // ),
                 ],
               ),
             ),
@@ -164,22 +138,12 @@ class SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  signUp() {
+  signUp() async {
     if (signUpFormKey.currentState!.validate()) {
-      // print('Validated');
-      // print('Email: ${_emailController.text}');
-      // print('Password: ${_passwordController.text}');
-      // print('Name: ${_nameController.text}\n --------------------------------');
-      //Get.to(() => RequiredForm(),transition: Transition.leftToRight);
-      saveToFireBase(
-        _emailController.text,
-        _passwordController.text,
+      await saveSignToFireBase(
+        emailController.text,
+        passwordController.text,
       );
-      Get.snackbar(
-        'Success',
-        'Account created successfully',
-      );
-      Get.offAll(() => const SignInPage(), transition: Transition.leftToRight);
     } else {
       Get.snackbar(
         'Error',

@@ -83,15 +83,18 @@ void signInFireBase(emailController, passwordController) async {
 // signOutFireBase()
 void signOutFireBase() async {
   await FirebaseAuth.instance.signOut();
+  Get.offAll(() => const SignInPage(),transition: Transition.rightToLeft);
 }
-void saveToFireBase(emailController, passwordController) async {
+Future saveSignToFireBase(String emailController, String passwordController) async {
   try {
-    // ignore: unused_local_variable
+     //print('try');
     final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: emailController.text,
-      password: passwordController.text,
+      email: emailController,
+      password: passwordController,
     );
-
+    // print("success");
+    // print(credential.user?.uid);
+    // print(credential.user?.email);
     // print(credential.user?.uid);
     // print(credential.user?.email);
     Get.snackbar(
@@ -101,16 +104,17 @@ void saveToFireBase(emailController, passwordController) async {
     Get.to(() => const SignInPage(),transition: Transition.leftToRight);
   } on FirebaseAuthException catch (e) {
     if (e.code == 'weak-password') {
-      // print('The password provided is too weak.');
+       //print('The password provided is too weak.');
     } else if (e.code == 'email-already-in-use') {
-      // print('The account already exists for that email.');
+       //print('The account already exists for that email.');
     } else if (e.code== 'invalid-email'){
       // print('The email is invalid.');
     } else {
       // print('\n\n ${e.code}\n\n');
     }
   } catch (e) {
-    // print(e);
+    //print('e');
+    //print(e.toString());
   }
 }
 
