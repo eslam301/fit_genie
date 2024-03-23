@@ -1,4 +1,3 @@
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -64,7 +63,6 @@ class SignUpPageState extends State<SignUpPage> {
                       controller: _emailController,
                       delay: const Duration(milliseconds: 100),
                       suffixIcon: const Icon(Icons.email),
-
                       label: 'Email',
                       keyBoardType: TextInputType.emailAddress,
                       validator: (String? value) {
@@ -104,9 +102,8 @@ class SignUpPageState extends State<SignUpPage> {
                           return 'Please confirm your password';
                         } else if (value != _passwordController.text) {
                           return 'Passwords do not match';
-                        }else {
-                          return 'error';
                         }
+                        return null;
                       }),
                   FadeInUp(
                     delay: const Duration(milliseconds: 350),
@@ -118,7 +115,8 @@ class SignUpPageState extends State<SignUpPage> {
                   ),
                   TextButton(
                     onPressed: () {
-                      Get.offAll(() => const SignInPage(),transition: Transition.leftToRight);
+                      Get.offAll(() => const SignInPage(),
+                          transition: Transition.leftToRight);
                     },
                     child: const Text(
                       'Have an account? \t Sign in',
@@ -173,7 +171,15 @@ class SignUpPageState extends State<SignUpPage> {
       // print('Password: ${_passwordController.text}');
       // print('Name: ${_nameController.text}\n --------------------------------');
       //Get.to(() => RequiredForm(),transition: Transition.leftToRight);
-      saveToFireBase(_emailController.text, _passwordController.text,);
+      saveToFireBase(
+        _emailController.text,
+        _passwordController.text,
+      );
+      Get.snackbar(
+        'Success',
+        'Account created successfully',
+      );
+      Get.offAll(() => const SignInPage(), transition: Transition.leftToRight);
     } else {
       Get.snackbar(
         'Error',
@@ -187,6 +193,4 @@ class SignUpPageState extends State<SignUpPage> {
       );
     }
   }
-
-
 }
