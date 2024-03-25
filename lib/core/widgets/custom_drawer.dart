@@ -107,21 +107,30 @@ class CustomDrawer extends StatelessWidget {
 
                         }),
                     ListTile(
-                        title: Row(
-                          children: [
-                            Text(
-                              'Sign Out',
-                              style: TextStyle(
-                                  color: theme.colorScheme.error,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500),
+                        title: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(50.0),
                             ),
-                            const Spacer(),
-                            Icon(
-                              Icons.logout,
-                              color: theme.colorScheme.error,
-                            )
-                          ],
+                            color: theme.primaryColor.withOpacity(0.2),
+                          ),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Sign Out',
+                                style: TextStyle(
+                                    color: theme.primaryColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              const Spacer(),
+                              Icon(
+                                Icons.logout,
+                                color: theme.primaryColor,
+                              )
+                            ],
+                          ),
                         ),
                         onTap: () {
                           signOutFireBase();

@@ -14,7 +14,6 @@ class AdsContainer extends StatelessWidget {
             useSafeArea: true,
             showDragHandle: true,
             context: context,
-
             builder: (context) => const PremiumPlansView()
         );
       },
