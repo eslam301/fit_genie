@@ -19,7 +19,8 @@ class SignUpPageState extends State<SignUpPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController passwordConfirmController = TextEditingController();
+  final TextEditingController passwordConfirmController =
+      TextEditingController();
   @override
   Widget build(BuildContext context) {
     // var theme = Theme.of(context);
@@ -92,7 +93,6 @@ class SignUpPageState extends State<SignUpPage> {
                         } else {
                           //print('password is valid');
                           return null;
-
                         }
                       }),
                   CustomTextField(
