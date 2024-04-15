@@ -4,6 +4,7 @@ import 'package:fitgenie/pages/profile/profile_view.dart';
 import 'package:fitgenie/pages/sign-in/sign_in.dart';
 import 'package:fitgenie/pages/sign-in/sign_up/sign_up.dart';
 import 'package:fitgenie/pages/splash/splash_screen.dart';
+import 'package:fitgenie/pages/timer/timer_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
             name: NotificationView.routeName,
             page: () => const NotificationView()),
       ],
-      transitionDuration: const Duration(milliseconds: 550),
+      transitionDuration: const Duration(milliseconds: 500),
       defaultTransition: Transition.rightToLeft,
     );
   }

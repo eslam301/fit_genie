@@ -127,7 +127,7 @@ class CustomDrawer extends StatelessWidget {
                               const Spacer(),
                               Icon(
                                 Icons.logout,
-                                color: theme.primaryColor,
+                                color: theme.colorScheme.error.withOpacity(0.8),
                               )
                             ],
                           ),

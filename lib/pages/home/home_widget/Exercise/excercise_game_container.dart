@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -66,25 +67,29 @@ class ExerciseGame extends StatelessWidget {
     showDialog(
         context: context,
         builder: (context) {
-          return AlertDialog(
-              icon: Icon(icon, color: Colors.amber),
-              title: Text(gameName.capitalize!.toString(), style:  TextStyle(color: Get.theme.primaryColor),),
-              content: Container(
-                height: 60,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Colors.black26,
+          return FadeIn(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.fastOutSlowIn,
+            child: AlertDialog(
+                icon: Icon(icon, color: Colors.amber),
+                title: Text(gameName.capitalize!.toString(), style:  TextStyle(color: Get.theme.primaryColor),),
+                content: Container(
+                  height: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.black26,
+                  ),
+                  child: AddRemoveCounter()
                 ),
-                child: AddRemoveCounter()
-              ),
-              actionsAlignment: MainAxisAlignment.center,
-              actions: [
-                TextButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    child: const Text('Add'))
-              ]);
+                actionsAlignment: MainAxisAlignment.center,
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      child: const Text('Add'))
+                ]),
+          );
         });
   }
 }

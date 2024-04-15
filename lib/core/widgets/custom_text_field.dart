@@ -59,14 +59,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
             suffixIconColor: Colors.grey,
             filled: true,
             fillColor: Colors.grey[200],
-            floatingLabelStyle: TextStyle(
-              color: Theme.of(context).primaryColor,
+            floatingLabelBehavior: FloatingLabelBehavior.never,
 
-              fontWeight: FontWeight.bold,
-              fontSize: 21,
-            ),
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+
             labelText: widget.label,
             labelStyle: const TextStyle(
               fontSize: 18,

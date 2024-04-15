@@ -31,6 +31,7 @@ class HomeLayout extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     return Scaffold(
       drawer: const CustomDrawer(),
+      drawerEnableOpenDragGesture:true,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60.0),
         child: Container(

@@ -50,6 +50,7 @@ class SignInPageState extends State<SignInPage> {
                   children: [
                     CustomTextField(
                       controller: _emailController,
+                      suffixIcon: const Icon(Icons.email_rounded),
                       label: 'Email',
                       keyBoardType: TextInputType.emailAddress,
                       validator: (String? value) {

@@ -220,7 +220,7 @@ class _TimerViewState extends State<TimerView> with TickerProviderStateMixin {
             onPressed: () {
               setState(() {
                 Navigator.pop(context);
-                timerController.setMyDuration(Duration(seconds: int.parse(controller.text)));
+                _timerController.duration = Duration(seconds: int.parse(controller.text));
                 timerController.reset();
               });
             },
