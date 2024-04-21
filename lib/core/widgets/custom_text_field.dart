@@ -10,6 +10,7 @@ class CustomTextField extends StatefulWidget {
   final TextInputType? keyBoardType;
   final FormFieldValidator<String>? validator;
   final Duration delay ;
+  final Duration duration;
 
 
   const CustomTextField({
@@ -20,6 +21,7 @@ class CustomTextField extends StatefulWidget {
       this.suffixIcon,
       this.keyBoardType,
       this.validator,
+      this.duration = const Duration(milliseconds: 400),
       this.delay = const Duration(milliseconds: 100),
   });
   @override
@@ -31,7 +33,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     //var theme = Theme.of(context);
     return FadeInUp(
-      duration: const Duration(milliseconds: 700),
+      duration: widget.duration,
       delay: widget.delay,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12.0),

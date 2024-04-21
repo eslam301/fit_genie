@@ -62,7 +62,7 @@ class CustomDrawer extends StatelessWidget {
                         ),
                         onTap: () {
                           Get.to(
-                                () => const ProfilePage(),
+                                () =>  ProfilePage(),
                             transition: Transition.rightToLeftWithFade,
                           );
                         }),

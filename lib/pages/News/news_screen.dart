@@ -92,7 +92,7 @@ class _NewsScreenState extends State<NewsScreen> {
                             articlesModel: articlesModel,
                             index: index,
                           ),
-                          transition: Transition.leftToRightWithFade,
+                          transition: Transition.rightToLeft,
                         );
                       },
                       articlesModel: articlesModel,

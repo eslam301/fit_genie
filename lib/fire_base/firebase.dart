@@ -80,18 +80,28 @@ void signInFireBase(emailController, passwordController) async {
     }
   }
 }
+
+void signInWithGoogle() {
+  FirebaseAuth.instance.signInWithPopup(
+    GoogleAuthProvider(),
+  );
+}
+void userData() {
+
+}
 // signOutFireBase()
 void signOutFireBase() async {
   await FirebaseAuth.instance.signOut();
   Get.offAll(() => const SignInPage(),transition: Transition.rightToLeft);
 }
-Future saveSignToFireBase(String emailController, String passwordController) async {
+Future saveSignToFireBase(String emailController, String passwordController, String nameController) async {
   try {
      //print('try');
     final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: emailController,
       password: passwordController,
     );
+    FirebaseAuth.instance.currentUser!.updateDisplayName(nameController);
     // print("success");
     // print(credential.user?.uid);
     // print(credential.user?.email);

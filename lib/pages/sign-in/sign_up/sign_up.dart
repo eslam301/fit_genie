@@ -143,6 +143,7 @@ class SignUpPageState extends State<SignUpPage> {
       await saveSignToFireBase(
         emailController.text,
         passwordController.text,
+        nameController.text,
       );
     } else {
       Get.snackbar(

@@ -1,4 +1,3 @@
-
 import 'package:fitgenie/core/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_timer/simple_timer.dart';
@@ -29,9 +28,9 @@ class _TimerViewState extends State<TimerView> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     bool isRunning = false;
     bool isOver = false;
-    return Column(children: [
-      const Text('Timer', style: TextStyle(color: Colors.white, fontSize: 32)),
-
+    return ListView(
+        padding: const EdgeInsets.only(top: 10, bottom: 20),
+        children: [
       GestureDetector(
         onTap: () {
           if (isRunning == true) {
@@ -48,12 +47,11 @@ class _TimerViewState extends State<TimerView> with TickerProviderStateMixin {
           isRunning = false;
         },
         onLongPress: () {
-          openBottomSheet(context, _timerController,selectedTime);
+          openBottomSheet(context, _timerController, selectedTime);
         },
         child: Container(
           padding: const EdgeInsets.all(20),
           child: SimpleTimer(
-
             strokeWidth: 20,
             delay: const Duration(seconds: 0),
             controller: _timerController,
@@ -148,12 +146,12 @@ class _TimerViewState extends State<TimerView> with TickerProviderStateMixin {
             style: FilledButton.styleFrom(
                 foregroundColor: Colors.white, fixedSize: const Size(50, 30)),
             onPressed: () {
-              _timerController.subtract(const Duration(seconds:5));
+              _timerController.subtract(const Duration(seconds: 5));
               _timerController.start();
               isRunning = true;
             },
             child: const Text(
-              '-5',
+              '<<',
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -172,65 +170,63 @@ class _TimerViewState extends State<TimerView> with TickerProviderStateMixin {
             style: FilledButton.styleFrom(
                 foregroundColor: Colors.white, fixedSize: const Size(50, 30)),
             onPressed: () {
-              _timerController.add(const Duration(seconds:5));
+              _timerController.add(const Duration(seconds: 5));
               _timerController.start();
               isRunning = true;
             },
             child: const Text(
-              '+5',
+              '>>',
               style: TextStyle(color: Colors.white),
             ),
           ),
-
         ],
       ),
     ]);
   }
 
-  void openBottomSheet(BuildContext context, TimerController timerController, TextEditingController controller) {
-    showModalBottomSheet(context: context,
-
+  void openBottomSheet(BuildContext context, TimerController timerController,
+      TextEditingController controller) {
+    showModalBottomSheet(
+        context: context,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(50),
             topRight: Radius.circular(50),
           ),
         ),
-
         builder: (context) => Container(
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        children: [
-          Container(
-            width: 40,
-            height: 5,
-            decoration: const BoxDecoration(
-              color: Colors.grey,
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-            )
-          ),
-          const SizedBox(height: 20),
-          const Text('input time', style: TextStyle(fontSize: 24),),
-          const SizedBox(height: 20),
-          CustomTextField(controller: controller, label:'input time',keyBoardType: TextInputType.number),
-          const SizedBox(height: 20),
-          FilledButton(
-            style: FilledButton.styleFrom(
-                foregroundColor: Colors.white, fixedSize: const Size(150, 50)),
-            onPressed: () {
-              setState(() {
-                Navigator.pop(context);
-                _timerController.duration = Duration(seconds: int.parse(controller.text));
-                timerController.reset();
-              });
-            },
-            child: const Text(
-              'set time',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ],
-      )
-    ));
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                const Text(
+                  'input time',
+                  style: TextStyle(fontSize: 24),
+                ),
+                const SizedBox(height: 20),
+                CustomTextField(
+                  duration: const Duration(milliseconds: 200),
+                    controller: controller,
+                    label: 'input time',
+                    keyBoardType: TextInputType.number),
+                const SizedBox(height: 20),
+                FilledButton(
+                  style: FilledButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      fixedSize: const Size(150, 50)),
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pop(context);
+                      _timerController.duration =
+                          Duration(seconds: int.parse(controller.text));
+                      timerController.reset();
+                    });
+                  },
+                  child: const Text(
+                    'set time',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            )));
   }
 }

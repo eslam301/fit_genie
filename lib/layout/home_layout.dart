@@ -50,7 +50,7 @@ class HomeLayout extends StatelessWidget {
                 icon: const Icon(Icons.person),
                 onPressed: () {
                   Get.to(
-                    () => const ProfilePage(),
+                    () =>  ProfilePage(),
                     transition: Transition.leftToRightWithFade,
                   );
                 },
