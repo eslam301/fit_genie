@@ -30,6 +30,7 @@ class HomeLayout extends StatelessWidget {
     PageController pageController = PageController();
     final ThemeData theme = Theme.of(context);
     return Scaffold(
+      extendBody: true,
       drawer: const CustomDrawer(),
       drawerEnableOpenDragGesture:true,
       appBar: PreferredSize(
@@ -50,7 +51,7 @@ class HomeLayout extends StatelessWidget {
                 icon: const Icon(Icons.person),
                 onPressed: () {
                   Get.to(
-                    () =>  ProfilePage(),
+                    () =>  const ProfilePage(),
                     transition: Transition.leftToRightWithFade,
                   );
                 },
@@ -68,7 +69,7 @@ class HomeLayout extends StatelessWidget {
         ),
       ),
       body:  PageView(
-        scrollBehavior: const ScrollBehavior().copyWith(overscroll: true),
+         scrollBehavior: const ScrollBehavior().copyWith(overscroll: true),
         controller: pageController,
         onPageChanged: (value) {
           // provider.changePageIndex(value);
@@ -80,8 +81,11 @@ class HomeLayout extends StatelessWidget {
         children: screens,
       ),
       bottomNavigationBar: MyAppBottomNavigationBar(
+
         pageController: pageController,
       ),
+
     );
   }
+
 }

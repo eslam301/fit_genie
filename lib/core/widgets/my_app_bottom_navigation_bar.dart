@@ -10,7 +10,8 @@ class MyAppBottomNavigationBar extends StatelessWidget {
     //var theme = Theme.of(context);
     return Container(
         clipBehavior: Clip.antiAlias,
-        height: 80,
+        // height: 100,
+
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(40),
@@ -21,6 +22,7 @@ class MyAppBottomNavigationBar extends StatelessWidget {
             selector: (_, provider) => provider.getPageIndexValue,
             builder: (context, value, child) {
               return BottomNavigationBar(
+
                 currentIndex: value,
                 onTap: (value) {
                   pageController.jumpToPage(value);
@@ -100,6 +102,7 @@ class MyAppBottomNavigationBar extends StatelessWidget {
                 ],
               );
             }
+
         ));
   }
 }

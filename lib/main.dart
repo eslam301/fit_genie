@@ -4,8 +4,9 @@ import 'package:fitgenie/pages/profile/profile_view.dart';
 import 'package:fitgenie/pages/sign-in/sign_in.dart';
 import 'package:fitgenie/pages/sign-in/sign_up/sign_up.dart';
 import 'package:fitgenie/pages/splash/splash_screen.dart';
-// import 'package:fitgenie/pages/timer/timer_view.dart';
+import 'package:fitgenie/pages/timer/timer_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'core/application_theme.dart';
@@ -18,13 +19,17 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
+
   );
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   runApp(ChangeNotifierProvider(
       create: (BuildContext context) {
         return AppProvider();
       },
       child: const MyApp()));
+
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -47,6 +52,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: HomeLayout.routeName, page: () => const HomeLayout()),
         GetPage(name: ProfilePage.routeName, page: () =>  ProfilePage()),
         GetPage(name: NewsScreen.routeName, page: () => const NewsScreen()),
+        GetPage(name: TimerView.routeName, page: () => const TimerView()),
         GetPage(
             name: NotificationView.routeName,
             page: () => const NotificationView()),
@@ -56,3 +62,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

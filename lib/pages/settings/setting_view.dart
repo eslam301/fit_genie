@@ -1,8 +1,8 @@
-import 'package:fitgenie/core/widgets/custom_button.dart';
+// import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import '../../core/widgets/drop_down_bar.dart';
-import '../model_viewer/model_test.dart';
+// import '../model_viewer/model_test.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
@@ -14,10 +14,10 @@ class SettingsView extends StatefulWidget {
 class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+    return const SingleChildScrollView(
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        const Row(
+        Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(
@@ -37,19 +37,19 @@ class _SettingsViewState extends State<SettingsView> {
             )
           ],
         ),
-        const SizedBox(
+        SizedBox(
           height: 20,
         ),
-        const DropDownBarTheme(),
-        const SizedBox(
+        DropDownBarTheme(),
+        SizedBox(
           height: 20,
         ),
-        LongButton(
-            label: 'My Model',
-            onTap: () {
-              Get.to(() => const ModelTestView(),
-                  transition: Transition.fadeIn);
-            })
+        // LongButton(
+        //     label: 'My Model',
+        //     onTap: () {
+        //       Get.to(() => const ModelTestView(),
+        //           transition: Transition.fadeIn);
+        //     })
       ]),
     );
   }

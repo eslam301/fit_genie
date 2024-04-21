@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_timer/simple_timer.dart';
 
 class TimerView extends StatefulWidget {
+  static const String routeName = '/timer';
   const TimerView({super.key});
 
   @override
