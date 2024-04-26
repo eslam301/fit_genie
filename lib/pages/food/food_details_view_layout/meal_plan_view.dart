@@ -1,11 +1,10 @@
 import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../food_data/food_data.dart';
-import '../food_widget/food_check_widget.dart';
 import '../food_widget/food_details_wiget_view.dart';
-
 
 class MealPlanView extends StatelessWidget {
   final int index;
