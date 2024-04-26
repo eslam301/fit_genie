@@ -11,6 +11,7 @@ import '../pages/profile/profile_view.dart';
 import '../pages/settings/setting_view.dart';
 import '../pages/timer/timer_view.dart';
 import '../pages/work_out_planes/work_out_plan_view.dart';
+import 'basic_layout_page.dart';
 
 class HomeLayout extends StatelessWidget {
   static const String routeName = '/home';
@@ -51,7 +52,10 @@ class HomeLayout extends StatelessWidget {
                 icon: const Icon(Icons.person),
                 onPressed: () {
                   Get.to(
-                    () =>  const ProfilePage(),
+                    () =>  const LayOutPageView(
+                      appBarTitle: 'Profile',
+                      body: ProfilePage(),
+                    ),
                     transition: Transition.leftToRightWithFade,
                   );
                 },

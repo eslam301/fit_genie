@@ -1,4 +1,8 @@
+import 'package:fitgenie/layout/basic_layout_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'food_data/food_data.dart';
+import 'food_details_view_layout/meal_plan_view.dart';
 import 'food_widget/buttons.dart';
 //import 'package:flutter_application_1/button.dart';
 
@@ -10,32 +14,7 @@ class FoodPlanView extends StatefulWidget {
 }
 
 class _FoodPlanViewState extends State<FoodPlanView> {
-  static const List<Map<String, dynamic>> meal = [
-    {
-      "name": "Breakfast",
-      "Image": "assets/images/breakfast_image.jpg",
-      "title": "Meal plan",
-      "subtitle": "",
-    },
-    {
-      "name": "Snack",
-      "Image": "assets/images/snacks_image.png",
-      "title": "Meal plan",
-      "subtitle": "",
-    },
-    {
-      "name": "Lunch",
-      "Image": "assets/images/launch_image.png",
-      "title": "Meal plan",
-      "subtitle": "",
-    },
-    {
-      "name": "Dinner",
-      "Image": "assets/images/dinner_image.jpg",
-      "title": "Meal plan",
-      "subtitle": "",
-    }
-  ];
+  static const List<Map<String, dynamic>> meal = FoodData.meal;
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.sizeOf(context);
@@ -56,7 +35,7 @@ class _FoodPlanViewState extends State<FoodPlanView> {
                 child: Stack(
                   children: [
                     Image.asset(
-                      mealData["Image"].toString(),
+                      mealData["image"].toString(),
                       width: media.width,
                       height: media.width * 0.5,
                       fit: BoxFit.cover,
@@ -114,7 +93,13 @@ class _FoodPlanViewState extends State<FoodPlanView> {
                                   title: "View",
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.to(
+                                      () =>  LayOutPageView(appBarTitle: mealData["name"], body:  MealPlanView(
+                                        index:index,
+                                      ),),
+                                    );
+                                  },
                                 ),
                               ),
                             ],

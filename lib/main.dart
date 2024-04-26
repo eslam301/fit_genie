@@ -1,3 +1,4 @@
+import 'package:fitgenie/layout/sign_in_layout/sign_in_layout.dart';
 import 'package:fitgenie/pages/News/news_screen.dart';
 import 'package:fitgenie/pages/notification/notification_view.dart';
 import 'package:fitgenie/pages/profile/profile_view.dart';
@@ -16,10 +17,10 @@ import 'layout/home_layout.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-
   );
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   runApp(ChangeNotifierProvider(
@@ -27,7 +28,6 @@ Future<void> main() async {
         return AppProvider();
       },
       child: const MyApp()));
-
 }
 
 
@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     return GetMaterialApp(
       title: 'FitGenie',
       debugShowCheckedModeBanner: false,
@@ -47,15 +48,12 @@ class MyApp extends StatelessWidget {
       initialRoute: SplashScreen.routeName,
       getPages: [
         GetPage(name: SplashScreen.routeName, page: () => const SplashScreen()),
-        GetPage(name: SignInPage.routeName, page: () => const SignInPage()),
-        GetPage(name: SignUpPage.routeName, page: () => const SignUpPage()),
+        GetPage(name: SignInLayout.routeName, page: () => const SignInLayout()),
         GetPage(name: HomeLayout.routeName, page: () => const HomeLayout()),
-        GetPage(name: ProfilePage.routeName, page: () =>  ProfilePage()),
+        GetPage(name: ProfilePage.routeName, page: () =>  const ProfilePage()),
         GetPage(name: NewsScreen.routeName, page: () => const NewsScreen()),
         GetPage(name: TimerView.routeName, page: () => const TimerView()),
-        GetPage(
-            name: NotificationView.routeName,
-            page: () => const NotificationView()),
+        GetPage(name: NotificationView.routeName,page: () => const NotificationView()),
       ],
       transitionDuration: const Duration(milliseconds: 400),
       defaultTransition: Transition.rightToLeft,

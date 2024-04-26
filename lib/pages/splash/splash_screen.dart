@@ -1,10 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fitgenie/layout/sign_in_layout/sign_in_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../core/widgets/logo_splash_widget.dart';
 import '../../layout/home_layout.dart';
-import '../sign-in/sign_in.dart';
 class SplashScreen extends StatefulWidget {
   static const String routeName = '/splash';
   const SplashScreen({super.key});
@@ -16,9 +16,9 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 2), () {
       if (FirebaseAuth.instance.currentUser == null){
-        Get.offNamed(SignInPage.routeName);
+        Get.offNamed(SignInLayout.routeName);
       }else{
         Get.offNamed(HomeLayout.routeName);
       }
@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
           const Spacer(),
           const CircularProgressIndicator(),
           const Spacer(),
-          const Text('Version 5.4.1',style: TextStyle(color: Colors.white,fontSize: 10),),
+          const Text('Version 6.0.1',style: TextStyle(color: Colors.white,fontSize: 10),),
         ],
       ),
     );

@@ -32,12 +32,12 @@ class SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
+    return
+       Center(
+        child: ListView(
+          shrinkWrap: true,
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               FadeInDown(
                   duration: const Duration(milliseconds: 700),
@@ -89,7 +89,7 @@ class SignInPageState extends State<SignInPage> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Get.offNamed(SignUpPage.routeName,
+                        Get.toNamed(SignUpPage.routeName,
                         );
                       },
                       child: const Text(
@@ -102,8 +102,7 @@ class SignInPageState extends State<SignInPage> {
               )
             ],
           ),
-        ),
-      ),
-    );
+      );
+
   }
 }

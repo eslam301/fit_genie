@@ -1,3 +1,4 @@
+import 'package:fitgenie/layout/basic_layout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../fire_base/firebase.dart';
@@ -62,7 +63,7 @@ class CustomDrawer extends StatelessWidget {
                         ),
                         onTap: () {
                           Get.to(
-                                () =>  ProfilePage(),
+                                () =>  const LayOutPageView(appBarTitle: 'Profile', body: ProfilePage()),
                             transition: Transition.rightToLeftWithFade,
                           );
                         }),
@@ -101,7 +102,7 @@ class CustomDrawer extends StatelessWidget {
                         ),
                         onTap: () {
                           Get.to(
-                                () => const NewsScreen(),
+                                () => const LayOutPageView(appBarTitle: 'news feed', body: NewsScreen()),
                             transition: Transition.rightToLeftWithFade,
                           );
 

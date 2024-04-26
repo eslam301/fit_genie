@@ -11,24 +11,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(60.0),
-        child: Container(
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(25),
-              bottomRight: Radius.circular(25),
-            ),
-            color: theme.primaryColor,
-          ),
-          child: AppBar(
-            title: const Text('Profile'),
-          ),
-        ),
-      ),
-      body: ListView(
+    return ListView(
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
         clipBehavior: Clip.antiAlias,
@@ -96,7 +79,7 @@ class ProfilePage extends StatelessWidget {
               }).paddingOnly(top: 20, bottom: 20),
           // Add more details or widgets as needed
         ],
-      ),
-    );
+      );
+
   }
 }

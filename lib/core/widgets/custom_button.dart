@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 
 class LongButton extends StatelessWidget {
-  final String label ;
+  final String label;
   final VoidCallback onTap;
-  final Color? color ;
+  final Color? color;
   final IconData? icon;
-  const LongButton({super.key, required this.label, required this.onTap, this.color, this.icon});
+  final Color fontColor;
+  final Color iconColor;
+  const LongButton({
+    super.key,
+    required this.label,
+    required this.onTap,
+    this.color,
+    this.icon,
+    this.fontColor = Colors.white,
+    this.iconColor = Colors.white,
+  });
   @override
   Widget build(BuildContext context) {
-    var theme  = Theme.of(context);
+    var theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
         onTap();
@@ -25,9 +35,16 @@ class LongButton extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Text(label, style: const TextStyle(color: Colors.white,fontSize: 18),),
+            Text(
+              label,
+              style: TextStyle(color: fontColor, fontSize: 18),
+            ),
             const Spacer(),
-            Icon( icon?? Icons.arrow_forward ,color: Colors.white,size: 18,)
+            Icon(
+              icon ?? Icons.arrow_forward,
+              color: iconColor,
+              size: 18,
+            )
           ],
         ),
       ),

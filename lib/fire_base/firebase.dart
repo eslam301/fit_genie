@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fitgenie/layout/sign_in_layout/sign_in_layout.dart';
 import 'package:get/get.dart';
 
 import '../layout/home_layout.dart';
 import '../pages/sign-in/sign_in.dart';
+import '../pages/sign-in/sign_up/required_form.dart';
 
 
 authStateChanges(){
@@ -92,7 +94,7 @@ void userData() {
 // signOutFireBase()
 void signOutFireBase() async {
   await FirebaseAuth.instance.signOut();
-  Get.offAll(() => const SignInPage(),transition: Transition.rightToLeft);
+  Get.offAll(() => const SignInLayout(),transition: Transition.rightToLeft);
 }
 Future saveSignToFireBase(String emailController, String passwordController, String nameController) async {
   try {
@@ -107,24 +109,42 @@ Future saveSignToFireBase(String emailController, String passwordController, Str
     // print(credential.user?.email);
     // print(credential.user?.uid);
     // print(credential.user?.email);
+    //print(credential.user?.displayName);
+    Get.to(() =>RequiredForm(),transition: Transition.rightToLeft);
     Get.snackbar(
       'Success',
-      'Account created successfully',
+      '${credential.user?.displayName} has been created',
     );
-    Get.to(() => const SignInPage(),transition: Transition.leftToRight);
   } on FirebaseAuthException catch (e) {
     if (e.code == 'weak-password') {
        //print('The password provided is too weak.');
-    } else if (e.code == 'email-already-in-use') {
-       //print('The account already exists for that email.');
+      const GetSnackBar(
+        title: 'error',
+        message: 'The password provided is too weak.',
+      );
+    }
+    else if (e.code == 'email-already-in-use') {
+      const GetSnackBar(
+        title: 'error',
+        message: 'The password provided is too weak.',
+      );
     } else if (e.code== 'invalid-email'){
-      // print('The email is invalid.');
-    } else {
-      // print('\n\n ${e.code}\n\n');
+      const GetSnackBar(
+        title: 'error',
+        message: 'The password provided is too weak.',
+      );
+    }else if (e.code == 'operation-not-allowed'){
+      const GetSnackBar(
+        title: 'error',
+        message: 'The password provided is too weak.',
+      );
     }
   } catch (e) {
-    //print('e');
-    //print(e.toString());
+    const GetSnackBar(
+      title: 'error',
+      message: 'Something went wrong',
+    );
+
   }
 }
 

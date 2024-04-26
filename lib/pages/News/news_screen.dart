@@ -19,24 +19,7 @@ class _NewsScreenState extends State<NewsScreen> {
   Widget build(BuildContext context) {
 
      var theme = Theme.of(context);
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(60.0),
-        child: Container(
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(25),
-              bottomRight: Radius.circular(25),
-            ),
-            color: theme.primaryColor,
-          ),
-          child: AppBar(
-            title: const Text('News'),
-          ),
-        ),
-      ),
-      body: FutureBuilder(
+    return FutureBuilder(
           future: NewsApiManger.fetchSource(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
@@ -102,8 +85,8 @@ class _NewsScreenState extends State<NewsScreen> {
                 ),
               );
             }
-          }),
-    );
+          })
+    ;
   }
 
 }

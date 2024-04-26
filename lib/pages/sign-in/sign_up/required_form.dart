@@ -2,7 +2,8 @@ import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class RequiredForm extends StatelessWidget {
-  RequiredForm({super.key});
+  static const String routeName = '/requiredForm';
+   RequiredForm({super.key});
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController secondNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -17,17 +18,17 @@ class RequiredForm extends StatelessWidget {
         ),
         body: SingleChildScrollView(
             child: Form(
-          key: null,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(children: [
+              key: null,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(children: [
               // CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  }, ),
               // CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
               // CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
               // CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
               // CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
               // CustomTextField(controller: firstNameController, label: 'Name', validator: (String? value) {  },),
-              LongButton(label:'submit' , onTap: (){})
+                   LongButton(label: 'submit', onTap: () {})
             ]),
           ),
         )));
