@@ -9,7 +9,7 @@ class FoodData {
         {
           "ItemName": "Eggs",
           "ItemQuantity": "2",
-          "ItemDescription": "With milk"
+          "ItemDescription": "20G protein and 10G fat"
         },
         {
           "ItemName": "Milk",
