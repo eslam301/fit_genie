@@ -46,6 +46,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ApplicationTheme.darkTheme,
       themeMode: ThemeMode.system,
       initialBinding: BindingsBuilder(() {
+        Get.put(AppProvider());
         Get.put(ThemeController());
       }),
       initialRoute: SplashScreen.routeName,
@@ -55,7 +56,6 @@ class MyApp extends StatelessWidget {
         GetPage(name: HomeLayout.routeName, page: () => const HomeLayout()),
         GetPage(name: ProfilePage.routeName, page: () =>  const ProfilePage()),
         GetPage(name: NewsScreen.routeName, page: () => const NewsScreen()),
-        GetPage(name: TimerView.routeName, page: () => const TimerView()),
         GetPage(name: NotificationView.routeName,page: () => const NotificationView()),
       ],
       transitionDuration: const Duration(milliseconds: 400),

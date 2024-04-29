@@ -89,17 +89,16 @@ class ApplicationTheme {
       ),
     ),
     bottomSheetTheme:  const BottomSheetThemeData(
-
       showDragHandle: true,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+          topLeft: Radius.circular(40),
+          topRight: Radius.circular(40),
         ),
       ),
       elevation: 0,
       modalElevation: 0,
-      backgroundColor: darkBackGround,
+      backgroundColor: openGothic,
     ),
   );
   static final ThemeData darkTheme = ThemeData(
@@ -174,11 +173,11 @@ class ApplicationTheme {
       ),
     ),
     bottomSheetTheme:  const BottomSheetThemeData(
-
+      showDragHandle: true,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+          topLeft: Radius.circular(40),
+          topRight: Radius.circular(40),
         ),
       ),
       elevation: 0,

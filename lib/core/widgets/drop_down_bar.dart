@@ -77,112 +77,95 @@ class _DropDownBarState extends State<DropDownBarTheme> {
 
   void showBottomSheet(BuildContext context) {
     showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        enableDrag: true,
-        isScrollControlled: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(45),
+            topRight: Radius.circular(45),
+          ),
+        ),
         context: context,
         builder: (context) {
-          return Container(
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(45),
-                topRight: Radius.circular(45),
+          return Column(
+            children: [
+              const Text(
+                "Choose Theme",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.white),
               ),
-              color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.8),
-            ),
-            height: 500,
-            width: double.infinity,
-            child: Column(
-              children: [
-                Container(
-                  width: 50,
-                  height: 5,
-                  margin: const EdgeInsets.only(top: 20, bottom: 20),
+              const SizedBox(
+                height: 20,
+              ),
+              GestureDetector(
+                onTap: (){
+                  setState(() {
+                    _selected = "Light";
+                    themeController.changeTheme("Light");
+                    Get.back();
+                  });
+                },
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(20),
                     color: Colors.white,
                   ),
-                ),
-                const Text(
-                  "Choose Theme",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.white),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                GestureDetector(
-                  onTap: (){
-                    setState(() {
-                      _selected = "Light";
-                      themeController.changeTheme("Light");
-                      Get.back();
-                    });
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Light',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Colors.grey[700]),
-                        ),
-                        const Spacer(),
-                        Icon(
-                          Icons.light_mode,
-                          color: Colors.grey[700],
-                        )
-                      ],
-                    ),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Light',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.grey[700]),
+                      ),
+                      const Spacer(),
+                      Icon(
+                        Icons.light_mode,
+                        color: Colors.grey[700],
+                      )
+                    ],
                   ),
                 ),
-                GestureDetector(
-                  onTap: (){
-                    setState(() {
-                      _selected = "Dark";
-                      themeController.changeTheme("Dark");
-                      Get.back();
-                    });
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Dark',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Colors.grey[700]),
-                        ),
-                        const Spacer(),
-                        Icon(
-                          Icons.dark_mode,
-                          color: Colors.grey[700],
-                        )
-                      ],
-                    ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  setState(() {
+                    _selected = "Dark";
+                    themeController.changeTheme("Dark");
+                    Get.back();
+                  });
+                },
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
                   ),
-                )
-              ],
-            ),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Dark',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.grey[700]),
+                      ),
+                      const Spacer(),
+                      Icon(
+                        Icons.dark_mode,
+                        color: Colors.grey[700],
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
           ) ;
         });
 
