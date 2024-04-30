@@ -1,6 +1,4 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:fitgenie/core/widgets/logo_splash_widget.dart';
-import 'package:fitgenie/pages/sign-in/sign_up/required_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/widgets/custom_button.dart';

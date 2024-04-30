@@ -39,7 +39,7 @@ class _CaloriesContainerState extends State<CaloriesContainer> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text('Calories',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
-            const Text('Remaining = Goal - food + Exercise',style: TextStyle(color: Colors.grey,fontSize: 10)),
+            const Text('Remaining = Goal - food + Exercise',style: TextStyle(color: Colors.grey,fontSize: 14)),
             SizedBox(
               height: height*0.19,
               child: Row(

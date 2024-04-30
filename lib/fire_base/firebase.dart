@@ -3,7 +3,6 @@ import 'package:fitgenie/layout/sign_in_layout/sign_in_layout.dart';
 import 'package:get/get.dart';
 
 import '../layout/home_layout.dart';
-import '../pages/sign-in/sign_in.dart';
 import '../pages/sign-in/sign_up/required_form.dart';
 
 

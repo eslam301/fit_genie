@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../core/health/health_data_model_steps.dart';
 
 class StepsContainerView extends StatelessWidget {
-  const StepsContainerView({super.key});
-
+  // StepsContainerView({super.key, required this.steps});
+  final int? errorStep ;
+  final HealthDataModelSteps? healthDataModel;
+  final int? stepsGoal = 1000;
+   const StepsContainerView({super.key, this.healthDataModel, this.errorStep});
   @override
   Widget build(BuildContext context) {
+    int? steps = errorStep ?? healthDataModel?.stepsCount?[0].value;
+    double linearPercent = (steps! / stepsGoal!) * 100;
+
+
     return Container(
-      width: 180,
       height: 140,
+      width: 170,
       margin: const EdgeInsets.only(top: 20),
       decoration: const BoxDecoration(
         color: Colors.black26,
@@ -38,15 +46,24 @@ class StepsContainerView extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
-                const Text('250 steps', style: TextStyle(color: Colors.white)),
+                 Text('${steps??0}', style: const TextStyle(color: Colors.white)),
               ],
             ),
-            const Text(
-              'Goal : 1,000',
-              style: TextStyle(color: Colors.grey, fontSize: 14),
+            Row(
+              children: [
+                 Text(
+                  'Goal: $stepsGoal',
+                  style: const TextStyle(color: Colors.grey, fontSize: 14),
+                ),
+                const Spacer(),
+                Text(
+                  '${linearPercent.toStringAsFixed(2)} %',
+                  style: const TextStyle(color: Colors.white, fontSize: 14),
+                )
+              ],
             ),
             LinearProgressIndicator(
-              value: 0.8,
+              value: steps / stepsGoal!,
               backgroundColor: Colors.white,
               valueColor:
                   const AlwaysStoppedAnimation<Color>(Color(0xffFFC107)),

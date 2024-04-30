@@ -1,5 +1,3 @@
-import 'package:fitgenie/pages/sign-in/sign_up/required_form.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../pages/sign-in/sign_in.dart';

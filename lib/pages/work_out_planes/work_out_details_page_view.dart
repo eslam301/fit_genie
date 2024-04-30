@@ -6,6 +6,6 @@ class WorkOutDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('WorkOutDetails');
+    return const Text('WorkOutDetails');
   }
 }
