@@ -17,7 +17,8 @@ class HealthApiConstants {
 class HealthDataFetch {
   static Future<HealthDataModelSteps> fetchHealthDataSteps({
     required String timePeriod,
-    required String dataTypeName,}) async {
+    required String dataTypeName,
+  }) async {
     final Map<String, String> queryParameters = {
       'dataTypeName': dataTypeName,
       'timePeriod': timePeriod,
@@ -34,6 +35,7 @@ class HealthDataFetch {
       throw Exception('Failed to load data: ${response.reasonPhrase}');
     }
   }
+
 //https://v1.nocodeapi.com/eslam301/fit/SVQNlnCWypkvPBKO/aggregatesDatasets?dataTypeName=calories_expended&timePeriod=today
   static Future<HealthDataModelCalories> fetchHealthDataCalories({
     required String timePeriod,
@@ -51,13 +53,13 @@ class HealthDataFetch {
 
     final http.Response response = await http.get(uri);
 
-
     if (response.statusCode == 200) {
       return HealthDataModelCalories.fromJson(jsonDecode(response.body));
     } else {
       throw Exception('Failed to load data: ${response.reasonPhrase}');
     }
   }
+
   //https://v1.nocodeapi.com/eslam301/fit/SVQNlnCWypkvPBKO/aggregatesDatasets?dataTypeName=heart_minutes&timePeriod=30days
   static Future<HealthDataModelHeartRate> fetchHealthDataHeartRate({
     required String timePeriod,
@@ -68,9 +70,10 @@ class HealthDataFetch {
     };
 
     final Uri uri = Uri.https(
-        HealthApiConstants.baseUrl,
-        '${HealthApiConstants.user}/${HealthApiConstants.dataType}/${HealthApiConstants.apiKey}/${HealthApiConstants.endpoint}',
-        queryParameters);
+      HealthApiConstants.baseUrl,
+      '${HealthApiConstants.user}/${HealthApiConstants.dataType}/${HealthApiConstants.apiKey}/${HealthApiConstants.endpoint}',
+      queryParameters,
+    );
     final http.Response response = await http.get(uri);
     if (response.statusCode == 200) {
       return HealthDataModelHeartRate.fromJson(jsonDecode(response.body));

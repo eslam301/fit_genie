@@ -16,7 +16,7 @@ class StepsContainerView extends StatelessWidget {
 
     return Container(
       height: 140,
-      width: 170,
+      width: 180,
       margin: const EdgeInsets.only(top: 20),
       decoration: const BoxDecoration(
         color: Colors.black26,
@@ -46,7 +46,7 @@ class StepsContainerView extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
-                 Text('${steps??0}', style: const TextStyle(color: Colors.white)),
+                 Text('$steps', style: const TextStyle(color: Colors.white)),
               ],
             ),
             Row(

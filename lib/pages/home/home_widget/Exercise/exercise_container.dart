@@ -11,7 +11,7 @@ class ExerciseContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     int? calories = healthDataModel?.caloriesExpended?[0].value;
     return Container(
-        width: 170,
+        width: 180,
         height: 140,
         margin: const EdgeInsets.only(top: 20),
         decoration: const BoxDecoration(
