@@ -22,7 +22,7 @@ class MealPlanView extends StatelessWidget {
         color: theme.primaryColor,
         borderRadius: BorderRadius.circular(20),
       ),
-      margin: const EdgeInsets.all(16.0),
+      margin: const EdgeInsets.only(bottom: 60, left: 16, right: 16, top: 20),
       child: Column(children: [
         Image.asset(image),
         const SizedBox(height: 20),
@@ -42,7 +42,6 @@ class MealPlanView extends StatelessWidget {
                 ) ;
               }),
         ),
-        const Spacer(),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: LongButton(
