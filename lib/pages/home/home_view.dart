@@ -35,7 +35,12 @@ class _HomeViewState extends State<HomeView> {
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.vertical,
         children: [
-          Text('Dashboard', style: Theme.of(context).textTheme.titleLarge).paddingOnly(left: 20),
+          Row(
+            children: [
+              Icon(Icons.dashboard, color: Theme.of(context).colorScheme.secondary),
+              Text('Dashboard', style: Theme.of(context).textTheme.titleLarge),
+            ],
+          ).paddingOnly(left: 20),
           CarouselSlider(
               items: const [
                 CaloriesContainer(),
