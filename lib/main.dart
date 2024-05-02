@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: SignInLayout.routeName, page: () => const SignInLayout()),
         GetPage(name: HomeLayout.routeName, page: () => const HomeLayout()),
         GetPage(name: ProfilePage.routeName, page: () =>  const ProfilePage()),
-        GetPage(name: NewsScreen.routeName, page: () => const NewsScreen()),
+        GetPage(name: NewsView.routeName, page: () => const NewsView()),
         GetPage(name: NotificationView.routeName,page: () => const NotificationView()),
       ],
       transitionDuration: const Duration(milliseconds: 400),

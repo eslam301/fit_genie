@@ -11,7 +11,6 @@ class MyAppBottomNavigationBar extends StatelessWidget {
     return Container(
         clipBehavior: Clip.antiAlias,
         // height: 100,
-
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(40),
@@ -22,15 +21,14 @@ class MyAppBottomNavigationBar extends StatelessWidget {
             selector: (_, provider) => provider.getPageIndexValue,
             builder: (context, value, child) {
               return BottomNavigationBar(
-
                 currentIndex: value,
                 onTap: (value) {
                   pageController.jumpToPage(value);
                 },
                 items: [
                   BottomNavigationBarItem(
-                    icon: const Icon(Icons.home_rounded),
-                    label: 'Home',
+                    icon: const Icon(Icons.dashboard_outlined),
+                    label: 'Dashboard',
 
                     activeIcon: Container(
                         padding: const EdgeInsets.all(8.0),
@@ -39,13 +37,13 @@ class MyAppBottomNavigationBar extends StatelessWidget {
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(
-                          Icons.home_rounded,
+                          Icons.dashboard_outlined,
                           color: Colors.black,
                         )),
                   ),
                   BottomNavigationBarItem(
-                    icon: const Icon(Icons.access_time_rounded),
-                    label: 'Timer',
+                    icon: const Icon(Icons.newspaper_rounded),
+                    label: 'NewsFeed',
 
                     activeIcon: Container(
                         padding: const EdgeInsets.all(8.0),
@@ -54,7 +52,7 @@ class MyAppBottomNavigationBar extends StatelessWidget {
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(
-                          Icons.access_time_rounded,
+                          Icons.newspaper_rounded,
                           color: Colors.black,
                         )),
                   ),
@@ -73,7 +71,7 @@ class MyAppBottomNavigationBar extends StatelessWidget {
                         )),
                   ),
                   BottomNavigationBarItem(
-                    icon: const Icon(Icons.calendar_month_outlined),
+                    icon: const Icon(Icons.fitness_center_sharp),
                     label: 'plans',
 
                     activeIcon: Container(
@@ -83,7 +81,7 @@ class MyAppBottomNavigationBar extends StatelessWidget {
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(
-                          Icons.calendar_month_outlined,
+                          Icons.fitness_center_sharp,
                         )),
                   ),
                   BottomNavigationBarItem(

@@ -1,3 +1,4 @@
+import 'package:fitgenie/pages/News/news_screen.dart';
 import 'package:fitgenie/pages/food/food_view.dart';
 import 'package:fitgenie/pages/home/home_view.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,8 @@ class HomeLayout extends StatelessWidget {
   const HomeLayout({super.key});
   static List<Widget> screens = [
     const HomeView(),
-    const TimerView(),
+    const NewsView(),
+    // const TimerView(),
     const FoodPlanView(),
     const WorkOutPlanView(),
     const SettingsView(),

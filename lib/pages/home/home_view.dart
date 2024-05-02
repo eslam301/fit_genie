@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fitgenie/core/health/health_data_model_steps.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../core/health/health_data_fetch.dart';
 import '../../core/health/health_data_model_calories.dart';
 import 'home_widget/ads_container.dart';
@@ -34,6 +35,7 @@ class _HomeViewState extends State<HomeView> {
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.vertical,
         children: [
+          Text('Dashboard', style: Theme.of(context).textTheme.titleLarge).paddingOnly(left: 20),
           CarouselSlider(
               items: const [
                 CaloriesContainer(),

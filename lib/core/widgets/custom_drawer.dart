@@ -1,4 +1,5 @@
 import 'package:fitgenie/layout/basic_layout_page.dart';
+import 'package:fitgenie/pages/timer/timer_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../fire_base/firebase.dart';
@@ -90,19 +91,19 @@ class CustomDrawer extends StatelessWidget {
                     ListTile(
                       iconColor: theme.primaryColor,
                         title: Text(
-                          'News Feed',
+                          'Timer',
                           style: TextStyle(
                               color: theme.primaryColor,
                               fontSize: 20,
                               fontWeight: FontWeight.w500),
                         ),
                         trailing: const Icon(
-                          Icons.newspaper_rounded,
+                          Icons.timer,
                           size: 30,
                         ),
                         onTap: () {
                           Get.to(
-                                () => const LayOutPageView(appBarTitle: 'news feed', body: NewsScreen()),
+                                () => const LayOutPageView(appBarTitle: 'news feed', body: TimerView()),
                             transition: Transition.rightToLeftWithFade,
                           );
 

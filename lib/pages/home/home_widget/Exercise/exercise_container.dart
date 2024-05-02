@@ -6,10 +6,9 @@ import 'exercise_view.dart';
 class ExerciseContainer extends StatelessWidget {
   final HealthDataModelCalories? healthDataModel;
   const ExerciseContainer({super.key, this.healthDataModel});
-
   @override
   Widget build(BuildContext context) {
-    int? calories = healthDataModel?.caloriesExpended?[0].value;
+    // int? calories = healthDataModel?.caloriesExpended?[0].value ?? 0;
     return Container(
         width: 180,
         height: 140,
@@ -54,7 +53,7 @@ class ExerciseContainer extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    '${calories ?? 0} calories',
+                    '0 calories',
                     style: const TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ],

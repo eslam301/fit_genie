@@ -80,7 +80,7 @@ class ApplicationTheme {
       backgroundColor: gothic,
       type: BottomNavigationBarType.fixed,
       elevation: 0,
-      showSelectedLabels: true,
+      showSelectedLabels: false,
       showUnselectedLabels: false,
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.white,
@@ -166,7 +166,7 @@ class ApplicationTheme {
       backgroundColor: gothicShade,
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.white54,
-      showSelectedLabels: true,
+      showSelectedLabels: false,
       showUnselectedLabels: false,
       selectedIconTheme: IconThemeData(
         color: Colors.black,
