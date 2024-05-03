@@ -25,6 +25,7 @@ class HeartRateContainer extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   'assets/svg/heart-svgrepo-com.svg',
+                  // ignore: deprecated_member_use
                   color: Colors.redAccent,
                   height: 150,
                   width: 150,

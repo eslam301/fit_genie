@@ -29,7 +29,7 @@ class LayOutPageView extends StatelessWidget {
           ),
         ),
       ),
-      body: body?? Container(),
+      body: body
     );
   }
 }

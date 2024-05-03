@@ -37,7 +37,8 @@ class _HomeViewState extends State<HomeView> {
         children: [
           Row(
             children: [
-              Icon(Icons.dashboard, color: Theme.of(context).colorScheme.secondary),
+              Icon(Icons.dashboard, color: Theme.of(context).colorScheme.secondary,size: 30),
+              const SizedBox(width: 10),
               Text('Dashboard', style: Theme.of(context).textTheme.titleLarge),
             ],
           ).paddingOnly(left: 20),

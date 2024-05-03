@@ -64,7 +64,10 @@ class HomeLayout extends StatelessWidget {
               IconButton(
                 onPressed: () {
                   Get.to(
-                    () => const NotificationView(),
+                    () => const LayOutPageView(
+                      appBarTitle: 'Notifications',
+                      body: NotificationView(),
+                    ),
                   );
                 },
                 icon: const Icon(Icons.notifications),

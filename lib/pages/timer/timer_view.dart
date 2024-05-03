@@ -28,7 +28,7 @@ class _TimerViewState extends State<TimerView> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     bool isRunning = false;
-    bool isOver = false;
+
     return ListView(
         padding: const EdgeInsets.only(top: 10, bottom: 20),
         children: [
@@ -44,7 +44,7 @@ class _TimerViewState extends State<TimerView> with TickerProviderStateMixin {
         },
         onDoubleTap: () {
           _timerController.reset();
-          isOver = false;
+
           isRunning = false;
         },
         onLongPress: () {
@@ -57,11 +57,11 @@ class _TimerViewState extends State<TimerView> with TickerProviderStateMixin {
             delay: const Duration(seconds: 0),
             controller: _timerController,
             onEnd: () {
-              isOver = true;
+
               isRunning = false;
             },
             onStart: () {
-              isOver = false;
+
               isRunning = true;
             },
             timerStyle: TimerStyle.expanding_sector,
@@ -98,7 +98,7 @@ class _TimerViewState extends State<TimerView> with TickerProviderStateMixin {
             onPressed: () {
               _timerController.reset();
               isRunning = false;
-              isOver = false;
+
             },
             child: const Text(
               'Reset',
@@ -130,7 +130,7 @@ class _TimerViewState extends State<TimerView> with TickerProviderStateMixin {
             onPressed: () {
               _timerController.restart();
               isRunning = true;
-              isOver = false;
+
             },
             child: const Text(
               'Restart',

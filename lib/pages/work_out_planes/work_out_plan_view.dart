@@ -1,4 +1,4 @@
-import 'package:fitgenie/pages/work_out_planes/widget/work_out_Item_container.dart';
+import 'package:fitgenie/pages/work_out_planes/widget/work_out_item-container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

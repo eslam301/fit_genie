@@ -35,6 +35,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
         curve: Curves.fastOutSlowIn,
         reverseDuration: const Duration(milliseconds: 1000),
         child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 10),
           constraints: const BoxConstraints(
             maxWidth: 200.0,
           ),
@@ -50,16 +51,11 @@ class _NotificationWidgetState extends State<NotificationWidget> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(' ${widget.messageNo + 1}',
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold)),
+                  Icon(widget.icon),
                   const SizedBox(
                     width: 15,
                   ),
                   Container(
-
                       constraints: const BoxConstraints(
                         maxWidth: 250.0,
                       ),
@@ -69,7 +65,6 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                               fontSize: 20,
                               fontWeight: FontWeight.bold))),
                   const Spacer(),
-                  Icon(widget.icon),
                 ],
               ),
               isExpanded

@@ -78,7 +78,7 @@ class ExerciseGame extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50),
                     color: Colors.black26,
                   ),
-                  child: AddRemoveCounter()
+                  child: const AddRemoveCounter()
                 ),
                 actionsAlignment: MainAxisAlignment.center,
                 actions: [

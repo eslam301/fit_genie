@@ -10,7 +10,7 @@ class StepsContainerView extends StatelessWidget {
    const StepsContainerView({super.key, this.healthDataModel, this.errorStep});
   @override
   Widget build(BuildContext context) {
-    int? steps = errorStep ?? healthDataModel?.stepsCount?[0].value ?? 0;
+    int? steps =  healthDataModel?.stepsCount?[0].value ?? 77;
     double linearPercent = (steps / stepsGoal!) * 100;
 
 
