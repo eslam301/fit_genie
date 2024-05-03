@@ -10,7 +10,6 @@ import '../core/widgets/my_app_bottom_navigation_bar.dart';
 import '../pages/notification/notification_view.dart';
 import '../pages/profile/profile_view.dart';
 import '../pages/settings/setting_view.dart';
-import '../pages/timer/timer_view.dart';
 import '../pages/work_out_planes/work_out_plan_view.dart';
 import 'basic_layout_page.dart';
 

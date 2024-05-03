@@ -3,7 +3,6 @@ import 'package:fitgenie/pages/timer/timer_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../fire_base/firebase.dart';
-import '../../pages/News/news_screen.dart';
 import '../../pages/notification/notification_view.dart';
 import '../../pages/profile/profile_view.dart';
 

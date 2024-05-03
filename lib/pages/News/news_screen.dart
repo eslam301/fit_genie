@@ -1,5 +1,4 @@
 import 'package:fitgenie/pages/News/news_api_config/news_api_config.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

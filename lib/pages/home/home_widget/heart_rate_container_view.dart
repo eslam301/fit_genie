@@ -1,10 +1,6 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../core/health/health_data_fetch.dart';
-import '../../../core/health/health_data_model_heart_rate.dart';
 
 class HeartRateContainer extends StatelessWidget {
   const HeartRateContainer({super.key});

@@ -43,18 +43,18 @@ class ExerciseContainer extends StatelessWidget {
                       ))
                 ],
               ),
-              Row(
+              const Row(
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.local_fire_department_rounded,
                     color: Colors.white,
                   ),
-                  const SizedBox(
+                  SizedBox(
                     width: 10,
                   ),
                   Text(
                     '0 calories',
-                    style: const TextStyle(color: Colors.white, fontSize: 16),
+                    style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ],
               ),
