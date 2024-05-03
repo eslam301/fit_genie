@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 2), () {
       if (FirebaseAuth.instance.currentUser == null){
         Get.offNamed(SignInLayout.routeName);
-      }else{
+      }else if (FirebaseAuth.instance.currentUser != null){
         Get.offNamed(HomeLayout.routeName);
       }
     });
@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
           const Spacer(),
           const CircularProgressIndicator(),
           const Spacer(),
-          const Text('Version 6.4.0',style: TextStyle(color: Colors.white,fontSize: 10),),
+          const Text('Version 6.5.0',style: TextStyle(color: Colors.white,fontSize: 10),),
         ],
       ),
     );

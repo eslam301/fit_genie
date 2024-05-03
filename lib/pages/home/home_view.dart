@@ -27,7 +27,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     // var steps = StepsCount().value;
     // var theme = Theme.of(context);
-    //var appTheme = ApplicationTheme();
+    // var appTheme = ApplicationTheme();
     // var widthScreen = MediaQuery.of(context).size.width;
     var heightScreen = MediaQuery.of(context).size.height;
     return ListView(
@@ -55,8 +55,8 @@ class _HomeViewState extends State<HomeView> {
                 initialPage: 0,
                 enableInfiniteScroll: false,
                 reverse: false,
-                autoPlay: false,
-                autoPlayInterval: const Duration(seconds: 10),
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 6),
                 autoPlayAnimationDuration: const Duration(milliseconds: 1500),
                 autoPlayCurve: Curves.fastOutSlowIn,
                 scrollPhysics: const BouncingScrollPhysics(),

@@ -17,14 +17,17 @@ class SignInLayout extends StatelessWidget {
           preferredSize: const Size.fromHeight(80.0),
           child: Container(
             clipBehavior: Clip.antiAlias,
-            decoration:  BoxDecoration(
-              borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(35),bottomRight: Radius.circular(35),),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(45),
+                bottomRight: Radius.circular(45),
+              ),
               color: theme.primaryColor,
             ),
             child: AppBar(
                 title: const Text('FitGenie'),
                 bottom: const TabBar(
-                  labelStyle: TextStyle(fontSize: 20),
+                    labelStyle: TextStyle(fontSize: 20),
                     indicatorColor: Colors.white,
                     unselectedLabelColor: Colors.white,
                     labelColor: Colors.white,
@@ -37,15 +40,13 @@ class SignInLayout extends StatelessWidget {
                       Tab(
                         text: 'Sign Up',
                       )
-                    ]
-                )
-            ),
+                    ])),
           ),
         ),
         body: const TabBarView(
           controller: null,
           physics: NeverScrollableScrollPhysics(),
-          children: [SignInPage(),SignUpPage()],
+          children: [SignInPage(), SignUpPage()],
         ),
       ),
     );

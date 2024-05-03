@@ -1,8 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:fitgenie/pages/sign-in/sign_in_provider/sign_in_provider.dart';
-import 'package:fitgenie/pages/sign-in/sign_up/sign_up.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../core/widgets/custom_button.dart';
 import '../../core/widgets/custom_text_field.dart';
@@ -85,16 +83,6 @@ class SignInPageState extends State<SignInPage> {
                         onTap: () {
                           signIn(signInFormKey, _emailController, _passwordController);
                         },
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Get.toNamed(SignUpPage.routeName,
-                        );
-                      },
-                      child: const Text(
-                        'Create a new account',
-                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ],

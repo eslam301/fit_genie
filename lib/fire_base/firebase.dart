@@ -109,7 +109,7 @@ Future saveSignToFireBase(String emailController, String passwordController, Str
     // print(credential.user?.uid);
     // print(credential.user?.email);
     //print(credential.user?.displayName);
-    Get.to(() =>RequiredForm(),transition: Transition.rightToLeft);
+    Get.to(() =>const RequiredForm(),transition: Transition.rightToLeft);
     Get.snackbar(
       'Success',
       '${credential.user?.displayName} has been created',
