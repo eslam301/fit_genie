@@ -70,32 +70,46 @@ class _NewsScreenState extends State<NewsView> {
                   NewsApiManger.fetchSource();
                 });
               },
-              child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 10.0, vertical: 20.0),
-                controller: ScrollController(),
-                itemCount: articlesModel.articles!.length > 30
-                    ? 30
-                    : articlesModel.articles!.length,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: ArticleWidget(
-                    onTap: () {
-                      Get.to(() => LayOutPageView(
-                            appBarTitle: 'News Details',
-                            body: ArticleDetails(
-                              articlesModel: articlesModel,
-                              index: index,
-                            ),
-                          ));
-                    },
-                    articlesModel: articlesModel,
-                    index: index,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.newspaper_rounded, color: Theme.of(context).colorScheme.secondary,size: 30),
+                      const SizedBox(width: 10),
+                      Text('News', style: Theme.of(context).textTheme.titleLarge),
+                    ],
+                  ).paddingOnly(left: 20,top: 20),
+                  Expanded(
+                    child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0),
+                      controller: ScrollController(),
+                      itemCount: articlesModel.articles!.length > 30
+                          ? 30
+                          : articlesModel.articles!.length,
+                      itemBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: ArticleWidget(
+                          onTap: () {
+                            Get.to(() => LayOutPageView(
+                                  appBarTitle: 'News Details',
+                                  body: ArticleDetails(
+                                    articlesModel: articlesModel,
+                                    index: index,
+                                  ),
+                                ));
+                          },
+                          articlesModel: articlesModel,
+                          index: index,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             );
           } else {

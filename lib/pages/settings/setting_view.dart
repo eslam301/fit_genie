@@ -14,21 +14,23 @@ class SettingsView extends StatefulWidget {
 class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+    var theme = Theme.of(context);
+    return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(
               Icons.settings,
-              color: Colors.white,
+              color: theme.colorScheme.secondary,
               size: 28,
+
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
-            Text(
+            const Text(
               "Settings",
               style: TextStyle(
                   fontWeight: FontWeight.bold,

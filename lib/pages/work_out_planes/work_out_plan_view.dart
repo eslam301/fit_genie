@@ -22,9 +22,6 @@ class WorkOutPlanView extends StatelessWidget {
               ),
             ],
           ).paddingOnly(top: 20, left: 20),
-          const SizedBox(
-            height: 20
-          ),
           Expanded(
             child: ListView.separated(
               scrollDirection: Axis.vertical,
