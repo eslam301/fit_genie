@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:fitgenie/pages/work_out_planes/widget/wide_container_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

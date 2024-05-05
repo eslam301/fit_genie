@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: ProfilePage.routeName, page: () =>  const ProfilePage()),
         GetPage(name: NewsView.routeName, page: () => const NewsView()),
         GetPage(name: NotificationView.routeName,page: () => const NotificationView()),
-        GetPage(name: RequiredForm.routeName, page: () => const RequiredForm()),
+        GetPage(name: RequiredForm.routeName, page: () =>  const RequiredForm()),
       ],
       transitionDuration: const Duration(milliseconds: 400),
       defaultTransition: Transition.rightToLeft,

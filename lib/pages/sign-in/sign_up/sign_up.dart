@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/custom_text_field.dart';
-import '../../../fire_base/firebase.dart';
 import '../../../layout/basic_layout_page.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -31,103 +30,106 @@ class SignUpPageState extends State<SignUpPage> {
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Form(
-            key: signUpFormKey,
-            child: Column(
-              children: [
-                FadeIn(
-                  delay: const Duration(milliseconds: 100),
-                  child: const Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      fontSize: 38,
-                      fontWeight: FontWeight.bold,
-                    ),
+          key: signUpFormKey,
+          child: Column(
+            children: [
+              FadeIn(
+                delay: const Duration(milliseconds: 100),
+                child: const Text(
+                  'Sign Up',
+                  style: TextStyle(
+                    fontSize: 38,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 20),
-                CustomTextField(
-                    keyBoardType: TextInputType.name,
-                    suffixIcon: const Icon(Icons.person),
-                    delay: const Duration(milliseconds: 50),
-                    controller: nameController,
-                    label: 'Name',
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your name';
-                      } else {
-                        //print('name is valid');
-                        return null;
-                      }
+              ),
+              const SizedBox(height: 20),
+              CustomTextField(
+                  keyBoardType: TextInputType.name,
+                  suffixIcon: const Icon(Icons.person),
+                  delay: const Duration(milliseconds: 50),
+                  controller: nameController,
+                  label: 'Name',
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your name';
+                    } else {
+                      //print('name is valid');
+                      return null;
+                    }
+                  }),
+              CustomTextField(
+                  controller: emailController,
+                  delay: const Duration(milliseconds: 100),
+                  suffixIcon: const Icon(Icons.email),
+                  label: 'Email',
+                  keyBoardType: TextInputType.emailAddress,
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your email';
+                    } else if (!value.contains('@')) {
+                      return 'Please enter a valid email';
+                    } else {
+                      //print('email is valid');
+                      return null;
+                    }
+                  }),
+              CustomTextField(
+                  controller: passwordController,
+                  delay: const Duration(milliseconds: 150),
+                  label: 'Password',
+                  isPassword: true,
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your password';
+                    } else if (value.length < 8) {
+                      return 'Password must be at least 8 characters';
+                    } else {
+                      return null;
+                    }
+                  }),
+              CustomTextField(
+                  controller: passwordConfirmController,
+                  delay: const Duration(milliseconds: 200),
+                  label: 'Confirm Password',
+                  isPassword: true,
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please confirm your password';
+                    } else if (value != passwordController.text) {
+                      return 'Passwords do not match';
+                    } else {
+                      return null;
+                    }
+                  }),
+              FadeInUp(
+                delay: const Duration(milliseconds: 350),
+                child: LongButton(
+                    label: 'Sign Up',
+                    onTap: () {
+                      signUp();
                     }),
-                CustomTextField(
-                    controller: emailController,
-                    delay: const Duration(milliseconds: 100),
-                    suffixIcon: const Icon(Icons.email),
-                    label: 'Email',
-                    keyBoardType: TextInputType.emailAddress,
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your email';
-                      } else if (!value.contains('@')) {
-                        return 'Please enter a valid email';
-                      } else {
-                        //print('email is valid');
-                        return null;
-                      }
-                    }),
-                CustomTextField(
-                    controller: passwordController,
-                    delay: const Duration(milliseconds: 150),
-                    label: 'Password',
-                    isPassword: true,
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your password';
-                      } else if (value.length < 8) {
-                        return 'Password must be at least 8 characters';
-                      } else {
-                        return null;
-                      }
-                    }),
-                CustomTextField(
-                    controller: passwordConfirmController,
-                    delay: const Duration(milliseconds: 200),
-                    label: 'Confirm Password',
-                    isPassword: true,
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please confirm your password';
-                      } else if (value != passwordController.text) {
-                        return 'Passwords do not match';
-                      } else {
-                        return null;
-                      }
-                    }),
-                FadeInUp(
-                  delay: const Duration(milliseconds: 350),
-                  child: LongButton(
-                      label: 'Sign Up',
-                      onTap: () {
-                         signUp();
-
-                      }),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-
+        ),
       ),
     );
   }
 
-  signUp() async {
+  signUp() {
     if (signUpFormKey.currentState!.validate()) {
-      await saveSignToFireBase(
-        emailController.text,
-        passwordController.text,
-        nameController.text,
-      );
+      Get.to(
+        LayOutPageView(
+          appBarTitle: 'Required Form',
+          body: RequiredForm(
+            email: emailController.text,
+            password: passwordController.text,
+            name: nameController.text,
+          ),
+        ),
 
+      );
     } else {
       Get.snackbar(
         'Error',

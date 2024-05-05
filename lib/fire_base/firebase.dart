@@ -2,9 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitgenie/layout/sign_in_layout/sign_in_layout.dart';
 import 'package:get/get.dart';
 
-import '../layout/basic_layout_page.dart';
 import '../layout/home_layout.dart';
-import '../pages/sign-in/sign_up/required_form.dart';
 
 authStateChanges() {
   FirebaseAuth.instance.authStateChanges().listen((User? user) {
@@ -92,14 +90,14 @@ void signOutFireBase() async {
 
 // signUpFireBase()
 // saveSignToFireBase()
-Future saveSignToFireBase(String emailController, String passwordController,
-    String nameController) async {
-
-
+Future saveSignToFireBase(
+    {required String emailController,
+    required String passwordController,
+    required String nameController}) async {
   try {
     final credential = FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController,
-        password: passwordController,
+      email: emailController,
+      password: passwordController,
     );
   } on FirebaseAuthException catch (e) {
     if (e.code == 'weak-password') {

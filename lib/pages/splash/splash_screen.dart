@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../core/widgets/logo_splash_widget.dart';
 import '../../layout/home_layout.dart';
+
 class SplashScreen extends StatefulWidget {
   static const String routeName = '/splash';
   const SplashScreen({super.key});
@@ -17,13 +18,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 2), () {
-      if (FirebaseAuth.instance.currentUser == null){
+      if (FirebaseAuth.instance.currentUser == null) {
         Get.offNamed(SignInLayout.routeName);
-      }else if (FirebaseAuth.instance.currentUser != null){
+      } else if (FirebaseAuth.instance.currentUser != null) {
         Get.offNamed(HomeLayout.routeName);
       }
     });
-    return  Scaffold(
+    return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -35,7 +36,10 @@ class _SplashScreenState extends State<SplashScreen> {
           const Spacer(),
           const CircularProgressIndicator(),
           const Spacer(),
-          const Text('Version 7.1.0',style: TextStyle(color: Colors.white,fontSize: 10),),
+          const Text(
+            'Version 7.2.0',
+            style: TextStyle(color: Colors.white, fontSize: 10),
+          ),
         ],
       ),
     );

@@ -39,11 +39,11 @@ class _SettingsViewState extends State<SettingsView> {
             )
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
-        DropDownBarTheme(),
-        SizedBox(
+        const DropDownBarTheme(),
+        const SizedBox(
           height: 20,
         ),
         // LongButton(

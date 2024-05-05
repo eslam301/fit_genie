@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../pages/sign-in/sign_in.dart';
 import '../../pages/sign-in/sign_up/sign_up.dart';
 
@@ -43,10 +42,10 @@ class SignInLayout extends StatelessWidget {
                     ])),
           ),
         ),
-        body:  TabBarView(
+        body:  const TabBarView(
           controller: null,
-          physics: const NeverScrollableScrollPhysics(),
-          children: [const SignInPage(), SignUpPage()],
+          physics: NeverScrollableScrollPhysics(),
+          children: [SignInPage(), SignUpPage()],
         ),
       ),
     );

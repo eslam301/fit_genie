@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class WideContainer extends StatefulWidget {
   final String title;
@@ -67,7 +66,7 @@ class _WideContainerState extends State<WideContainer> {
                   ),
                   Text(
                     widget.description,
-                    style: TextStyle(color: Colors.white, fontSize: 14),
+                    style: const TextStyle(color: Colors.white, fontSize: 14),
                   ),
                 ])
           ],
