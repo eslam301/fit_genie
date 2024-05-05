@@ -1,11 +1,12 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:fitgenie/layout/basic_layout_page.dart';
 import 'package:fitgenie/pages/sign-in/sign_up/required_form.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/custom_text_field.dart';
 import '../../../fire_base/firebase.dart';
+import '../../../layout/basic_layout_page.dart';
 
 class SignUpPage extends StatefulWidget {
   static const String routeName = '/sign-up';
@@ -26,12 +27,10 @@ class SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     // var theme = Theme.of(context);
     return Center(
-      child: ListView(
-        shrinkWrap: true,
+      child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        children: <Widget>[
-          Form(
+        child: Form(
             key: signUpFormKey,
             child: Column(
               children: [
@@ -86,12 +85,7 @@ class SignUpPageState extends State<SignUpPage> {
                         return 'Please enter your password';
                       } else if (value.length < 8) {
                         return 'Password must be at least 8 characters';
-                      } else if (!value.contains(RegExp(r'[A-Z]'))) {
-                        return 'Password must contain at least one uppercase letter';
-                      } else if (!value.contains(RegExp(r'[a-z]'))) {
-                        return 'Password must contain at least one lowercase letter';
                       } else {
-                        //print('password is valid');
                         return null;
                       }
                     }),
@@ -106,7 +100,6 @@ class SignUpPageState extends State<SignUpPage> {
                       } else if (value != passwordController.text) {
                         return 'Passwords do not match';
                       } else {
-                        //print('password is valid');
                         return null;
                       }
                     }),
@@ -115,19 +108,14 @@ class SignUpPageState extends State<SignUpPage> {
                   child: LongButton(
                       label: 'Sign Up',
                       onTap: () {
-                        //signUp();
-                        Get.to(
-                            () => const LayOutPageView(
-                                appBarTitle: 'Required Data',
-                                body: RequiredForm()),
-                            transition: Transition.leftToRight);
-                        //print('signup');
+                         signUp();
+
                       }),
                 ),
               ],
             ),
           ),
-        ],
+
       ),
     );
   }
@@ -139,6 +127,7 @@ class SignUpPageState extends State<SignUpPage> {
         passwordController.text,
         nameController.text,
       );
+
     } else {
       Get.snackbar(
         'Error',

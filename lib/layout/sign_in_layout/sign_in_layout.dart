@@ -43,10 +43,10 @@ class SignInLayout extends StatelessWidget {
                     ])),
           ),
         ),
-        body: const TabBarView(
+        body:  TabBarView(
           controller: null,
-          physics: NeverScrollableScrollPhysics(),
-          children: [SignInPage(), SignUpPage()],
+          physics: const NeverScrollableScrollPhysics(),
+          children: [const SignInPage(), SignUpPage()],
         ),
       ),
     );

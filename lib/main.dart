@@ -2,6 +2,7 @@ import 'package:fitgenie/layout/sign_in_layout/sign_in_layout.dart';
 import 'package:fitgenie/pages/News/news_screen.dart';
 import 'package:fitgenie/pages/notification/notification_view.dart';
 import 'package:fitgenie/pages/profile/profile_view.dart';
+import 'package:fitgenie/pages/sign-in/sign_up/required_form.dart';
 import 'package:fitgenie/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: ProfilePage.routeName, page: () =>  const ProfilePage()),
         GetPage(name: NewsView.routeName, page: () => const NewsView()),
         GetPage(name: NotificationView.routeName,page: () => const NotificationView()),
+        GetPage(name: RequiredForm.routeName, page: () => const RequiredForm()),
       ],
       transitionDuration: const Duration(milliseconds: 400),
       defaultTransition: Transition.rightToLeft,
