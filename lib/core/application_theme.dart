@@ -158,7 +158,8 @@ class ApplicationTheme {
         onBackground: Colors.white,
         surface: Colors.blue,
         onSurface: Colors.white,
-        brightness: Brightness.dark
+        brightness: Brightness.dark,
+
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       type: BottomNavigationBarType.fixed,

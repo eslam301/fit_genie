@@ -91,15 +91,14 @@ class PremiumPlansView extends StatelessWidget {
           height: 20,
         ),
         const Text('Get access to premium features'),
-        const SizedBox(
-          height: 20,
-        ),
+
         Expanded(
           child: ListView.separated(
             padding: const EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 120),
             scrollDirection: Axis.vertical,
             physics: const BouncingScrollPhysics(),
             itemCount: plans.length,
+            cacheExtent: 1000,
             separatorBuilder: (BuildContext context, int index) {
               return const SizedBox(
                 height: 25,
@@ -108,7 +107,7 @@ class PremiumPlansView extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return FadeInLeft(
                 duration: const Duration(milliseconds: 700),
-                delay: Duration(milliseconds: index+1 * 200),
+                delay: Duration(milliseconds: (index+1) * 200),
                 child: PlanContainer(
                   title: plans[index]['title'],
                   price: '${plans[index]['price']}week',

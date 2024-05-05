@@ -16,21 +16,40 @@ class WorkOutWidgetItem extends StatelessWidget {
         color: Colors.black26,
         borderRadius: BorderRadius.circular(20),
       ),
-      child:  Column(
-
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(10)),
-              child: Image(image: AssetImage('assets/images/cardio.png'), filterQuality: FilterQuality.high,)),
+              child: Image(
+                image: AssetImage('assets/images/cardio.png'),
+                filterQuality: FilterQuality.high,
+              )),
           const SizedBox(height: 10),
-          const Text('Cardio', textAlign: TextAlign.left, style: TextStyle(color: Colors.white, fontSize: 18),),
-          const Text('Total Body Power', textAlign: TextAlign.left, style: TextStyle(color: Colors.white, fontSize: 20),),
-          const Text('28 Days . 4 Days per week', textAlign: TextAlign.left, style: TextStyle(color: Colors.grey, fontSize: 15),),
+          const Text(
+            'Cardio',
+            textAlign: TextAlign.left,
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ),
+          const Text(
+            'Total Body Power',
+            textAlign: TextAlign.left,
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          const Text(
+            '28 Days . 4 Days per week',
+            textAlign: TextAlign.left,
+            style: TextStyle(color: Colors.grey, fontSize: 15),
+          ),
           const SizedBox(height: 10),
-          LongButton(label: 'View Details', onTap: (){
-            Get.to(const LayOutPageView(appBarTitle: 'Cardio', body: WorkOutDetails(),));
-          }),
+          LongButton(
+              label: 'View Details',
+              onTap: () {
+                Get.to(const LayOutPageView(
+                  appBarTitle: 'Cardio',
+                  body: WorkOutDetails(),
+                ));
+              }),
         ],
       ),
     );

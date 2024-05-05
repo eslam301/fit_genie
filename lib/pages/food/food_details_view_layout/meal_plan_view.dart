@@ -14,15 +14,16 @@ class MealPlanView extends StatelessWidget {
     var theme = Theme.of(context);
     String title = FoodData.meal[index]["name"].toString();
     String image = FoodData.meal[index]["image"].toString();
-    List<Map<String, dynamic>> items = FoodData.meal[index]["items"];
+    List<Map<String, dynamic>> foodItems = FoodData.meal[index]["items"];
     return Container(
       clipBehavior: Clip.antiAlias,
       width: double.infinity,
+      height: double.infinity,
       decoration: BoxDecoration(
-        color: theme.primaryColor,
+        color: theme.primaryColor.withOpacity(0.5),
         borderRadius: BorderRadius.circular(20),
       ),
-      margin: const EdgeInsets.only(bottom: 60, left: 16, right: 16, top: 20),
+      margin: const EdgeInsets.all(14),
       child: Column(children: [
         Image.asset(image),
         const SizedBox(height: 20),
@@ -35,31 +36,28 @@ class MealPlanView extends StatelessWidget {
           child: ListView.builder(
               padding: const EdgeInsets.all(16.0),
               physics: const BouncingScrollPhysics(),
-              itemCount: items.length,
+              itemCount: foodItems.length,
               itemBuilder: (context, index) {
                 return FoodCheckWidgetView(
                   index: index,
                 ) ;
               }),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: LongButton(
-              label: 'Save',
-              onTap: () {
-                Get.snackbar("Saved", "Meal saved successfully",
-                    snackPosition: SnackPosition.TOP,
-                    padding: const EdgeInsets.all(20),
-                    overlayColor: Colors.black.withOpacity(0.5),
-                    margin: const EdgeInsets.all(20),
-                    backgroundColor: theme.primaryColor.withOpacity(0.8),
-                    colorText: Colors.white,
-                    duration: const Duration(milliseconds: 1500),
-                );
-              },
-              color: theme.colorScheme.secondary.withOpacity(0.4),
-          ),
-        ),
+        LongButton(
+            label: 'Save',
+            onTap: () {
+              Get.snackbar("Saved", "Meal saved successfully",
+                  snackPosition: SnackPosition.TOP,
+                  padding: const EdgeInsets.all(20),
+                  overlayColor: Colors.black.withOpacity(0.5),
+                  margin: const EdgeInsets.all(20),
+                  backgroundColor: theme.primaryColor.withOpacity(0.8),
+                  colorText: Colors.white,
+                  duration: const Duration(milliseconds: 1500),
+              );
+            },
+            color: theme.colorScheme.secondary.withOpacity(0.4),
+        ).paddingAll(8),
       ]),
     );
   }

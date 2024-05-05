@@ -82,7 +82,7 @@ class CustomDrawer extends StatelessWidget {
                         ),
                         onTap: () {
                           Get.to(
-                                () => const NotificationView(),
+                                () => const LayOutPageView(appBarTitle: 'news feed', body: NotificationView()),
                             transition: Transition.rightToLeftWithFade,
                           );
 

@@ -1,3 +1,4 @@
+import 'package:fitgenie/layout/basic_layout_page.dart';
 import 'package:fitgenie/pages/News/news_api_config/news_api_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -83,13 +84,13 @@ class _NewsScreenState extends State<NewsView> {
                   padding: const EdgeInsets.all(10.0),
                   child: ArticleWidget(
                     onTap: () {
-                      Get.to(
-                        () => ArticleDetails(
-                          articlesModel: articlesModel,
-                          index: index,
-                        ),
-                        transition: Transition.rightToLeft,
-                      );
+                      Get.to(() => LayOutPageView(
+                            appBarTitle: 'News Details',
+                            body: ArticleDetails(
+                              articlesModel: articlesModel,
+                              index: index,
+                            ),
+                          ));
                     },
                     articlesModel: articlesModel,
                     index: index,
