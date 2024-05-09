@@ -134,12 +134,7 @@ class CustomDrawer extends StatelessWidget {
                           ),
                         ),
                         onTap: () {
-                          signOutFireBase();
-                          // Get.off(
-                          //   () => const SignInPage(),
-                          //   duration: const Duration(milliseconds: 500),
-                          //   transition: Transition.fadeIn,
-                          // );
+                          ApplicationFirebaseAuth.signOutFireBase();
                         }),
                   ]))
             ]),

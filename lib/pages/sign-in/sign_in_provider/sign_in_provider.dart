@@ -5,7 +5,7 @@ import '../../../fire_base/firebase.dart';
 
 void signIn(signInFormKey, emailController, passwordController) {
   if (signInFormKey.currentState!.validate()) {
-    signInFireBase( emailController, passwordController);
+    ApplicationFirebaseAuth.signInFireBase( emailController, passwordController);
     //Get.to(() => const HomeLayout(),transition: Transition.rightToLeft);
   } else {
     Get.snackbar(

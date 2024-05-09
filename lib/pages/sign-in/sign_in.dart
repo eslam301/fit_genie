@@ -104,7 +104,7 @@ class SignInPageState extends State<SignInPage> {
                       ),
                       child: IconButton(
                         onPressed: (){
-                          GoogleAuth.signInWithGoogle();
+                          ApplicationFirebaseAuth.signInWithGoogle();
                         },
                         icon: const Icon(Icons.facebook),
                       )

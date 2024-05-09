@@ -162,7 +162,7 @@ class _RequiredFormState extends State<RequiredForm> {
 
   void submit() {
     if (submitFormKey.currentState!.validate()) {
-      saveSignToFireBase(
+      ApplicationFirebaseAuth.saveSignToFireBase(
           emailController: widget.email!,
           passwordController: widget.password!,
           nameController: widget.name!);
