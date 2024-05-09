@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/custom_text_field.dart';
+import '../../../core/widgets/logo_splash_widget.dart';
 import '../../../layout/basic_layout_page.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -18,7 +19,6 @@ class SignUpPage extends StatefulWidget {
 class SignUpPageState extends State<SignUpPage> {
   final GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController passwordConfirmController =
       TextEditingController();
@@ -33,31 +33,34 @@ class SignUpPageState extends State<SignUpPage> {
           key: signUpFormKey,
           child: Column(
             children: [
-              FadeIn(
-                delay: const Duration(milliseconds: 100),
-                child: const Text(
-                  'Sign Up',
-                  style: TextStyle(
-                    fontSize: 38,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              // FadeIn(
+              //   delay: const Duration(milliseconds: 100),
+              //   child: const Text(
+              //     'Sign Up',
+              //     style: TextStyle(
+              //       fontSize: 38,
+              //       fontWeight: FontWeight.bold,
+              //     ),
+              //   ),
+              // ),
+              FadeInDown(
+                  duration: const Duration(milliseconds: 700),
+                  child: const LogoSplashWidget()),
               const SizedBox(height: 20),
-              CustomTextField(
-                  keyBoardType: TextInputType.name,
-                  suffixIcon: const Icon(Icons.person),
-                  delay: const Duration(milliseconds: 50),
-                  controller: nameController,
-                  label: 'Name',
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your name';
-                    } else {
-                      //print('name is valid');
-                      return null;
-                    }
-                  }),
+              // CustomTextField(
+              //     keyBoardType: TextInputType.name,
+              //     suffixIcon: const Icon(Icons.person),
+              //     delay: const Duration(milliseconds: 50),
+              //     controller: nameController,
+              //     label: 'Name',
+              //     validator: (String? value) {
+              //       if (value == null || value.isEmpty) {
+              //         return 'Please enter your name';
+              //       } else {
+              //         //print('name is valid');
+              //         return null;
+              //       }
+              //     }),
               CustomTextField(
                   controller: emailController,
                   delay: const Duration(milliseconds: 100),
@@ -125,7 +128,6 @@ class SignUpPageState extends State<SignUpPage> {
           body: RequiredForm(
             email: emailController.text,
             password: passwordController.text,
-            name: nameController.text,
           ),
         ),
 

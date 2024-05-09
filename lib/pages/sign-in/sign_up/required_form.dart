@@ -12,18 +12,19 @@ class RequiredForm extends StatefulWidget {
   final String? password;
   final String? name;
 
-  const RequiredForm(
-      {super.key,
-      this.email,
-      this.password,
-      this.name,
-      });
+  const RequiredForm({
+    super.key,
+    this.email,
+    this.password,
+    this.name,
+  });
 
   @override
   State<RequiredForm> createState() => _RequiredFormState();
 }
 
 class _RequiredFormState extends State<RequiredForm> {
+  final GlobalKey<FormState> submitFormKey = GlobalKey<FormState>();
 
   final TextEditingController firstNameController = TextEditingController();
 
@@ -37,14 +38,13 @@ class _RequiredFormState extends State<RequiredForm> {
 
   final TextEditingController ageController = TextEditingController();
 
-  String genderLabel = 'Gender';
   String? genderValue;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         child: Form(
-      key: null,
+      key: submitFormKey,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(children: [
@@ -55,12 +55,17 @@ class _RequiredFormState extends State<RequiredForm> {
             keyBoardType: TextInputType.name,
             delay: const Duration(milliseconds: 50),
             validator: (String? value) {
-              return null;
+              if (value == null || value.isEmpty) {
+                return 'Please enter your name';
+              } else {
+                //print('name is valid');
+                return null;
+              }
             },
           ),
           CustomTextField(
             controller: secondNameController,
-            label: 'Second Name',
+            label: 'Second Name (optional)',
             suffixIcon: const Icon(Icons.person_3_outlined),
             keyBoardType: TextInputType.name,
             delay: const Duration(milliseconds: 100),
@@ -72,14 +77,14 @@ class _RequiredFormState extends State<RequiredForm> {
               duration: const Duration(milliseconds: 400),
               delay: const Duration(milliseconds: 150),
               child: CustomDropDown(
-                label: genderLabel,
+                label: "Gender" ,
+                value: genderValue,
                 items: const ['Male', 'Female'],
                 iconItems: const [Icons.male, Icons.female],
                 onChanged: (String? value) {
                   setState(() {
-                    genderLabel = value ?? 'Gender';
+                    genderValue = value ?? 'Gender';
                   });
-                  genderValue = value;
                 },
               )),
           CustomTextField(
@@ -89,7 +94,14 @@ class _RequiredFormState extends State<RequiredForm> {
             keyBoardType: TextInputType.number,
             delay: const Duration(milliseconds: 200),
             validator: (String? value) {
-              return null;
+              if (value == null || value.isEmpty) {
+                return 'Please enter your weight';
+              } else if (double.parse(value) > 300 ||
+                  double.parse(value) < 30) {
+                return 'Please enter a valid weight';
+              } else {
+                return null;
+              }
             },
           ),
           CustomTextField(
@@ -99,6 +111,12 @@ class _RequiredFormState extends State<RequiredForm> {
             keyBoardType: TextInputType.number,
             delay: const Duration(milliseconds: 250),
             validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your height';
+              } else if (double.parse(value) > 300 ||
+                  double.parse(value) < 100) {
+                return 'Please enter a valid height';
+              }
               return null;
             },
           ),
@@ -109,12 +127,18 @@ class _RequiredFormState extends State<RequiredForm> {
             suffixIcon: const Icon(Icons.calendar_month),
             delay: const Duration(milliseconds: 300),
             validator: (String? value) {
-              return null;
+              if (value == null || value.isEmpty) {
+                return 'Please enter your age';
+              } else if (int.tryParse(value) == null) {
+                return 'Please enter a valid age';
+              } else {
+                return null;
+              }
             },
           ),
           CustomTextField(
             controller: diseaseController,
-            label: 'Disease',
+            label: 'Disease (optional)',
             suffixIcon: const Icon(Icons.health_and_safety),
             keyBoardType: TextInputType.name,
             delay: const Duration(milliseconds: 350),
@@ -127,22 +151,21 @@ class _RequiredFormState extends State<RequiredForm> {
             duration: const Duration(milliseconds: 400),
             child: LongButton(
                 label: 'submit',
-                onTap: () async {
-                  // print(genderValue);
-                  // print(firstNameController.text);
-                  // print(secondNameController.text);
-                  // print(weightController.text);
-                  // print(heightController.text);
-                  // print(diseaseController.text);
-                  // print(ageController.text);
-                  await saveSignToFireBase(
-                      emailController: widget.email as String,
-                      passwordController: widget.password as String,
-                      nameController: widget.name as String);
+                onTap: () {
+                  submit();
                 }),
           )
         ]),
       ),
     ));
+  }
+
+  void submit() {
+    if (submitFormKey.currentState!.validate()) {
+      saveSignToFireBase(
+          emailController: widget.email!,
+          passwordController: widget.password!,
+          nameController: widget.name!);
+    }
   }
 }

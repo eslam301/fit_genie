@@ -5,23 +5,27 @@ class CustomDropDown extends StatelessWidget {
   final String label;
   final Function(String?) onChanged;
   final List<IconData> iconItems;
+  final String? value;
   const CustomDropDown({
     super.key,
     required this.label,
     required this.onChanged,
     required this.items,
     required this.iconItems,
+    this.value,
   });
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
         openBottomSheet(context);
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10),
-        padding: const EdgeInsets.only(left: 20, right: 12, top: 10, bottom: 10),
+        padding:
+            const EdgeInsets.only(left: 20, right: 12, top: 10, bottom: 10),
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -30,11 +34,16 @@ class CustomDropDown extends StatelessWidget {
         child: Row(
           children: [
             Text(
-              label,
+              value != null ? '$label:' : label,
               style: const TextStyle(
                   fontSize: 18,
                   color: Colors.grey,
                   fontWeight: FontWeight.bold),
+            ),
+            Text(
+              ' ${value?? " "} ',
+              style: TextStyle(fontSize: 18, color:  theme.primaryColor.withOpacity(0.8) , fontWeight: FontWeight.bold),
+              overflow: TextOverflow.ellipsis,
             ),
             const Spacer(),
             const Icon(

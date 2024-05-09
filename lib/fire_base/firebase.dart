@@ -76,10 +76,26 @@ void signInFireBase(emailController, passwordController) async {
   }
 }
 
-void signInWithGoogle() {
-  FirebaseAuth.instance.signInWithPopup(
-    GoogleAuthProvider(),
-  );
+class GoogleAuth {
+  static final FirebaseAuth _auth = FirebaseAuth.instance;
+  static User? user;
+  static void signInWithGoogle() {
+    try {
+      GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
+      _auth.signInWithProvider(googleAuthProvider);
+    } catch (e) {
+      print('------------------------------------------------------');
+      print(e);
+      print('------------------------------------------------------');
+    }
+    if (user != null) {
+      Get.offAll(() => const HomeLayout(), transition: Transition.rightToLeft);
+      Get.snackbar(
+        'Welcome',
+        user?.displayName?? 'couch',
+      );
+    }
+  }
 }
 
 // signOutFireBase()

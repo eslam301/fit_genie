@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../core/widgets/custom_button.dart';
 import '../../core/widgets/custom_text_field.dart';
 import '../../core/widgets/logo_splash_widget.dart';
+import '../../fire_base/firebase.dart';
 
 
 class SignInPage extends StatefulWidget {
@@ -30,6 +31,7 @@ class SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return
        Center(
         child: ListView(
@@ -87,6 +89,29 @@ class SignInPageState extends State<SignInPage> {
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(height: 20),
+              FadeInUp(
+                delay: const Duration(milliseconds: 400),
+                duration: const Duration(milliseconds: 700),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: theme.primaryColor,
+                        borderRadius: BorderRadius.circular(60),
+                      ),
+                      child: IconButton(
+                        onPressed: (){
+                          GoogleAuth.signInWithGoogle();
+                        },
+                        icon: const Icon(Icons.facebook),
+                      )
+                    )
+                  ]
+                ),
+
               )
             ],
           ),
