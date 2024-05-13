@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/widgets/custom_drop_down/custom_drop_down_par.dart';
 import '../../../core/widgets/custom_text_field.dart';
+import '../../../core/widgets/logo_splash_widget.dart';
 import '../../../fire_base/firebase.dart';
 
 class RequiredForm extends StatefulWidget {
@@ -48,6 +49,11 @@ class _RequiredFormState extends State<RequiredForm> {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(children: [
+          FadeInUp(
+            duration: const Duration(milliseconds: 400),
+            child: const LogoSplashWidget(),
+          ),
+          const SizedBox(height: 20),
           CustomTextField(
             controller: firstNameController,
             label: 'Name',
@@ -77,7 +83,7 @@ class _RequiredFormState extends State<RequiredForm> {
               duration: const Duration(milliseconds: 400),
               delay: const Duration(milliseconds: 150),
               child: CustomDropDown(
-                label: "Gender" ,
+                label: "Gender",
                 value: genderValue,
                 items: const ['Male', 'Female'],
                 iconItems: const [Icons.male, Icons.female],

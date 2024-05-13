@@ -4,10 +4,12 @@ import '../../pages/sign-in/sign_up/sign_up.dart';
 
 class SignInLayout extends StatelessWidget {
   static const String routeName = '/sign-in-layout';
+
   const SignInLayout({super.key});
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return DefaultTabController(
       length: 2,
       initialIndex: 0,

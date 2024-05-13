@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,10 +37,15 @@ class MealPlanView extends StatelessWidget {
           child: ListView.builder(
               padding: const EdgeInsets.all(16.0),
               physics: const BouncingScrollPhysics(),
+              cacheExtent: 1000,
               itemCount: foodItems.length,
               itemBuilder: (context, index) {
-                return FoodCheckWidgetView(
-                  index: index,
+                return FadeInUp(
+                  duration: const Duration(milliseconds: 500),
+                  delay: Duration(milliseconds: 100 * (index + 1)),
+                  child: FoodCheckWidgetView(
+                    index: index,
+                  ),
                 ) ;
               }),
         ),

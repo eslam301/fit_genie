@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:fitgenie/pages/profile/profile_widgets/profile_row_widget.dart';
@@ -74,7 +75,9 @@ class _ProfilePageState extends State<ProfilePage> {
           CircleAvatar(
             backgroundColor: theme.colorScheme.secondary,
             radius: 60,
-            backgroundImage: NetworkImage(user?.photoURL ?? ''),
+            backgroundImage: CachedNetworkImageProvider(
+              user?.photoURL ?? ' ',
+            ),
           ),
           Text(
             user?.displayName ?? 'UserNull',

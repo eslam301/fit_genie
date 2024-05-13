@@ -29,7 +29,6 @@ class _WideContainerState extends State<WideContainer> {
         setState(() {
           isFinished = !isFinished;
         });
-
       },
       child: Container(
         height: heightScreen * 0.12,
@@ -45,15 +44,29 @@ class _WideContainerState extends State<WideContainer> {
               width: widthScreen * 0.20,
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: isFinished ? Colors.teal.withOpacity(0.8) : theme.primaryColor.withOpacity(0.8),
+                color: isFinished
+                    ? Colors.teal.withOpacity(0.8)
+                    : theme.primaryColor.withOpacity(0.8),
               ),
               duration: const Duration(milliseconds: 100),
-              child: Center(
-                child: Text(
-                  widget.title,
-                  style: const TextStyle(color: Colors.white, fontSize: 18),
-                ),
-              ),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      widget.title,
+                      style: const TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                    const SizedBox(
+                      height: 14,
+                    ),
+                    AnimatedOpacity(
+                      duration: const Duration(milliseconds: 300),
+                      opacity: isFinished ? 1.0 : 0.2,
+                      child: Icon(
+                        isFinished ? Icons.check_circle : Icons.circle_outlined,
+                      ),
+                    )
+                  ]),
             ),
             const SizedBox(width: 8),
             Column(
