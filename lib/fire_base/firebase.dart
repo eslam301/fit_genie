@@ -15,9 +15,9 @@ class ApplicationFirebaseAuth extends GetxController {
       GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
       auth.signInWithProvider(googleAuthProvider);
     } catch (e) {
-      print('------------------------------------------------------');
-      print(e);
-      print('------------------------------------------------------');
+      // print('------------------------------------------------------');
+      // print(e);
+      // print('------------------------------------------------------');
     }
   }
   static void signInFireBase(emailController, passwordController) async {
@@ -112,7 +112,7 @@ class ApplicationFirebaseAuth extends GetxController {
       required String nameController}) async {
     try {
 
-      final credential = await auth.createUserWithEmailAndPassword(
+      auth.createUserWithEmailAndPassword(
         email: emailController,
         password: passwordController,
       );

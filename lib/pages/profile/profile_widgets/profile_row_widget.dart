@@ -10,7 +10,7 @@ class ProfileRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? name = userMap![index]['name'] ?? 'Name';
-    String value = userMap![index]['value'].toString() ?? 'Value';
+    String value = userMap![index]['value'].toString();
     double? fontSize = value.length > 12 ? 16.0 : 21.0;
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10.0),

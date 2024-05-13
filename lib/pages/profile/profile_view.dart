@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../fire_base/firebase.dart';
-import '../sign-in/sign_in.dart';
 
 class ProfilePage extends StatefulWidget {
   static const String routeName = '/profile';
