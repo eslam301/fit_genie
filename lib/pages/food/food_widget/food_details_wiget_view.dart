@@ -25,7 +25,6 @@ class _FoodCheckWidgetViewState extends State<FoodCheckWidgetView> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    List<Map<String, dynamic>> items = FoodData.meal[widget.index]["items"];
 
     return GestureDetector(
       onTap: () {
