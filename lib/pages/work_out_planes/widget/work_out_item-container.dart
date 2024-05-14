@@ -4,9 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../work_out_details_page_view.dart';
+import '../work_out_model/work_out_model.dart';
 
 class WorkOutWidgetItem extends StatelessWidget {
-  const WorkOutWidgetItem({super.key});
+  final WorkOutPlansModel exerciseModel;
+  final WorkOutTypes? exerciseModel1;
+
+  const WorkOutWidgetItem(
+      {super.key, required this.exerciseModel, this.exerciseModel1});
 
   @override
   Widget build(BuildContext context) {
@@ -26,28 +31,30 @@ class WorkOutWidgetItem extends StatelessWidget {
                 filterQuality: FilterQuality.high,
               )),
           const SizedBox(height: 10),
-          const Text(
-            'Cardio',
+          Text(
+            '${exerciseModel1?.typeOfExercises}',
             textAlign: TextAlign.left,
-            style: TextStyle(color: Colors.white, fontSize: 18),
+            style: const TextStyle(color: Colors.white, fontSize: 18),
           ),
-          const Text(
-            'Total Body Power',
+          Text(
+            '${exerciseModel1?.specificExercisesOrRoutines}',
             textAlign: TextAlign.left,
-            style: TextStyle(color: Colors.white, fontSize: 20),
+            style: const TextStyle(color: Colors.white, fontSize: 20),
           ),
-          const Text(
-            '28 Days . 4 Days per week',
+          Text(
+            '${exerciseModel1?.durationAndFrequencyOfWorkouts}',
             textAlign: TextAlign.left,
-            style: TextStyle(color: Colors.grey, fontSize: 15),
+            style: const TextStyle(color: Colors.grey, fontSize: 15),
           ),
           const SizedBox(height: 10),
           LongButton(
               label: 'View Details',
               onTap: () {
-                Get.to(const LayOutPageView(
+                Get.to(LayOutPageView(
                   appBarTitle: 'Cardio',
-                  body: WorkOutDetails(),
+                  body: WorkOutDetails(
+                    exerciseModel: exerciseModel1,
+                  ),
                 ));
               }),
         ],

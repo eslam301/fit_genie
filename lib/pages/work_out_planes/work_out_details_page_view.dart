@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:fitgenie/pages/work_out_planes/widget/wide_container_widget.dart';
+import 'package:fitgenie/pages/work_out_planes/work_out_model/work_out_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,15 +8,24 @@ import '../../core/widgets/custom_button.dart';
 import 'data/work_out_data.dart';
 
 class WorkOutDetails extends StatelessWidget {
-  const WorkOutDetails({super.key});
+  final WorkOutTypes? exerciseModel;
+  const WorkOutDetails({super.key, required this.exerciseModel});
 
   @override
   Widget build(BuildContext context) {
+    List titleSplit = exerciseModel?.typeOfExercises?.split(',') ?? [];
+    List subtitleSplit = exerciseModel?.specificExercisesOrRoutines?.split(',') ?? [];
+    final intensityLevel = exerciseModel?.intensityLevel;
+    final caloriesBurnt = exerciseModel?.caloriesBurnt;
+    final descriptionSplit = exerciseModel?.durationAndFrequencyOfWorkouts;
+
     List<Map<String, dynamic>> workData = WorkData.getWorkOutData();
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     var theme = Theme.of(context);
     return Container(
-      height: double.infinity,
-      width: double.infinity,
+      height: height*0.81,
+      width: width,
       margin: const EdgeInsets.all(20),
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
@@ -33,15 +43,17 @@ class WorkOutDetails extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 physics: const BouncingScrollPhysics(),
                 cacheExtent: 1000,
-                itemCount: workData.length,
+                itemCount: titleSplit.length,
                 itemBuilder: (context, index) {
                   return FadeInUp(
                       delay: Duration(milliseconds: 100 * (index + 1)),
                       duration: const Duration(milliseconds: 500),
                       child: WideContainer(
-                        title: workData[index]["title"],
-                        subtitle: workData[index]["subtitle"],
-                        description: workData[index]["description"],
+                        title: titleSplit[index],
+                        subtitle: subtitleSplit[index],
+                        description: descriptionSplit,
+                        intensityLevel:intensityLevel,
+                        caloriesBurnt: caloriesBurnt,
                       ).paddingSymmetric(vertical: 6));
                 }),
           ),

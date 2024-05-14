@@ -4,8 +4,6 @@ import 'package:fitgenie/pages/News/news_api_config/source_model.dart';
 import 'package:http/http.dart' as http;
 
 class NewsApiManger {
-
-
   static Future<ArticleModel> fetchSource() async {
 
     var queryParameters = {
