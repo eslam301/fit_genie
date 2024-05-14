@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class WideContainer extends StatefulWidget {
   final String? title;
@@ -83,22 +82,22 @@ class _WideContainerState extends State<WideContainer> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "play: ${widget.subtitle}" ?? '',
+                    "play: ${widget.subtitle}",
                     style: const TextStyle(color: Colors.white, fontSize: 14),
                   ),
                   Text(
-                    " level: ${widget.intensityLevel }"?? '',
+                    "level: ${widget.intensityLevel }",
                     style: const TextStyle(color: Colors.white, fontSize: 18),
                   ),
                   Text(
-                    widget.caloriesBurnt ?? '',
+                    "Burnt: ${widget.caloriesBurnt}",
                     style: const TextStyle(color: Colors.white, fontSize: 14),
                   ),
                   Text(
-                    "${time[0]} "?? '',
+                    "${time[0]}",
                     style: const TextStyle(color: Colors.white54, fontSize: 14),
                   ),Text(
-                    "for:${time[1]} "?? '',
+                    "for:${time[1]}",
                     style: const TextStyle(color: Colors.white54, fontSize: 14),
                   ),
 

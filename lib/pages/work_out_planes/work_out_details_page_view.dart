@@ -9,17 +9,16 @@ import 'data/work_out_data.dart';
 
 class WorkOutDetails extends StatelessWidget {
   final WorkOutTypes? exerciseModel;
-  const WorkOutDetails({super.key, required this.exerciseModel});
+  final String imageUrl;
+  const WorkOutDetails({super.key, required this.exerciseModel, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
-    List titleSplit = exerciseModel?.typeOfExercises?.split(',') ?? [];
-    List subtitleSplit = exerciseModel?.specificExercisesOrRoutines?.split(',') ?? [];
-    final intensityLevel = exerciseModel?.intensityLevel;
-    final caloriesBurnt = exerciseModel?.caloriesBurnt;
-    final descriptionSplit = exerciseModel?.durationAndFrequencyOfWorkouts;
-
-    List<Map<String, dynamic>> workData = WorkData.getWorkOutData();
+    List<String?> titleSplit = exerciseModel?.typeOfExercises?.split(',') ?? [];
+    List<String?> subtitleSplit = exerciseModel?.specificExercisesOrRoutines?.split(',') ?? [];
+    final String? intensityLevel = exerciseModel?.intensityLevel;
+    final String? caloriesBurnt = exerciseModel?.caloriesBurnt;
+    final String? descriptionSplit = exerciseModel?.durationAndFrequencyOfWorkouts;
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     var theme = Theme.of(context);
@@ -36,7 +35,7 @@ class WorkOutDetails extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Image(image: AssetImage('assets/images/cardio.png')),
+          Image.asset(imageUrl),
           const SizedBox(height: 20),
           Expanded(
             child: ListView.builder(
@@ -49,11 +48,11 @@ class WorkOutDetails extends StatelessWidget {
                       delay: Duration(milliseconds: 100 * (index + 1)),
                       duration: const Duration(milliseconds: 500),
                       child: WideContainer(
-                        title: titleSplit[index],
-                        subtitle: subtitleSplit[index],
-                        description: descriptionSplit,
-                        intensityLevel:intensityLevel,
-                        caloriesBurnt: caloriesBurnt,
+                        title: titleSplit[index] ?? '',
+                        subtitle: subtitleSplit[index] ?? '' ,
+                        description: descriptionSplit ?? '',
+                        intensityLevel:intensityLevel?? '',
+                        caloriesBurnt: caloriesBurnt?? '',
                       ).paddingSymmetric(vertical: 6));
                 }),
           ),
@@ -62,7 +61,7 @@ class WorkOutDetails extends StatelessWidget {
             onTap: () {
               Get.snackbar(
                 "Saved",
-                "Meal saved successfully",
+                "Workout plan was saved successfully",
                 snackPosition: SnackPosition.TOP,
                 padding: const EdgeInsets.all(20),
                 overlayColor: Colors.black.withOpacity(0.5),

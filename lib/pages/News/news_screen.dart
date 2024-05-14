@@ -77,7 +77,7 @@ class _NewsScreenState extends State<NewsView> {
                     children: [
                       Icon(Icons.newspaper_rounded, color: Theme.of(context).colorScheme.secondary,size: 30),
                       const SizedBox(width: 10),
-                      Text('News', style: Theme.of(context).textTheme.titleLarge),
+                      Text('News Headlines', style: Theme.of(context).textTheme.titleLarge),
                     ],
                   ).paddingOnly(left: 20,top: 20),
                   Expanded(

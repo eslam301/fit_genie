@@ -1,5 +1,6 @@
 import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:fitgenie/layout/basic_layout_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,12 +10,19 @@ import '../work_out_model/work_out_model.dart';
 class WorkOutWidgetItem extends StatelessWidget {
   final WorkOutPlansModel exerciseModel;
   final WorkOutTypes? exerciseModel1;
+  final String imageUrl;
+  final String title;
 
   const WorkOutWidgetItem(
-      {super.key, required this.exerciseModel, this.exerciseModel1});
+      {super.key,
+      required this.exerciseModel,
+      this.exerciseModel1,
+      required this.imageUrl,
+      required this.title});
 
   @override
   Widget build(BuildContext context) {
+    final media = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
@@ -24,12 +32,25 @@ class WorkOutWidgetItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-              child: Image(
-                image: AssetImage('assets/images/cardio.png'),
-                filterQuality: FilterQuality.high,
-              )),
+          Stack(
+            children: [
+              ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  child: Image.asset(
+                    fit: BoxFit.cover,
+                      width: media.width,
+                      height: media.height * 0.25,
+                      imageUrl)),
+              Container(
+                width: media.width,
+                height: media.height * 0.25,
+                decoration: const BoxDecoration(
+                  color: Colors.black12,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+              ),
+            ],
+          ),
           const SizedBox(height: 10),
           Text(
             '${exerciseModel1?.typeOfExercises}',
@@ -51,8 +72,9 @@ class WorkOutWidgetItem extends StatelessWidget {
               label: 'View Details',
               onTap: () {
                 Get.to(LayOutPageView(
-                  appBarTitle: 'Cardio',
+                  appBarTitle: title,
                   body: WorkOutDetails(
+                    imageUrl: imageUrl,
                     exerciseModel: exerciseModel1,
                   ),
                 ));

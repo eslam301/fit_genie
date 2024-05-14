@@ -29,7 +29,7 @@ class SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
+
     return Center(
       child: ListView(
         shrinkWrap: true,

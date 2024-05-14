@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'food_api_manger/food_api_manger.dart';
-import 'food_data/food_data.dart';
 import 'food_model/food_model.dart';
 import 'food_widget/food_widget_container.dart';
 

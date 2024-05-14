@@ -18,7 +18,7 @@ class WorkOutApiManger {
         "Calories burnt": "300-400 calories"
       },
       "Strength Training": {
-        "Type of exercises": "Compound exercises (e.g., squats, lunges, push-ups, rows)",
+        "Type of exercises": "(squats, lunges, push-ups, rows)",
         "Duration and frequency of workouts": "45-60 minutes, 2-3 times a week",
         "Intensity level": "Moderate-High",
         "Specific exercises or routines": "Barbell squats, Dumbbell lunges, Bench press, Barbell rows",

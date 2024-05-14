@@ -1,9 +1,5 @@
-import 'package:fitgenie/pages/food/food_model/food_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../food_data/food_data.dart';
-
 class FoodCheckWidgetView extends StatefulWidget {
   final int index;
   final List listMeal;

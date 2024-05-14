@@ -28,10 +28,10 @@ class ArticleDetails extends StatelessWidget {
       padding: const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 80),
       physics: const BouncingScrollPhysics(),
       child: Container(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(20),
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(40),
               color: theme.primaryColor,
               boxShadow: const [
                 BoxShadow(
@@ -44,12 +44,12 @@ class ArticleDetails extends StatelessWidget {
               children: [
                 ClipRRect(
                   clipBehavior: Clip.antiAlias,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(20),
                   child: Container(
                     clipBehavior: Clip.antiAlias,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(20),
                       color: theme.primaryColor,
                     ),
                     child: CachedNetworkImage(

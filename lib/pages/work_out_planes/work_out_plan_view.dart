@@ -53,12 +53,12 @@ class _WorkOutPlanViewState extends State<WorkOutPlanView> {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Error Check your connection'),
-                    SizedBox(width: 10),
-                    Icon(
+                    Text("${snapshot.error}", style: const TextStyle(fontSize: 20)),
+                    const SizedBox(width: 10),
+                    const Icon(
                       Icons.wifi_off,
                       size: 30,
                     ),
@@ -86,20 +86,25 @@ class _WorkOutPlanViewState extends State<WorkOutPlanView> {
                 ]));
           } else if (snapshot.hasData) {
             WorkOutPlansModel workOutModel = snapshot.data as WorkOutPlansModel;
-
             return ListView(
               padding: const EdgeInsets.only(bottom: 120, left: 16, right: 16),
               children: [
                 WorkOutWidgetItem(
                   exerciseModel: workOutModel,
+                  imageUrl: 'assets/images/cardio.jpg',
+                  title: 'Cardio',
                   exerciseModel1: workOutModel.cardio,
                 ).paddingOnly(bottom: 10),
                 WorkOutWidgetItem(
                   exerciseModel: workOutModel,
+                  imageUrl: 'assets/images/strength_Training.jpg',
+                  title: 'Strength Training',
                   exerciseModel1: workOutModel.strengthTraining,
                 ).paddingOnly(bottom: 10),
                 WorkOutWidgetItem(
                   exerciseModel: workOutModel,
+                  imageUrl: 'assets/images/flexibility.png',
+                  title: 'Flexibility',
                   exerciseModel1: workOutModel.flexibility,
                 ).paddingOnly(bottom: 10),
               ],

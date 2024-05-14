@@ -1,11 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:fitgenie/core/widgets/custom_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-
-import '../food_api_manger/food_api_manger.dart';
 import '../food_data/food_data.dart';
 import '../food_model/food_model.dart';
 import '../food_widget/food_details_wiget_view.dart';
@@ -46,32 +42,42 @@ class MealPlanView extends StatelessWidget {
               shrinkWrap: true,
               itemCount: listMeal.length,
               itemBuilder: (context, index) {
-                return FoodCheckWidgetView(
-                  listMeal: listMeal,
-                  index: index,
+                return FadeInUp(
+                  animate: true,
+                  duration: const Duration(milliseconds: 500),
+                  delay: Duration(milliseconds: 150*(index+1)),
+                  child: FoodCheckWidgetView(
+                    listMeal: listMeal,
+                    index: index,
+                  ),
                 );
               }),
         ),
-        Container(
-          width: width,
-          padding: const EdgeInsets.all(20),
-          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          decoration: BoxDecoration(
-            color: theme.colorScheme.secondary.withOpacity(0.4),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Calories: \t ${mealFactor?.calories}',
-              ),
-              Text(
-                'Protein: \t ${mealFactor?.protein}',
-              ),Text(
-                'Carbs: \t ${mealFactor?.carbs}',
-              )
-            ],
+        FadeIn(
+          animate: true,
+          duration: const Duration(milliseconds: 500),
+          delay: const Duration(milliseconds: 1500),
+          child: Container(
+            width: width,
+            padding: const EdgeInsets.all(20),
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.secondary.withOpacity(0.3),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Calories: \t ${mealFactor?.calories}',
+                ),
+                Text(
+                  'Protein: \t ${mealFactor?.protein}',
+                ),Text(
+                  'Carbs: \t ${mealFactor?.carbs}',
+                )
+              ],
+            ),
           ),
         ),
         LongButton(

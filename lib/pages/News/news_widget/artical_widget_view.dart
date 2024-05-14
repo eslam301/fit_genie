@@ -25,10 +25,10 @@ class ArticleWidget extends StatelessWidget {
         onTap();
       },
       child: Container(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(16),
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(16),
           color: theme.primaryColor,
         ),
         child: Column(
@@ -36,13 +36,13 @@ class ArticleWidget extends StatelessWidget {
           children: [
             ClipRRect(
               clipBehavior: Clip.antiAlias,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(16),
               child: Container(
                 clipBehavior: Clip.antiAlias,
                 width: double.infinity,
                 height: 200,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(16),
                   color: theme.primaryColor,
                 ),
                 child: CachedNetworkImage(

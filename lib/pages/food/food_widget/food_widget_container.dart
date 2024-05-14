@@ -28,7 +28,7 @@ class FoodContainerWidget extends StatelessWidget {
       child: Stack(
         children: [
           Image.asset(
-            meal[index]["image"].toString(),
+            meal[index]["image"],
             width: media.width,
             height: media.width * 0.5,
             fit: BoxFit.cover,
