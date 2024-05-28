@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitgenie/pages/sign-in/sign_up/required_form.dart';
 
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ class SignUpPageState extends State<SignUpPage> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController passwordConfirmController =
       TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     // var theme = Theme.of(context);
@@ -110,7 +112,7 @@ class SignUpPageState extends State<SignUpPage> {
                 child: LongButton(
                     label: 'Sign Up',
                     onTap: () {
-                      signUp();
+                      _signUp();
                     }),
               ),
             ],
@@ -120,18 +122,38 @@ class SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  signUp() {
+  Future<void> _signUp() async{
     if (signUpFormKey.currentState!.validate()) {
-      Get.to(
-        LayOutPageView(
-          appBarTitle: 'Required Form',
-          body: RequiredForm(
-            email: emailController.text,
-            password: passwordController.text,
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+        Get.snackbar(
+          'Success',
+          'Account created successfully',
+        );
+        Get.to(
+          const LayOutPageView(
+            appBarTitle: 'Required Form',
+            body: RequiredForm(),
           ),
-        ),
-
-      );
+        );
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          Get.snackbar(
+            'Error',
+            'The password provided is too weak.',
+          );
+        } else if (e.code == 'email-already-in-use') {
+          Get.snackbar(
+            'Error',
+            'The account already exists for that email.',
+          );
+        } else {
+          Get.snackbar('Error', e.toString());
+        }
+      }
     } else {
       Get.snackbar(
         'Error',

@@ -10,8 +10,7 @@ class ProfileRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? name = userMap![index]['name'] ?? 'Name';
-    String value = userMap![index]['value'].toString();
-    double? fontSize = value.length > 12 ? 16.0 : 21.0;
+    String? value = userMap![index]['value'].toString();
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       decoration: BoxDecoration(
@@ -30,10 +29,10 @@ class ProfileRowWidget extends StatelessWidget {
                 fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           Text(
-            value.capitalize!,
+            value.capitalize!.isEmpty ? 'N/A' : value.capitalize??'N/A',
             softWrap: true,
             style: TextStyle(
-                fontSize: fontSize,
+                fontSize: value.length > 12 ? 16.0 : 21.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.white),
           )

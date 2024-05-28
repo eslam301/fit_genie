@@ -1,6 +1,5 @@
 import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:fitgenie/layout/basic_layout_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

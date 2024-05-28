@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../provider/app_provider.dart';
 
 class DropDownBarTheme extends StatefulWidget {
@@ -28,13 +29,14 @@ class _DropDownBarState extends State<DropDownBarTheme> {
       onTap: () {
         showBottomSheet(context);
       },
-      onDoubleTap: () {
+      onDoubleTap: () async {
+        final pref = await SharedPreferences.getInstance();
         setState(() {
           _selected = _selected == "Light" ? "Dark" : "Light";
           themeController.changeTheme(_selected);
+          pref.setString('theme', _selected);
         });
       },
-      behavior: HitTestBehavior.opaque,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -98,7 +100,9 @@ class _DropDownBarState extends State<DropDownBarTheme> {
                 height: 20,
               ),
               GestureDetector(
-                onTap: (){
+                onTap: () async {
+                  final pref = await SharedPreferences.getInstance();
+                  pref.setString('theme', 'Light');
                   setState(() {
                     _selected = "Light";
                     themeController.changeTheme("Light");
@@ -132,7 +136,9 @@ class _DropDownBarState extends State<DropDownBarTheme> {
                 ),
               ),
               GestureDetector(
-                onTap: (){
+                onTap: () async {
+                  final pref = await SharedPreferences.getInstance();
+                  pref.setString('theme', 'Dark');
                   setState(() {
                     _selected = "Dark";
                     themeController.changeTheme("Dark");

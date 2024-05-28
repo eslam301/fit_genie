@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../core/widgets/custom_button.dart';
-import 'data/work_out_data.dart';
 
 class WorkOutDetails extends StatelessWidget {
   final WorkOutTypes? exerciseModel;

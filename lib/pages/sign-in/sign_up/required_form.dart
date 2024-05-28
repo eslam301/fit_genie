@@ -1,23 +1,18 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/widgets/custom_drop_down/custom_drop_down_par.dart';
 import '../../../core/widgets/custom_text_field.dart';
 import '../../../core/widgets/logo_splash_widget.dart';
-import '../../../fire_base/firebase.dart';
+import '../../../layout/home_layout.dart';
 
 class RequiredForm extends StatefulWidget {
   static const String routeName = '/requiredForm';
-  final String? email;
-  final String? password;
-  final String? name;
-
   const RequiredForm({
     super.key,
-    this.email,
-    this.password,
-    this.name,
   });
 
   @override
@@ -166,12 +161,18 @@ class _RequiredFormState extends State<RequiredForm> {
     ));
   }
 
-  void submit() {
+  Future<void> submit() async {
     if (submitFormKey.currentState!.validate()) {
-      ApplicationFirebaseAuth.saveSignToFireBase(
-          emailController: widget.email!,
-          passwordController: widget.password!,
-          nameController: widget.name!);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('firstName', firstNameController.text);
+      await prefs.setString('secondName', secondNameController.text);
+      await prefs.setString('gender', genderValue!);
+      await prefs.setString('weight', weightController.text);
+      await prefs.setString('height', heightController.text);
+      await prefs.setString('age', ageController.text);
+      await prefs.setString('disease', diseaseController.text);
+      Get.snackbar('Success', 'Your profile has been created successfully');
+      Get.offAll(() => const HomeLayout());
     }
   }
 }

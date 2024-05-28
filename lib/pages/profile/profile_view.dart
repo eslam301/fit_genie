@@ -4,14 +4,12 @@ import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:fitgenie/pages/profile/profile_widgets/profile_row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../fire_base/firebase.dart';
 
 class ProfilePage extends StatefulWidget {
-  static const String routeName = '/profile';
-
   const ProfilePage({super.key});
-
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
@@ -19,22 +17,43 @@ class ProfilePage extends StatefulWidget {
 User? user;
 
 class _ProfilePageState extends State<ProfilePage> {
+  String? name;
+  String? email;
+  String? age;
+  String? weight;
+  String? height;
+  String? gender;
+  String? disease;
+  String? id;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     user = ApplicationFirebaseAuth.getUserData();
-    // print(userName);
-    // print(email);
-    // print(photo);
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      name = '${prefs.getString('firstName')} ${prefs.getString('secondName')}';
+      email = prefs.getString('email');
+      age = prefs.getString('age');
+      weight = prefs.getString('weight');
+      height = prefs.getString('height');
+      gender = prefs.getString('gender');
+      disease = prefs.getString('disease');
+      id = prefs.getString('id');
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, dynamic>>? userMap = [
+    List<Map<String, dynamic>>? userMapData = [
       {
-        'name': 'Name',
-        'value': user?.displayName,
+        'name': 'name',
+        'value': name,
       },
       {
         'name': 'email',
@@ -42,23 +61,23 @@ class _ProfilePageState extends State<ProfilePage> {
       },
       {
         'name': 'age',
-        'value': 22,
+        'value': age,
       },
       {
         'name': 'weight',
-        'value': 70,
+        'value': weight,
       },
       {
         'name': 'height',
-        'value': 170,
+        'value': height,
       },
       {
         'name': 'gender',
-        'value': 'male',
+        'value': gender,
       },
       {
         'name': 'disease',
-        'value': 'none',
+        'value': disease,
       },
       {
         'name': 'ID',
@@ -67,7 +86,8 @@ class _ProfilePageState extends State<ProfilePage> {
     ];
     var theme = Theme.of(context);
     return SingleChildScrollView(
-      padding: const EdgeInsets.only(top: 26.0, left: 26.0, right: 26.0, bottom: 140.0),
+      padding: const EdgeInsets.only(
+          top: 26.0, left: 26.0, right: 26.0, bottom: 140.0),
       physics: const BouncingScrollPhysics(),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -76,11 +96,11 @@ class _ProfilePageState extends State<ProfilePage> {
             backgroundColor: theme.colorScheme.secondary,
             radius: 60,
             backgroundImage: CachedNetworkImageProvider(
-              user?.photoURL ?? ' ',
+              user?.photoURL ?? 'https://i.pravatar.cc/320',
             ),
           ),
           Text(
-            user?.displayName ?? 'UserNull',
+            user?.displayName ?? name!,
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 24,
@@ -107,11 +127,11 @@ class _ProfilePageState extends State<ProfilePage> {
             child: ListView.builder(
               shrinkWrap: true,
               itemBuilder: (context, index) => ProfileRowWidget(
-                userMap: userMap,
+                userMap: userMapData,
                 index: index,
               ),
               physics: const BouncingScrollPhysics(),
-              itemCount: userMap.length,
+              itemCount: userMapData.length,
             ),
           ),
           LongButton(

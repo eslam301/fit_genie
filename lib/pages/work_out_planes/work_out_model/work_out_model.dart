@@ -18,7 +18,7 @@ class WorkOutPlansModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     if (cardio != null) {
-      data['Cardio'] = this.cardio!.toJson();
+      data['Cardio'] = cardio!.toJson();
     }
     if (strengthTraining != null) {
       data['Strength Training'] = strengthTraining!.toJson();

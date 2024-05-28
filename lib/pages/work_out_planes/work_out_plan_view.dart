@@ -3,10 +3,6 @@ import 'package:fitgenie/pages/work_out_planes/work_out_api.dart';
 import 'package:fitgenie/pages/work_out_planes/work_out_model/work_out_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
-
-import '../../core/widgets/custom_text_field.dart';
-
 class WorkOutPlanView extends StatefulWidget {
   const WorkOutPlanView({super.key});
 
@@ -15,7 +11,6 @@ class WorkOutPlanView extends StatefulWidget {
 }
 
 class _WorkOutPlanViewState extends State<WorkOutPlanView> {
-  final TextEditingController _emailController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -117,6 +112,5 @@ class _WorkOutPlanViewState extends State<WorkOutPlanView> {
         },
       ))
     ]);
-    ;
   }
 }

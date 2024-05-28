@@ -32,7 +32,6 @@ class WorkOutApiManger {
         "Calories burnt": "100-150 calories"
       }
     };
-    print('response : $response');
     return WorkOutPlansModel.fromJson(response);
     // final response = await http.get(uri);
     // if (response.statusCode == 200 && jsonDecode(response.body)['status'] == 'ok') {
