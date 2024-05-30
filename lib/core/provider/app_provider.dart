@@ -5,19 +5,27 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AppProvider extends ChangeNotifier {
   int? steps;
-  int? exerciseCalories;
+  int exerciseCalories =0;
   int foodCalories = 0;
-  int? exerciseTime;
+  DateTime exerciseTime = DateTime.utc(1970, 1, 1);
   int? baseGoal;
   int? heartRate;
   int? activeCalories;
-  int? time;
+  DateTime time = DateTime.fromMillisecondsSinceEpoch(0);
   int pageIndex = 0;
 
-  Future<void> changeExerciseCalories(int value) async {
-    exerciseCalories = value;
+  Future<void> addExerciseCalories({int value = 0 , String time = '' }) async {
+    exerciseCalories += value;
+
     var pref = await SharedPreferences.getInstance();
-    await pref.setInt('exerciseCalories', exerciseCalories!);
+    await pref.setInt('exerciseCalories', exerciseCalories);
+
+    exerciseTime = exerciseTime.add(Duration(minutes: int.parse(time)));
+    //print("exTime $exerciseTime");
+
+    await pref.setInt('timestamp', DateTime.now().millisecondsSinceEpoch);
+    await pref.setString('ExerciseTime', exerciseTime.toIso8601String());
+
     notifyListeners();
   }
 
@@ -37,17 +45,21 @@ class AppProvider extends ChangeNotifier {
         pref.setInt('exerciseCalories', 0);
         pref.setInt('foodCalories', 0);
         pref.setInt('timestamp', DateTime.now().millisecondsSinceEpoch);
+        pref.setInt('baseGoal', 2000);
+        pref.setString('ExerciseTime', DateTime.utc(1970, 1, 1).toIso8601String());
       } else {
-        exerciseCalories = pref.getInt('exerciseCalories');
+        exerciseCalories = pref.getInt('exerciseCalories') ?? 0;
         foodCalories = pref.getInt('foodCalories') ?? 0;
         baseGoal = pref.getInt('baseGoal');
-        print('Last timestamp: $lastTimestamp');
+        exerciseTime = DateTime.parse(pref.getString('ExerciseTime') ?? '');
+        //print('Last timestamp: $lastTimestamp');
       }
     } else {
-      exerciseCalories = pref.getInt('exerciseCalories');
+      exerciseCalories = pref.getInt('exerciseCalories') ?? 0;
       foodCalories = pref.getInt('foodCalories') ?? 0;
-      baseGoal = pref.getInt('baseGoal');
-      print('No timestamp found');
+      baseGoal = pref.getInt('baseGoal') ?? 2000;
+      exerciseTime = DateTime.parse(pref.getString('ExerciseTime') ?? '');
+      //print('No timestamp found');
     }
     notifyListeners();
   }

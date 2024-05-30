@@ -88,13 +88,13 @@ class MealPlanView extends StatelessWidget {
         LongButton(
           label: 'Save',
           onTap: () async {
-            print('-------------------------');
-            print(mealFactor?.calories);
-            print(provider.foodCalories);
-            print('-------------------------');
+            // print('-------------------------');
+            // print("mealFactor ${mealFactor?.calories}");
+            // print("foodCalories before ${provider.foodCalories}");
+            // print('-------------------------');
             await provider.addFoodCalories(
                 int.parse(mealFactor!.calories ?? '0'));
-            print(provider.foodCalories);
+            // print("foodCalories after ${provider.foodCalories}");
             Get.snackbar(
               "Saved",
               "you have ate ${mealFactor?.calories} kcal",

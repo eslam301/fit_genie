@@ -1,14 +1,20 @@
 import 'package:fitgenie/core/health/health_data_model_calories.dart';
 import 'package:fitgenie/pages/work_out_planes/work_out_plan_view.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
-import 'exercise_view.dart';
+import '../../../../core/provider/app_provider.dart';
 
 class ExerciseContainer extends StatelessWidget {
   final HealthDataModelCalories? healthDataModel;
   const ExerciseContainer({super.key, this.healthDataModel});
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppProvider>(context);
+    String calories = provider.exerciseCalories.toString();
+    DateFormat dateFormat = DateFormat('HH:mm');
+    String formattedDate = dateFormat.format(provider.exerciseTime);
     // int? calories = healthDataModel?.caloriesExpended?[0].value ?? 0;
     return Container(
         width: 180,
@@ -44,33 +50,33 @@ class ExerciseContainer extends StatelessWidget {
                       ))
                 ],
               ),
-              const Row(
+              Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.local_fire_department_rounded,
                     color: Colors.white,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
-                    '0 calories',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                    '$calories Calories',
+                    style: const TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ],
               ),
-              const Row(
+              Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.access_time,
                     color: Colors.white,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
-                    '00:00 hr',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                    formattedDate,
+                    style: const TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ],
               ),

@@ -9,11 +9,11 @@ class PremiumPlansView extends StatelessWidget {
       "title": "Weekly",
       "price": 9.99,
       "features": [
-        'access to all of Fitgenie for 1 week',
+        'access to all of Fitgenie ',
         'Unlimited access to all features.',
       ],
       "no_features": [
-        'access to all of Fitgenie for 1 week',
+        'access to all of Fitgenie ',
         'Unlimited access to all features.',
       ],
 
@@ -26,7 +26,7 @@ class PremiumPlansView extends StatelessWidget {
         'Unlimited access to all features.',
       ],
       "no_features": [
-        'access to all of Fitgenie for 1 week',
+        'access to all of Fitgenie ',
         'Unlimited access to all features.',
       ],
     },
@@ -38,7 +38,7 @@ class PremiumPlansView extends StatelessWidget {
         'Unlimited access to all features.',
       ],
       "no_features": [
-        'access to all of Fitgenie for 1 week',
+        'access to all of Fitgenie ',
         'Unlimited access to all features.',
       ],
     },
@@ -47,10 +47,6 @@ class PremiumPlansView extends StatelessWidget {
       "price": 999.99,
       "features": [
         'Access to all of Fitgenie\'s features.',
-        'Unlimited access to all features.',
-      ],
-      "no_features": [
-        'access to all of Fitgenie for 1 week',
         'Unlimited access to all features.',
       ],
     },
@@ -110,13 +106,13 @@ class PremiumPlansView extends StatelessWidget {
                 delay: Duration(milliseconds: (index+1) * 200),
                 child: PlanContainer(
                   title: plans[index]['title'],
-                  price: '${plans[index]['price']}week',
+                  price: '${plans[index]['price']}',
                   descriptionListPlan: plans[index]['features']?? [
                     'Access to all of Fitgenie\'s features.',
                     'Unlimited access to all features.',
                   ],
                   nonFeatureListPlan: plans[index]['no_features'] ?? [
-                    'access to all of Fitgenie for 1 week',
+                    'access to all of Fitgenie',
                     'Unlimited access to all features.',
                   ],
                   callbackAction: () {},

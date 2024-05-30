@@ -28,6 +28,7 @@ dependencies:
   animate_do: ^3.3.4
   simple_timer: ^2.0.0
   shared_preferences: ^2.2.3
+  intl: ^0.17.0
 #  health: ^10.2.0
 
 

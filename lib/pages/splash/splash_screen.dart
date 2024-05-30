@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
           const CircularProgressIndicator(),
           const Spacer(),
           const Text(
-            'Version 7.6.1',
+            'Version 7.9.3',
             style: TextStyle(color: Colors.white, fontSize: 10),
           ),
         ],

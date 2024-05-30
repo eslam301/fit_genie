@@ -1,9 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
-
-import '../../../core/provider/app_provider.dart';
 class FoodCheckWidgetView extends StatefulWidget {
   final int index;
   final List listMeal;
@@ -24,7 +20,6 @@ class _FoodCheckWidgetViewState extends State<FoodCheckWidgetView> {
   bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<AppProvider>(context);
     var theme = Theme.of(context);
     return GestureDetector(
       onTap: () {

@@ -24,7 +24,6 @@ class _ProfilePageState extends State<ProfilePage> {
   String? height;
   String? gender;
   String? disease;
-  String? id;
 
   @override
   void initState() {
@@ -37,14 +36,13 @@ class _ProfilePageState extends State<ProfilePage> {
   Future<void> _loadUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      name = '${prefs.getString('firstName')} ${prefs.getString('secondName')}';
+      name = '${prefs.getString('firstName') ?? ' '} ${prefs.getString('secondName') ?? ''}';
       email = prefs.getString('email');
       age = prefs.getString('age');
       weight = prefs.getString('weight');
       height = prefs.getString('height');
       gender = prefs.getString('gender');
       disease = prefs.getString('disease');
-      id = prefs.getString('id');
     });
   }
 
@@ -100,7 +98,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           Text(
-            user?.displayName ?? name!,
+            user?.displayName ?? name ?? 'N/A',
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 24,

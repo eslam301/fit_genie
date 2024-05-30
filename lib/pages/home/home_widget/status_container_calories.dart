@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:provider/provider.dart';
 
 import '../../../core/provider/app_provider.dart';
-import '../provider/home_provider.dart';
 
 class CaloriesContainer extends StatefulWidget {
   final AppProvider provider;
@@ -24,15 +22,15 @@ class _CaloriesContainerState extends State<CaloriesContainer> {
   Widget build(BuildContext context) {
     // double radius = 50;
     int baseGoal = widget.provider.baseGoal ?? 2000;
-    int food = widget.provider.foodCalories ?? 0;
-    int exerciseCal = widget.provider.exerciseCalories ?? 0;
+    int food = widget.provider.foodCalories ;
+    int exerciseCal = widget.provider.exerciseCalories;
     //double netCal = food + exerciseCal;
     int remaining = baseGoal - food + exerciseCal;
     double percent = remaining / baseGoal;
 
     percent = percent > 0 ? percent.abs()-1 : percent ;
-    print(percent);
-    print(remaining);
+    // print( "percent $percent");
+    // print("remaining $remaining");
 
 
     double height = MediaQuery.of(context).size.height;
@@ -62,8 +60,8 @@ class _CaloriesContainerState extends State<CaloriesContainer> {
                       animateFromLastPercent: true,
                       animationDuration: 1000,
                       radius: height*0.09,
-                      progressColor: remaining >= 0 ? theme.primaryColor: Colors.orange,
-                      backgroundColor: remaining <= 0 ? theme.primaryColor: Colors.white,
+                      progressColor: exerciseCal < food ? theme.primaryColor: Colors.orange,
+                      backgroundColor: exerciseCal> food ? theme.primaryColor: Colors.white,
                       percent: percent.abs(),
                       center: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

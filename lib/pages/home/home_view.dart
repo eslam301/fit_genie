@@ -1,11 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:fitgenie/core/health/health_data_model_steps.dart';
-import 'package:fitgenie/pages/home/provider/home_provider.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import '../../core/health/health_data_fetch.dart';
-import '../../core/health/health_data_model_calories.dart';
+
 import '../../core/provider/app_provider.dart';
 import 'home_widget/ads_container.dart';
 import 'home_widget/Exercise/exercise_container.dart';
