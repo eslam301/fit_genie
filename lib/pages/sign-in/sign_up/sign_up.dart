@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/custom_text_field.dart';
 import '../../../core/widgets/logo_splash_widget.dart';
-import '../../../fire_base/firebase.dart';
 import '../../../layout/basic_layout_page.dart';
 
 class SignUpPage extends StatefulWidget {
