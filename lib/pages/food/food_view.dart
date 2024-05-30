@@ -5,6 +5,7 @@ import 'food_model/food_model.dart';
 import 'food_widget/food_widget_container.dart';
 
 class FoodPlanView extends StatelessWidget {
+  static const routeName = '/food_plan_view';
   const FoodPlanView({super.key});
 
   @override

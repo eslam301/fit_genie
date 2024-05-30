@@ -1,7 +1,12 @@
+import 'dart:async';
+
 import 'package:fitgenie/layout/sign_in_layout/sign_in_layout.dart';
 import 'package:fitgenie/pages/News/news_screen.dart';
+import 'package:fitgenie/pages/food/food_view.dart';
 import 'package:fitgenie/pages/notification/notification_view.dart';
+import 'package:fitgenie/pages/settings/setting_view.dart';
 import 'package:fitgenie/pages/splash/splash_screen.dart';
+import 'package:fitgenie/pages/work_out_planes/work_out_plan_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -35,6 +40,7 @@ class MyApp extends StatelessWidget {
       SystemUiOverlay.top,
 
     ]);
+
     return GetMaterialApp(
       title: 'FitGenie',
       debugShowCheckedModeBanner: false,
@@ -51,8 +57,10 @@ class MyApp extends StatelessWidget {
         GetPage(name: SignInLayout.routeName, page: () => const SignInLayout()),
         GetPage(name: HomeLayout.routeName, page: () => const HomeLayout()),
         GetPage(name: NewsView.routeName, page: () => const NewsView()),
+        GetPage(name: FoodPlanView.routeName, page: () => const FoodPlanView()),
+        GetPage(name: WorkOutPlanView.routeName, page: () => const WorkOutPlanView()),
+        GetPage(name: SettingsView.routeName, page: () => const SettingsView()),
         GetPage(name: NotificationView.routeName,page: () => const NotificationView()),
-
       ],
       transitionDuration: const Duration(milliseconds: 400),
       defaultTransition: Transition.rightToLeft,

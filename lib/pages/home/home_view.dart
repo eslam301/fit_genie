@@ -1,9 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fitgenie/core/health/health_data_model_steps.dart';
+import 'package:fitgenie/pages/home/provider/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import '../../core/health/health_data_fetch.dart';
 import '../../core/health/health_data_model_calories.dart';
+import '../../core/provider/app_provider.dart';
 import 'home_widget/ads_container.dart';
 import 'home_widget/Exercise/exercise_container.dart';
 import 'home_widget/heart_rate_container_view.dart';
@@ -25,10 +28,8 @@ initState() {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    // var steps = StepsCount().value;
-    // var theme = Theme.of(context);
-    // var appTheme = ApplicationTheme();
-    // var widthScreen = MediaQuery.of(context).size.width;
+    var provider = Provider.of<AppProvider>(context);
+
     var heightScreen = MediaQuery.of(context).size.height;
     return ListView(
         padding: const EdgeInsets.only(top: 20, bottom: 120),
@@ -37,15 +38,16 @@ class _HomeViewState extends State<HomeView> {
         children: [
           Row(
             children: [
-              Icon(Icons.dashboard, color: Theme.of(context).colorScheme.secondary,size: 30),
+              Icon(Icons.dashboard,
+                  color: Theme.of(context).colorScheme.secondary, size: 30),
               const SizedBox(width: 10),
               Text('Dashboard', style: Theme.of(context).textTheme.titleLarge),
             ],
           ).paddingOnly(left: 20),
           CarouselSlider(
-              items: const [
-                CaloriesContainer(),
-                HeartRateContainer(),
+              items: [
+                CaloriesContainer(provider: provider),
+                const HeartRateContainer(),
               ],
               options: CarouselOptions(
                 pageSnapping: true,
@@ -55,8 +57,8 @@ class _HomeViewState extends State<HomeView> {
                 initialPage: 0,
                 enableInfiniteScroll: false,
                 reverse: false,
-                autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 6),
+                autoPlay: false,
+                autoPlayInterval: const Duration(seconds: 12),
                 autoPlayAnimationDuration: const Duration(milliseconds: 1500),
                 autoPlayCurve: Curves.fastOutSlowIn,
                 scrollPhysics: const BouncingScrollPhysics(),
@@ -71,48 +73,13 @@ class _HomeViewState extends State<HomeView> {
           const SizedBox(
             height: 10,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               //steps
-              FutureBuilder(
-                  future: HealthDataFetch.fetchHealthDataSteps(
-                      dataTypeName: 'steps_count', timePeriod: 'today'),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasError) {
-                      return const StepsContainerView(errorStep: 0);
-                    } else if (snapshot.connectionState ==
-                        ConnectionState.waiting) {
-                      return const StepsContainerView(errorStep: 0);
-                    } else if (snapshot.hasData) {
-                      HealthDataModelSteps healthDataModel =
-                          snapshot.data as HealthDataModelSteps;
-                      return StepsContainerView(
-                          healthDataModel: healthDataModel);
-                    } else {
-                      return const StepsContainerView(errorStep: 0);
-                    }
-                  }),
+              StepsContainerView(errorStep: 0),
               //exercise
-              FutureBuilder(
-                future: HealthDataFetch.fetchHealthDataCalories(
-                    dataTypeName: 'calories_expended', timePeriod: 'today'),
-                builder: (BuildContext context,
-                    AsyncSnapshot<HealthDataModelCalories> snapshot) {
-                  if (snapshot.hasError) {
-                    return const ExerciseContainer();
-                  } else if (snapshot.connectionState ==
-                      ConnectionState.waiting) {
-                    return const ExerciseContainer();
-                  } else if (snapshot.hasData) {
-                    HealthDataModelCalories healthDataModel =
-                        snapshot.data as HealthDataModelCalories;
-                    return ExerciseContainer(healthDataModel: healthDataModel);
-                  } else {
-                    return const ExerciseContainer();
-                  }
-                },
-              )
+              ExerciseContainer()
             ],
           ),
           // const Row(

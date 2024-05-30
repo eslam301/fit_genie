@@ -5,6 +5,7 @@ import '../../core/widgets/drop_down_bar.dart';
 // import '../model_viewer/model_test.dart';
 
 class SettingsView extends StatefulWidget {
+  static const String routeName = '/settings';
   const SettingsView({super.key});
 
   @override

@@ -7,7 +7,6 @@ class MyAppBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //var theme = Theme.of(context);
     return Container(
         clipBehavior: Clip.antiAlias,
         // height: 100,
@@ -37,12 +36,12 @@ class MyAppBottomNavigationBar extends StatelessWidget {
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(
-                          Icons.dashboard_outlined,
+                          Icons.dashboard,
                           color: Colors.black,
                         )),
                   ),
                   BottomNavigationBarItem(
-                    icon: const Icon(Icons.newspaper_rounded),
+                    icon: const Icon(Icons.newspaper_outlined),
                     label: 'NewsFeed',
 
                     activeIcon: Container(
@@ -57,7 +56,7 @@ class MyAppBottomNavigationBar extends StatelessWidget {
                         )),
                   ),
                   BottomNavigationBarItem(
-                    icon: const Icon(Icons.fastfood_rounded),
+                    icon: const Icon(Icons.fastfood_outlined),
                     label: 'Food',
 
                     activeIcon: Container(
@@ -71,7 +70,7 @@ class MyAppBottomNavigationBar extends StatelessWidget {
                         )),
                   ),
                   BottomNavigationBarItem(
-                    icon: const Icon(Icons.fitness_center_sharp),
+                    icon: const Icon(Icons.fitness_center_outlined),
                     label: 'plans',
 
                     activeIcon: Container(
@@ -85,7 +84,7 @@ class MyAppBottomNavigationBar extends StatelessWidget {
                         )),
                   ),
                   BottomNavigationBarItem(
-                    icon: const Icon(Icons.settings),
+                    icon: const Icon(Icons.settings_outlined),
                     label: 'settings',
                     activeIcon: Container(
                         padding: const EdgeInsets.all(8.0),

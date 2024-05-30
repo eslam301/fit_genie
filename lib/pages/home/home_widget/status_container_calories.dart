@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:provider/provider.dart';
+
+import '../../../core/provider/app_provider.dart';
+import '../provider/home_provider.dart';
 
 class CaloriesContainer extends StatefulWidget {
-  const CaloriesContainer({super.key});
+  final AppProvider provider;
+  const CaloriesContainer({super.key , required this.provider});
 
   @override
   State<CaloriesContainer> createState() => _CaloriesContainerState();
@@ -10,16 +15,24 @@ class CaloriesContainer extends StatefulWidget {
 
 class _CaloriesContainerState extends State<CaloriesContainer> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    widget.provider.updateDataDashboard();
+  }
+  @override
   Widget build(BuildContext context) {
     // double radius = 50;
-    double baseGoal = 2820;
-    double food = 800;
-    double exerciseCal = 300;
+    int baseGoal = widget.provider.baseGoal ?? 2000;
+    int food = widget.provider.foodCalories ?? 0;
+    int exerciseCal = widget.provider.exerciseCalories ?? 0;
     //double netCal = food + exerciseCal;
-    double remaining = baseGoal - food + exerciseCal;
-    double percent = remaining / baseGoal >= 1 ? 0 : remaining / baseGoal - 1;
+    int remaining = baseGoal - food + exerciseCal;
+    double percent = remaining / baseGoal;
 
-
+    percent = percent > 0 ? percent.abs()-1 : percent ;
+    print(percent);
+    print(remaining);
 
 
     double height = MediaQuery.of(context).size.height;
@@ -49,8 +62,8 @@ class _CaloriesContainerState extends State<CaloriesContainer> {
                       animateFromLastPercent: true,
                       animationDuration: 1000,
                       radius: height*0.09,
-                      progressColor: theme.primaryColor,
-                      backgroundColor: Colors.white,
+                      progressColor: remaining >= 0 ? theme.primaryColor: Colors.orange,
+                      backgroundColor: remaining <= 0 ? theme.primaryColor: Colors.white,
                       percent: percent.abs(),
                       center: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -61,7 +74,7 @@ class _CaloriesContainerState extends State<CaloriesContainer> {
                       ),
                       animation: true,
                       lineWidth: 10,
-                      circularStrokeCap: CircularStrokeCap.square,
+                      circularStrokeCap: CircularStrokeCap.butt,
 
                     ),
                     const Spacer(),

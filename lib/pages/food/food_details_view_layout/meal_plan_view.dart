@@ -2,6 +2,8 @@ import 'package:animate_do/animate_do.dart';
 import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+import '../../../core/provider/app_provider.dart';
 import '../food_data/food_data.dart';
 import '../food_model/food_model.dart';
 import '../food_widget/food_details_wiget_view.dart';
@@ -9,10 +11,12 @@ import '../food_widget/food_details_wiget_view.dart';
 class MealPlanView extends StatelessWidget {
   final int index;
   final MealFactor? mealFactor;
-  const MealPlanView({super.key, required this.index, required this.mealFactor});
+  const MealPlanView(
+      {super.key, required this.index, required this.mealFactor});
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppProvider>(context);
     var theme = Theme.of(context);
     String title = FoodData.meal[index]["name"].toString();
     String image = FoodData.meal[index]["image"].toString();
@@ -45,7 +49,7 @@ class MealPlanView extends StatelessWidget {
                 return FadeInUp(
                   animate: true,
                   duration: const Duration(milliseconds: 500),
-                  delay: Duration(milliseconds: 150*(index+1)),
+                  delay: Duration(milliseconds: 150 * (index + 1)),
                   child: FoodCheckWidgetView(
                     listMeal: listMeal,
                     index: index,
@@ -69,11 +73,12 @@ class MealPlanView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Calories: \t ${mealFactor?.calories}',
+                  'Calories: \t ${mealFactor?.calories} kcal',
                 ),
                 Text(
                   'Protein: \t ${mealFactor?.protein}',
-                ),Text(
+                ),
+                Text(
                   'Carbs: \t ${mealFactor?.carbs}',
                 )
               ],
@@ -82,17 +87,24 @@ class MealPlanView extends StatelessWidget {
         ),
         LongButton(
           label: 'Save',
-          onTap: () {
+          onTap: () async {
+            print('-------------------------');
+            print(mealFactor?.calories);
+            print(provider.foodCalories);
+            print('-------------------------');
+            await provider.addFoodCalories(
+                int.parse(mealFactor!.calories ?? '0'));
+            print(provider.foodCalories);
             Get.snackbar(
               "Saved",
-              "Meal saved successfully",
+              "you have ate ${mealFactor?.calories} kcal",
               snackPosition: SnackPosition.TOP,
               padding: const EdgeInsets.all(20),
               overlayColor: Colors.black.withOpacity(0.5),
               margin: const EdgeInsets.all(20),
               backgroundColor: theme.primaryColor.withOpacity(0.8),
               colorText: Colors.white,
-              duration: const Duration(milliseconds: 1500),
+              duration: const Duration(milliseconds: 1200),
             );
           },
           color: theme.colorScheme.secondary.withOpacity(0.4),

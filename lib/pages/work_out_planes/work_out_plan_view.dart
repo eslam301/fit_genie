@@ -4,6 +4,7 @@ import 'package:fitgenie/pages/work_out_planes/work_out_model/work_out_model.dar
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class WorkOutPlanView extends StatefulWidget {
+  static const routeName = '/work_out_plan_view';
   const WorkOutPlanView({super.key});
 
   @override

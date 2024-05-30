@@ -1,4 +1,5 @@
 import 'package:fitgenie/core/health/health_data_model_calories.dart';
+import 'package:fitgenie/pages/work_out_planes/work_out_plan_view.dart';
 import 'package:flutter/material.dart';
 
 import 'exercise_view.dart';
@@ -83,6 +84,7 @@ class ExerciseContainer extends StatelessWidget {
         useSafeArea: true,
         showDragHandle: true,
         context: context,
-        builder: (context) => const ExerciseView());
+        builder: (context) => const WorkOutPlanView());
+        // builder: (context) => const ExerciseView());
   }
 }

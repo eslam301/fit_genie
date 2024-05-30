@@ -43,31 +43,31 @@ class FoodApiManger {
     // );
     final response = {
       "Breakfast": {
-        "Calories": "450 Kcal",
+        "Calories": "450",
         "Protein": "30 grams",
         "Carbs": "60 grams",
         "Meal": "Chicken Salad: 1 cup\nBanana: 1\nWhole-wheat toast: 2 slices"
       },
       "Lunch": {
-        "Calories": "600 Kcal",
+        "Calories": "600",
         "Protein": "45 grams",
         "Carbs": "80 grams",
         "Meal": "Brown rice with chicken stir-fry: 2 cups\nBroccoli: 1 cup"
       },
       "Dinner": {
-        "Calories": "750 Kcal",
+        "Calories": "750",
         "Protein": "50 grams",
         "Carbs": "100 grams",
         "Meal": "Grilled salmon with roasted potatoes: 4 ounces\nGreen beans: 1 cup"
       },
       "Snack 1": {
-        "Calories": "200 Kcal",
+        "Calories": "200",
         "Protein": "15 grams",
         "Carbs": "25 grams",
         "Meal": "Apple with peanut butter: 1 medium apple, 2 tablespoons peanut butter"
       },
       "Snack 2": {
-        "Calories": "150 Kcal",
+        "Calories": "150",
         "Protein": "10 grams",
         "Carbs": "20 grams",
         "Meal": "Trail mix: 1/4 cup"

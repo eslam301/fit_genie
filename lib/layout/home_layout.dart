@@ -20,12 +20,10 @@ class HomeLayout extends StatelessWidget {
   static List<Widget> screens = [
     const HomeView(),
     const NewsView(),
-    // const TimerView(),
     const FoodPlanView(),
     const WorkOutPlanView(),
     const SettingsView(),
   ];
-  // int pageIndex = 0 ;
   @override
   Widget build(BuildContext context) {
     var homeLayOutProvider = Provider.of<AppProvider>(context);
@@ -89,7 +87,6 @@ class HomeLayout extends StatelessWidget {
         children: screens,
       ),
       bottomNavigationBar: MyAppBottomNavigationBar(
-
         pageController: pageController,
       ),
 
