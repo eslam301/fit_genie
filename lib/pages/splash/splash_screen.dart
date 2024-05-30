@@ -17,6 +17,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
+
     Future.delayed(const Duration(seconds: 2), () {
       if (FirebaseAuth.instance.currentUser == null) {
         Get.offNamed(SignInLayout.routeName);
@@ -37,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
           const CircularProgressIndicator(),
           const Spacer(),
           const Text(
-            'Version 7.9.3',
+            'Version 8.0.0',
             style: TextStyle(color: Colors.white, fontSize: 10),
           ),
         ],

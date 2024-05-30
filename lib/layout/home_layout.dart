@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitgenie/pages/News/news_screen.dart';
 import 'package:fitgenie/pages/food/food_view.dart';
 import 'package:fitgenie/pages/home/home_view.dart';
@@ -7,6 +8,7 @@ import 'package:provider/provider.dart';
 import '../core/provider/app_provider.dart';
 import '../core/widgets/custom_drawer.dart';
 import '../core/widgets/my_app_bottom_navigation_bar.dart';
+import '../fire_base/firebase.dart';
 import '../pages/notification/notification_view.dart';
 import '../pages/profile/profile_view.dart';
 import '../pages/settings/setting_view.dart';

@@ -18,6 +18,7 @@ User? user;
 
 class _ProfilePageState extends State<ProfilePage> {
   String? name;
+  String? secondName;
   String? email;
   String? age;
   String? weight;
@@ -37,6 +38,7 @@ class _ProfilePageState extends State<ProfilePage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       name = '${prefs.getString('firstName') ?? ' '} ${prefs.getString('secondName') ?? ''}';
+      secondName = prefs.getString('secondName');
       email = prefs.getString('email');
       age = prefs.getString('age');
       weight = prefs.getString('weight');
@@ -52,6 +54,10 @@ class _ProfilePageState extends State<ProfilePage> {
       {
         'name': 'name',
         'value': name,
+      },
+      {
+        'name': 'Last Name',
+        'value': secondName,
       },
       {
         'name': 'email',
@@ -98,7 +104,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           Text(
-            user?.displayName ?? name ?? 'N/A',
+             name ?? 'N/A',
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 24,
@@ -136,6 +142,46 @@ class _ProfilePageState extends State<ProfilePage> {
               label: 'LogOut',
               onTap: () {
                 ApplicationFirebaseAuth.signOutFireBase();
+              }).paddingOnly(top: 20, bottom: 20),
+          LongButton(
+              label: 'Save',
+              onTap: () {
+                createUserDataToFireStore(
+                  firstName: '${userMapData[0]['value'].split(' ')[0]}',
+                  secondName: '${userMapData[1]['value']}',
+                  email: '${userMapData[2]['value']}',
+                  age: '${userMapData[3]['value']}',
+                  weight: '${userMapData[4]['value']}',
+                  height: '${userMapData[5]['value']}',
+                  gender: '${userMapData[6]['value']}',
+                  disease: '${userMapData[7]['value']}',
+
+                );
+              }).paddingOnly(top: 20, bottom: 20),
+          LongButton(
+              label: 'update',
+              onTap: () {
+                updateUserDataToFireStore(
+                  firstName: '${userMapData[0]['value'].split(' ')[0]}',
+                  secondName: '${userMapData[1]['value']}',
+                  email: '${userMapData[2]['value']}',
+                  age: '${userMapData[3]['value']}',
+                  weight: '${userMapData[4]['value']}',
+                  height: '${userMapData[5]['value']}',
+                  gender: '${userMapData[6]['value']}',
+                  disease: '${userMapData[7]['value']}',
+                );
+              }).paddingOnly(top: 20, bottom: 20),
+          LongButton(
+              label: 'Delete',
+              onTap: () {
+                deleteUserDataFromFireStore();
+              }).paddingOnly(top: 20, bottom: 20),
+          LongButton(
+              label: 'print',
+              onTap: () {
+                print(user?.email);
+                getUserDataFromFireStoreByEmail(email: user!.email?? '');
               }).paddingOnly(top: 20, bottom: 20),
           // Add more details or widgets as needed
         ],

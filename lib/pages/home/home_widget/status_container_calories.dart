@@ -83,17 +83,17 @@ class _CaloriesContainerState extends State<CaloriesContainer> {
                           Row(children: [
                             const Icon(Icons.flag_rounded,size: 30,),
                             const SizedBox(width: 10,),
-                            Text('Base Goal\n ${baseGoal.toInt()}',style: const TextStyle(color: Colors.white,fontSize: 14),),
+                            Text('Base Goal\n ${baseGoal.toInt()}',style: const TextStyle(color: Colors.white,fontSize: 18),),
                           ],),
                           Row(children: [
                             const Icon(Icons.fastfood_rounded,size: 30,),
                             const SizedBox(width: 10,),
-                            Text('Food\n ${food.toInt()}',style: const TextStyle(color: Colors.white,fontSize: 14),),
+                            Text('Food\n ${food.toInt()}',style: const TextStyle(color: Colors.white,fontSize: 18),),
                           ],),
                           Row(children: [
-                            const Icon(Icons.local_fire_department_rounded,size: 30,),
+                            const Icon(Icons.local_fire_department_rounded,size: 30, color: Colors.orange,),
                             const SizedBox(width: 10,),
-                            Text('Exercise\n ${exerciseCal.toInt()}',style: const TextStyle(color: Colors.white,fontSize: 14),),
+                            Text('Exercise\n ${exerciseCal.toInt()}',style: const TextStyle(color: Colors.orange,fontSize: 18),),
                           ],)
                         ]
                     )

@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:fitgenie/core/widgets/custom_button.dart';
+import 'package:fitgenie/fire_base/firebase.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,6 +9,7 @@ import '../../../core/widgets/custom_drop_down/custom_drop_down_par.dart';
 import '../../../core/widgets/custom_text_field.dart';
 import '../../../core/widgets/logo_splash_widget.dart';
 import '../../../layout/home_layout.dart';
+import '../../profile/profile_view.dart';
 
 class RequiredForm extends StatefulWidget {
   static const String routeName = '/requiredForm';
@@ -18,7 +20,6 @@ class RequiredForm extends StatefulWidget {
   @override
   State<RequiredForm> createState() => _RequiredFormState();
 }
-
 class _RequiredFormState extends State<RequiredForm> {
   final GlobalKey<FormState> submitFormKey = GlobalKey<FormState>();
 
@@ -154,6 +155,17 @@ class _RequiredFormState extends State<RequiredForm> {
                 label: 'submit',
                 onTap: () {
                   submit();
+                  createUserDataToFireStore(
+                    firstName: firstNameController.text,
+                    secondName: secondNameController.text,
+                    gender: genderValue!,
+                    weight: weightController.text,
+                    height: heightController.text,
+                    age: ageController.text,
+                    disease: diseaseController.text,
+                    email: user?.email??'',
+                  );
+
                 }),
           )
         ]),

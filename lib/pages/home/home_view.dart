@@ -1,10 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/provider/app_provider.dart';
+import '../../fire_base/firebase.dart';
 import 'home_widget/ads_container.dart';
 import 'home_widget/Exercise/exercise_container.dart';
 import 'home_widget/heart_rate_container_view.dart';
@@ -18,14 +20,21 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-initState() {
-  // HealthDataFetch.fetchHealthDataCalories(dataTypeName: 'active_calories', timePeriod: 'today') ;
-  // HealthDataFetch.fetchHealthDataSteps(dataTypeName: 'steps_count', timePeriod: 'today') ;
-}
 
 class _HomeViewState extends State<HomeView> {
   @override
+  void initState() {
+    // TODO: implement initState
+
+    print('gettingData---------------------------------');
+    getUserDataFromFireStoreByEmail(email: FirebaseAuth.instance.currentUser!.email ?? 'no email');
+    print('data got ---------------------------------');
+    super.initState();
+    //ApplicationFirebaseAuth.getUserData();
+  }
+  @override
   Widget build(BuildContext context) {
+
     var provider = Provider.of<AppProvider>(context);
 
     var heightScreen = MediaQuery.of(context).size.height;
