@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class AppProvider extends ChangeNotifier {
   int? steps;
-  int exerciseCalories =0;
+  int exerciseCalories = 0;
   int foodCalories = 0;
   DateTime exerciseTime = DateTime.utc(1970, 1, 1);
   int? baseGoal;
@@ -14,7 +13,7 @@ class AppProvider extends ChangeNotifier {
   DateTime time = DateTime.fromMillisecondsSinceEpoch(0);
   int pageIndex = 0;
 
-  Future<void> addExerciseCalories({int value = 0 , String time = '' }) async {
+  Future<void> addExerciseCalories({int value = 0, String time = ''}) async {
     exerciseCalories += value;
 
     var pref = await SharedPreferences.getInstance();
@@ -36,6 +35,7 @@ class AppProvider extends ChangeNotifier {
     await pref.setInt('timestamp', DateTime.now().millisecondsSinceEpoch);
     notifyListeners();
   }
+
   Future<void> updateDataDashboard() async {
     var pref = await SharedPreferences.getInstance();
     int? lastTimestamp = pref.getInt('timestamp');
@@ -46,7 +46,8 @@ class AppProvider extends ChangeNotifier {
         pref.setInt('foodCalories', 0);
         pref.setInt('timestamp', DateTime.now().millisecondsSinceEpoch);
         pref.setInt('baseGoal', 2000);
-        pref.setString('ExerciseTime', DateTime.utc(1970, 1, 1).toIso8601String());
+        pref.setString(
+            'ExerciseTime', DateTime.utc(1970, 1, 1).toIso8601String());
       } else {
         exerciseCalories = pref.getInt('exerciseCalories') ?? 0;
         foodCalories = pref.getInt('foodCalories') ?? 0;
@@ -64,22 +65,82 @@ class AppProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> updateBaseGoal(int value) async {
+    baseGoal = value == 0 ? 2000 : value;
+    var pref = await SharedPreferences.getInstance();
+    await pref.setInt('baseGoal', baseGoal!);
+    notifyListeners();
+  }
+  Future<void> clearFoodExercise  () async {
+    foodCalories = 0;
+    exerciseCalories = 0;
+    var pref = await SharedPreferences.getInstance();
+    await pref.setInt('foodCalories', 0);
+    await pref.setInt('exerciseCalories', 0);
+    await pref.setInt('timestamp', DateTime.now().millisecondsSinceEpoch);
+    notifyListeners();
+  }
 
+  Future<void> updateProfile({
+    String? firstName,
+    String? secondName,
+    String? age,
+    String? weight,
+    String? height,
+    String? gender,
+    String? disease,
+  }) async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
 
+    if (firstName != null && firstName.isNotEmpty) {
+      await pref.setString('firstName', firstName);
+    }
 
+    if (secondName != null && secondName.isNotEmpty) {
+      await pref.setString('secondName', secondName);
+    }
+
+    if (age != null && age.isNotEmpty) {
+      await pref.setString('age', age);
+    }
+
+    if (weight != null && weight.isNotEmpty) {
+      await pref.setString('weight', weight);
+    }
+
+    if (height != null && height.isNotEmpty) {
+      await pref.setString('height', height);
+    }
+
+    if (gender != null && gender.isNotEmpty) {
+      await pref.setString('gender', gender);
+    }
+
+    if (disease != null && disease.isNotEmpty) {
+      await pref.setString('disease', disease);
+    }
+
+    print('Profile updated');
+     notifyListeners(); // Uncomment this line if you are using this in a ChangeNotifier class
+  }
 
   void changePageIndex(int index, {required PageController pageController}) {
-    pageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
+    pageController.animateToPage(index,
+        duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
     pageIndex = index;
     notifyListeners();
   }
+
   void screenSwapped(int index) {
     if (pageIndex != index) {
       pageIndex = index;
       notifyListeners();
     }
   }
+
   get getPageIndexValue => pageIndex;
+
+
 }
 
 //-----------------------------------------------------------------------

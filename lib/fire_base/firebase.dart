@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../layout/home_layout.dart';
+import '../pages/profile/profile_view.dart';
 
 class ApplicationFirebaseAuth extends GetxController {
   static final currentUser = FirebaseAuth.instance.currentUser;
@@ -109,7 +110,6 @@ class ApplicationFirebaseAuth extends GetxController {
 Future<void> createUserDataToFireStore({
   required String firstName,
   required String secondName,
-  required String email,
   required String age,
   required String weight,
   required String height,
@@ -121,7 +121,7 @@ Future<void> createUserDataToFireStore({
     await usersData.add({
       'firstName': firstName,
       'secondName': secondName,
-      'email': email,
+      'email': FirebaseAuth.instance.currentUser?.email,
       'age': int.parse(age), // Ensure age is parsed to int if it's numerical
       'weight': double.parse(weight), // Ensure weight is parsed to double if it's numerical
       'height': double.parse(height), // Ensure height is parsed to double if it's numerical
@@ -157,14 +157,14 @@ Future<void> updateUserDataToFireStore({
       QuerySnapshot querySnapshot = await usersData.where('email', isEqualTo: user.email).get();
       if (querySnapshot.docs.isNotEmpty) {
         querySnapshot.docs.first.reference.update({
-          'firstName': firstName,
-          'secondName': secondName,
-          'email': email,
-          'age': int.parse(age), // Corrected to match the parameter type
-          'weight': double.parse(weight), // Corrected to match the parameter type
-          'height': double.parse(height), // Corrected to match the parameter type
-          'gender': gender,
-          'disease': disease,
+          'firstName': firstName.isEmpty ? querySnapshot.docs.first['firstName'] : firstName,
+          'secondName': secondName.isEmpty ? querySnapshot.docs.first['secondName'] : secondName,
+          'email': email.isEmpty ? querySnapshot.docs.first['email'] : email,
+          'age': int.parse(age.isEmpty ? querySnapshot.docs.first['age'].toString() : age), // Corrected to match the parameter type
+          'weight': double.parse(weight.isEmpty ? querySnapshot.docs.first['weight'].toString() : weight), // Corrected to match the parameter type
+          'height': double.parse(height.isEmpty ? querySnapshot.docs.first['height'].toString() : height), // Corrected to match the parameter type
+          'gender': gender.isEmpty ? querySnapshot.docs.first['gender'] : gender,
+          'disease': disease.isEmpty ? querySnapshot.docs.first['disease'] : disease,
         });
         print('User data updated successfully.');
       } else {

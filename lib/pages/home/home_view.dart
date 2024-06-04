@@ -54,7 +54,7 @@ class _HomeViewState extends State<HomeView> {
           CarouselSlider(
               items: [
                 CaloriesContainer(provider: provider),
-                const HeartRateContainer(),
+                // const HeartRateContainer(),
               ],
               options: CarouselOptions(
                 pageSnapping: true,

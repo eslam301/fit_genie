@@ -24,7 +24,7 @@ class LongButton extends StatelessWidget {
         onTap();
       },
       child: Container(
-        width: double.infinity,
+        // width: double.infinity,
         // margin: const EdgeInsets.symmetric(horizontal: 30),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(

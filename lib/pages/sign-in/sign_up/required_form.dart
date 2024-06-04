@@ -3,8 +3,10 @@ import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:fitgenie/fire_base/firebase.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../core/provider/app_provider.dart';
 import '../../../core/widgets/custom_drop_down/custom_drop_down_par.dart';
 import '../../../core/widgets/custom_text_field.dart';
 import '../../../core/widgets/logo_splash_widget.dart';
@@ -13,8 +15,10 @@ import '../../profile/profile_view.dart';
 
 class RequiredForm extends StatefulWidget {
   static const String routeName = '/requiredForm';
+  final bool isUpdate;
   const RequiredForm({
     super.key,
+    this.isUpdate = false,
   });
 
   @override
@@ -39,6 +43,7 @@ class _RequiredFormState extends State<RequiredForm> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<AppProvider>(context);
     return SingleChildScrollView(
         child: Form(
       key: submitFormKey,
@@ -153,19 +158,41 @@ class _RequiredFormState extends State<RequiredForm> {
             duration: const Duration(milliseconds: 400),
             child: LongButton(
                 label: 'submit',
-                onTap: () {
-                  submit();
-                  createUserDataToFireStore(
-                    firstName: firstNameController.text,
-                    secondName: secondNameController.text,
-                    gender: genderValue!,
-                    weight: weightController.text,
-                    height: heightController.text,
-                    age: ageController.text,
-                    disease: diseaseController.text,
-                    email: user?.email??'',
-                  );
-
+                onTap: () async {
+                  if (widget.isUpdate == true) {
+                    await updateUserDataToFireStore(
+                      firstName: firstNameController.text,
+                      secondName: secondNameController.text,
+                      gender: genderValue ?? '',
+                      weight: weightController.text,
+                      height: heightController.text,
+                      age: ageController.text,
+                      disease: diseaseController.text,
+                      email: user?.email??'',
+                    );
+                    await provider.updateProfile(
+                      firstName: firstNameController.text??'',
+                      secondName: secondNameController.text??'',
+                      gender: genderValue ?? '',
+                      weight: weightController.text??'',
+                      height: heightController.text??'',
+                      age: ageController.text??'',
+                      disease: diseaseController.text??'',
+                    );
+                    Get.back();
+                  } else {
+                    createUserDataToFireStore(
+                      firstName: firstNameController.text,
+                      secondName: secondNameController.text,
+                      gender: genderValue!,
+                      weight: weightController.text,
+                      height: heightController.text,
+                      age: ageController.text,
+                      disease: diseaseController.text,
+                    );
+                    print('profile created');
+                    submit();
+                  }
                 }),
           )
         ]),

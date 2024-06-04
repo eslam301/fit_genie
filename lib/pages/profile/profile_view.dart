@@ -99,9 +99,9 @@ class _ProfilePageState extends State<ProfilePage> {
           CircleAvatar(
             backgroundColor: theme.colorScheme.secondary,
             radius: 60,
-            backgroundImage: CachedNetworkImageProvider(
-              user?.photoURL ?? 'https://i.pravatar.cc/320',
-            ),
+            backgroundImage: const AssetImage(
+              'assets/images/profile_picture.png',
+            )
           ),
           Text(
              name ?? 'N/A',
@@ -142,46 +142,6 @@ class _ProfilePageState extends State<ProfilePage> {
               label: 'LogOut',
               onTap: () {
                 ApplicationFirebaseAuth.signOutFireBase();
-              }).paddingOnly(top: 20, bottom: 20),
-          LongButton(
-              label: 'Save',
-              onTap: () {
-                createUserDataToFireStore(
-                  firstName: '${userMapData[0]['value'].split(' ')[0]}',
-                  secondName: '${userMapData[1]['value']}',
-                  email: '${userMapData[2]['value']}',
-                  age: '${userMapData[3]['value']}',
-                  weight: '${userMapData[4]['value']}',
-                  height: '${userMapData[5]['value']}',
-                  gender: '${userMapData[6]['value']}',
-                  disease: '${userMapData[7]['value']}',
-
-                );
-              }).paddingOnly(top: 20, bottom: 20),
-          LongButton(
-              label: 'update',
-              onTap: () {
-                updateUserDataToFireStore(
-                  firstName: '${userMapData[0]['value'].split(' ')[0]}',
-                  secondName: '${userMapData[1]['value']}',
-                  email: '${userMapData[2]['value']}',
-                  age: '${userMapData[3]['value']}',
-                  weight: '${userMapData[4]['value']}',
-                  height: '${userMapData[5]['value']}',
-                  gender: '${userMapData[6]['value']}',
-                  disease: '${userMapData[7]['value']}',
-                );
-              }).paddingOnly(top: 20, bottom: 20),
-          LongButton(
-              label: 'Delete',
-              onTap: () {
-                deleteUserDataFromFireStore();
-              }).paddingOnly(top: 20, bottom: 20),
-          LongButton(
-              label: 'print',
-              onTap: () {
-                print(user?.email);
-                getUserDataFromFireStoreByEmail(email: user!.email?? '');
               }).paddingOnly(top: 20, bottom: 20),
           // Add more details or widgets as needed
         ],

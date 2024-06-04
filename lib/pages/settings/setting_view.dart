@@ -1,5 +1,9 @@
 // import 'package:fitgenie/core/widgets/custom_button.dart';
+import 'package:fitgenie/core/widgets/custom_button.dart';
+import 'package:fitgenie/layout/basic_layout_page.dart';
+import 'package:fitgenie/pages/sign-in/sign_up/required_form.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 // import 'package:get/get.dart';
 import '../../core/widgets/drop_down_bar.dart';
 // import '../model_viewer/model_test.dart';
@@ -47,6 +51,13 @@ class _SettingsViewState extends State<SettingsView> {
         const SizedBox(
           height: 20,
         ),
+        LongButton(label: 'update profile', onTap: () {
+          Get.to(
+            const LayOutPageView(appBarTitle:'Update Profile', body: RequiredForm(
+              isUpdate: true,
+            ))
+          );
+        }),
         // LongButton(
         //     label: 'My Model',
         //     onTap: () {
