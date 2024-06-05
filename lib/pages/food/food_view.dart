@@ -1,3 +1,4 @@
+import 'package:fitgenie/core/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,7 +24,7 @@ class FoodPlanView extends StatelessWidget {
         ).paddingOnly(left: 20, top: 20),
         Expanded(
             child: FutureBuilder(
-          future: FoodApiManger.fetchFoodData(),
+          future: FoodApiManger.fetchFoodData(email: ''),
           builder:
               (BuildContext context, AsyncSnapshot<FoodPlanModel> snapshot) {
             if (snapshot.hasData) {
@@ -59,9 +60,12 @@ class FoodPlanView extends StatelessWidget {
                 children: [
                   Text('${snapshot.error}'),
                   const SizedBox(height: 10),
+                  CustomTextField(
+                      controller: TextEditingController(), label: 'email'),
                   ElevatedButton(
                       onPressed: () {
-                        FoodApiManger.fetchFoodData();
+                        FoodApiManger.fetchFoodData(
+                            email: TextEditingController().text);
                       },
                       child: const Text('Try Again'))
                 ],
