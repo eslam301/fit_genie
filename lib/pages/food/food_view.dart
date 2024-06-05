@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'food_api_manger/food_api_manger.dart';
 import 'food_model/food_model.dart';
 import 'food_widget/food_widget_container.dart';
@@ -54,7 +55,17 @@ class FoodPlanView extends StatelessWidget {
                 ],
               );
             } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
+              return Column(
+                children: [
+                  Text('${snapshot.error}'),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                      onPressed: () {
+                        FoodApiManger.fetchFoodData();
+                      },
+                      child: const Text('Try Again'))
+                ],
+              );
             } else {
               return const Center(child: CircularProgressIndicator());
             }
