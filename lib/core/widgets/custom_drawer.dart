@@ -101,12 +101,11 @@ class CustomDrawer extends StatelessWidget {
                           size: 30,
                         ),
                         onTap: () {
-                          Get.to(
-                            () => const LayOutPageView(
-                                appBarTitle: 'Timer', body: TimerView()),
-                            transition: Transition.rightToLeftWithFade,
-                          );
-
+                          // Get.to(
+                          //   () => const LayOutPageView(
+                          //       appBarTitle: 'Timer', body: TimerView()),
+                          //   transition: Transition.rightToLeftWithFade,
+                          // );
                         }),
                     ListTile(
                         title: Container(

@@ -25,7 +25,7 @@ dependencies:
   cached_network_image: ^3.3.1
   webview_flutter: ^4.7.0
   animate_do: ^3.3.4
-  simple_timer: ^2.0.0
+  #  simple_timer: ^2.0.0
   shared_preferences: ^2.2.3
   intl: ^0.17.0
   pedometer: ^4.0.1
