@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:fitgenie/pages/profile/profile_widgets/profile_row_widget.dart';

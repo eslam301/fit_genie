@@ -1,4 +1,3 @@
-import 'package:fitgenie/core/health/health_data_model_calories.dart';
 import 'package:fitgenie/pages/work_out_planes/work_out_plan_view.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -7,19 +6,19 @@ import 'package:provider/provider.dart';
 import '../../../../core/provider/app_provider.dart';
 
 class ExerciseContainer extends StatelessWidget {
-  final HealthDataModelCalories? healthDataModel;
-  const ExerciseContainer({super.key, this.healthDataModel});
+  const ExerciseContainer({super.key});
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppProvider>(context);
     String calories = provider.exerciseCalories.toString();
     DateFormat dateFormat = DateFormat('HH:mm');
     String formattedDate = dateFormat.format(provider.exerciseTime);
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     // int? calories = healthDataModel?.caloriesExpended?[0].value ?? 0;
     return Container(
-        width: 180,
-        height: 140,
-        margin: const EdgeInsets.only(top: 20),
+        width: (width * 0.5) - 30,
+        height: height * 0.16,
         decoration: const BoxDecoration(
           color: Colors.black26,
           borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -54,14 +53,14 @@ class ExerciseContainer extends StatelessWidget {
                 children: [
                   const Icon(
                     Icons.local_fire_department_rounded,
-                    color: Colors.white,
+                    color: Colors.orange,
                   ),
                   const SizedBox(
                     width: 10,
                   ),
                   Text(
                     '$calories Calories',
-                    style: const TextStyle(color: Colors.white, fontSize: 16),
+                    style: const TextStyle(color: Colors.orange, fontSize: 16),
                   ),
                 ],
               ),
@@ -69,14 +68,14 @@ class ExerciseContainer extends StatelessWidget {
                 children: [
                   const Icon(
                     Icons.access_time,
-                    color: Colors.white,
+                    color: Colors.green,
                   ),
                   const SizedBox(
                     width: 10,
                   ),
                   Text(
                     formattedDate,
-                    style: const TextStyle(color: Colors.white, fontSize: 16),
+                    style: const TextStyle(color: Colors.green, fontSize: 16),
                   ),
                 ],
               ),

@@ -59,7 +59,7 @@ class _RequiredFormState extends State<RequiredForm> {
             controller: firstNameController,
             label: 'Name',
             suffixIcon: const Icon(Icons.person),
-            keyBoardType: TextInputType.name,
+            keyboardType: TextInputType.name,
             delay: const Duration(milliseconds: 50),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
@@ -74,7 +74,7 @@ class _RequiredFormState extends State<RequiredForm> {
             controller: secondNameController,
             label: 'Second Name (optional)',
             suffixIcon: const Icon(Icons.person_3_outlined),
-            keyBoardType: TextInputType.name,
+            keyboardType: TextInputType.name,
             delay: const Duration(milliseconds: 100),
             validator: (String? value) {
               return null;
@@ -84,6 +84,7 @@ class _RequiredFormState extends State<RequiredForm> {
               duration: const Duration(milliseconds: 400),
               delay: const Duration(milliseconds: 150),
               child: CustomDropDown(
+                backColor: Theme.of(context).primaryColor.withOpacity(0.4),
                 label: "Gender",
                 value: genderValue,
                 items: const ['Male', 'Female'],
@@ -98,7 +99,7 @@ class _RequiredFormState extends State<RequiredForm> {
             controller: weightController,
             label: 'Weight (kg)',
             suffixIcon: const Icon(Icons.monitor_weight),
-            keyBoardType: TextInputType.number,
+            keyboardType: TextInputType.number,
             delay: const Duration(milliseconds: 200),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
@@ -115,7 +116,7 @@ class _RequiredFormState extends State<RequiredForm> {
             controller: heightController,
             suffixIcon: const Icon(Icons.height),
             label: 'Height (cm)',
-            keyBoardType: TextInputType.number,
+            keyboardType: TextInputType.number,
             delay: const Duration(milliseconds: 250),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
@@ -130,7 +131,7 @@ class _RequiredFormState extends State<RequiredForm> {
           CustomTextField(
             controller: ageController,
             label: 'Age',
-            keyBoardType: TextInputType.number,
+            keyboardType: TextInputType.number,
             suffixIcon: const Icon(Icons.calendar_month),
             delay: const Duration(milliseconds: 300),
             validator: (String? value) {
@@ -147,7 +148,7 @@ class _RequiredFormState extends State<RequiredForm> {
             controller: diseaseController,
             label: 'Disease (optional)',
             suffixIcon: const Icon(Icons.health_and_safety),
-            keyBoardType: TextInputType.name,
+            keyboardType: TextInputType.name,
             delay: const Duration(milliseconds: 350),
             validator: (String? value) {
               return null;
@@ -171,13 +172,13 @@ class _RequiredFormState extends State<RequiredForm> {
                       email: user?.email??'',
                     );
                     await provider.updateProfile(
-                      firstName: firstNameController.text??'',
-                      secondName: secondNameController.text??'',
+                      firstName: firstNameController.text,
+                      secondName: secondNameController.text,
                       gender: genderValue ?? '',
-                      weight: weightController.text??'',
-                      height: heightController.text??'',
-                      age: ageController.text??'',
-                      disease: diseaseController.text??'',
+                      weight: weightController.text,
+                      height: heightController.text,
+                      age: ageController.text,
+                      disease: diseaseController.text,
                     );
                     Get.back();
                   } else {

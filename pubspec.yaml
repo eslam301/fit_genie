@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
+
   get: ^4.6.6
   percent_indicator: ^4.2.3
   carousel_slider: ^4.2.1
@@ -24,13 +24,14 @@ dependencies:
   flutter_widget_from_html: ^0.14.6
   cached_network_image: ^3.3.1
   webview_flutter: ^4.7.0
-  flutter_3d_controller: ^1.2.1
   animate_do: ^3.3.4
   simple_timer: ^2.0.0
   shared_preferences: ^2.2.3
   intl: ^0.17.0
+  pedometer: ^4.0.1
   cloud_firestore: ^4.17.5
-#  health: ^10.2.0
+  permission_handler: ^11.3.1
+  firebase_in_app_messaging: ^0.7.5+7
 
 
 
@@ -46,5 +47,4 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/models/
     - assets/svg/

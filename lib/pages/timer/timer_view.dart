@@ -208,7 +208,7 @@ class _TimerViewState extends State<TimerView> with TickerProviderStateMixin {
                   duration: const Duration(milliseconds: 200),
                     controller: controller,
                     label: 'input time',
-                    keyBoardType: TextInputType.number),
+                    keyboardType: TextInputType.number),
                 const SizedBox(height: 20),
                 FilledButton(
                   style: FilledButton.styleFrom(

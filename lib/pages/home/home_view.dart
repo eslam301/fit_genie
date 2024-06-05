@@ -1,15 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/provider/app_provider.dart';
 import '../../fire_base/firebase.dart';
-import 'home_widget/ads_container.dart';
 import 'home_widget/Exercise/exercise_container.dart';
-import 'home_widget/heart_rate_container_view.dart';
+import 'home_widget/ads_container.dart';
 import 'home_widget/status_container_calories.dart';
 import 'home_widget/steps_container.dart';
 
@@ -84,7 +82,7 @@ class _HomeViewState extends State<HomeView> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               //steps
-              StepsContainerView(errorStep: 0),
+              StepsContainerView(),
               //exercise
               ExerciseContainer()
             ],

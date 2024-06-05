@@ -71,15 +71,16 @@ class ArticleDetails extends StatelessWidget {
                   children: [
                     const Icon(Icons.article),
                     const SizedBox(width: 10),
-                    Text('Source: $source',
-                        style: const TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        )
-                    ),
-                  ],
+                Flexible(
+                  child: Text('Source: $source',
+                      style: const TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      )),
                 ),
+              ],
+            ),
                 const SizedBox(height: 15),
                 Row(
                   children: [

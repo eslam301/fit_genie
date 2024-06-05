@@ -3,8 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitgenie/layout/sign_in_layout/sign_in_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../core/widgets/logo_splash_widget.dart';
 import '../../layout/home_layout.dart';
+import '../../permission/ask_permission.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String routeName = '/splash';
@@ -16,8 +18,10 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  Widget build(BuildContext context) {
-
+  void initState() {
+    super.initState();
+    checkPermissionStatus();
+    print('permission checked');
     Future.delayed(const Duration(seconds: 2), () {
       if (FirebaseAuth.instance.currentUser == null) {
         Get.offNamed(SignInLayout.routeName);
@@ -25,6 +29,10 @@ class _SplashScreenState extends State<SplashScreen> {
         Get.offNamed(HomeLayout.routeName);
       }
     });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

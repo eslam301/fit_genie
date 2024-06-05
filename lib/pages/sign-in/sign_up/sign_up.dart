@@ -1,9 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitgenie/pages/sign-in/sign_up/required_form.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/custom_text_field.dart';
 import '../../../core/widgets/logo_splash_widget.dart';
@@ -50,7 +50,7 @@ class SignUpPageState extends State<SignUpPage> {
                   child: const LogoSplashWidget()),
               const SizedBox(height: 20),
               // CustomTextField(
-              //     keyBoardType: TextInputType.name,
+              //     keyboardType: TextInputType.name,
               //     suffixIcon: const Icon(Icons.person),
               //     delay: const Duration(milliseconds: 50),
               //     controller: nameController,
@@ -68,7 +68,7 @@ class SignUpPageState extends State<SignUpPage> {
                   delay: const Duration(milliseconds: 100),
                   suffixIcon: const Icon(Icons.email),
                   label: 'Email',
-                  keyBoardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.emailAddress,
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your email';

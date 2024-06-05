@@ -1,13 +1,12 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitgenie/layout/sign_in_layout/sign_in_layout.dart';
 import 'package:get/get.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../layout/home_layout.dart';
-import '../pages/profile/profile_view.dart';
 
+import '../layout/home_layout.dart';
 class ApplicationFirebaseAuth extends GetxController {
   static final currentUser = FirebaseAuth.instance.currentUser;
   static User? user;

@@ -85,8 +85,8 @@ class _NewsScreenState extends State<NewsView> {
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10.0),
+                      padding: const EdgeInsets.only(
+                          left: 10.0, right: 10.0, bottom: 210.0),
                       controller: ScrollController(),
                       itemCount: articlesModel.articles!.length > 30
                           ? 30

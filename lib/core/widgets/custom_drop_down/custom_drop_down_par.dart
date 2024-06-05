@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomDropDown extends StatelessWidget {
   final List<String> items;
+  final Color backColor;
   final String label;
   final Function(String?) onChanged;
   final List<IconData> iconItems;
@@ -13,23 +14,25 @@ class CustomDropDown extends StatelessWidget {
     required this.items,
     required this.iconItems,
     this.value,
+    this.backColor = Colors.white,
   });
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
         openBottomSheet(context);
       },
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
         margin: const EdgeInsets.symmetric(vertical: 10),
         padding:
             const EdgeInsets.only(left: 20, right: 12, top: 10, bottom: 10),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: backColor,
           borderRadius: BorderRadius.circular(20),
+          border: Border.all(width: 2, color: Colors.grey.shade300),
         ),
         child: Row(
           children: [
@@ -41,8 +44,11 @@ class CustomDropDown extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             Text(
-              ' ${value?? " "} ',
-              style: TextStyle(fontSize: 18, color:  theme.primaryColor.withOpacity(0.8) , fontWeight: FontWeight.bold),
+              ' ${value ?? " "} ',
+              style: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
               overflow: TextOverflow.ellipsis,
             ),
             const Spacer(),

@@ -83,7 +83,8 @@ class _WorkOutPlanViewState extends State<WorkOutPlanView> {
           } else if (snapshot.hasData) {
             WorkOutPlansModel workOutModel = snapshot.data as WorkOutPlansModel;
             return ListView(
-              padding: const EdgeInsets.only(bottom: 120, left: 16, right: 16),
+              physics: const BouncingScrollPhysics(),
+              padding: const EdgeInsets.only(bottom: 210, left: 16, right: 16),
               children: [
                 WorkOutWidgetItem(
                   exerciseModel: workOutModel,

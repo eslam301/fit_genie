@@ -1,4 +1,3 @@
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
@@ -7,77 +6,96 @@ class CustomTextField extends StatefulWidget {
   final String label;
   final bool isPassword;
   final Icon? suffixIcon;
-  final TextInputType? keyBoardType;
+  final TextInputType? keyboardType;
   final FormFieldValidator<String>? validator;
-  final Duration delay ;
+  final Duration delay;
   final Duration duration;
+  final Color? backgroundColor;
 
-
-  const CustomTextField({
+  const CustomTextField(
+      {Key? key,
       required this.controller,
       required this.label,
-      super.key,
       this.isPassword = false,
       this.suffixIcon,
-      this.keyBoardType,
+      this.keyboardType,
       this.validator,
       this.duration = const Duration(milliseconds: 400),
       this.delay = const Duration(milliseconds: 100),
-  });
+      this.backgroundColor})
+      : super(key: key);
+
   @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
+  _CustomTextFieldState createState() => _CustomTextFieldState();
 }
+
 class _CustomTextFieldState extends State<CustomTextField> {
   bool obscureText = true;
+
   @override
   Widget build(BuildContext context) {
-    //var theme = Theme.of(context);
+    var theme = Theme.of(context);
     return FadeInUp(
       duration: widget.duration,
       delay: widget.delay,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12.0),
         child: TextFormField(
-          keyboardType: widget.keyBoardType,
+          keyboardType: widget.keyboardType,
           validator: widget.validator,
           obscureText: widget.isPassword ? obscureText : false,
           controller: widget.controller,
           style: const TextStyle(
             fontSize: 18,
-            color: Colors.black,
+            color: Colors.white,
             fontWeight: FontWeight.normal,
+            fontFamily: 'Cairo',
           ),
           decoration: InputDecoration(
-            suffixIcon: widget.isPassword
-                ? IconButton(
-                    onPressed: () {
-                      setState(() {
-                        obscureText = !obscureText;
-                      });
-                    },
-                    icon: obscureText ? const Icon(Icons.visibility_off) : const Icon(Icons.visibility),
-                  )
-                : widget.suffixIcon,
-            suffixIconColor: Colors.grey,
+            suffixIcon: _buildSuffixIcon(),
             filled: true,
-            fillColor: Colors.grey[200],
-            floatingLabelBehavior: FloatingLabelBehavior.never,
-
+            fillColor:
+                widget.backgroundColor ?? theme.primaryColor.withOpacity(0.4),
+            floatingLabelBehavior: FloatingLabelBehavior.auto,
+            floatingLabelStyle:
+                const TextStyle(color: Colors.teal, fontSize: 18),
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-
             labelText: widget.label,
             labelStyle: const TextStyle(
               fontSize: 18,
               color: Colors.grey,
             ),
             border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(
-              Radius.circular(20.0),
-            )),
+              borderSide: BorderSide(color: Colors.teal),
+              borderRadius: BorderRadius.all(
+                Radius.circular(20.0),
+              ),
+            ),
           ),
         ),
       ),
     );
+  }
+
+  Widget? _buildSuffixIcon() {
+    if (widget.isPassword) {
+      return IconButton(
+        onPressed: _toggleObscureText,
+        icon: Icon(
+          obscureText ? Icons.visibility_off : Icons.visibility,
+          color: Colors.grey,
+        ),
+      );
+    }
+    return widget.suffixIcon != null
+        ? Icon(widget.suffixIcon!.icon, color: Colors.grey)
+        : null;
+  }
+
+  void _toggleObscureText() {
+    setState(() {
+      obscureText = !obscureText;
+    });
   }
 }

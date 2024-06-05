@@ -35,10 +35,10 @@ class _CaloriesContainerState extends State<CaloriesContainer> {
     int remaining = baseGoal - food + exerciseCal;
     double percent = remaining / baseGoal;
     int netCalories = food - exerciseCal;
-    print(percent);
-    percent = percent > 1 ? percent -1 : percent -1;
+    // print(percent);
+    percent = percent > 1 ? percent - 1 : percent - 1;
     int percentage = (percent * 100).round().obs();
-    print(percent.obs);
+    // print(percent.obs);
     double height = MediaQuery.of(context).size.height;
 
     var theme = Theme.of(context);
@@ -62,28 +62,39 @@ class _CaloriesContainerState extends State<CaloriesContainer> {
             child: ListView(
               physics: const BouncingScrollPhysics(),
               children: [
-                const Text(
-                  'Enter Calories Goal',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Enter Calories Goal',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    IconButton(
+                        onPressed: () => Navigator.pop(context),
+                        icon: const Icon(
+                          Icons.close_outlined,
+                          color: Colors.red,
+                        ))
+                  ],
                 ),
                 CustomTextField(
-                  keyBoardType: TextInputType.number,
+                  keyboardType: TextInputType.number,
                   delay: const Duration(milliseconds: 50),
                   controller: baseGoalController,
                   label: 'Base Goal',
                 ),
                 CustomTextField(
-                  keyBoardType: TextInputType.number,
+                  keyboardType: TextInputType.number,
                   delay: const Duration(milliseconds: 100),
                   controller: foodController,
                   label: 'Food',
                 ),
                 CustomTextField(
-                  keyBoardType: TextInputType.number,
+                  keyboardType: TextInputType.number,
                   delay: const Duration(milliseconds: 150),
                   controller: exerciseController,
                   label: 'Exercise',
@@ -91,28 +102,33 @@ class _CaloriesContainerState extends State<CaloriesContainer> {
                 FadeInUp(
                   duration: const Duration(milliseconds: 400),
                   delay: const Duration(milliseconds: 200),
-                  child: LongButton(label: 'Update', onTap: () {
-                    widget.provider.updateBaseGoal(int.parse(baseGoalController.text.isEmpty ? '0' : baseGoalController.text));
-                    widget.provider.addFoodCalories(int.parse(foodController.text.isEmpty ? '0' : foodController.text));
-                    widget.provider.addExerciseCalories(value: int.parse(exerciseController.text.isEmpty ? '0' : exerciseController.text));
-                    Navigator.pop(context);
-                  }),
-                ),
-
-                FadeInUp(
-                  duration: const Duration(milliseconds: 400),
-                  delay: const Duration(milliseconds: 250),
-                  child: LongButton(label: 'Cancel', onTap: () {
-                    Navigator.pop(context);
-                  }),
+                  child: LongButton(
+                      label: 'Update',
+                      onTap: () {
+                        widget.provider.updateBaseGoal(int.parse(
+                            baseGoalController.text.isEmpty
+                                ? '0'
+                                : baseGoalController.text));
+                        widget.provider.addFoodCalories(int.parse(
+                            foodController.text.isEmpty
+                                ? '0'
+                                : foodController.text));
+                        widget.provider.addExerciseCalories(
+                            value: int.parse(exerciseController.text.isEmpty
+                                ? '0'
+                                : exerciseController.text));
+                        Navigator.pop(context);
+                      }),
                 ).paddingSymmetric(vertical: 20),
                 FadeInUp(
                   duration: const Duration(milliseconds: 400),
                   delay: const Duration(milliseconds: 250),
-                  child: LongButton(label: 'Clear', onTap: () {
-                    widget.provider.clearFoodExercise();
-                    Navigator.pop(context);
-                  }),
+                  child: LongButton(
+                      label: 'Clear',
+                      onTap: () {
+                        widget.provider.clearFoodExercise();
+                        Navigator.pop(context);
+                      }),
                 )
               ],
             ),
@@ -163,7 +179,11 @@ class _CaloriesContainerState extends State<CaloriesContainer> {
                     radius: height * 0.09,
                     progressColor: netCalories < 0 ? exerciseColor : foodColor,
                     backgroundColor: backgroundColor,
-                    percent: percent.abs() >1 ? 1 : percent.abs() < 0 ? 0 : percent.abs(),
+                    percent: percent.abs() > 1
+                        ? 1
+                        : percent.abs() < 0
+                            ? 0
+                            : percent.abs(),
                     center: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

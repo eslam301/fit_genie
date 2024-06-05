@@ -48,7 +48,7 @@ class SignInPageState extends State<SignInPage> {
                   controller: _emailController,
                   suffixIcon: const Icon(Icons.email_rounded),
                   label: 'Email',
-                  keyBoardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.emailAddress,
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your email';
@@ -64,7 +64,7 @@ class SignInPageState extends State<SignInPage> {
                   controller: _passwordController,
                   label: 'Password',
                   isPassword: true,
-                  keyBoardType: TextInputType.visiblePassword,
+                  keyboardType: TextInputType.visiblePassword,
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your password';
