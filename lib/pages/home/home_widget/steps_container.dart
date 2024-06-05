@@ -95,8 +95,9 @@ class _StepsContainerViewState extends State<StepsContainerView> {
             children: [
               Row(
                 children: [
-                  Text('Set Steps Goal',
-                      style: Theme.of(context).textTheme.headline6),
+                  const Text(
+                    'Set Steps Goal',
+                  ),
                   const Spacer(),
                   IconButton(
                       onPressed: () {
