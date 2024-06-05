@@ -4,7 +4,6 @@ import 'package:fitgenie/core/widgets/custom_text_field.dart';
 import 'package:fitgenie/permission/ask_permission.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:pedometer/pedometer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -59,16 +58,11 @@ class _StepsContainerViewState extends State<StepsContainerView> {
 
   void _onStepCountError(error) {
     checkPermissionStatus();
-    Get.snackbar('Error', 'steps Permission Denied');
     print('Step Count Error: $error');
   }
 
   void _onPedestrianStatusChanged(PedestrianStatus event) {
     checkPermissionStatus();
-    Future delayed = Future.delayed(const Duration(seconds: 3));
-    delayed.then((value) {
-      Get.snackbar('Error', 'pedometer Permission Denied');
-    });
     print(event.status);
   }
 
