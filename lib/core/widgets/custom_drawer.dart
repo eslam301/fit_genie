@@ -2,8 +2,8 @@ import 'package:fitgenie/layout/basic_layout_page.dart';
 import 'package:fitgenie/pages/timer/timer_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../fire_base/firebase.dart';
-import '../../pages/notification/notification_view.dart';
 import '../../pages/profile/profile_view.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -67,26 +67,26 @@ class CustomDrawer extends StatelessWidget {
                             transition: Transition.rightToLeftWithFade,
                           );
                         }),
-                    ListTile(
-                      iconColor: theme.primaryColor,
-                        title: Text(
-                          'Notifications',
-                          style: TextStyle(
-                              color: theme.primaryColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        trailing: const Icon(
-                          Icons.notifications_rounded,
-                          size: 30,
-                        ),
-                        onTap: () {
-                          Get.to(
-                                () => const LayOutPageView(appBarTitle: 'news feed', body: NotificationView()),
-                            transition: Transition.rightToLeftWithFade,
-                          );
-
-                        }),
+                    // ListTile(
+                    //   iconColor: theme.primaryColor,
+                    //     title: Text(
+                    //       'Notifications',
+                    //       style: TextStyle(
+                    //           color: theme.primaryColor,
+                    //           fontSize: 20,
+                    //           fontWeight: FontWeight.w500),
+                    //     ),
+                    //     trailing: const Icon(
+                    //       Icons.notifications_rounded,
+                    //       size: 30,
+                    //     ),
+                    //     onTap: () {
+                    //       Get.to(
+                    //             () => const LayOutPageView(appBarTitle: 'Notification', body: NotificationView()),
+                    //         transition: Transition.rightToLeftWithFade,
+                    //       );
+                    //
+                    //     }),
                     ListTile(
                       iconColor: theme.primaryColor,
                         title: Text(
@@ -102,7 +102,8 @@ class CustomDrawer extends StatelessWidget {
                         ),
                         onTap: () {
                           Get.to(
-                                () => const LayOutPageView(appBarTitle: 'news feed', body: TimerView()),
+                            () => const LayOutPageView(
+                                appBarTitle: 'Timer', body: TimerView()),
                             transition: Transition.rightToLeftWithFade,
                           );
 

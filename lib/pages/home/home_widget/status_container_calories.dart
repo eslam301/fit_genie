@@ -57,7 +57,7 @@ class _CaloriesContainerState extends State<CaloriesContainer> {
           showDragHandle: true,
           context: context,
           builder: (context) => Container(
-            height: height * 0.6,
+            // height: height * 0.6,
             padding: const EdgeInsets.all(16),
             child: ListView(
               physics: const BouncingScrollPhysics(),
@@ -103,11 +103,11 @@ class _CaloriesContainerState extends State<CaloriesContainer> {
                   duration: const Duration(milliseconds: 400),
                   delay: const Duration(milliseconds: 200),
                   child: LongButton(
-                      label: 'Update',
+                      label: 'save',
                       onTap: () {
                         widget.provider.updateBaseGoal(int.parse(
                             baseGoalController.text.isEmpty
-                                ? '0'
+                                ? '$baseGoal'
                                 : baseGoalController.text));
                         widget.provider.addFoodCalories(int.parse(
                             foodController.text.isEmpty

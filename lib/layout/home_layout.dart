@@ -4,10 +4,10 @@ import 'package:fitgenie/pages/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+
 import '../core/provider/app_provider.dart';
 import '../core/widgets/custom_drawer.dart';
 import '../core/widgets/my_app_bottom_navigation_bar.dart';
-import '../pages/notification/notification_view.dart';
 import '../pages/profile/profile_view.dart';
 import '../pages/settings/setting_view.dart';
 import '../pages/work_out_planes/work_out_plan_view.dart';
@@ -59,17 +59,6 @@ class HomeLayout extends StatelessWidget {
                   );
                 },
               ),
-              IconButton(
-                onPressed: () {
-                  Get.to(
-                    () => const LayOutPageView(
-                      appBarTitle: 'Notifications',
-                      body: NotificationView(),
-                    ),
-                  );
-                },
-                icon: const Icon(Icons.notifications),
-              )
             ],
           ),
         ),

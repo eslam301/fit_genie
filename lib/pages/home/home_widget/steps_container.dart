@@ -1,7 +1,10 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:fitgenie/core/widgets/custom_text_field.dart';
+import 'package:fitgenie/permission/ask_permission.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:pedometer/pedometer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -55,10 +58,17 @@ class _StepsContainerViewState extends State<StepsContainerView> {
   }
 
   void _onStepCountError(error) {
+    checkPermissionStatus();
+    Get.snackbar('Error', 'steps Permission Denied');
     print('Step Count Error: $error');
   }
 
   void _onPedestrianStatusChanged(PedestrianStatus event) {
+    checkPermissionStatus();
+    Future delayed = Future.delayed(const Duration(seconds: 3));
+    delayed.then((value) {
+      Get.snackbar('Error', 'pedometer Permission Denied');
+    });
     print(event.status);
   }
 
@@ -83,8 +93,21 @@ class _StepsContainerViewState extends State<StepsContainerView> {
           height: MediaQuery.of(context).size.height * 0.65,
           child: ListView(
             children: [
-              Text('Set Steps Goal',
-                  style: Theme.of(context).textTheme.headline6),
+              Row(
+                children: [
+                  Text('Set Steps Goal',
+                      style: Theme.of(context).textTheme.headline6),
+                  const Spacer(),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(
+                        Icons.cancel_outlined,
+                        color: Colors.red,
+                      ))
+                ],
+              ),
               CustomTextField(
                 controller: stepsController,
                 keyboardType: TextInputType.number,
@@ -95,17 +118,25 @@ class _StepsContainerViewState extends State<StepsContainerView> {
                 keyboardType: TextInputType.number,
                 label: 'Steps Goal',
               ),
-              LongButton(
-                  label: 'save',
-                  onTap: () {
-                    setState(() {
-                      _stepsGoal = int.parse(goalController.text);
-                      _steps = int.parse(stepsController.text);
-                      _saveData('stepsGoal', _stepsGoal);
-                      _saveData('steps', _steps);
-                      Navigator.pop(context);
-                    });
-                  })
+              FadeInUp(
+                duration: const Duration(milliseconds: 400),
+                delay: const Duration(milliseconds: 200),
+                child: LongButton(
+                    label: 'save',
+                    onTap: () {
+                      setState(() {
+                        _stepsGoal = int.parse(goalController.text.isEmpty
+                            ? '10000'
+                            : goalController.text);
+                        _steps = int.parse(stepsController.text.isEmpty
+                            ? '0'
+                            : stepsController.text);
+                        _saveData('stepsGoal', _stepsGoal);
+                        _saveData('steps', _steps);
+                        Navigator.pop(context);
+                      });
+                    }),
+              )
             ],
           ),
         );
