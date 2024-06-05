@@ -18,7 +18,7 @@ class ExerciseContainer extends StatelessWidget {
     // int? calories = healthDataModel?.caloriesExpended?[0].value ?? 0;
     return Container(
         width: (width * 0.5) - 30,
-        height: height * 0.16,
+        height: height * 0.18,
         decoration: const BoxDecoration(
           color: Colors.black26,
           borderRadius: BorderRadius.all(Radius.circular(20)),

@@ -152,7 +152,7 @@ class _StepsContainerViewState extends State<StepsContainerView> {
     double width = MediaQuery.of(context).size.width;
     return Container(
       width: (width * 0.5) - 30,
-      height: height * 0.16,
+      height: height * 0.18,
       decoration: const BoxDecoration(
         color: Colors.black26,
         borderRadius: BorderRadius.all(Radius.circular(20)),
