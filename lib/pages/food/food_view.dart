@@ -76,6 +76,7 @@ class _FoodPlanViewState extends State<FoodPlanView> {
                         setState(() {
                           FoodApiManger.fetchFoodData(email: email);
                         });
+                        print('----------------------');
                       },
                       child: const Text('Try Again'))
                 ],

@@ -41,16 +41,21 @@ import '../food_model/food_model.dart';
 class FoodApiManger {
   static Future<FoodPlanModel> fetchFoodData({required String email}) async {
     Uri uri = Uri.https(
-      "127.0.0.1:8000/api/mealplan/",
+      "https://127.0.0.1:8000/api/mealplan/",
     );
 
     final body = jsonEncode({'email': email});
 
     final response = await http.post(uri, body: body);
-    print(response.body);
+    print('---------------response body----------------------');
+    print(response.toString());
+    print('---------------response body----------------------');
     if (response.statusCode == 200 &&
         jsonDecode(response.body)['status'] == 'ok') {
       return FoodPlanModel.fromJson(jsonDecode(response.body));
+    } else if (response.statusCode == 200 &&
+        jsonDecode(response.body)['status'] == 'error') {
+      throw Exception(jsonDecode(response.body)['message']);
     } else {
       throw Exception('Failed to load Source');
     }
