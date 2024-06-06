@@ -15,8 +15,10 @@ class FoodPlanView extends StatefulWidget {
 }
 
 class _FoodPlanViewState extends State<FoodPlanView> {
+  String email = ' ';
   @override
   Widget build(BuildContext context) {
+    print(email);
     return Column(
       children: [
         Row(
@@ -29,7 +31,7 @@ class _FoodPlanViewState extends State<FoodPlanView> {
         ).paddingOnly(left: 20, top: 20),
         Expanded(
             child: FutureBuilder(
-          future: FoodApiManger.fetchFoodData(email: 'mhd@gmail.com'),
+          future: FoodApiManger.fetchFoodData(email: email),
           builder:
               (BuildContext context, AsyncSnapshot<FoodPlanModel> snapshot) {
             if (snapshot.hasData) {
@@ -70,9 +72,9 @@ class _FoodPlanViewState extends State<FoodPlanView> {
                   ElevatedButton(
                       onPressed: () {
                         print('----------------------');
+                        email = TextEditingController().text;
                         setState(() {
-                          FoodApiManger.fetchFoodData(
-                              email: TextEditingController().text);
+                          FoodApiManger.fetchFoodData(email: email);
                         });
                       },
                       child: const Text('Try Again'))
