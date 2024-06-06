@@ -6,10 +6,15 @@ import 'food_api_manger/food_api_manger.dart';
 import 'food_model/food_model.dart';
 import 'food_widget/food_widget_container.dart';
 
-class FoodPlanView extends StatelessWidget {
+class FoodPlanView extends StatefulWidget {
   static const routeName = '/food_plan_view';
   const FoodPlanView({super.key});
 
+  @override
+  State<FoodPlanView> createState() => _FoodPlanViewState();
+}
+
+class _FoodPlanViewState extends State<FoodPlanView> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,7 +29,7 @@ class FoodPlanView extends StatelessWidget {
         ).paddingOnly(left: 20, top: 20),
         Expanded(
             child: FutureBuilder(
-          future: FoodApiManger.fetchFoodData(email: ''),
+          future: FoodApiManger.fetchFoodData(email: 'mhd@gmail.com'),
           builder:
               (BuildContext context, AsyncSnapshot<FoodPlanModel> snapshot) {
             if (snapshot.hasData) {
@@ -64,8 +69,11 @@ class FoodPlanView extends StatelessWidget {
                       controller: TextEditingController(), label: 'email'),
                   ElevatedButton(
                       onPressed: () {
-                        FoodApiManger.fetchFoodData(
-                            email: TextEditingController().text);
+                        print('----------------------');
+                        setState(() {
+                          FoodApiManger.fetchFoodData(
+                              email: TextEditingController().text);
+                        });
                       },
                       child: const Text('Try Again'))
                 ],

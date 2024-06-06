@@ -47,7 +47,7 @@ class FoodApiManger {
     final body = jsonEncode({'email': email});
 
     final response = await http.post(uri, body: body);
-
+    print(response.body);
     if (response.statusCode == 200 &&
         jsonDecode(response.body)['status'] == 'ok') {
       return FoodPlanModel.fromJson(jsonDecode(response.body));
