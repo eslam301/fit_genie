@@ -1,11 +1,13 @@
 //https://127.0.0.1:8000/api/mealplan/
 
-
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../core/data_manger/data_manger.dart';
 import '../food_model/food_model.dart';
+
 // {
 // "Breakfast": {
 // "Calories": "450 Kcal",
@@ -58,6 +60,32 @@ class FoodApiManger {
       throw Exception(jsonDecode(response.body)['message']);
     } else {
       throw Exception('Failed to load Source');
+    }
+  }
+}
+
+class FoodApiManagerFirebase {
+  static Future<FoodPlanModel> fetchFoodData({required String email}) async {
+    print('fetching data food plan');
+    CollectionReference usersData =
+        FirebaseFirestore.instance.collection('meal_plans');
+
+    try {
+      QuerySnapshot querySnapshot =
+          await usersData.where('user', isEqualTo: email).get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        // Fetch the first document in the snapshot
+        var userData = querySnapshot.docs.first['data'];
+        FoodPlanModel parsedData = parseFoodPlan(userData);
+        return parsedData;
+      } else {
+        print('User data not found');
+        return FoodPlanModel();
+      }
+    } catch (e) {
+      print('Error fetching user data: $e');
+      return FoodPlanModel();
     }
   }
 }

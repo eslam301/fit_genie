@@ -25,6 +25,11 @@ class _ProfilePageState extends State<ProfilePage> {
   String? gender;
   String? disease;
 
+  //-------------------------------------------------------
+  String? fitnessGoal;
+  String? activityLevel;
+  String? workOutLevel;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -44,6 +49,10 @@ class _ProfilePageState extends State<ProfilePage> {
       height = prefs.getString('height');
       gender = prefs.getString('gender');
       disease = prefs.getString('disease');
+
+      fitnessGoal = prefs.getString('fitness_goal');
+      activityLevel = prefs.getString('activity_level');
+      workOutLevel = prefs.getString('workout_level');
     });
   }
 
@@ -69,6 +78,18 @@ class _ProfilePageState extends State<ProfilePage> {
       {
         'name': 'weight',
         'value': weight,
+      },
+      {
+        'name': 'workout level',
+        'value': workOutLevel,
+      },
+      {
+        'name': 'activity level',
+        'value': activityLevel,
+      },
+      {
+        'name': 'fitness goal',
+        'value': fitnessGoal,
       },
       {
         'name': 'height',

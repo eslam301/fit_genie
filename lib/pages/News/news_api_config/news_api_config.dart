@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 class NewsApiManger {
   static Future<ArticleModel> fetchSource() async {
-
+    print('fetching data news api');
     var queryParameters = {
       'apiKey': Constants._apiKey,
       'category': 'health',

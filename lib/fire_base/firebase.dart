@@ -113,8 +113,26 @@ Future<void> createUserDataToFireStore({
   required String weight,
   required String height,
   required String gender,
-  required String disease,
+  required String allergies,
+  required String? activityLevel,
+  required String workOutLevel,
+  required String fitnessGoal,
+  required String password,
 }) async {
+  double activityLevelInNum;
+  if (activityLevel == 'Below Average') {
+    activityLevelInNum = 1.3;
+  } else if (activityLevel == 'Average') {
+    activityLevelInNum = 1.4;
+  } else if (activityLevel == 'Above Average') {
+    activityLevelInNum = 1.6;
+  } else if (activityLevel == 'Highly Active') {
+    activityLevelInNum = 1.9;
+  } else {
+    activityLevelInNum = 0.0;
+  }
+  gender = gender == 'Male' ? 'M' : 'F';
+  allergies = allergies.isEmpty ? ' none' : allergies;
   CollectionReference usersData = FirebaseFirestore.instance.collection('usersData');
   try {
     await usersData.add({
@@ -125,9 +143,13 @@ Future<void> createUserDataToFireStore({
       'weight': double.parse(weight), // Ensure weight is parsed to double if it's numerical
       'height': double.parse(height), // Ensure height is parsed to double if it's numerical
       'gender': gender,
-      'disease': disease,
+      'allergies': allergies,
+      'work_out_level': workOutLevel,
+      'fitness_goal': fitnessGoal,
+      'activity_level': activityLevelInNum,
       'documentID': usersData.doc().id, // You can update this later after getting the document ID
       'UserID': FirebaseAuth.instance.currentUser?.uid,
+      'password': password
     }).then((value) {
       // Update the document with its ID
       value.update({'documentID': value.id});
@@ -147,8 +169,32 @@ Future<void> updateUserDataToFireStore({
   required String weight,
   required String height,
   required String gender,
-  required String disease,
+  required String allergies,
+  required String activityLevel,
+  required String workOutLevel,
+  required String fitnessGoal,
 }) async {
+  double activityLevelInNum;
+  if (activityLevel == 'Below Average') {
+    activityLevelInNum = 1.3;
+  } else if (activityLevel == 'Average') {
+    activityLevelInNum = 1.4;
+  } else if (activityLevel == 'Above Average') {
+    activityLevelInNum = 1.6;
+  } else if (activityLevel == 'Highly Active') {
+    activityLevelInNum = 1.9;
+  } else {
+    activityLevelInNum = 0.0;
+  }
+  if (gender == 'Male') {
+    gender = 'M';
+  } else if (gender == 'Female') {
+    gender = 'F';
+  } else {
+    gender = '';
+  }
+  allergies = allergies.isEmpty ? ' none' : allergies;
+
   try {
     CollectionReference usersData = FirebaseFirestore.instance.collection('usersData');
     final user = FirebaseAuth.instance.currentUser;
@@ -163,7 +209,18 @@ Future<void> updateUserDataToFireStore({
           'weight': double.parse(weight.isEmpty ? querySnapshot.docs.first['weight'].toString() : weight), // Corrected to match the parameter type
           'height': double.parse(height.isEmpty ? querySnapshot.docs.first['height'].toString() : height), // Corrected to match the parameter type
           'gender': gender.isEmpty ? querySnapshot.docs.first['gender'] : gender,
-          'disease': disease.isEmpty ? querySnapshot.docs.first['disease'] : disease,
+          'allergies': allergies.isEmpty
+              ? querySnapshot.docs.first['allergies']
+              : allergies,
+          'work_out_level': workOutLevel.isEmpty
+              ? querySnapshot.docs.first['work_out_level']
+              : workOutLevel,
+          'fitness_goal': fitnessGoal.isEmpty
+              ? querySnapshot.docs.first['fitness_goal']
+              : fitnessGoal,
+          'activity_level': activityLevel.isEmpty
+              ? querySnapshot.docs.first['activity_level']
+              : activityLevelInNum,
         });
         print('User data updated successfully.');
       } else {
@@ -212,6 +269,7 @@ Future<void> getUserDataFromFireStoreByEmail(
   final user = FirebaseAuth.instance.currentUser;
   if (user != null) {
     QuerySnapshot querySnapshot = await usersData.where('email', isEqualTo: email).get();
+
     if (querySnapshot.docs.isNotEmpty) {
       final pref = await SharedPreferences.getInstance();
       await pref.setString('firstName', querySnapshot.docs.first['firstName']);
@@ -222,6 +280,12 @@ Future<void> getUserDataFromFireStoreByEmail(
       await pref.setString('height', querySnapshot.docs.first['height'].toString());
       await pref.setString('gender', querySnapshot.docs.first['gender']);
       await pref.setString('disease', querySnapshot.docs.first['disease']);
+      await pref.setString(
+          'work_out_level', querySnapshot.docs.first['work_out_level']);
+      await pref.setString(
+          'fitness_goal', querySnapshot.docs.first['fitness_goal']);
+      await pref.setString(
+          'activity_level', querySnapshot.docs.first['activity_level']);
       print('User data retrieved successfully for: $email , ${querySnapshot.docs.first['email']}');
     } else {
       print('User data not found.');

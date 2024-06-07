@@ -16,9 +16,11 @@ import '../../profile/profile_view.dart';
 class RequiredForm extends StatefulWidget {
   static const String routeName = '/requiredForm';
   final bool isUpdate;
+  final String? password;
   const RequiredForm({
     super.key,
     this.isUpdate = false,
+    this.password,
   });
 
   @override
@@ -35,11 +37,14 @@ class _RequiredFormState extends State<RequiredForm> {
 
   final TextEditingController heightController = TextEditingController();
 
-  final TextEditingController diseaseController = TextEditingController();
+  final TextEditingController allergiesController = TextEditingController();
 
   final TextEditingController ageController = TextEditingController();
 
   String? genderValue;
+  String? activityLevel;
+  String? workOutLevel;
+  String? fitnessGoal;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +53,8 @@ class _RequiredFormState extends State<RequiredForm> {
         child: Form(
       key: submitFormKey,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding:
+            const EdgeInsets.only(left: 20, right: 20, bottom: 220, top: 20),
         child: Column(children: [
           FadeInUp(
             duration: const Duration(milliseconds: 400),
@@ -92,6 +98,74 @@ class _RequiredFormState extends State<RequiredForm> {
                 onChanged: (String? value) {
                   setState(() {
                     genderValue = value ?? 'Gender';
+                    print(genderValue);
+                  });
+                },
+              )),
+          FadeInUp(
+              duration: const Duration(milliseconds: 400),
+              delay: const Duration(milliseconds: 200),
+              child: CustomDropDown(
+                backColor: Theme.of(context).primaryColor.withOpacity(0.4),
+                label: "Activity Level",
+                value: activityLevel,
+                items: const [
+                  'Below Average',
+                  'Average',
+                  'Above Average',
+                  'Highly Active'
+                ],
+                iconItems: const [
+                  Icons.person_3_outlined,
+                  Icons.directions_walk,
+                  Icons.directions_run,
+                  Icons.directions_bike
+                ],
+                onChanged: (String? value) {
+                  setState(() {
+                    activityLevel = value ?? 'Activity Level';
+                  });
+                },
+              )),
+          FadeInUp(
+              duration: const Duration(milliseconds: 400),
+              delay: const Duration(milliseconds: 250),
+              child: CustomDropDown(
+                backColor: Theme.of(context).primaryColor.withOpacity(0.4),
+                label: "Workout Level",
+                value: workOutLevel,
+                items: const ['Intermediate', 'Beginner', 'Advanced'],
+                iconItems: const [
+                  Icons.directions_walk,
+                  Icons.directions_run,
+                  Icons.directions_bike
+                ],
+                onChanged: (String? value) {
+                  setState(() {
+                    workOutLevel = value ?? 'Workout Level';
+                  });
+                },
+              )),
+          FadeInUp(
+              duration: const Duration(milliseconds: 400),
+              delay: const Duration(milliseconds: 300),
+              child: CustomDropDown(
+                backColor: Theme.of(context).primaryColor.withOpacity(0.4),
+                label: "Fitness Goal",
+                value: fitnessGoal,
+                items: const [
+                  'Gain Weight',
+                  'Healthy LifeStyle',
+                  'Lose Weight',
+                ],
+                iconItems: const [
+                  Icons.arrow_upward,
+                  Icons.health_and_safety_outlined,
+                  Icons.arrow_downward
+                ],
+                onChanged: (String? value) {
+                  setState(() {
+                    fitnessGoal = value ?? 'Fitness Goal';
                   });
                 },
               )),
@@ -100,7 +174,7 @@ class _RequiredFormState extends State<RequiredForm> {
             label: 'Weight (kg)',
             suffixIcon: const Icon(Icons.monitor_weight),
             keyboardType: TextInputType.number,
-            delay: const Duration(milliseconds: 200),
+            delay: const Duration(milliseconds: 350),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter your weight';
@@ -117,7 +191,7 @@ class _RequiredFormState extends State<RequiredForm> {
             suffixIcon: const Icon(Icons.height),
             label: 'Height (cm)',
             keyboardType: TextInputType.number,
-            delay: const Duration(milliseconds: 250),
+            delay: const Duration(milliseconds: 400),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter your height';
@@ -133,7 +207,7 @@ class _RequiredFormState extends State<RequiredForm> {
             label: 'Age',
             keyboardType: TextInputType.number,
             suffixIcon: const Icon(Icons.calendar_month),
-            delay: const Duration(milliseconds: 300),
+            delay: const Duration(milliseconds: 450),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter your age';
@@ -145,18 +219,18 @@ class _RequiredFormState extends State<RequiredForm> {
             },
           ),
           CustomTextField(
-            controller: diseaseController,
+            controller: allergiesController,
             label: 'Disease (optional)',
             suffixIcon: const Icon(Icons.health_and_safety),
             keyboardType: TextInputType.name,
-            delay: const Duration(milliseconds: 350),
+            delay: const Duration(milliseconds: 500),
             validator: (String? value) {
               return null;
             },
           ),
           FadeInUp(
             delay: const Duration(milliseconds: 500),
-            duration: const Duration(milliseconds: 400),
+            duration: const Duration(milliseconds: 550),
             child: LongButton(
                 label: 'submit',
                 onTap: () async {
@@ -168,8 +242,11 @@ class _RequiredFormState extends State<RequiredForm> {
                       weight: weightController.text,
                       height: heightController.text,
                       age: ageController.text,
-                      disease: diseaseController.text,
+                      allergies: allergiesController.text,
                       email: user?.email??'',
+                      activityLevel: activityLevel ?? '',
+                      workOutLevel: workOutLevel ?? '',
+                      fitnessGoal: fitnessGoal ?? '',
                     );
                     await provider.updateProfile(
                       firstName: firstNameController.text,
@@ -178,7 +255,10 @@ class _RequiredFormState extends State<RequiredForm> {
                       weight: weightController.text,
                       height: heightController.text,
                       age: ageController.text,
-                      disease: diseaseController.text,
+                      disease: allergiesController.text,
+                      activityLevel: activityLevel ?? '',
+                      workOutLevel: workOutLevel ?? '',
+                      fitnessGoal: fitnessGoal ?? '',
                     );
                     Get.back();
                   } else {
@@ -189,7 +269,11 @@ class _RequiredFormState extends State<RequiredForm> {
                       weight: weightController.text,
                       height: heightController.text,
                       age: ageController.text,
-                      disease: diseaseController.text,
+                      allergies: allergiesController.text,
+                      activityLevel: activityLevel!,
+                      workOutLevel: workOutLevel!,
+                      fitnessGoal: fitnessGoal!,
+                      password: widget.password!,
                     );
                     print('profile created');
                     submit();
@@ -210,7 +294,10 @@ class _RequiredFormState extends State<RequiredForm> {
       await prefs.setString('weight', weightController.text);
       await prefs.setString('height', heightController.text);
       await prefs.setString('age', ageController.text);
-      await prefs.setString('disease', diseaseController.text);
+      await prefs.setString('disease', allergiesController.text);
+      await prefs.setString('activity_level', activityLevel!);
+      await prefs.setString('workout_level', workOutLevel!);
+      await prefs.setString('fitness_goal', fitnessGoal!);
       Get.snackbar('Success', 'Your profile has been created successfully');
       Get.offAll(() => const HomeLayout());
     }

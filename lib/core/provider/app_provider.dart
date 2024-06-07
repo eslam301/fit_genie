@@ -89,6 +89,9 @@ class AppProvider extends ChangeNotifier {
     String? height,
     String? gender,
     String? disease,
+    String? fitnessGoal,
+    String? activityLevel,
+    String? workOutLevel,
   }) async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
 
@@ -114,10 +117,23 @@ class AppProvider extends ChangeNotifier {
 
     if (gender != null && gender.isNotEmpty) {
       await pref.setString('gender', gender);
+      print('Profile updated gender');
     }
 
     if (disease != null && disease.isNotEmpty) {
       await pref.setString('disease', disease);
+    }
+
+    if (fitnessGoal != null && fitnessGoal.isNotEmpty) {
+      await pref.setString('fitness_goal', fitnessGoal);
+    }
+
+    if (activityLevel != null && activityLevel.isNotEmpty) {
+      await pref.setString('activity_level', activityLevel);
+    }
+
+    if (workOutLevel != null && workOutLevel.isNotEmpty) {
+      await pref.setString('workout_level', workOutLevel);
     }
 
     print('Profile updated');

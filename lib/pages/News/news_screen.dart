@@ -18,69 +18,67 @@ class NewsView extends StatefulWidget {
 class _NewsScreenState extends State<NewsView> {
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-    return FutureBuilder(
-        future: NewsApiManger.fetchSource(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Error Check your connection'),
-                    SizedBox(width: 10),
-                    Icon(
-                      Icons.wifi_off,
-                      size: 30,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      NewsApiManger.fetchSource();
-                    });
-                  },
-                  icon: const Icon(Icons.refresh_sharp),
-                )
-              ],
-            );
-          }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Loading...', style: TextStyle(fontSize: 20)),
-                  SizedBox(height: 20),
-                  CircularProgressIndicator(),
-                ],
-              ),
-            );
-          } else if (snapshot.hasData) {
-            ArticleModel articlesModel = snapshot.data as ArticleModel;
-            return RefreshIndicator(
-              color: theme.primaryColor,
-              backgroundColor: theme.colorScheme.background,
-              onRefresh: () async {
-                setState(() {
-                  NewsApiManger.fetchSource();
-                });
-              },
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
+    return RefreshIndicator(
+      onRefresh: () async {
+        await Future.delayed(const Duration(seconds: 1));
+        setState(() {});
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.newspaper_rounded,
+                  color: Theme.of(context).colorScheme.secondary, size: 30),
+              const SizedBox(width: 10),
+              Text('News Headlines',
+                  style: Theme.of(context).textTheme.titleLarge),
+            ],
+          ).paddingOnly(left: 20, top: 20),
+          FutureBuilder(
+              future: NewsApiManger.fetchSource(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.newspaper_rounded, color: Theme.of(context).colorScheme.secondary,size: 30),
-                      const SizedBox(width: 10),
-                      Text('News Headlines', style: Theme.of(context).textTheme.titleLarge),
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Error Check your connection'),
+                          SizedBox(width: 10),
+                          Icon(
+                            Icons.wifi_off,
+                            size: 30,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            NewsApiManger.fetchSource();
+                          });
+                        },
+                        icon: const Icon(Icons.refresh_sharp),
+                      )
                     ],
-                  ).paddingOnly(left: 20,top: 20),
-                  Expanded(
+                  );
+                }
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Loading...', style: TextStyle(fontSize: 20)),
+                        SizedBox(height: 20),
+                        CircularProgressIndicator(),
+                      ],
+                    ),
+                  );
+                } else if (snapshot.hasData) {
+                  ArticleModel articlesModel = snapshot.data as ArticleModel;
+                  return Expanded(
                     child: ListView.builder(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
@@ -108,15 +106,15 @@ class _NewsScreenState extends State<NewsView> {
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            );
-          } else {
-            return const Center(
-              child: Text('No data found'),
-            );
-          }
-        });
+                  );
+                } else {
+                  return const Center(
+                    child: Text('No data found'),
+                  );
+                }
+              }),
+        ],
+      ),
+    );
   }
 }

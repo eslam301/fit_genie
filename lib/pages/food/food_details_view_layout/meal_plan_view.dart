@@ -3,6 +3,7 @@ import 'package:fitgenie/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+
 import '../../../core/provider/app_provider.dart';
 import '../food_data/food_data.dart';
 import '../food_model/food_model.dart';
@@ -88,13 +89,8 @@ class MealPlanView extends StatelessWidget {
         LongButton(
           label: 'Save',
           onTap: () async {
-            // print('-------------------------');
-            // print("mealFactor ${mealFactor?.calories}");
-            // print("foodCalories before ${provider.foodCalories}");
-            // print('-------------------------');
             await provider.addFoodCalories(
                 int.parse(mealFactor!.calories ?? '0'));
-            // print("foodCalories after ${provider.foodCalories}");
             Get.snackbar(
               "Saved",
               "you have ate ${mealFactor?.calories} kcal",

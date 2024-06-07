@@ -134,9 +134,11 @@ class SignUpPageState extends State<SignUpPage> {
           'Account created successfully',
         );
         Get.to(
-          const LayOutPageView(
+          LayOutPageView(
             appBarTitle: 'Required Form',
-            body: RequiredForm(),
+            body: RequiredForm(
+              password: passwordController.text,
+            ),
           ),
         );
       } on FirebaseAuthException catch (e) {
