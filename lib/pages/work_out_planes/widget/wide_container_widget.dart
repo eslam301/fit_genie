@@ -82,7 +82,7 @@ class _WideContainerState extends State<WideContainer> {
             ),
             const SizedBox(width: 8),
             SizedBox(
-              width: widthScreen * 0.6,
+              width: widthScreen * 0.55,
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,

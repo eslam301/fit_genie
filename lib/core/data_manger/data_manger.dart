@@ -53,7 +53,7 @@ WorkOutPlansModel parseWorkoutData(String data) {
     durationAndFrequencyOfWorkouts:
         "Duration: 60 minutes & frequency-of-workouts: 4 times a week",
     intensityLevel: "Moderate to high",
-    specificExercisesOrRoutines: sections[0].split('/')[3].trim(),
+    specificExercisesOrRoutines: _extractSpecificExercises(sections[0]),
     caloriesBurnt: _extractCalories(sections[0]),
     time: "60 minutes",
   );
@@ -64,7 +64,7 @@ WorkOutPlansModel parseWorkoutData(String data) {
     durationAndFrequencyOfWorkouts:
         "Duration: 60 minutes & frequency-of-workouts: 4 times a week",
     intensityLevel: "Moderate to high",
-    specificExercisesOrRoutines: sections[1].trim(),
+    specificExercisesOrRoutines: _extractSpecificExercises(sections[1]),
     caloriesBurnt: _extractCalories(sections[1]),
     time: _extractTime(sections[1]),
   );
@@ -75,7 +75,7 @@ WorkOutPlansModel parseWorkoutData(String data) {
     durationAndFrequencyOfWorkouts:
         "Duration: 60 minutes & frequency-of-workouts: 4 times a week",
     intensityLevel: "Moderate to high",
-    specificExercisesOrRoutines: sections[2].trim(),
+    specificExercisesOrRoutines: _extractSpecificExercises(sections[2]),
     caloriesBurnt: _extractCalories(sections[2]),
     time: _extractTime(sections[2]),
   );
@@ -101,4 +101,11 @@ String _extractTime(String section) {
   RegExp regExp = RegExp(r'(\d+) minutes');
   Match? match = regExp.firstMatch(section);
   return match != null ? '${match.group(1)} minutes' : 'Unknown';
+}
+
+String _extractSpecificExercises(String section) {
+  RegExp regExp = RegExp(
+      r'(\w+ \(\d+ sets of \d+ reps\)|\d+ minutes of \w+|\d+ minutes of \w+ \(\d+ calories\))');
+  Iterable<Match> matches = regExp.allMatches(section);
+  return matches.map((match) => match.group(1)).join(' / ');
 }

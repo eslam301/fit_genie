@@ -1,10 +1,11 @@
 import 'package:fitgenie/layout/basic_layout_page.dart';
-import 'package:fitgenie/pages/timer/timer_view.dart';
+//import 'package:fitgenie/pages/timer/timer_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../fire_base/firebase.dart';
 import '../../pages/profile/profile_view.dart';
+import '../../pages/sign-in/sign_up/required_form.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -90,22 +91,24 @@ class CustomDrawer extends StatelessWidget {
                     ListTile(
                       iconColor: theme.primaryColor,
                         title: Text(
-                          'Timer',
+                          'update profile',
                           style: TextStyle(
                               color: theme.primaryColor,
                               fontSize: 20,
                               fontWeight: FontWeight.w500),
                         ),
                         trailing: const Icon(
-                          Icons.timer,
+                          Icons.person_4,
                           size: 30,
                         ),
                         onTap: () {
-                          // Get.to(
-                          //   () => const LayOutPageView(
-                          //       appBarTitle: 'Timer', body: TimerView()),
-                          //   transition: Transition.rightToLeftWithFade,
-                          // );
+                          Get.to(
+                              transition: Transition.downToUp,
+                              const LayOutPageView(
+                                  appBarTitle: 'Update Profile',
+                                  body: RequiredForm(
+                                    isUpdate: true,
+                                  )));
                         }),
                     ListTile(
                         title: Container(

@@ -25,12 +25,12 @@ class WorkOutDetails extends StatelessWidget {
     final double width = MediaQuery.of(context).size.width;
     final double height = MediaQuery.of(context).size.height;
     var theme = Theme.of(context);
-    print('--------------------------tt----------------------------');
-    print('title is $title');
-    print('subtitle is $subtitle');
-    print('intensityLevel is $intensityLevel');
-    print('caloriesBurnt is $caloriesBurnt');
-    print('descriptionSplitDuration is $descriptionSplitDuration');
+    // print('--------------------------tt----------------------------');
+    // print('title is $title');
+    // print('subtitle is $subtitle');
+    // print('intensityLevel is $intensityLevel');
+    // print('caloriesBurnt is $caloriesBurnt');
+    // print('descriptionSplitDuration is $descriptionSplitDuration');
     return Container(
       height: height*0.81,
       width: width,
@@ -53,13 +53,14 @@ class WorkOutDetails extends StatelessWidget {
             intensityLevel: intensityLevel ?? ' ',
             caloriesBurnt: caloriesBurnt ?? '',
             time: time ?? '',
-          ).paddingSymmetric(vertical: 6),
+          ).paddingAll(8),
+          Spacer(),
           LongButton(
             label: 'Save',
             onTap: () async {
-              print('--------------------------tt----------------------------');
-              print('time is $time');
-              print('caloriesBurnt is $caloriesBurnt');
+              // print('--------------------------tt----------------------------');
+              // print('time is $time');
+              // print('caloriesBurnt is $caloriesBurnt');
               int nCalories = extractCalories(caloriesBurnt!);
               int nTime = extractTime(time!);
               await provider.addExerciseCalories(
