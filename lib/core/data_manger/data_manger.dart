@@ -57,7 +57,7 @@ WorkOutPlansModel parseWorkoutData(String data) {
     caloriesBurnt: _extractCalories(sections[0]),
     time: "60 minutes",
   );
-  print('Parsed Strength Training: ${strengthTraining.toJson()}');
+  // print('Parsed Strength Training: ${strengthTraining.toJson()}');
 
   WorkOutTypes cardio = WorkOutTypes(
     typeOfExercises: "Cardio",
@@ -68,7 +68,7 @@ WorkOutPlansModel parseWorkoutData(String data) {
     caloriesBurnt: _extractCalories(sections[1]),
     time: _extractTime(sections[1]),
   );
-  print('Parsed Cardio: ${cardio.toJson()}');
+  // print('Parsed Cardio: ${cardio.toJson()}');
 
   WorkOutTypes flexibility = WorkOutTypes(
     typeOfExercises: "Flexibility",
@@ -79,7 +79,7 @@ WorkOutPlansModel parseWorkoutData(String data) {
     caloriesBurnt: _extractCalories(sections[2]),
     time: _extractTime(sections[2]),
   );
-  print('Parsed Flexibility: ${flexibility.toJson()}');
+  // print('Parsed Flexibility: ${flexibility.toJson()}');
 
   return WorkOutPlansModel(
     strengthTraining: strengthTraining,

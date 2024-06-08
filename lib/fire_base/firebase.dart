@@ -153,10 +153,11 @@ Future<void> createUserDataToFireStore({
     }).then((value) {
       // Update the document with its ID
       value.update({'documentID': value.id});
-      print("User Added");
-    }).catchError((error) => print("Failed to add user: $error"));
+      // print("User Added");
+    }).catchError((error) => Get.snackbar('Error', error.toString()));
   } catch (error) {
-    print('Error creating user data: $error');
+    // print('Error creating user data: $error');
+    Get.snackbar('Error', error.toString());
     // Handle the error accordingly
   }
 }
@@ -222,15 +223,18 @@ Future<void> updateUserDataToFireStore({
               ? querySnapshot.docs.first['activity_level']
               : activityLevelInNum,
         });
-        print('User data updated successfully.');
+        // print('User data updated successfully.');
       } else {
-        print('User data not found.');
+        //print('User data not found.');
+        Get.snackbar('Error', 'User data not found.');
       }
     } else {
-      print('User not authenticated.');
+      //print('User not authenticated.');
+      Get.snackbar('Error', 'User not authenticated.');
     }
   } catch (error) {
-    print('Error updating user data: $error');
+    //print('Error updating user data: $error');
+    Get.snackbar('Error', 'Error updating user data: $error');
     // Handle the error accordingly
   }
 }
@@ -243,15 +247,18 @@ Future<void> deleteUserDataFromFireStore() async {
       QuerySnapshot querySnapshot = await usersData.where('email', isEqualTo: user.email).get();
       if (querySnapshot.docs.isNotEmpty) {
         querySnapshot.docs.where((element) => element['UserID'] == user.uid).first.reference.delete();
-        print('User data deleted successfully.');
+        //print('User data deleted successfully.');
       } else {
-        print('User data not found.');
+        //print('User data not found.');
+        Get.snackbar('Error', 'User data not found.');
       }
     } else {
-      print('User not authenticated.');
+      //print('User not authenticated.');
+      Get.snackbar('Error', 'User not authenticated.');
     }
   } catch (error) {
-    print('Error deleting user data: $error');
+    //print('Error deleting user data: $error');
+    Get.snackbar('Error', 'Error deleting user data: $error');
     // Handle the error accordingly
   }
 }
@@ -286,11 +293,16 @@ Future<void> getUserDataFromFireStoreByEmail(
           'fitness_goal', querySnapshot.docs.first['fitness_goal']);
       await pref.setString(
           'activity_level', querySnapshot.docs.first['activity_level']);
-      print('User data retrieved successfully for: $email , ${querySnapshot.docs.first['email']}');
+      //print('User data retrieved successfully for: $email , ${querySnapshot.docs.first['email']}');
     } else {
-      print('User data not found.');
+      //print('User data not found.');
+
+      Get.snackbar('Error', 'User data not found.');
     }
   } else {
-    print('User not authenticated.');
+    //print('User not authenticated.');
+
+    Get.snackbar('Error', 'User not authenticated.');
+    // Handle the error accordingly
   }
 }

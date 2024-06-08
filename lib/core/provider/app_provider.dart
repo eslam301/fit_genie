@@ -117,7 +117,7 @@ class AppProvider extends ChangeNotifier {
 
     if (gender != null && gender.isNotEmpty) {
       await pref.setString('gender', gender);
-      print('Profile updated gender');
+      // print('Profile updated gender');
     }
 
     if (disease != null && disease.isNotEmpty) {
@@ -136,8 +136,8 @@ class AppProvider extends ChangeNotifier {
       await pref.setString('workout_level', workOutLevel);
     }
 
-    print('Profile updated');
-     notifyListeners(); // Uncomment this line if you are using this in a ChangeNotifier class
+    // print('Profile updated');
+    notifyListeners(); // Uncomment this line if you are using this in a ChangeNotifier class
   }
 
   void changePageIndex(int index, {required PageController pageController}) {
