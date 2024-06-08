@@ -1,4 +1,5 @@
 import '../../pages/food/food_model/food_model.dart';
+import '../../pages/work_out_planes/work_out_model/work_out_model.dart';
 
 FoodPlanModel parseFoodPlan(String text) {
   final RegExp mealRegExp = RegExp(
@@ -42,4 +43,62 @@ FoodPlanModel parseFoodPlan(String text) {
     snack1: snack1,
     snack2: snack2,
   );
+}
+
+WorkOutPlansModel parseWorkoutData(String data) {
+  List<String> sections = data.split(' + ');
+
+  WorkOutTypes strengthTraining = WorkOutTypes(
+    typeOfExercises: "Strength-training",
+    durationAndFrequencyOfWorkouts:
+        "Duration: 60 minutes & frequency-of-workouts: 4 times a week",
+    intensityLevel: "Moderate to high",
+    specificExercisesOrRoutines: sections[0].split('/')[3].trim(),
+    caloriesBurnt: _extractCalories(sections[0]),
+    time: "60 minutes",
+  );
+  print('Parsed Strength Training: ${strengthTraining.toJson()}');
+
+  WorkOutTypes cardio = WorkOutTypes(
+    typeOfExercises: "Cardio",
+    durationAndFrequencyOfWorkouts:
+        "Duration: 60 minutes & frequency-of-workouts: 4 times a week",
+    intensityLevel: "Moderate to high",
+    specificExercisesOrRoutines: sections[1].trim(),
+    caloriesBurnt: _extractCalories(sections[1]),
+    time: _extractTime(sections[1]),
+  );
+  print('Parsed Cardio: ${cardio.toJson()}');
+
+  WorkOutTypes flexibility = WorkOutTypes(
+    typeOfExercises: "Flexibility",
+    durationAndFrequencyOfWorkouts:
+        "Duration: 60 minutes & frequency-of-workouts: 4 times a week",
+    intensityLevel: "Moderate to high",
+    specificExercisesOrRoutines: sections[2].trim(),
+    caloriesBurnt: _extractCalories(sections[2]),
+    time: _extractTime(sections[2]),
+  );
+  print('Parsed Flexibility: ${flexibility.toJson()}');
+
+  return WorkOutPlansModel(
+    strengthTraining: strengthTraining,
+    cardio: cardio,
+    flexibility: flexibility,
+  );
+}
+
+String _extractCalories(String section) {
+  RegExp regExp = RegExp(r'(\d+) calories');
+  Iterable<Match> matches = regExp.allMatches(section);
+  int totalCalories = matches
+      .map((match) => int.parse(match.group(1)!))
+      .reduce((a, b) => a + b);
+  return '$totalCalories calories';
+}
+
+String _extractTime(String section) {
+  RegExp regExp = RegExp(r'(\d+) minutes');
+  Match? match = regExp.firstMatch(section);
+  return match != null ? '${match.group(1)} minutes' : 'Unknown';
 }

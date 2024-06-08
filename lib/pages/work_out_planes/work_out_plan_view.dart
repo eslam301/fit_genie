@@ -29,21 +29,10 @@ class _WorkOutPlanViewState extends State<WorkOutPlanView> {
         ],
       ).paddingOnly(top: 20, left: 20),
       const SizedBox(height: 20),
-      // Form(
-      //     key: formKey,
-      //     child: Column(
-      //   children: [
-      //     CustomTextField(controller: _emailController, label: 'email',),
-      //     ElevatedButton(onPressed: (){
-      //       if(formKey.currentState!.validate()){
-      //         post(_emailController.text as Uri);
-      //       }
-      //     }, child: const Text('Submit'))
-      //   ],
-      // )),
       Expanded(
           child: FutureBuilder(
-        future: WorkOutApiManger.fetchWorkOutData(),
+        future:
+            WorkOutAPIMangerFirebase.fetchWorkOutData(email: 'mhd@gmail.com'),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasError) {
             return Column(
@@ -64,7 +53,6 @@ class _WorkOutPlanViewState extends State<WorkOutPlanView> {
                 IconButton(
                   onPressed: () {
                     setState(() {
-                      WorkOutApiManger.fetchWorkOutData();
                     });
                   },
                   icon: const Icon(Icons.refresh_sharp),

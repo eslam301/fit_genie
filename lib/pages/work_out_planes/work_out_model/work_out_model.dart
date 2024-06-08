@@ -36,13 +36,15 @@ class WorkOutTypes {
   String? intensityLevel;
   String? specificExercisesOrRoutines;
   String? caloriesBurnt;
+  String? time;
 
   WorkOutTypes(
       {this.typeOfExercises,
         this.durationAndFrequencyOfWorkouts,
         this.intensityLevel,
         this.specificExercisesOrRoutines,
-        this.caloriesBurnt});
+      this.caloriesBurnt,
+      this.time});
 
   WorkOutTypes.fromJson(Map<String, dynamic> json) {
     typeOfExercises = json['Type of exercises'];
@@ -50,16 +52,17 @@ class WorkOutTypes {
     intensityLevel = json['Intensity level'];
     specificExercisesOrRoutines = json['Specific exercises or routines'];
     caloriesBurnt = json['Calories burnt'];
+    time = json['Time'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['Type of exercises'] = typeOfExercises;
-    data['Duration and frequency of workouts'] =
-        durationAndFrequencyOfWorkouts;
+    data['Duration and frequency of workouts'] = durationAndFrequencyOfWorkouts;
     data['Intensity level'] = intensityLevel;
     data['Specific exercises or routines'] = specificExercisesOrRoutines;
     data['Calories burnt'] = caloriesBurnt;
+    data['Time'] = time;
     return data;
   }
 }

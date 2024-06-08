@@ -6,6 +6,7 @@ class WideContainer extends StatefulWidget {
   final String? description;
   final String? intensityLevel;
   final String? caloriesBurnt;
+  final String? time;
 
   const WideContainer({
     super.key,
@@ -14,6 +15,7 @@ class WideContainer extends StatefulWidget {
     this.description,
     this.intensityLevel,
     this.caloriesBurnt,
+    this.time,
   });
 
   @override
@@ -27,7 +29,7 @@ class _WideContainerState extends State<WideContainer> {
   Widget build(BuildContext context) {
     double widthScreen = MediaQuery.of(context).size.width;
     double heightScreen = MediaQuery.of(context).size.height;
-    List time = widget.description?.split(',') ?? [];
+
     var theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
@@ -46,7 +48,7 @@ class _WideContainerState extends State<WideContainer> {
           children: [
             AnimatedContainer(
               height: heightScreen * 0.35,
-              width: widthScreen * 0.27,
+              width: widthScreen * 0.22,
               padding: const EdgeInsets.all(3),
               decoration: BoxDecoration(
                 color: isFinished
@@ -57,12 +59,14 @@ class _WideContainerState extends State<WideContainer> {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      widget.title ?? '',
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
+                    Flexible(
+                      child: Text(
+                        widget.title ?? ' ',
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                     const SizedBox(
                       height: 14,
@@ -77,31 +81,49 @@ class _WideContainerState extends State<WideContainer> {
                   ]),
             ),
             const SizedBox(width: 8),
-            Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "play: ${widget.subtitle}",
-                    style: const TextStyle(color: Colors.white, fontSize: 14),
-                  ),
-                  Text(
-                    "level: ${widget.intensityLevel }",
-                    style: const TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                  Text(
-                    "Burnt: ${widget.caloriesBurnt}",
-                    style: const TextStyle(color: Colors.white, fontSize: 14),
-                  ),
-                  Text(
-                    "${time[0]}",
-                    style: const TextStyle(color: Colors.white54, fontSize: 14),
-                  ),Text(
-                    "for:${time[1]}",
-                    style: const TextStyle(color: Colors.white54, fontSize: 14),
-                  ),
-
-                ])
+            SizedBox(
+              width: widthScreen * 0.6,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        "play: ${widget.subtitle}",
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 14),
+                      ),
+                    ),
+                    Flexible(
+                      child: Text(
+                        "level: ${widget.intensityLevel}",
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                    ),
+                    Flexible(
+                      child: Text(
+                        "Burnt: ${widget.caloriesBurnt}",
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 14),
+                      ),
+                    ),
+                    Flexible(
+                      child: Text(
+                        "Description: ${widget.description}",
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 14),
+                      ),
+                    ),
+                    Flexible(
+                      child: Text(
+                        "time: ${widget.time}",
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 14),
+                      ),
+                    ),
+                  ]),
+            )
           ],
         ),
       ),

@@ -1,9 +1,6 @@
 //https://127.0.0.1:8000/api/mealplan/
 
-import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:http/http.dart' as http;
 
 import '../../../core/data_manger/data_manger.dart';
 import '../food_model/food_model.dart';
@@ -40,29 +37,29 @@ import '../food_model/food_model.dart';
 // "Meal": "Trail mix: 1/4 cup"
 // }
 // }
-class FoodApiManger {
-  static Future<FoodPlanModel> fetchFoodData({required String email}) async {
-    Uri uri = Uri.https(
-      "https://127.0.0.1:8000/api/mealplan/",
-    );
-
-    final body = jsonEncode({'email': email});
-
-    final response = await http.post(uri, body: body);
-    print('---------------response body----------------------');
-    print(response.toString());
-    print('---------------response body----------------------');
-    if (response.statusCode == 200 &&
-        jsonDecode(response.body)['status'] == 'ok') {
-      return FoodPlanModel.fromJson(jsonDecode(response.body));
-    } else if (response.statusCode == 200 &&
-        jsonDecode(response.body)['status'] == 'error') {
-      throw Exception(jsonDecode(response.body)['message']);
-    } else {
-      throw Exception('Failed to load Source');
-    }
-  }
-}
+// class FoodApiManger {
+//   static Future<FoodPlanModel> fetchFoodData({required String email}) async {
+//     Uri uri = Uri.https(
+//       "https://127.0.0.1:8000/api/mealplan/",
+//     );
+//
+//     final body = jsonEncode({'email': email});
+//
+//     final response = await http.post(uri, body: body);
+//     print('---------------response body----------------------');
+//     print(response.toString());
+//     print('---------------response body----------------------');
+//     if (response.statusCode == 200 &&
+//         jsonDecode(response.body)['status'] == 'ok') {
+//       return FoodPlanModel.fromJson(jsonDecode(response.body));
+//     } else if (response.statusCode == 200 &&
+//         jsonDecode(response.body)['status'] == 'error') {
+//       throw Exception(jsonDecode(response.body)['message']);
+//     } else {
+//       throw Exception('Failed to load Source');
+//     }
+//   }
+// }
 
 class FoodApiManagerFirebase {
   static Future<FoodPlanModel> fetchFoodData({required String email}) async {
@@ -77,7 +74,13 @@ class FoodApiManagerFirebase {
       if (querySnapshot.docs.isNotEmpty) {
         // Fetch the first document in the snapshot
         var userData = querySnapshot.docs.first['data'];
+        print('-------------------------------------------------------------');
+        print('userData: $userData');
+        print('-------------------------------------------------------------');
         FoodPlanModel parsedData = parseFoodPlan(userData);
+        print('-------------------------------------------------------------');
+        print('parsed data: $parsedData');
+        print('-------------------------------------------------------------');
         return parsedData;
       } else {
         print('User data not found');

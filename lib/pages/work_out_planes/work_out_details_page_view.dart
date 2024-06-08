@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:fitgenie/pages/work_out_planes/widget/wide_container_widget.dart';
 import 'package:fitgenie/pages/work_out_planes/work_out_model/work_out_model.dart';
 import 'package:flutter/material.dart';
@@ -16,14 +15,22 @@ class WorkOutDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppProvider>(context);
-    List<String?> titleSplit = exerciseModel?.typeOfExercises?.split(',') ?? [];
-    List<String?> subtitleSplit = exerciseModel?.specificExercisesOrRoutines?.split(',') ?? [];
+    final String? title = exerciseModel?.typeOfExercises;
+    final String? subtitle = exerciseModel?.specificExercisesOrRoutines;
     final String? intensityLevel = exerciseModel?.intensityLevel;
     final String? caloriesBurnt = exerciseModel?.caloriesBurnt;
     final String? descriptionSplitDuration = exerciseModel?.durationAndFrequencyOfWorkouts;
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    final String? time = exerciseModel?.time;
+
+    final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
     var theme = Theme.of(context);
+    print('--------------------------tt----------------------------');
+    print('title is $title');
+    print('subtitle is $subtitle');
+    print('intensityLevel is $intensityLevel');
+    print('caloriesBurnt is $caloriesBurnt');
+    print('descriptionSplitDuration is $descriptionSplitDuration');
     return Container(
       height: height*0.81,
       width: width,
@@ -39,49 +46,28 @@ class WorkOutDetails extends StatelessWidget {
         children: [
           Image.asset(imageUrl),
           const SizedBox(height: 20),
-          Expanded(
-            child: ListView.builder(
-                padding: const EdgeInsets.all(16.0),
-                physics: const BouncingScrollPhysics(),
-                cacheExtent: 1000,
-                itemCount: titleSplit.length,
-                itemBuilder: (context, index) {
-                  return FadeInUp(
-                      delay: Duration(milliseconds: 100 * (index + 1)),
-                      duration: const Duration(milliseconds: 500),
-                      child: WideContainer(
-                        title: titleSplit[index] ?? '',
-                        subtitle: subtitleSplit[index] ?? '' ,
-                        description: descriptionSplitDuration ?? '',
-                        intensityLevel:intensityLevel?? '',
-                        caloriesBurnt: caloriesBurnt?? '',
-                      ).paddingSymmetric(vertical: 6));
-                }),
-          ),
+          WideContainer(
+            title: title,
+            subtitle: subtitle,
+            description: descriptionSplitDuration ?? '',
+            intensityLevel: intensityLevel ?? ' ',
+            caloriesBurnt: caloriesBurnt ?? '',
+            time: time ?? '',
+          ).paddingSymmetric(vertical: 6),
           LongButton(
             label: 'Save',
             onTap: () async {
-              // saveWorkOut();
-              List<String> splitCalorieRange(String input) {
-                // Remove the 'calories' part and trim any whitespace
-                input = input.replaceAll('calories', '').trim();
-                input = input.replaceAll('minutes', '').trim();
-
-                // Split the string based on the '-' character
-                List<String> parts = input.split('-');
-
-                // Trim any whitespace around the parts and return the list
-                return parts.map((part) => part.trim()).toList();
-              }
-              List<String> parts = splitCalorieRange(caloriesBurnt!);
-              List<String> partsMin = splitCalorieRange(descriptionSplitDuration!);
-              // print("parts ${parts[0]}");
-              // print("partsmin ${partsMin[0]}");
-              await provider.addExerciseCalories(value: int.parse(parts[0]), time: partsMin[0]);
+              print('--------------------------tt----------------------------');
+              print('time is $time');
+              print('caloriesBurnt is $caloriesBurnt');
+              int nCalories = extractCalories(caloriesBurnt!);
+              int nTime = extractTime(time!);
+              await provider.addExerciseCalories(
+                  value: nCalories, time: nTime.toString());
 
               Get.snackbar(
                 "Saved",
-                "you have Burnt ${parts[0]} calories",
+                "you have Burnt $nCalories calories",
                 snackPosition: SnackPosition.TOP,
                 padding: const EdgeInsets.all(20),
                 overlayColor: Colors.black.withOpacity(0.5),
@@ -96,5 +82,17 @@ class WorkOutDetails extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  int extractTime(String timeString) {
+    RegExp regExp = RegExp(r'(\d+) minutes');
+    Match? match = regExp.firstMatch(timeString);
+    return match != null ? int.parse(match.group(1)!) : 0;
+  }
+
+  int extractCalories(String calorieString) {
+    RegExp regExp = RegExp(r'(\d+) calories');
+    Match? match = regExp.firstMatch(calorieString);
+    return match != null ? int.parse(match.group(1)!) : 0;
   }
 }
