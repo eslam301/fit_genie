@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppProvider extends ChangeNotifier {
-  int? steps;
+  int? steps = 0;
   int exerciseCalories = 0;
   int foodCalories = 0;
   DateTime exerciseTime = DateTime.utc(1970, 1, 1);
@@ -42,11 +42,11 @@ class AppProvider extends ChangeNotifier {
     if (lastTimestamp != null) {
       DateTime lastTime = DateTime.fromMillisecondsSinceEpoch(lastTimestamp);
       if (DateTime.now().difference(lastTime).inMinutes >= 3) {
-        pref.setInt('exerciseCalories', 0);
-        pref.setInt('foodCalories', 0);
-        pref.setInt('timestamp', DateTime.now().millisecondsSinceEpoch);
-        pref.setInt('baseGoal', 2000);
-        pref.setString(
+        await pref.setInt('exerciseCalories', 0);
+        await pref.setInt('foodCalories', 0);
+        await pref.setInt('timestamp', DateTime.now().millisecondsSinceEpoch);
+        await pref.setInt('baseGoal', 2000);
+        await pref.setString(
             'ExerciseTime', DateTime.utc(1970, 1, 1).toIso8601String());
       } else {
         exerciseCalories = pref.getInt('exerciseCalories') ?? 0;
@@ -59,8 +59,35 @@ class AppProvider extends ChangeNotifier {
       exerciseCalories = pref.getInt('exerciseCalories') ?? 0;
       foodCalories = pref.getInt('foodCalories') ?? 0;
       baseGoal = pref.getInt('baseGoal') ?? 2000;
+      //print('Last timestamp: $lastTimestamp');
       exerciseTime = DateTime.parse(pref.getString('ExerciseTime') ?? '');
       //print('No timestamp found');
+    }
+    notifyListeners();
+  }
+
+  Future<void> updateSteps() async {
+    var pref = await SharedPreferences.getInstance();
+    int? lastTimestamp = pref.getInt('timeSteps_stamp');
+    //print('last timestamp: $lastTimestamp');
+    if (lastTimestamp != null) {
+      //print('last timestamp in not e null: $lastTimestamp');
+      DateTime lastTime = DateTime.fromMillisecondsSinceEpoch(lastTimestamp);
+      if (DateTime.now().difference(lastTime).inMinutes >= 3) {
+        //print('time passed after 3 minutes');
+        //print('steps!!!!!!: ${pref.getInt('steps') ?? 0}');
+        await pref.setInt('steps', 0);
+        //print('steps####: ${pref.getInt('steps')}');
+        //print('stepsed: $steps');
+        steps = 0;
+        //print('stepsed----: $steps');
+      } else {
+        //print('time passed less than 3 minutes');
+        steps = pref.getInt('steps');
+      }
+    } else {
+      //print('last timestamp is null');
+      steps = pref.getInt('steps');
     }
     notifyListeners();
   }
@@ -71,7 +98,8 @@ class AppProvider extends ChangeNotifier {
     await pref.setInt('baseGoal', baseGoal!);
     notifyListeners();
   }
-  Future<void> clearFoodExercise  () async {
+
+  Future<void> clearFoodExercise() async {
     foodCalories = 0;
     exerciseCalories = 0;
     var pref = await SharedPreferences.getInstance();
@@ -137,7 +165,7 @@ class AppProvider extends ChangeNotifier {
     }
 
     // print('Profile updated');
-    notifyListeners(); // Uncomment this line if you are using this in a ChangeNotifier class
+    notifyListeners();
   }
 
   void changePageIndex(int index, {required PageController pageController}) {
@@ -154,15 +182,14 @@ class AppProvider extends ChangeNotifier {
     }
   }
 
-  get getPageIndexValue => pageIndex;
-
-
+  int get getPageIndexValue => pageIndex;
 }
 
 //-----------------------------------------------------------------------
 class ThemeController extends GetxController {
   late String currentTheme = 'Default';
   RxBool isDarkMode = false.obs;
+
   ThemeData get themeData =>
       Get.isDarkMode ? ThemeData.dark() : ThemeData.light();
 

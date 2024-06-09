@@ -296,8 +296,7 @@ Future<void> getUserDataFromFireStoreByEmail(
       //print('User data retrieved successfully for: $email , ${querySnapshot.docs.first['email']}');
     } else {
       //print('User data not found.');
-
-      Get.snackbar('Error', 'User data not found.');
+      Get.snackbar('Error', 'User data profile not found.');
     }
   } else {
     //print('User not authenticated.');

@@ -18,7 +18,6 @@ User? user;
 class _ProfilePageState extends State<ProfilePage> {
   String? name;
   String? secondName;
-  String? email;
   String? age;
   String? weight;
   String? height;
@@ -43,13 +42,11 @@ class _ProfilePageState extends State<ProfilePage> {
     setState(() {
       name = '${prefs.getString('firstName') ?? ' '} ${prefs.getString('secondName') ?? ''}';
       secondName = prefs.getString('secondName');
-      email = prefs.getString('email');
       age = prefs.getString('age');
       weight = prefs.getString('weight');
       height = prefs.getString('height');
       gender = prefs.getString('gender');
       disease = prefs.getString('disease');
-
       fitnessGoal = prefs.getString('fitness_goal');
       activityLevel = prefs.getString('activity_level');
       workOutLevel = prefs.getString('workout_level');

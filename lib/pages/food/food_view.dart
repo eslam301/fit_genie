@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../fire_base/firebase.dart';
 import 'food_api_manger/food_api_manger.dart';
 import 'food_model/food_model.dart';
 import 'food_widget/food_widget_container.dart';
@@ -14,8 +16,20 @@ class FoodPlanView extends StatefulWidget {
 }
 
 class _FoodPlanViewState extends State<FoodPlanView> {
+  late final User? user;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    user = ApplicationFirebaseAuth.getUserData();
+  }
+
   @override
   Widget build(BuildContext context) {
+    print('----------------------');
+    print('email: ${user?.email ?? 'no email'}');
+    print('----------------------');
     return RefreshIndicator(
       onRefresh: () async {
         await Future.delayed(const Duration(seconds: 1));
@@ -33,12 +47,12 @@ class _FoodPlanViewState extends State<FoodPlanView> {
           ).paddingOnly(left: 20, top: 20),
           Expanded(
               child: FutureBuilder(
-            future: FoodApiManagerFirebase.fetchFoodData(
-                email: 'eslameso301@gmail.com'),
+            future: FoodApiManagerFirebase.fetchFoodData(email: '${user!.email}'),
             builder:
                 (BuildContext context, AsyncSnapshot<FoodPlanModel> snapshot) {
               if (snapshot.hasData) {
                 FoodPlanModel foodPlan = snapshot.data as FoodPlanModel;
+
                 return ListView(
                   padding: const EdgeInsets.only(top: 5, bottom: 190),
                   physics: const BouncingScrollPhysics(),

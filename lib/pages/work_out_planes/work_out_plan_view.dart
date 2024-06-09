@@ -1,8 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitgenie/pages/work_out_planes/widget/work_out_item-container.dart';
 import 'package:fitgenie/pages/work_out_planes/work_out_api.dart';
 import 'package:fitgenie/pages/work_out_planes/work_out_model/work_out_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../fire_base/firebase.dart';
+
 class WorkOutPlanView extends StatefulWidget {
   static const routeName = '/work_out_plan_view';
   const WorkOutPlanView({super.key});
@@ -12,7 +16,15 @@ class WorkOutPlanView extends StatefulWidget {
 }
 
 class _WorkOutPlanViewState extends State<WorkOutPlanView> {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  late final User? user;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    user = ApplicationFirebaseAuth.getUserData();
+  }
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -32,7 +44,7 @@ class _WorkOutPlanViewState extends State<WorkOutPlanView> {
       Expanded(
           child: FutureBuilder(
         future:
-            WorkOutAPIMangerFirebase.fetchWorkOutData(email: 'mhd@gmail.com'),
+            WorkOutAPIMangerFirebase.fetchWorkOutData(email: "${user!.email}"),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasError) {
             return Column(
@@ -69,6 +81,8 @@ class _WorkOutPlanViewState extends State<WorkOutPlanView> {
                   CircularProgressIndicator(),
                 ]));
           } else if (snapshot.hasData) {
+            print('email ${user?.email}');
+            print('snapshot.data ${snapshot.data}');
             WorkOutPlansModel workOutModel = snapshot.data as WorkOutPlansModel;
             return ListView(
               physics: const BouncingScrollPhysics(),

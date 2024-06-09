@@ -26,7 +26,8 @@ class _HomeViewState extends State<HomeView> {
 
     print('gettingData---------------------------------');
     getUserDataFromFireStoreByEmail(email: FirebaseAuth.instance.currentUser!.email ?? 'no email');
-    print('data got ---------------------------------');
+    print(
+        'data got --------------${FirebaseAuth.instance.currentUser!.email}-------------------');
     super.initState();
     //ApplicationFirebaseAuth.getUserData();
   }
@@ -78,13 +79,13 @@ class _HomeViewState extends State<HomeView> {
           const SizedBox(
             height: 10,
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               //steps
-              StepsContainerView(),
+              StepsContainerView(provider: provider),
               //exercise
-              ExerciseContainer()
+              const ExerciseContainer()
             ],
           ),
           // const Row(

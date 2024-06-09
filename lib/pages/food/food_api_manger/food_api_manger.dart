@@ -74,13 +74,13 @@ class FoodApiManagerFirebase {
       if (querySnapshot.docs.isNotEmpty) {
         // Fetch the first document in the snapshot
         var userData = querySnapshot.docs.first['data'];
-        print('-------------------------------------------------------------');
-        print('userData: $userData');
-        print('-------------------------------------------------------------');
+        // print('-------------------------------------------------------------');
+        // print('userData: $userData');
+        // print('-------------------------------------------------------------');
         FoodPlanModel parsedData = parseFoodPlan(userData);
-        print('-------------------------------------------------------------');
-        print('parsed data: $parsedData');
-        print('-------------------------------------------------------------');
+        // print('-------------------------------------------------------------');
+        // print('parsed data: $parsedData');
+        // print('-------------------------------------------------------------');
         return parsedData;
       } else {
         print('User data not found');
